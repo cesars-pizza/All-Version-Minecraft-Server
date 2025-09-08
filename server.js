@@ -1,0 +1,122 @@
+const net = require('net')
+const fs = require('fs')
+
+var socketIndex = 6
+
+var players = [
+
+]
+
+setupLogs()
+async function setupLogs() {
+    if (fs.existsSync("./logs")) await fs.rmSync("./logs", {recursive: true}, () => {})
+    await fs.mkdir("./logs", () => {})
+
+    //if (fs.existsSync("./debug")) await fs.rmSync("./debug", {recursive: true}, () => {})
+    //await fs.mkdir("./debug", () => {})
+}
+
+const server = net.createServer((socket) => {
+    socket.logText = ""
+    socket.index = socketIndex
+    socketIndex++
+    socket.log = (message, consoleLog) => {
+        socket.logText += message + "\n"
+        if (consoleLog != false) console.log("SOCKET " + message)
+    }
+    socket.writePacket = (id, identifier, data, logBytes, consoleLog) => {
+        var packet = writer.CreatePacket(id, data)
+        if (consoleLog != false) socket.log(`OUTGOING ${identifier} / ${id} packet (${packet.length} bytes)`)
+        if (logBytes) socket.log(debug.DebugByteArrayNumbers(packet))
+        socket.write(packet, consoleLog)
+    }
+    socket.writeEmptyPacket = (id, identifier, logBytes, consoleLog) => {
+        var packet = writer.CreateEmptyPacket(id)
+        if (consoleLog != false) socket.log(`OUTGOING ${identifier} / ${id} packet (${packet.length} bytes)`)
+        if (logBytes) socket.log(debug.DebugByteArrayNumbers(packet))
+        socket.write(packet, consoleLog)
+    }
+    socket.bufferPacket = (id, identifier, data, logBytes, consoleLog) => {
+        socket.bufferedPackets.push({empty: false, id: id, identifier: identifier, data: data, logBytes: logBytes, consoleLog: consoleLog})
+    }
+    socket.bufferEmptyPacket = (id, identifier, logBytes, consoleLog) => {
+        socket.bufferedPackets.push({empty: true, id: id, identifier: identifier, logBytes: logBytes, consoleLog: consoleLog})
+    }
+    socket.writeBufferedPackets = () => {
+        for (var i = 0; i < socket.bufferedPackets.length; i++) {
+            if (socket.bufferedPackets[i].empty) socket.writeEmptyPacket(socket.bufferedPackets[i].id, socket.bufferedPackets[i].identifier, socket.bufferedPackets[i].logBytes, socket.bufferedPackets[i].consoleLog)
+            else socket.writePacket(socket.bufferedPackets[i].id, socket.bufferedPackets[i].identifier, socket.bufferedPackets[i].data, socket.bufferedPackets[i].logBytes, socket.bufferedPackets[i].consoleLog)
+        }
+        socket.bufferedPackets = []
+    }
+
+    socket.packetCount = 0
+
+    socket.on('data', (data) => {
+        ReadPacket(socket, data)
+    });
+
+    socket.on('end', () => {
+        clearInterval(socket.keepAlive)
+        socket.log("", false)
+        socket.log("Closed Socket")
+        fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
+    })
+
+    socket.on('error', (err) => {
+        clearInterval(socket.keepAlive)
+        socket.log("", false)
+        socket.log(`Socket Error: ${err.message}`);
+        fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
+    })
+
+    socket.keepAlive = setInterval(() => {
+        if (socket.state == 'play') socket.writePacket(0x26, "minecraft:keep_alive", writer.WriteLong(-12345))
+    }, 15000)
+});
+
+server.listen(25565, () => {
+    console.log('TCP server listening on port 25565');
+});
+
+server.on('error', (err) => {
+  console.error(`Server Error: ${err.message}`);
+  throw err;
+});
+
+/** 
+ * @param {Buffer} data
+ */
+function ReadPacket(socket, data) {
+    if (socket.packetCount < 2) HexViewBytes(Array.from(data), `packet${socketIndex}-${socket.packetCount}`)
+    socket.packetCount++
+
+    socket.firstPacket = false
+
+    //if (data.length > fullPacketLength) {
+    //    console.log("Split Packet")
+    //    ReadPacket(socket, data.subarray(fullPacketLength))
+    //}
+}
+
+/** 
+ * @param {Array} data
+ */
+function HexViewBytes(data, debugFile) {
+    let result = '';
+      const bytesPerLine = 16;
+      for (let i = 0; i < data.length; i += bytesPerLine) {
+        const lineBuffer = data.slice(i, i + bytesPerLine);
+        const offset = i.toString(16).padStart(4, '0'); // 8-digit hex offset
+        const hexPart = Array.from(lineBuffer)
+          .map(byte => byte.toString(16).padStart(2, '0'))
+          .join(' ');
+        const asciiPart = Array.from(lineBuffer)
+          .map(byte => (byte >= 32 && byte <= 126) ? String.fromCharCode(byte) : '.')
+          .join('');
+        result += `${offset}  ${hexPart.padEnd(bytesPerLine * 3 - 1, ' ')}  ${asciiPart}\n`;
+      }
+    result = `Length: ${data.length} bytes\n${result}`
+
+    fs.writeFileSync(`./debug/${debugFile}.txt`, result)
+}
