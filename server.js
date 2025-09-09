@@ -1,7 +1,9 @@
 const net = require('net')
 const fs = require('fs')
+const {Socket} = require('./data_structures.js')
+const packetReader = require('./data_handlers/serverbound_packets/packet_reader.js')
 
-var socketIndex = 6
+var socketIndex = -1
 
 var players = [
 
@@ -51,6 +53,11 @@ const server = net.createServer((socket) => {
     }
 
     socket.packetCount = 0
+    socket.identified = false
+    socket.upvn = -2
+    socket.uvni = -1
+
+    socket.dataBuffer = Buffer.alloc(0)
 
     socket.on('data', (data) => {
         ReadPacket(socket, data)
@@ -85,18 +92,43 @@ server.on('error', (err) => {
 });
 
 /** 
+ * @param {Socket} socket 
  * @param {Buffer} data
  */
 function ReadPacket(socket, data) {
-    if (socket.packetCount < 2) HexViewBytes(Array.from(data), `packet${socketIndex}-${socket.packetCount}`)
+    HexViewBytes(Array.from(data), `packet${socketIndex}-${socket.packetCount}`)
     socket.packetCount++
 
-    socket.firstPacket = false
+    if (!socket.identified) IdentifyVersion(socket, data)
+    var packetID = GetPacketID(socket, data)
 
-    //if (data.length > fullPacketLength) {
-    //    console.log("Split Packet")
-    //    ReadPacket(socket, data.subarray(fullPacketLength))
-    //}
+    var packetReaderFn = packetReader[packetID]
+
+    if (packetID != null && socket.identified) {
+        if (packetReaderFn != undefined) {
+            var splitIndex = packetReaderFn(socket)(socket, data)
+            if (splitIndex > 0) ReadPacket(socket, data.subarray(splitIndex))
+            else if (splitIndex < 0) socket.dataBuffer = Buffer.from(Array.from(socket.dataBuffer).concat(Array.from(data)))
+        }
+        else socket.log(`SERVERBOUND --> ${packetID} "Unknown" / ${data.length} bytes`)
+    }
+    else socket.destroy()
+}
+
+function IdentifyVersion(socket, data) {
+    if (socket.packetCount == 1 && data[0] == 0x00) {
+        socket.log(`IDENTIFIED VNNM 0.0.15a_01`)
+        socket.log(`IDENTIFIED UPVN -1`)
+        socket.log(`IDENTIFIED UVNI 29`)
+        socket.identified = true
+        socket.upvn = -1
+        socket.uvni = 29
+    }
+}
+
+function GetPacketID(socket, data) {
+    if (socket.identified && socket.upvn < 0) return data[0]
+    else return null
 }
 
 /** 
