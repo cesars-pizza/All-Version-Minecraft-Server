@@ -3,7 +3,6 @@ const {Socket} = require('../../data_structures')
 /**
  * @param {Buffer} data 
  * @param {number} position 
- * @returns 
  */
 function Read(data, position) {
     var stringValue = data.subarray(position, position + 64).toString('utf-8')
@@ -16,4 +15,13 @@ function Read(data, position) {
     }
 }
 
-module.exports = {Read}
+/**
+ * @param {string} value 
+ */
+function Write(value) {
+    if (value.length > 64) value = value.substring(0, 64)
+    value = value.padEnd(64, ' ')
+    return Array.from(Uint8Array.from(value))
+}
+
+module.exports = {Read, Write}

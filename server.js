@@ -2,6 +2,7 @@ const net = require('net')
 const fs = require('fs')
 const {Socket} = require('./data_structures.js')
 const packetReader = require('./data_handlers/serverbound_packets/packet_reader.js')
+const dataWriter = require('./data_handlers/data_writer.js')
 
 var socketIndex = -1
 
@@ -27,29 +28,10 @@ const server = net.createServer((socket) => {
         if (consoleLog != false) console.log("SOCKET " + message)
     }
     socket.writePacket = (id, identifier, data, logBytes, consoleLog) => {
-        var packet = writer.CreatePacket(id, data)
-        if (consoleLog != false) socket.log(`OUTGOING ${identifier} / ${id} packet (${packet.length} bytes)`)
+        var packet = dataWriter.writePacket(socket, id, data)
+        if (consoleLog != false) socket.log(`CLIENTBOUND <-- ${id} "${identifier}" / ${packet.length} bytes`)
         if (logBytes) socket.log(debug.DebugByteArrayNumbers(packet))
         socket.write(packet, consoleLog)
-    }
-    socket.writeEmptyPacket = (id, identifier, logBytes, consoleLog) => {
-        var packet = writer.CreateEmptyPacket(id)
-        if (consoleLog != false) socket.log(`OUTGOING ${identifier} / ${id} packet (${packet.length} bytes)`)
-        if (logBytes) socket.log(debug.DebugByteArrayNumbers(packet))
-        socket.write(packet, consoleLog)
-    }
-    socket.bufferPacket = (id, identifier, data, logBytes, consoleLog) => {
-        socket.bufferedPackets.push({empty: false, id: id, identifier: identifier, data: data, logBytes: logBytes, consoleLog: consoleLog})
-    }
-    socket.bufferEmptyPacket = (id, identifier, logBytes, consoleLog) => {
-        socket.bufferedPackets.push({empty: true, id: id, identifier: identifier, logBytes: logBytes, consoleLog: consoleLog})
-    }
-    socket.writeBufferedPackets = () => {
-        for (var i = 0; i < socket.bufferedPackets.length; i++) {
-            if (socket.bufferedPackets[i].empty) socket.writeEmptyPacket(socket.bufferedPackets[i].id, socket.bufferedPackets[i].identifier, socket.bufferedPackets[i].logBytes, socket.bufferedPackets[i].consoleLog)
-            else socket.writePacket(socket.bufferedPackets[i].id, socket.bufferedPackets[i].identifier, socket.bufferedPackets[i].data, socket.bufferedPackets[i].logBytes, socket.bufferedPackets[i].consoleLog)
-        }
-        socket.bufferedPackets = []
     }
 
     socket.packetCount = 0

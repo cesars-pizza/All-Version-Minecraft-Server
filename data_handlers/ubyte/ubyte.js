@@ -5,11 +5,25 @@ const {Socket} = require('../../data_structures')
  */
 function Read(socket, data, position) {
     if (socket.upvn == -1) return require('./29').Read(data, position)
-    else return {
-        value: undefined,
-        length: 0,
-        nextPos: position
+    else {
+        socket.log(`ERR: Cannot Parse UByte for Version ${socket.upvn}:${socket.uvni}`)
+        return {
+            value: 0,
+            length: 1,
+            nextPos: position + 1
+        }
     }
 }
 
-module.exports = {Read}
+/** 
+ * @param {Socket} socket 
+ */
+function Write(socket, value) {
+    if (socket.upvn == -1) return require('./29').Write(value)
+    else {
+        socket.log(`ERR: Cannot Write UByte for Version ${socket.upvn}:${socket.uvni}`)
+        return [0]
+    }
+}
+
+module.exports = {Read, Write}

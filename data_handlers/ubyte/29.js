@@ -8,4 +8,10 @@ function Read(data, position) {
     }
 }
 
-module.exports = {Read}
+function Write(value) {
+    value = Math.min(Math.max(value, 0), 255)
+
+    return [value]
+}
+
+module.exports = {Read, Write}
