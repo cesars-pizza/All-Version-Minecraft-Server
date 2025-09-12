@@ -15,8 +15,8 @@ async function setupLogs() {
     if (fs.existsSync("./logs")) await fs.rmSync("./logs", {recursive: true}, () => {})
     await fs.mkdir("./logs", () => {})
 
-    //if (fs.existsSync("./debug")) await fs.rmSync("./debug", {recursive: true}, () => {})
-    //await fs.mkdir("./debug", () => {})
+    if (fs.existsSync("./debug")) await fs.rmSync("./debug", {recursive: true}, () => {})
+    await fs.mkdir("./debug", () => {})
 }
 
 const server = net.createServer((socket) => {
@@ -99,7 +99,7 @@ function ReadPacket(socket, data) {
 
 function IdentifyVersion(socket, data) {
     if (socket.packetCount == 1 && data[0] == 0x00) {
-        socket.log(`IDENTIFIED VNNM 0.0.15a_01`)
+        socket.log(`IDENTIFIED VNNM Multiplayer Test 1`)
         socket.log(`IDENTIFIED UPVN -1`)
         socket.log(`IDENTIFIED UVNI 29`)
         socket.identified = true
@@ -134,3 +134,5 @@ function HexViewBytes(data, debugFile) {
 
     fs.writeFileSync(`./debug/${debugFile}.txt`, result)
 }
+
+module.exports = {HexViewBytes}

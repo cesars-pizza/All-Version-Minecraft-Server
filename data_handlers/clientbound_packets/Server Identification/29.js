@@ -6,16 +6,10 @@ var packetIdentifier = "Server Identification"
 
 /** 
  * @param {Socket} socket 
- * @param {string} serverMessage 
  * @param {string} serverName 
- * @param {boolean} playerOperator 
  */
-function WritePacket(socket, serverName, serverMessage, playerOperator) {
-    socket.writePacket(packetID, packetIdentifier, 
-        dataWriter.writeString(socket, serverName).concat(
-            dataWriter.writeString(socket, serverMessage),
-            dataWriter.writeUByte(socket, playerOperator ? 64 : 0)
-        ))
+function WritePacket(socket, serverName) {
+    socket.writePacket(packetID, packetIdentifier, dataWriter.writeString(socket, serverName))
 }
 
 module.exports = {WritePacket}

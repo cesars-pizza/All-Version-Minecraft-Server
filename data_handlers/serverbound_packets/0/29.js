@@ -20,7 +20,16 @@ function ReadPacket(socket, data) {
         socket.log(`Packet ID: ${ID.value}`)
         socket.log(`Username: ${Username.value}`)
 
-        packetWriter.Server_Identification(socket)(socket, "Cool Server", "Welcome to Localhost:25565", 0x00)
+        packetWriter.Server_Identification(socket)(socket, "Cool Server")
+        packetWriter.Level_Initilize(socket)(socket)
+        packetWriter.Level_Data_Chunk(socket)(socket, Array(64).fill(Array(256).fill(Array(256).fill(2))))
+        packetWriter.Level_Finalize(socket)(socket, 256, 16, 256)
+        //packetWriter.Spawn_Player(socket)(socket, -1, "LoompyDoompy", {x: 32, y: 5, z: 32}, {pitch: 0, yaw: 0})
+        setTimeout(() => {
+            packetWriter.Level_Initilize(socket)(socket)
+            packetWriter.Level_Data_Chunk(socket)(socket, Array(64).fill(Array(256).fill(Array(256).fill(3))))
+            packetWriter.Level_Finalize(socket)(socket, 256, 16, 256)
+        }, 10000)
     }
 
     return splitIndex

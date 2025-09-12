@@ -21,7 +21,7 @@ function Read(data, position) {
 function Write(value) {
     if (value.length > 64) value = value.substring(0, 64)
     value = value.padEnd(64, ' ')
-    return Array.from(Uint8Array.from(value))
+    return Array.from(Buffer.from(value, 'utf-8'))
 }
 
 module.exports = {Read, Write}
