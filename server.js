@@ -4,7 +4,7 @@ const {Socket} = require('./data_structures.js')
 const packetReader = require('./data_handlers/serverbound_packets/packet_reader.js')
 const dataWriter = require('./data_handlers/data_writer.js')
 
-var socketIndex = -1
+var socketIndex = 0
 
 var players = [
 
@@ -78,7 +78,7 @@ server.on('error', (err) => {
  * @param {Buffer} data
  */
 function ReadPacket(socket, data) {
-    HexViewBytes(Array.from(data), `packet${socketIndex}-${socket.packetCount}`)
+    //HexViewBytes(Array.from(data), `packet${socketIndex}-${socket.packetCount}`)
     socket.packetCount++
 
     if (!socket.identified) IdentifyVersion(socket, data)
@@ -99,7 +99,7 @@ function ReadPacket(socket, data) {
 
 function IdentifyVersion(socket, data) {
     if (socket.packetCount == 1 && data[0] == 0x00) {
-        socket.log(`IDENTIFIED VNNM Multiplayer Test 1`)
+        socket.log(`IDENTIFIED VNNM 0.0.15a (Multiplayer Test 1)`)
         socket.log(`IDENTIFIED UPVN -1`)
         socket.log(`IDENTIFIED UVNI 29`)
         socket.identified = true

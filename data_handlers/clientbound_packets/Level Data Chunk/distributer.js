@@ -7,4 +7,8 @@ function WritePacket(socket) {
     if (socket.upvn == -1) return require('./29').WritePacket
 }
 
-module.exports = {WritePacket}
+function WritePacket_Alt0(socket) {
+    if (socket.upvn == -1) return require('./29').WritePacket_Alt0
+}
+
+module.exports = {WritePacket, WritePacket_Alt0}

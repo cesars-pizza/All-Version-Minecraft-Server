@@ -4,5 +4,7 @@ module.exports = {
     Level_Data_Chunk: require('./Level Data Chunk/distributer.js').WritePacket,
     Level_Finalize: require('./Level Finalize/distributer.js').WritePacket,
     Spawn_Player: require('./Spawn Player/distributer.js').WritePacket,
-    Disconnect_Player: require('./Disconnect Player/distributer.js').WritePacket,
+    _alt: {
+        Level_Data_Chunk_alt0: require('./Level Data Chunk/distributer.js').WritePacket_Alt0
+    }
 }
