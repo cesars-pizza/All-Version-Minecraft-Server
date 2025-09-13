@@ -4,11 +4,11 @@ const {Socket} = require('../../../data_structures.cjs')
  * @param {Socket} socket 
  */
 function WritePacket(socket) {
-    if (socket.upvn == -1) return require('./29.cjs').WritePacket
+    if (socket.thisPlayer.upvn == -1) return require('./29.cjs').WritePacket
 }
 
 function WritePacket_Alt0(socket) {
-    if (socket.upvn == -1) return require('./29.cjs').WritePacket_Alt0
+    if (socket.thisPlayer.upvn == -1) return require('./29.cjs').WritePacket_Alt0
 }
 
 module.exports = {WritePacket, WritePacket_Alt0}

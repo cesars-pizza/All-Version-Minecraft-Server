@@ -49,11 +49,11 @@ function GeneratePlayer(world, socket, username) {
         },
         verified: false,
         keepUnverified: false,
-        lastUVNI: socket.uvni,
+        lastUVNI: socket.thisPlayer.uvni,
         save: true
     }
 
-    if (socket.uvni == -1) {
+    if (socket.thisPlayer.uvni == -1) {
         player.inventory.slots = [{
             slot: 0,
             id: "minecraft:stone",

@@ -1,7 +1,7 @@
-const {Socket} = require('../../../data_structures')
-const dataReader = require('../../data_reader')
-const packetWriter = require('../../clientbound_packets/packet_writer')
-const utils = require('../../../utils/utils')
+const {Socket} = require('../../../data_structures.cjs')
+const dataReader = require('../../data_reader.cjs')
+const packetWriter = require('../../clientbound_packets/packet_writer.cjs')
+const utils = require('../../../utils/utils.cjs')
 
 var packetID = 5
 var packetIdentifier = "Set Block"

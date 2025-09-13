@@ -7,10 +7,8 @@ class Socket {
      * @param {(disconnectReason: string, consoleLog: boolean | null) => void} setDisconnect 
      * @param {number} packetCount
      * @param {boolean} identified
-     * @param {number} upvn
-     * @param {number} uvni 
      * @param {Buffer} dataBuffer    
-     * @param {InGamePlayer} thisPlayer 
+     * @param {Player} thisPlayer 
      * @param {"" | "maxPlayers" | "multipleInstances" | "invalidVersion" | "unverified"} disconnect 
      */
     constructor(logText, index, log, writePacket, setDisconnect, packetCount, identified, upvn, uvni, dataBuffer, thisPlayer, disconnect) {
@@ -48,29 +46,16 @@ class World {
      * @param {Player[]} players 
      * @param {number} maxPlayerCount 
      * @param {string[]} loadingPlayerNames 
-     * @param {InGamePlayer[]} loadedPlayers
-     * @param {{serverFull: ErrorWorld}} errorWorlds 
+     * @param {Player[]} loadedPlayers
+     * @param {{block: Registry[]}} registries 
      */
-    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, errorWorlds) {
+    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries) {
         this.config = config
         this.players = players
         this.maxPlayerCount = maxPlayerCount
         this.loadingPlayerNames = loadingPlayerNames
         this.loadedPlayers = loadedPlayers
-        this.errorWorlds = errorWorlds
-    }
-}
-
-class ErrorWorld {
-    /**
-     * @param {Position} position 
-     * @param {Rotation} rotation 
-     * @param {{x: number, y: number, z: number, id: number}[]} blocks 
-     */
-    constructor(position, rotation, blocks) {
-        this.position = position
-        this.rotation = rotation
-        this.blocks = blocks
+        this.registries = registries
     }
 }
 
@@ -84,37 +69,15 @@ class Player {
      * @param {boolean} verified 
      * @param {boolean} keepUnverified 
      * @param {number} lastUVNI 
-     * @param {boolean} save 
-     */
-    constructor(uuid, username, position, rotation, inventory, verified, keepUnverified, lastUVNI, save) {
-        this.uuid = uuid
-        this.username = username
-        this.position = position
-        this.rotation = rotation
-        this.inventory = inventory
-        this.verified = verified
-        this.keepUnverified = keepUnverified
-        this.lastUVNI = lastUVNI
-        this.save = save
-    }
-}
-
-class InGamePlayer {
-    /**
-     * @param {string} uuid 
-     * @param {string} username 
-     * @param {Position} position 
-     * @param {Rotation} rotation 
-     * @param {{selected_slot: number, slots: Slot[]}} inventory 
-     * @param {boolean} verified 
-     * @param {boolean} keepUnverified 
-     * @param {number} lastUVNI 
      * @param {number} classicID 
      * @param {boolean} inWorld 
      * @param {{spawn: boolean, position: boolean, rotation: boolean}} tick 
      * @param {boolean} save 
+     * @param {number} upvn 
+     * @param {number} uvni
+     * @param {{block: number}} selectedRegistries  
      */
-    constructor(uuid, username, position, rotation, inventory, verified, keepUnverified, lastUVNI, classicID, inWorld, tick, save) {
+    constructor(uuid, username, position, rotation, inventory, verified, keepUnverified, lastUVNI, classicID, inWorld, tick, save, upvn, uvni, selectedRegistries) {
         this.uuid = uuid
         this.username = username
         this.position = position
@@ -127,6 +90,9 @@ class InGamePlayer {
         this.inWorld = inWorld
         this.tick = tick
         this.save = save
+        this.upvn = upvn
+        this.uvni = uvni
+        this.selectedRegistries = selectedRegistries
     }
 }
 
@@ -171,4 +137,17 @@ class Rotation {
     }
 }
 
-module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, InGamePlayer, ErrorWorld}
+class Registry {
+    /**
+     * @param {number} minUVNI 
+     * @param {number} maxUVNI 
+     * @param {{}} entries 
+     */
+    constructor(minUVNI, maxUVNI, entries) {
+        this.minUVNI = minUVNI
+        this.maxUVNI = maxUVNI
+        this.entries = entries
+    }
+}
+
+module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, Registry}

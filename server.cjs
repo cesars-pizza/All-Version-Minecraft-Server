@@ -14,7 +14,10 @@ var world = {
     players: [],
     maxPlayerCount: 0,
     loadingPlayerNames: [],
-    loadedPlayers: []
+    loadedPlayers: [],
+    registries: {
+        block: []
+    }
 }
 
 setupLogs()
@@ -35,6 +38,23 @@ async function loadWorld() {
     }
     console.log(`WORLD Loaded ${world.players.length} Players`)
     playerFiles.closeSync()
+
+    var blockRegistry = fs.opendirSync('./world/registries/block')
+    var endofRegistry = false
+    while (!endofRegistry) {
+        var thisRegistry = blockRegistry.readSync()
+        if (thisRegistry == null) endofRegistry = true
+        else {
+            if (thisRegistry.isFile()) {
+                var nameNumber = Number(thisRegistry.name.replace('.json', ''))
+                if (thisRegistry.name.endsWith('.json') && nameNumber != NaN) {
+                    world.registries.block.push(JSON.parse(fs.readFileSync(`./world/registries/block/${thisRegistry.name}`)))
+                }
+            }
+        }
+    }
+    console.log(`WORLD Loaded ${world.registries.block.length} Block Registries`)
+    blockRegistry.closeSync()
 }
 
 async function loadConfig() {
@@ -91,10 +111,12 @@ const server = net.createServer(/** @param {Socket} socket */ (socket) => {
         keepVerified: false,
         lastUVNI: -1,
 
-        classicID: 0,
+        classicID: -1,
         inWorld: false,
         tick: {spawn: true, position: false, rotation: false},
-        save: false
+        save: false,
+        upvn: -2,
+        uvni: -1
     }
     
     socket.disconnect = ""
@@ -183,15 +205,15 @@ function IdentifyVersion(socket, data) {
         socket.log(`IDENTIFIED UPVN -1`)
         socket.log(`IDENTIFIED UVNI 29 / 0.0.15a (Multiplayer Test 1)`)
         socket.identified = true
-        socket.upvn = -1
-        socket.uvni = 29
+        socket.thisPlayer.upvn = -1
+        socket.thisPlayer.uvni = 29
 
         if (world.config.minUPVN > -1) socket.setDisconnect("invalidVersion")
     }
 }
 
 function GetPacketID(socket, data) {
-    if (socket.identified && socket.upvn < 0) return data[0]
+    if (socket.identified && socket.thisPlayer.upvn < 0) return data[0]
     else return null
 }
 

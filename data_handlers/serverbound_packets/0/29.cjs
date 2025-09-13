@@ -23,12 +23,19 @@ function ReadPacket(world, socket, data) {
         if (socket.disconnect == "") {
             var hasOpenInstance = utils.player.HasOpenInstance(world, Username.value)
             if (!hasOpenInstance) {
+                var thisUPVN = socket.thisPlayer.upvn
+                var thisUVNI = socket.thisPlayer.uvni
                 socket.thisPlayer = utils.player.GetPlayer(world, socket, Username.value)
+                socket.thisPlayer.upvn = thisUPVN
+                socket.thisPlayer.uvni = thisUVNI
+                socket.thisPlayer.selectedRegistries = {
+                    block: utils.registry.block.GetBlockRegistry(world, socket.thisPlayer.uvni)
+                }
                 if (!socket.thisPlayer.verified) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
 
                     packetWriter.Server_Identification(socket)(socket, "Cool Server")
-                    var blocks = utils.worldgen.GenerateClassicWorld(socket)(0, 0, 64, [])
+                    var blocks = utils.worldgen.GenerateClassicWorld(socket)(world, socket, 0, 0, 64, [])
                     utils.world_packets(socket)(socket, blocks)
                     packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
 

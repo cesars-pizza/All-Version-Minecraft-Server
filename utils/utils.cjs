@@ -3,5 +3,8 @@ module.exports = {
     player: require('./player.cjs'),
     disconnect: require('./disconnect/distributer.cjs').Disconnect,
     math: require('./math.cjs'),
-    worldgen: require('./worldgen/distributer.cjs')
+    worldgen: require('./worldgen/distributer.cjs'),
+    registry: {
+        block: require('./registries/block.cjs')
+    }
 }
