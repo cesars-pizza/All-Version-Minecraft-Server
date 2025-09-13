@@ -1,8 +1,8 @@
 const net = require('net')
 const fs = require('fs')
-const {Socket, Config, World} = require('./data_structures.js')
-const packetReader = require('./data_handlers/serverbound_packets/packet_reader.js')
-const dataWriter = require('./data_handlers/data_writer.js')
+const {Socket, Config, World} = require('./data_structures.cjs')
+const packetReader = require('./data_handlers/serverbound_packets/packet_reader.cjs')
+const dataWriter = require('./data_handlers/data_writer.cjs')
 
 var socketIndex = 0
 

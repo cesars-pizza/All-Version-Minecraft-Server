@@ -1,8 +1,7 @@
-const {Socket, World} = require('../../../data_structures')
-const dataReader = require('../../data_reader')
-const packetWriter = require('../../clientbound_packets/packet_writer')
-const utils = require('../../../utils/utils')
-const { GetClassicID } = require('../../../utils/player')
+const {Socket, World} = require('../../../data_structures.cjs')
+const dataReader = require('../../data_reader.cjs')
+const packetWriter = require('../../clientbound_packets/packet_writer.cjs')
+const utils = require('../../../utils/utils.cjs')
 
 var packetID = 0
 var packetIdentifier = "Player Identification"
@@ -29,15 +28,14 @@ function ReadPacket(world, socket, data) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
 
                     packetWriter.Server_Identification(socket)(socket, "Cool Server")
-                    var blocks = Array(64).fill(Array(256).fill(Array(256).fill(3)), 0, 1)
-                    blocks = blocks.fill(Array(256).fill(Array(256).fill(0)), 1)
+                    var blocks = utils.worldgen.GenerateClassicWorld(socket)(0, 0, 64, [])
                     utils.world_packets(socket)(socket, blocks)
                     packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
 
                     world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(socket.thisPlayer.username))
                     world.loadedPlayers.push(socket.thisPlayer)
 
-                    socket.thisPlayer.classicID = GetClassicID(world, socket)
+                    socket.thisPlayer.classicID = utils.player.GetClassicID(world, socket)
                     socket.thisPlayer.inWorld = true
                     socket.thisPlayer.tick = {spawn: true, position: false, rotation: false}
                 } else {
