@@ -1,0 +1,29 @@
+const {Socket} = require('../../data_structures.cjs')
+
+/** 
+ * @param {Socket} socket 
+ */
+function Read(socket, data, position) {
+    if (socket.upvn == -1) return require('./29.cjs').Read(data, position)
+    else {
+        socket.log(`ERR: Cannot Parse UByte for Version ${socket.upvn}:${socket.uvni}`)
+        return {
+            value: 0,
+            length: 1,
+            nextPos: position + 1
+        }
+    }
+}
+
+/** 
+ * @param {Socket} socket 
+ */
+function Write(socket, value) {
+    if (socket.upvn == -1) return require('./29.cjs').Write(value)
+    else {
+        socket.log(`ERR: Cannot Write UByte for Version ${socket.upvn}:${socket.uvni}`)
+        return [0]
+    }
+}
+
+module.exports = {Read, Write}
