@@ -1,3 +1,11 @@
 module.exports = [
-    require('./0/distributer').ReadPacket
+    require('./0/distributer').ReadPacket,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    require('./8/distributer').ReadPacket
 ]

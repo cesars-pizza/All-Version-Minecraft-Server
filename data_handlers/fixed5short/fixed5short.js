@@ -4,11 +4,14 @@ const {Socket} = require('../../data_structures')
  * @param {Socket} socket 
  */
 function Read(socket, data, position) {
-    socket.log(`ERR: Cannot Parse Fixed5Short for Version ${socket.upvn}:${socket.uvni}`)
-    return {
-        value: 0,
-        length: 2,
-        nextPos: position + 2
+    if (socket.upvn == -1) return require('./29').Read(data, position)
+    else {
+        socket.log(`ERR: Cannot Parse Fixed5Short for Version ${socket.upvn}:${socket.uvni}`)
+        return {
+            value: 0,
+            length: 2,
+            nextPos: position + 2
+        }
     }
 }
 

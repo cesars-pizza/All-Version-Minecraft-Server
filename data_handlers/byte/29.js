@@ -1,8 +1,10 @@
 const {Socket} = require('../../data_structures')
 
 function Read(data, position) {
+    var value = data[position]
+    if (value > 127) value -= 256
     return {
-        value: data[position],
+        value: value,
         length: 1,
         nextPos: position + 1
     }

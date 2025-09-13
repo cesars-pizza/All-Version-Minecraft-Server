@@ -1,4 +1,5 @@
 {
-    "minUPVN": 0,
-    "maxUPVN": 999999
+    "minUPVN": -1,
+    "maxUPVN": 999999,
+    "maxPlayers": 1
 }
