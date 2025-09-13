@@ -29,7 +29,9 @@ function ReadPacket(world, socket, data) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
 
                     packetWriter.Server_Identification(socket)(socket, "Cool Server")
-                    utils.world_packets(socket)(socket, Array(64).fill(Array(256).fill(Array(256).fill(2))))
+                    var blocks = Array(64).fill(Array(256).fill(Array(256).fill(2)), 0, 1)
+                    blocks = blocks.fill(Array(256).fill(Array(256).fill(0)), 1)
+                    utils.world_packets(socket)(socket, blocks)
                     packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
 
                     world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(socket.thisPlayer.username))

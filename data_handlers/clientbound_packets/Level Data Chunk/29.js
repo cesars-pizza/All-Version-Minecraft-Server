@@ -21,7 +21,7 @@ function WritePacket(socket, blocks) {
                 thisLevelDataChunk,
                 dataWriter.writeUByte(socket, Math.round((i / (levelDataChunks.length - 1)) * 100))
             )
-        )
+        ), false, false
     }
 }
 
@@ -39,7 +39,7 @@ function WritePacket_Alt0(socket, levelData) {
             dataWriter.writeShort(socket, thisLength).concat(
                 thisLevelDataChunk,
                 dataWriter.writeUByte(socket, Math.round((i / (levelData.length - 1)) * 100))
-            )
+            ), false, false
         )
     }
 }

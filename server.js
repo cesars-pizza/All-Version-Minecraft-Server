@@ -51,7 +51,7 @@ async function setupLogs() {
     await fs.mkdir("./debug", () => {})
 }
 
-const server = net.createServer((socket) => {
+const server = net.createServer(/** @param {Socket} socket */ (socket) => {
     if (world.loadingPlayerNames.length >= world.maxPlayerCount) {
         socket.setDisconnect("maxPlayers")
     }
@@ -112,6 +112,7 @@ const server = net.createServer((socket) => {
         socket.log("", false)
         socket.log("Closed Socket")
         fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
+        world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username))
     })
 
     socket.on('error', (err) => {
@@ -119,6 +120,7 @@ const server = net.createServer((socket) => {
         socket.log("", false)
         socket.log(`Socket Error: ${err.message}`);
         fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
+        world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username))
     })
 
     socket.keepAlive = setInterval(() => {
@@ -135,7 +137,7 @@ server.on('error', (err) => {
   throw err;
 });
 
-setInterval(ServerSave, 10000)
+setInterval(ServerSave, 120000)
 function ServerSave() {
     var savedPlayerCount = 0
     for (var i = 0; i < world.players.length; i++) {
