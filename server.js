@@ -33,6 +33,7 @@ async function loadWorld() {
             }
         }
     }
+    console.log(`WORLD Loaded ${world.players.length} Players`)
     playerFiles.closeSync()
 }
 
@@ -52,11 +53,6 @@ async function setupLogs() {
 }
 
 const server = net.createServer(/** @param {Socket} socket */ (socket) => {
-    if (world.loadingPlayerNames.length >= world.maxPlayerCount) {
-        socket.setDisconnect("maxPlayers")
-    }
-    world.loadingPlayerNames.push("")
-
     socket.logText = ""
     socket.index = socketIndex
     socketIndex++
@@ -103,6 +99,11 @@ const server = net.createServer(/** @param {Socket} socket */ (socket) => {
     
     socket.disconnect = ""
 
+    if (world.loadingPlayerNames.length + world.loadedPlayers.length >= world.maxPlayerCount) {
+        socket.setDisconnect("maxPlayers")
+    }
+    world.loadingPlayerNames.push("")
+
     socket.on('data', (data) => {
         ReadPacket(socket, data)
     });
@@ -122,10 +123,6 @@ const server = net.createServer(/** @param {Socket} socket */ (socket) => {
         fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
         world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username))
     })
-
-    socket.keepAlive = setInterval(() => {
-        if (socket.state == 'play') socket.writePacket(0x26, "minecraft:keep_alive", writer.WriteLong(-12345))
-    }, 15000)
 });
 
 server.listen(25565, () => {
@@ -156,7 +153,6 @@ function ServerSave() {
  * @param {Buffer} data
  */
 function ReadPacket(socket, data) {
-    //HexViewBytes(Array.from(data), `packet${socketIndex}-${socket.packetCount}`)
     socket.packetCount++
 
     if (!socket.identified) IdentifyVersion(socket, data)
@@ -167,10 +163,13 @@ function ReadPacket(socket, data) {
     if (packetID != null && socket.identified) {
         if (packetReaderFn != undefined) {
             var splitIndex = packetReaderFn(socket)(world, socket, data)
-            if (splitIndex > 0) ReadPacket(socket, data.subarray(splitIndex))
+            if (splitIndex > 0) ReadPacket(socket, data.subarray(data.length - splitIndex))
             else if (splitIndex < 0) socket.dataBuffer = Buffer.from(Array.from(socket.dataBuffer).concat(Array.from(data)))
         }
-        else socket.log(`SERVERBOUND --> ${packetID} "Unknown" / ${data.length} bytes`)
+        else {
+            HexViewBytes(data, `unknown-packet`)
+            socket.log(`SERVERBOUND --> ${packetID} "Unknown" / ${data.length} bytes`)
+        }
     }
     else socket.destroy()
 }

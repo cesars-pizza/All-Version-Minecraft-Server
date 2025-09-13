@@ -29,7 +29,7 @@ function ReadPacket(world, socket, data) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
 
                     packetWriter.Server_Identification(socket)(socket, "Cool Server")
-                    var blocks = Array(64).fill(Array(256).fill(Array(256).fill(2)), 0, 1)
+                    var blocks = Array(64).fill(Array(256).fill(Array(256).fill(3)), 0, 1)
                     blocks = blocks.fill(Array(256).fill(Array(256).fill(0)), 1)
                     utils.world_packets(socket)(socket, blocks)
                     packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
@@ -42,15 +42,16 @@ function ReadPacket(world, socket, data) {
                     socket.thisPlayer.tick = {spawn: true, position: false, rotation: false}
                 } else {
                     socket.setDisconnect("unverified")
-                    utils.disconnect(socket)(socket)
+                    utils.disconnect(socket)(world, socket)
                 }
             } else {
                 socket.setDisconnect("multipleInstances")
-                utils.disconnect(socket)(socket)
+                utils.disconnect(socket)(world, socket)
             }
-        }
-    }
+        } else utils.disconnect(socket)(world, socket)
 
+    }
+    
     return splitIndex
 }
 

@@ -42,9 +42,12 @@ function ReadPacket(world, socket, data) {
 
             socket.thisPlayer.position = {x: posX.value, y: posY.value, z: posZ.value}
             socket.thisPlayer.rotation = {pitch: pitch.value, yaw: yaw.value}
+        } else {
+            console.log(`thisPosition = {x: ${posX.value}, y: ${posY.value}, z: ${posZ.value}}`)
+            console.log(`thisRotation = {pitch: ${pitch.value}, yaw: ${yaw.value}}`)
         }
     }
-
+    
     return splitIndex
 }
 

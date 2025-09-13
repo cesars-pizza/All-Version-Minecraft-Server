@@ -11,7 +11,7 @@ class Socket {
      * @param {number} uvni 
      * @param {Buffer} dataBuffer    
      * @param {InGamePlayer} thisPlayer 
-     * @param {"" | "maxPlayers" | "multipleInstance" | "invalidVersion" | "unverified"} disconnect 
+     * @param {"" | "maxPlayers" | "multipleInstances" | "invalidVersion" | "unverified"} disconnect 
      */
     constructor(logText, index, log, writePacket, setDisconnect, packetCount, identified, upvn, uvni, dataBuffer, thisPlayer, disconnect) {
         this.logText = logText
@@ -49,13 +49,28 @@ class World {
      * @param {number} maxPlayerCount 
      * @param {string[]} loadingPlayerNames 
      * @param {InGamePlayer[]} loadedPlayers
+     * @param {{serverFull: ErrorWorld}} errorWorlds 
      */
-    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers) {
+    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, errorWorlds) {
         this.config = config
         this.players = players
         this.maxPlayerCount = maxPlayerCount
         this.loadingPlayerNames = loadingPlayerNames
         this.loadedPlayers = loadedPlayers
+        this.errorWorlds = errorWorlds
+    }
+}
+
+class ErrorWorld {
+    /**
+     * @param {Position} position 
+     * @param {Rotation} rotation 
+     * @param {{x: number, y: number, z: number, id: number}[]} blocks 
+     */
+    constructor(position, rotation, blocks) {
+        this.position = position
+        this.rotation = rotation
+        this.blocks = blocks
     }
 }
 
@@ -156,4 +171,4 @@ class Rotation {
     }
 }
 
-module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, InGamePlayer}
+module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, InGamePlayer, ErrorWorld}
