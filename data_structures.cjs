@@ -48,14 +48,16 @@ class World {
      * @param {string[]} loadingPlayerNames 
      * @param {Player[]} loadedPlayers
      * @param {{block: Registry[]}} registries 
+     * @param {Build[]} builds
      */
-    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries) {
+    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, builds) {
         this.config = config
         this.players = players
         this.maxPlayerCount = maxPlayerCount
         this.loadingPlayerNames = loadingPlayerNames
         this.loadedPlayers = loadedPlayers
         this.registries = registries
+        this.builds = builds
     }
 }
 
@@ -147,6 +149,33 @@ class Registry {
         this.minUVNI = minUVNI
         this.maxUVNI = maxUVNI
         this.entries = entries
+    }
+}
+
+class Build {
+    /**
+     * @param {number} x 
+     * @param {number} z 
+     * @param {string} creator 
+     * @param {"small"} size 
+     * @param {string[][][]} blocks 
+     * @param {string} floor 
+     * @param {number} uvni 
+     * @param {number} created 
+     * @param {number} lastModified 
+     * @param {boolean} save 
+     */
+    constructor(x, z, creator, size, blocks, floor, uvni, created, lastModified, save) {
+        this.x = x
+        this.z = z
+        this.creator = creator
+        this.size = size
+        this.blocks = blocks
+        this.floor = floor
+        this.uvni = uvni
+        this.created = created
+        this.lastModified = lastModified
+        this.save = save
     }
 }
 

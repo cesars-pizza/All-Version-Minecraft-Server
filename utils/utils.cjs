@@ -6,5 +6,6 @@ module.exports = {
     worldgen: require('./worldgen/distributer.cjs'),
     registry: {
         block: require('./registries/block.cjs')
-    }
+    },
+    builds: require('./builds.cjs')
 }

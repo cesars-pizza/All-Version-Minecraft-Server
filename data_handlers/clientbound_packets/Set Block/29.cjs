@@ -15,7 +15,7 @@ function WritePacket(socket, position, blockID) {
             dataWriter.writeShort(socket, position.y),
             dataWriter.writeShort(socket, position.z),
             dataWriter.writeUByte(socket, blockID)
-        ))
+        ), false, false)
 }
 
 module.exports = {WritePacket}

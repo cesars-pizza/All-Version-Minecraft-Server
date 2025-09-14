@@ -25,12 +25,12 @@ function GenerateBlocks(world, socket, chunkX, chunkZ, height, builds) {
     for (var z = 0; z < 16; z++) {
         blocks[0][z] = []
         blocks[1][z] = []
-        for (var z = 0; z < 16; z++) {
-            blocks[0][z][z] = cobblestoneID
+        for (var x = 0; x < 16; x++) {
+            blocks[0][z][x] = cobblestoneID
 
 
-            if (chunkTypeX == 1 && chunkTypeZ == 1) blocks[1][z][z] = grassID
-            else blocks[1][z][z] = airID
+            if (chunkTypeX == 1 && chunkTypeZ == 1) blocks[1][z][x] = grassID
+            else blocks[1][z][x] = airID
         }
     }
     if (chunkTypeX == 0 || chunkTypeZ == 0) {
@@ -40,9 +40,9 @@ function GenerateBlocks(world, socket, chunkX, chunkZ, height, builds) {
         blocks[1][15][15] = logID
 
         if (chunkTypeX == 1) {
-            for (var z = 1; z < 15; z++) {
-                blocks[1][0][z]= logID
-                blocks[1][15][z] = logID
+            for (var x = 1; x < 15; x++) {
+                blocks[1][0][x]= logID
+                blocks[1][15][x] = logID
             }
         } else if (chunkTypeZ == 1) {
             for (var z = 1; z < 15; z++) {
@@ -56,8 +56,8 @@ function GenerateBlocks(world, socket, chunkX, chunkZ, height, builds) {
         blocks[y] = []
         for (var z = 0; z < 16; z++) {
             blocks[y][z] = []
-            for (var z = 0; z < 16; z++) {
-                blocks[y][z][z] = airID
+            for (var x = 0; x < 16; x++) {
+                blocks[y][z][x] = airID
             }
         }
     }

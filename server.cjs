@@ -17,7 +17,8 @@ var world = {
     loadedPlayers: [],
     registries: {
         block: []
-    }
+    },
+    builds: []
 }
 
 setupLogs()
@@ -55,6 +56,20 @@ async function loadWorld() {
     }
     console.log(`WORLD Loaded ${world.registries.block.length} Block Registries`)
     blockRegistry.closeSync()
+
+    var buildFiles = fs.opendirSync('./world/builds')
+    var endOfBuilds = false
+    while (!endOfBuilds) {
+        var thisBuild = buildFiles.readSync()
+        if (thisBuild == null) endOfBuilds = true
+        else {
+            if (thisBuild.isFile() && thisBuild.name.endsWith('.json')) {
+                world.builds.push(JSON.parse(fs.readFileSync(`./world/builds/${thisBuild.name}`)))
+            }
+        }
+    }
+    console.log(`WORLD Loaded ${world.builds.length} Builds`)
+    buildFiles.closeSync()
 }
 
 async function loadConfig() {
@@ -158,16 +173,27 @@ server.on('error', (err) => {
 
 setInterval(ServerSave, 120000)
 function ServerSave() {
+    console.log("WORLD Saved")
+
     var savedPlayerCount = 0
     for (var i = 0; i < world.players.length; i++) {
         if (world.players[i].save) {
             savedPlayerCount++
-            world.players[i].save = undefined
             fs.writeFileSync(`./world/players/${world.players[i].username}.json`, JSON.stringify(world.players[i]))
             world.players[i].save = false
         }
     }
-    console.log(`WORLD Saved ${savedPlayerCount} Players`)
+    if (savedPlayerCount > 0) console.log(`WORLD Saved ${savedPlayerCount} Players`)
+
+    var savedBuildCount = 0
+    for (var i = 0; i < world.builds.length; i++) {
+        if (world.builds[i].save) {
+            savedBuildCount++
+            fs.writeFileSync(`./world/builds/${world.builds[i].x},${world.builds[i].z}.json`, JSON.stringify(world.builds[i]))
+            world.builds[i].save = false
+        }
+    }
+    if (savedBuildCount > 0) console.log(`WORLD Saved ${savedBuildCount} Builds`)
 }
 
 /** 
