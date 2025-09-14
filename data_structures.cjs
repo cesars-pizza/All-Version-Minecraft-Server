@@ -50,8 +50,9 @@ class World {
      * @param {{block: Registry[]}} registries 
      * @param {Build[]} builds
      * @param {TickBlock[]} blockUpdates
+     * @param {{classicID: number}[]} disconnectedPlayers 
      */
-    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, builds, blockUpdates) {
+    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, builds, blockUpdates, disconnectedPlayers) {
         this.config = config
         this.players = players
         this.maxPlayerCount = maxPlayerCount
@@ -60,6 +61,7 @@ class World {
         this.registries = registries
         this.builds = builds
         this.blockUpdates = blockUpdates
+        this.disconnectedPlayers = disconnectedPlayers
     }
 }
 

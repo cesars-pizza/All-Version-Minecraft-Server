@@ -13,6 +13,7 @@ module.exports = {
         move_player_pos: require('./tick_actions/move_player_pos/distributer.cjs').MovePlayer,
         move_player_rot: require('./tick_actions/move_player_rot/distributer.cjs').MovePlayer,
         move_player_pos_rot: require('./tick_actions/move_player_pos_rot/distributer.cjs').MovePlayer,
-        set_block: require('./tick_actions/set_block/distributer.cjs')
+        set_block: require('./tick_actions/set_block/distributer.cjs'),
+        despawn_player: require('./tick_actions/despawn_player/distributer.cjs').DespawnPlayer
     }
 }
