@@ -3,6 +3,7 @@ const fs = require('fs')
 const {Socket, Config, World} = require('./data_structures.cjs')
 const packetReader = require('./data_handlers/serverbound_packets/packet_reader.cjs')
 const dataWriter = require('./data_handlers/data_writer.cjs')
+const utils = require('./utils/utils.cjs')
 
 var socketIndex = 0
 
@@ -171,6 +172,43 @@ server.on('error', (err) => {
   throw err;
 });
 
+setInterval(ServerTick, 50)
+function ServerTick() {
+    for (var i = 0; i < world.loadedPlayers.length; i++) {
+        if (world.loadedPlayers[i].tick.spawn) {
+            for (var j = 0; j < world.loadedPlayers.length; j++) {
+                if (i != j) {
+                    utils.tick_actions.spawn_player(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                }
+            }
+            world.loadedPlayers[i].tick.spawn = false
+        }
+        if (world.loadedPlayers[i].tick.position && world.loadedPlayers[i].tick.rotation) {
+            for (var j = 0; j < world.loadedPlayers.length; j++) {
+                if (i != j) {
+                    utils.tick_actions.move_player_pos_rot(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                }
+            }
+            world.loadedPlayers[i].tick.position = false
+            world.loadedPlayers[i].tick.rotation = false
+        } else if (world.loadedPlayers[i].tick.position) {
+            for (var j = 0; j < world.loadedPlayers.length; j++) {
+                if (i != j) {
+                    utils.tick_actions.move_player_pos(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                }
+            }
+            world.loadedPlayers[i].tick.position = false
+        } else if (world.loadedPlayers[i].tick.rotation) {
+            for (var j = 0; j < world.loadedPlayers.length; j++) {
+                if (i != j) {
+                    utils.tick_actions.move_player_rot(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                }
+            }
+            world.loadedPlayers[i].tick.rotation = false
+        }
+    }
+}
+
 setInterval(ServerSave, 120000)
 function ServerSave() {
     console.log("WORLD Saved")
@@ -179,7 +217,10 @@ function ServerSave() {
     for (var i = 0; i < world.players.length; i++) {
         if (world.players[i].save) {
             savedPlayerCount++
+            var thisPlayerSocket = world.players[i].socket
+            world.players[i].socket = undefined
             fs.writeFileSync(`./world/players/${world.players[i].username}.json`, JSON.stringify(world.players[i]))
+            world.players[i].socket = thisPlayerSocket
             world.players[i].save = false
         }
     }

@@ -38,10 +38,14 @@ function ReadPacket(world, socket, data) {
                     var blocks = utils.worldgen.GenerateClassicWorld(socket)(world, socket, 0, 0, [])
                     utils.world_packets(socket)(socket, blocks)
                     packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
+                    for (var i = 0; i < world.loadedPlayers.length; i++) {
+                        packetWriter.Spawn_Player(socket)(socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                    }
 
                     world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(socket.thisPlayer.username))
                     world.loadedPlayers.push(socket.thisPlayer)
 
+                    socket.thisPlayer.socket = socket
                     socket.thisPlayer.classicID = utils.player.GetClassicID(world, socket)
                     socket.thisPlayer.inWorld = true
                     socket.thisPlayer.tick = {spawn: true, position: false, rotation: false}
