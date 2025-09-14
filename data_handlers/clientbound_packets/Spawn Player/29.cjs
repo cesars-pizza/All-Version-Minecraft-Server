@@ -11,18 +11,18 @@ function WritePacket(socket, playerID, playerName, position, rotation) {
     if (playerID != -1 && playerID != 255) {
         socket.writePacket(packetID, packetIdentifier, dataWriter.writeByte(socket, playerID).concat(
             dataWriter.writeString(socket, playerName),
-            dataWriter.writeFixed5Short(socket, position.x),
+            dataWriter.writeFixed5Short(socket, position.x - 0.015625),
             dataWriter.writeFixed5Short(socket, position.y + 1.59375),
-            dataWriter.writeFixed5Short(socket, position.z),
+            dataWriter.writeFixed5Short(socket, position.z - 0.015625),
             dataWriter.writeUByte(socket, rotation.yaw),
             dataWriter.writeUByte(socket, rotation.pitch),
         ))
     } else {
         socket.writePacket(packetID, packetIdentifier, dataWriter.writeByte(socket, playerID).concat(
             dataWriter.writeString(socket, playerName),
-            dataWriter.writeFixed5Short(socket, position.x),
+            dataWriter.writeFixed5Short(socket, position.x - 0.015625),
             dataWriter.writeFixed5Short(socket, position.y + 1.59375),
-            dataWriter.writeFixed5Short(socket, position.z),
+            dataWriter.writeFixed5Short(socket, position.z - 0.015625),
             dataWriter.writeUByte(socket, rotation.pitch),
             dataWriter.writeUByte(socket, rotation.yaw),
         ))

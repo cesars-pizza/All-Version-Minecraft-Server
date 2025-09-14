@@ -1,4 +1,4 @@
-const { World, Socket } = require("../data_structures.cjs");
+const { World, Socket, Position } = require("../data_structures.cjs");
 
 /**
  * @param {World} world 
@@ -50,7 +50,7 @@ function GeneratePlayer(world, socket, username) {
         verified: false,
         keepUnverified: false,
         lastUVNI: socket.thisPlayer.uvni,
-        save: true
+        save: true,
     }
 
     if (socket.thisPlayer.uvni == -1) {
@@ -125,4 +125,43 @@ function HasOpenInstance(world, username) {
     return includedLoaded || includedLoading
 }
 
-module.exports = {GetPlayer, GetClassicID, GeneratePlayer, HasOpenInstance}
+/**
+ * @param {Socket} socket 
+ * @param {Position} playerPos 
+ * @param {Position} blockPos 
+ */
+function CollidingWithBlock(socket, playerPos, blockPos) {
+    var playerWidth = 0.59375
+    var playerHeight = 0.7
+
+    var blockCenter = {x: blockPos.x + 0.5, y: blockPos.y + 0.5, z: blockPos.z + 0.5}
+    var playerCenter = {x: playerPos.x, y: playerPos.y + (playerHeight / 2), z: playerPos.z}
+
+    var absDifference = {
+        x: Math.abs(blockCenter.x - playerCenter.x),
+        y: Math.abs(blockCenter.y - playerCenter.y),
+        z: Math.abs(blockCenter.z - playerCenter.z)
+    }
+
+    if (absDifference.x < (playerWidth / 2) + 0.5 && absDifference.y < (playerHeight / 2) + 0.5 && absDifference.z < (playerWidth / 2) + 0.5) return true
+    return false
+}
+
+function CollidingWithChunkLayer(socket, playerPos, layerPos) {
+    var playerWidth = 0.59375
+    var playerHeight = 0.7
+
+    var blockCenter = {x: layerPos.x * 16 + 8, y: layerPos.y + 0.5, z: layerPos.z * 16 + 8}
+    var playerCenter = {x: playerPos.x, y: playerPos.y + (playerHeight / 2), z: playerPos.z}
+
+    var absDifference = {
+        x: Math.abs(blockCenter.x - playerCenter.x),
+        y: Math.abs(blockCenter.y - playerCenter.y),
+        z: Math.abs(blockCenter.z - playerCenter.z)
+    }
+
+    if (absDifference.x < (playerWidth / 2) + 8 && absDifference.y < (playerHeight / 2) + 0.5 && absDifference.z < (playerWidth / 2) + 8) return true
+    return false
+}
+
+module.exports = {GetPlayer, GetClassicID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer}

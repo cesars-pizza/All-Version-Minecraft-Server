@@ -33,7 +33,7 @@ function ReadPacket(world, socket, data) {
                 }
                 if (socket.thisPlayer.position.x % 32 >= 16 && socket.thisPlayer.position.z % 32 >= 16) socket.thisPlayer.position = {
                     x: Math.floor(socket.thisPlayer.position.x / 16) * 16 - 0.5,
-                    y: 3.59375,
+                    y: 2,
                     z: Math.floor(socket.thisPlayer.position.z / 16) * 16 - 0.5,
                 }
                 if (!socket.thisPlayer.verified) {
