@@ -41,7 +41,7 @@ function GeneratePlayer(world, socket, username) {
     var player = {
         uuid: "0",
         username: username,
-        position: {x: 1, y: 70, z: 1},
+        position: {x: 1.5, y: 2.59375, z: 1.5},
         rotation: {pitch: 0, yaw: 0},
         inventory: {
             selected_slot: 0,

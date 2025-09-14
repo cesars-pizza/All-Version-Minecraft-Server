@@ -154,7 +154,7 @@ const server = net.createServer(/** @param {Socket} socket */ (socket) => {
         socket.log("Closed Socket")
         fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
         world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID})
-        world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username))
+        world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
     })
     
     socket.on('error', (err) => {
@@ -163,7 +163,7 @@ const server = net.createServer(/** @param {Socket} socket */ (socket) => {
         socket.log(`Socket Error: ${err.message}`);
         fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
         world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID})
-        world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username))
+        world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
     })
 });
 
