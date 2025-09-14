@@ -223,7 +223,7 @@ function ServerTick() {
     world.disconnectedPlayers = []
 }
 
-setInterval(ServerSave, 120000)
+setInterval(ServerSave, 10000)
 function ServerSave() {
     console.log("WORLD Saved")
 

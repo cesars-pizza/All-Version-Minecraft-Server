@@ -14,7 +14,7 @@ function WritePacket(socket, playerID, position, rotation) {
     socket.writePacket(packetID, packetIdentifier, 
         dataWriter.writeByte(socket, playerID).concat(
             dataWriter.writeFixed5Short(socket, position.x),
-            dataWriter.writeFixed5Short(socket, position.y),
+            dataWriter.writeFixed5Short(socket, position.y + 1.59375),
             dataWriter.writeFixed5Short(socket, position.z),
             dataWriter.writeUByte(socket, rotation.yaw),
             dataWriter.writeUByte(socket, rotation.pitch)

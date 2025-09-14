@@ -68,6 +68,8 @@ function ReadPacket(world, socket, data) {
                             world.builds[hitBuildIndex].blocks[posY.value - 2][posZ.value % 16][posX.value % 16] = "air"
                             utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: posX.value, y: posY.value, z: posZ.value}, 0)
                         }
+                        world.builds[hitBuildIndex].lastModified = new Date().getTime()
+                        world.builds[hitBuildIndex].save = true
                     }
                 }
             }

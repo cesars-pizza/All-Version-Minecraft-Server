@@ -26,7 +26,7 @@ function ReadPacket(world, socket, data) {
 
         if (socket.disconnect == "") {
             var difX = socket.thisPlayer.position.x != posX.value
-            var difY = socket.thisPlayer.position.y != posY.value
+            var difY = socket.thisPlayer.position.y != (posY.value - 1.59375)
             var difZ = socket.thisPlayer.position.z != posZ.value
             var difPitch = socket.thisPlayer.rotation.pitch != pitch.value
             var difYaw = socket.thisPlayer.rotation.yaw != yaw.value
@@ -40,7 +40,7 @@ function ReadPacket(world, socket, data) {
                 utils.player.GetPlayer(world, socket, socket.thisPlayer.username).save = true
             }
 
-            socket.thisPlayer.position = {x: posX.value, y: posY.value, z: posZ.value}
+            socket.thisPlayer.position = {x: posX.value, y: posY.value - 1.59375, z: posZ.value}
             socket.thisPlayer.rotation = {pitch: pitch.value, yaw: yaw.value}
         }
     }
