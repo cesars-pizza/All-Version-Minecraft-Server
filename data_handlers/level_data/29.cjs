@@ -12,14 +12,8 @@ function Write(socket, blocks) {
         }
     }
     
-    dataStream = dataWriter.writeUInt(socket, dataStream.length).concat(dataStream)
-    //dataStream = [0xec, 0x9d, 0x59, 0xb2].concat(dataStream)
-    
-    fs.writeFileSync('./debug/levelDataRaw.bin', Buffer.from(dataStream))
-    
+    dataStream = dataWriter.writeUInt(socket, dataStream.length).concat(dataStream)    
     dataStream = dataWriter.writeGZip(socket, dataStream)
-
-    fs.writeFileSync('./debug/levelDataCompressed.gz', Buffer.from(dataStream))
 
     var dataChunks = []
     for (var i = 0; i < dataStream.length / 1024; i++) {

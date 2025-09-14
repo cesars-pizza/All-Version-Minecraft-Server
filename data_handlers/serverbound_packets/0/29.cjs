@@ -31,6 +31,11 @@ function ReadPacket(world, socket, data) {
                 socket.thisPlayer.selectedRegistries = {
                     block: utils.registry.block.GetBlockRegistry(world, socket.thisPlayer.uvni)
                 }
+                if (socket.thisPlayer.position.x % 32 >= 16 && socket.thisPlayer.position.z % 32 >= 16) socket.thisPlayer.position = {
+                    x: Math.floor(socket.thisPlayer.position.x / 16) * 16 - 0.5,
+                    y: 3.59375,
+                    z: Math.floor(socket.thisPlayer.position.z / 16) * 16 - 0.5,
+                }
                 if (!socket.thisPlayer.verified) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
 
