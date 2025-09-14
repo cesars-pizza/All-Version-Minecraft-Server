@@ -45,7 +45,7 @@ function ReadPacket(world, socket, data) {
                                 for (var z = 0; z < 16; z++) {
                                     var setX = Math.floor(posX.value / 16) * 16 + x
                                     var setZ = Math.floor(posZ.value / 16) * 16 + z
-                                    packetWriter.Set_Block(socket)(socket, {x: setX, y: 1, z: setZ}, floorID)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, floorID)
                                 }
                             }
                         } else {
@@ -56,17 +56,17 @@ function ReadPacket(world, socket, data) {
                                 for (var z = 0; z < 16; z++) {
                                     var setX = Math.floor(posX.value / 16) * 16 + x
                                     var setZ = Math.floor(posZ.value / 16) * 16 + z
-                                    packetWriter.Set_Block(socket)(socket, {x: setX, y: 1, z: setZ}, blockID.value)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, blockID.value)
                                 }
                             }
                         }
                     } else if (posY.value < 64) {
                         if (mode.value == 1) {
                             world.builds[hitBuildIndex].blocks[posY.value - 2][posZ.value % 16][posX.value % 16] = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID.value)
-                            packetWriter.Set_Block(socket)(socket, {x: posX.value, y: posY.value, z: posZ.value}, blockID.value)
+                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: posX.value, y: posY.value, z: posZ.value}, blockID.value)
                         } else {
                             world.builds[hitBuildIndex].blocks[posY.value - 2][posZ.value % 16][posX.value % 16] = "air"
-                            packetWriter.Set_Block(socket)(socket, {x: posX.value, y: posY.value, z: posZ.value}, 0)
+                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: posX.value, y: posY.value, z: posZ.value}, 0)
                         }
                     }
                 }

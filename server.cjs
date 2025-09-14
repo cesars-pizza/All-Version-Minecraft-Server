@@ -19,7 +19,8 @@ var world = {
     registries: {
         block: []
     },
-    builds: []
+    builds: [],
+    blockUpdates: []
 }
 
 setupLogs()
@@ -206,7 +207,12 @@ function ServerTick() {
             }
             world.loadedPlayers[i].tick.rotation = false
         }
+
+        for (var j = 0; j < world.blockUpdates.length; j++) {
+            utils.tick_actions.set_block.SetBlock(world.loadedPlayers[i].socket)(world, world.loadedPlayers[i].socket, world.blockUpdates[j], world.blockUpdates[j].id)
+        }
     }
+    world.blockUpdates = []
 }
 
 setInterval(ServerSave, 120000)

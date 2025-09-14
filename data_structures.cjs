@@ -49,8 +49,9 @@ class World {
      * @param {Player[]} loadedPlayers
      * @param {{block: Registry[]}} registries 
      * @param {Build[]} builds
+     * @param {TickBlock[]} blockUpdates
      */
-    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, builds) {
+    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, builds, blockUpdates) {
         this.config = config
         this.players = players
         this.maxPlayerCount = maxPlayerCount
@@ -58,6 +59,7 @@ class World {
         this.loadedPlayers = loadedPlayers
         this.registries = registries
         this.builds = builds
+        this.blockUpdates = blockUpdates
     }
 }
 
@@ -181,4 +183,19 @@ class Build {
     }
 }
 
-module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, Registry}
+class TickBlock {
+    /**
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} z 
+     * @param {number} id 
+     */
+    constructor(x, y, z, id) {
+        this.x = x
+        this.y = y
+        this.z = z
+        this.id = id
+    }
+}
+
+module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, Registry, TickBlock}
