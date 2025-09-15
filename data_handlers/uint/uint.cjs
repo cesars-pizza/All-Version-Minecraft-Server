@@ -16,11 +16,7 @@ function Read(socket, data, position) {
  * @param {Socket} socket 
  */
 function Write(socket, value) {
-    if (socket.thisPlayer.upvn == -1) return require('./29.cjs').Write(value)
-    else {
-        socket.log(`ERR: Cannot Write UInt for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
-        return [0, 0, 0, 0]
-    }
+    return require('./29.cjs').Write(value)
 }
 
 module.exports = {Read, Write}

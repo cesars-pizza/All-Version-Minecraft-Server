@@ -16,11 +16,7 @@ function Read(socket, data, position) {
  * @param {Socket} socket 
  */
 function Write(socket, data) {
-    if (socket.thisPlayer.upvn == -1) return require('./29.cjs').Write(data)
-    else {
-        socket.log(`ERR: Cannot Write Gzip for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
-        return []
-    }
+    return require('./29.cjs').Write(data)
 }
 
 module.exports = {Read, Write}

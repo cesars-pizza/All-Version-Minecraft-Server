@@ -16,7 +16,7 @@ function Read(socket, data, position) {
  * @param {Socket} socket 
  */
 function Write(socket, value) {
-    if (socket.thisPlayer.upvn == -1) return require('./29.cjs').Write(socket, value)
+    if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').Write(socket, value)
     else {
         socket.log(`ERR: Cannot Write Level Data for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return []

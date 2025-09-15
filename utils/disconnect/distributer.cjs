@@ -5,6 +5,10 @@ const {Socket} = require('../../data_structures.cjs')
  */
 function Disconnect(socket) {
     if (socket.thisPlayer.upvn == -1) return require('./29.cjs').Disconnect
+    else {
+        socket.log(`ERR: Cannot Run Disconnect for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
+        return () => {}
+    }
 }
 
 module.exports = {Disconnect}
