@@ -7,6 +7,8 @@ module.exports = {
     Spawn_Player: require('./Spawn Player/distributer.cjs').WritePacket,
     Set_Position_and_Orientation: require('./Set Position and Orientation/distributer.cjs').WritePacket,
     Despawn_Player: require('./Despawn Player/distributer.cjs').WritePacket,
+    Message: require('./Message/distributer.cjs').WritePacket,
+    Disconnect_Player: require('./Disconnect Player/distributer.cjs').WritePacket,
     _alt: {
         Level_Data_Chunk_alt0: require('./Level Data Chunk/distributer.cjs').WritePacket_Alt0
     }

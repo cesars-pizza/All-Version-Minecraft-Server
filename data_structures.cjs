@@ -83,8 +83,9 @@ class Player {
      * @param {number} uvni
      * @param {{block: number}} selectedRegistries  
      * @param {Socket} socket 
+     * @param {string[]} messages 
      */
-    constructor(uuid, username, position, rotation, inventory, verified, keepUnverified, lastUVNI, classicID, inWorld, tick, save, upvn, uvni, selectedRegistries, socket) {
+    constructor(uuid, username, position, rotation, inventory, verified, keepUnverified, lastUVNI, classicID, inWorld, tick, save, upvn, uvni, selectedRegistries, socket, messages) {
         this.uuid = uuid
         this.username = username
         this.position = position
@@ -101,6 +102,7 @@ class Player {
         this.uvni = uvni
         this.selectedRegistries = selectedRegistries
         this.socket = socket
+        this.messages = messages
     }
 }
 

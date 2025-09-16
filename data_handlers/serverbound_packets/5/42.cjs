@@ -26,6 +26,7 @@ function ReadPacket(world, socket, data) {
 
         if (socket.disconnect == "") {
             var blockPos = {x: posX.value, y: posY.value, z: posZ.value}
+            var updateSuccessful = false
 
             if (utils.math.NegMod(posX.value, 32) >= 16 && utils.math.NegMod(posZ.value, 32) >= 16) {
                 var hitBuildIndex = utils.builds.GetBuild(world, Math.floor(posX.value / 32), Math.floor(posZ.value / 32))
@@ -66,6 +67,7 @@ function ReadPacket(world, socket, data) {
                                     }
                                 }
                             }
+                            if (blockPos.y == 1) updateSuccessful = true
 
                             for (var i = 0; i < world.loadedPlayers.length; i++) {
                                 if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithChunkLayer(socket)(socket, world.loadedPlayers[i].position, {x: chunkX, y: 1, z: chunkZ}) == "inside") {
@@ -84,34 +86,41 @@ function ReadPacket(world, socket, data) {
                         }
                     } else if (posY.value < 64) {
                         if (mode.value == 1) {
-                            var blockCollision = utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, blockPos)
-                            if (blockCollision != "inside") {
-                                world.builds[hitBuildIndex].blocks[posY.value - 2][posZ.value % 16][posX.value % 16] = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID.value)
-                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, blockID.value)
-                                for (var i = 0; i < world.loadedPlayers.length; i++) {
-                                    if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
-                                        world.loadedPlayers[i].position = {
-                                            x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
-                                            y: 2,
-                                            z: Math.floor(world.loadedPlayers[i].position.z / 16) * 16 - 0.5,
-                                        }
-                                        world.loadedPlayers[i].save = true
-                                        world.loadedPlayers[i].tick.position = true
-                                        packetWriter.Message(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, 0, "[System] You have been moved for intruding block placement")
-                                        packetWriter.Despawn_Player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.loadedPlayers[i].classicID)
-                                        packetWriter.Spawn_Player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, -1, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                            world.builds[hitBuildIndex].blocks[posY.value - 2][posZ.value % 16][posX.value % 16] = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID.value)
+                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, blockID.value)
+                            for (var i = 0; i < world.loadedPlayers.length; i++) {
+                                if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
+                                    world.loadedPlayers[i].position = {
+                                        x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
+                                        y: 2,
+                                        z: Math.floor(world.loadedPlayers[i].position.z / 16) * 16 - 0.5,
                                     }
+                                    world.loadedPlayers[i].save = true
+                                    world.loadedPlayers[i].tick.position = true
+                                    packetWriter.Message(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, 0, "[System] You have been moved for intruding block placement")
+                                    packetWriter.Despawn_Player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.loadedPlayers[i].classicID)
+                                    packetWriter.Spawn_Player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, -1, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
                                 }
-                                world.builds[hitBuildIndex].lastModified = new Date().getTime()
-                                world.builds[hitBuildIndex].save = true
                             }
+                            world.builds[hitBuildIndex].lastModified = new Date().getTime()
+                            world.builds[hitBuildIndex].save = true
+                            updateSuccessful = true
                         } else {
                             world.builds[hitBuildIndex].blocks[posY.value - 2][posZ.value % 16][posX.value % 16] = "air"
                             utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0)
                             world.builds[hitBuildIndex].lastModified = new Date().getTime()
                             world.builds[hitBuildIndex].save = true
+                            updateSuccessful = true
                         }
                     }
+                }
+            }
+
+            if (!updateSuccessful && posY.value < 64) {
+                var oldBlockUpdate = utils.tick_actions.set_block.GetBlockUpdate(socket)(world, {x: posX.value, y: posY.value, z: posZ.value})
+
+                if (oldBlockUpdate == -1) {
+                    packetWriter.Set_Block(socket)(socket, blockPos, utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, utils.worldgen.GetBlock(socket)(world, blockPos)))
                 }
             }
         }

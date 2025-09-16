@@ -5,6 +5,7 @@ const {Socket} = require('../../../data_structures.cjs')
  */
 function ReadPacket(socket) {
     if (socket.thisPlayer.upvn == -1) return require('./29.cjs').ReadPacket
+    else if (socket.thisPlayer.upvn >= 0 && socket.thisPlayer.upvn <= 2) return require('./42.cjs').ReadPacket
     else {
         socket.log(`ERR: Cannot Parse Packet 0 for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return () => {}

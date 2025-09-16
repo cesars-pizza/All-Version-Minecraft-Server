@@ -90,7 +90,7 @@ async function setupLogs() {
     await fs.mkdir("./debug", () => {})
 }
 
-const server = net.createServer(/** @param {Socket} socket */ (socket) => {
+const server = net.createServer( (socket) => {
     socket.logText = ""
     socket.index = socketIndex
     socketIndex++
@@ -108,11 +108,9 @@ const server = net.createServer(/** @param {Socket} socket */ (socket) => {
         socket.disconnect = disconnectReason
         if (consoleLog != false) socket.log("DISCONNECT " + disconnectReason)
     }
-
+    
     socket.packetCount = 0
     socket.identified = false
-    socket.upvn = -2
-    socket.uvni = -1
 
     socket.dataBuffer = Buffer.alloc(0)
 
@@ -218,6 +216,13 @@ function ServerTick() {
         for (var j = 0; j < world.disconnectedPlayers.length; j++) {
             utils.tick_actions.despawn_player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.disconnectedPlayers[j].classicID)
         }
+
+        for (var j = 0; j < world.loadedPlayers[i].messages.length; j++) {
+            for (var k = 0; k < world.loadedPlayers.length; k++) {
+                utils.tick_actions.message(world.loadedPlayers[k].socket)(world.loadedPlayers[k].socket, world.loadedPlayers[i].username, world.loadedPlayers[i].messages[j])
+            }
+            world.loadedPlayers[i].messages = []
+        }
     }
     world.blockUpdates = []
     world.disconnectedPlayers = []
@@ -273,8 +278,9 @@ function ReadPacket(socket, data) {
             HexViewBytes(data, `unknown-packet`)
             socket.log(`SERVERBOUND --> ${packetID} "Unknown" / ${data.length} bytes`)
         }
+    } else {
+        socket.log("ERR: Socket Unreadable")
     }
-    else socket.destroy()
 }
 
 /**
@@ -282,19 +288,46 @@ function ReadPacket(socket, data) {
  * @param {Buffer} data 
  */
 function IdentifyVersion(socket, data) {
-    if (socket.packetCount == 1 && data[0] == 0x00) {
-        socket.log(`IDENTIFIED UPVN -1`)
-        socket.log(`IDENTIFIED UVNI 29 / 0.0.15a (Multiplayer Test 1)`)
-        socket.identified = true
-        socket.thisPlayer.upvn = -1
-        socket.thisPlayer.uvni = 29
+    if (socket.packetCount == 1) {
+        if (data.length == 65) {
+            socket.log(`IDENTIFIED UPVN -1`)
+            socket.log(`IDENTIFIED UVNI 29 / 0.0.15a (Multiplayer Test 1)`)
+            socket.identified = true
+            socket.thisPlayer.upvn = -1
+            socket.thisPlayer.uvni = 29
 
-        if (world.config.minUPVN > -1) socket.setDisconnect("invalidVersion")
+            if (world.config.minUPVN > -1) socket.setDisconnect("invalidVersion")
+
+            return
+        } else if (data.length == 130) {
+            if (data[1] == 3) {
+                socket.log(`IDENTIFIED UPVN 0`)
+                socket.log(`IDENTIFIED UVNI 42 / 0.0.16a_02`)
+                socket.identified = true
+                socket.thisPlayer.upvn = 0
+                socket.thisPlayer.uvni = 42
+
+                if (world.config.minUPVN > 0) socket.setDisconnect("invalidVersion")
+
+                return
+            }
+        }
     }
+
+    socket.log("ERR: Failed to Identify Socket")
 }
 
+/**
+ * @param {Socket} socket 
+ */
 function GetPacketID(socket, data) {
-    if (socket.identified && socket.thisPlayer.upvn < 0) return data[0]
+    if (socket.identified) {
+        if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return data[0]
+        else {
+            socket.log(`ERR: Cannot Parse Packet ID for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
+            return null
+        }
+    }
     else return null
 }
 

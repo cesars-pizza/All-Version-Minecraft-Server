@@ -20,22 +20,27 @@ function SetBlock(world, socket, position, blockID) {
 function AddBlockUpdate(world, socket, position, blockID) {
     var blockIdentifier = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID)
 
-    var foundOld = false
-    for (var i = 0; i < world.blockUpdates.length; i++) {
-        if (world.blockUpdates[i].x == position.x && world.blockUpdates[i].y == position.y && world.blockUpdates[i].z == position.z) {
-            foundOld = true
-            world.blockUpdates[i].id = blockIdentifier
-        }
-    }
+    var oldBlockUpdate = GetBlockUpdate(world, position)
 
-    if (!foundOld) {
+    if (oldBlockUpdate == -1) {
         world.blockUpdates.push({
             x: position.x,
             y: position.y,
             z: position.z,
             id: blockIdentifier
         })
-    }
+    } else world.blockUpdates[oldBlockUpdate].id = blockIdentifier
 }
 
-module.exports = {SetBlock, AddBlockUpdate}
+/**
+ * @param {World} world 
+ * @param {Position} position 
+ */
+function GetBlockUpdate(world, position) {
+    for (var i = 0; i < world.blockUpdates.length; i++) {
+        if (world.blockUpdates[i].x == position.x && world.blockUpdates[i].y == position.y && world.blockUpdates[i].z == position.z) return i
+    }
+    return -1
+}
+
+module.exports = {SetBlock, AddBlockUpdate, GetBlockUpdate}

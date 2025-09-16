@@ -12,20 +12,22 @@ var packetIdentifier = "Player Identification"
  * @param {Buffer} data 
  */
 function ReadPacket(world, socket, data) {
-    var splitIndex = data.length - 65
+    var splitIndex = data.length - 130
 
     if (splitIndex >= 0) {
         socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
 
         var ID = dataReader.readUByte(socket, data, 0)
-        var Username = dataReader.readString(socket, data, ID.nextPos)
+        var protocolVersion = dataReader.readUByte(socket, data, ID.nextPos)
+        var username = dataReader.readString(socket, data, protocolVersion.nextPos)
+        var verificationKey = dataReader.readString(socket, data, username.nextPos)
 
         if (socket.disconnect == "") {
-            var hasOpenInstance = utils.player.HasOpenInstance(socket)(world, Username.value)
+            var hasOpenInstance = utils.player.HasOpenInstance(socket)(world, username.value)
             if (!hasOpenInstance) {
                 var thisUPVN = socket.thisPlayer.upvn
                 var thisUVNI = socket.thisPlayer.uvni
-                socket.thisPlayer = utils.player.GetPlayer(socket)(world, socket, Username.value)
+                socket.thisPlayer = utils.player.GetPlayer(socket)(world, socket, username.value)
                 socket.thisPlayer.upvn = thisUPVN
                 socket.thisPlayer.uvni = thisUVNI
                 socket.thisPlayer.messages = []

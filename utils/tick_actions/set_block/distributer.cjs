@@ -18,4 +18,11 @@ function AddBlockUpdate(socket) {
     return require('./29.cjs').AddBlockUpdate
 }
 
-module.exports = {SetBlock, AddBlockUpdate}
+/** 
+ * @param {Socket} socket 
+ */
+function GetBlockUpdate(socket) {
+    return require('./29.cjs').GetBlockUpdate
+}
+
+module.exports = {SetBlock, AddBlockUpdate, GetBlockUpdate}

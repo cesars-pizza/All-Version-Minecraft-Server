@@ -22,4 +22,15 @@ function GenerateClassicWorld(socket) {
     }
 }
 
-module.exports = {GenerateBlocks, GenerateClassicWorld}
+/** 
+ * @param {Socket} socket 
+ */
+function GetBlock(socket) {
+    if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').GetBlock
+    else {
+        socket.log(`ERR: Cannot Run Get Block World Util for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
+        return () => {}
+    }
+}
+
+module.exports = {GenerateBlocks, GenerateClassicWorld, GetBlock}

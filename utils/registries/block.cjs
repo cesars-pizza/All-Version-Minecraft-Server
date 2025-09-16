@@ -6,7 +6,7 @@ const { World } = require("../../data_structures.cjs");
  */
 function GetBlockRegistry(world, uvni) {
     for (var i = 0; i < world.registries.block.length; i++) {
-        if (uvni >= world.registries.block[i].minUVNI && uvni <= world.registries.block[i].minUVNI) return i
+        if (uvni >= world.registries.block[i].minUVNI && uvni <= world.registries.block[i].maxUVNI) return i
         else if (uvni < world.registries.block[i].minUVNI) return -1
     }
 

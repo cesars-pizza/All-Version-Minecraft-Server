@@ -33,11 +33,11 @@ function ReadPacket(world, socket, data) {
 
             if (difX || difY || difZ) {
                 socket.thisPlayer.tick.position = true
-                utils.player.GetPlayer(world, socket, socket.thisPlayer.username).save = true
+                utils.player.GetPlayer(socket)(world, socket, socket.thisPlayer.username).save = true
             }
             if (difPitch || difYaw) {
                 socket.thisPlayer.tick.rotation = true
-                utils.player.GetPlayer(world, socket, socket.thisPlayer.username).save = true
+                utils.player.GetPlayer(socket)(world, socket, socket.thisPlayer.username).save = true
             }
 
             socket.thisPlayer.position = {x: posX.value + 0.015625, y: posY.value - 1.59375, z: posZ.value + 0.015625}
