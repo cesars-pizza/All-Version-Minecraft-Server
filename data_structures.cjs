@@ -32,11 +32,15 @@ class Config {
      * @param {number} minUPVN 
      * @param {number} maxUPVN 
      * @param {number} maxPlayers 
+     * @param {string} serverName 
+     * @param {string} serverStatus 
      */
-    constructor(minUPVN, maxUPVN, maxPlayers) {
+    constructor(minUPVN, maxUPVN, maxPlayers, serverName, serverStatus) {
         this.minUPVN = minUPVN
         this.maxUPVN = maxUPVN
         this.maxPlayers = maxPlayers
+        this.serverName = serverName
+        this.serverStatus = serverStatus
     }
 }
 
@@ -50,9 +54,10 @@ class World {
      * @param {{block: Registry[]}} registries 
      * @param {Build[]} builds
      * @param {TickBlock[]} blockUpdates
-     * @param {{classicID: number}[]} disconnectedPlayers 
+     * @param {{classicID: number, username: string}[]} disconnectedPlayers 
+     * @param {{supported: boolean, name: string, pvn: number}[]} versions 
      */
-    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, builds, blockUpdates, disconnectedPlayers) {
+    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, builds, blockUpdates, disconnectedPlayers, versions) {
         this.config = config
         this.players = players
         this.maxPlayerCount = maxPlayerCount
@@ -62,6 +67,7 @@ class World {
         this.builds = builds
         this.blockUpdates = blockUpdates
         this.disconnectedPlayers = disconnectedPlayers
+        this.versions = versions
     }
 }
 

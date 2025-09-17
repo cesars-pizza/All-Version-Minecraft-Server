@@ -149,7 +149,7 @@ function CollidingWithBlock(socket, playerPos, blockPos) {
         y: Math.round(((playerHeight / 2) + 0.5) * 32),
         z: Math.round(((playerWidth / 2) + 0.5) * 32)
     }
-
+    
     if (absDifference.x < minimumDistance.x && absDifference.y < minimumDistance.y && absDifference.z < minimumDistance.z) return "inside"
     if (absDifference.x <= minimumDistance.x && absDifference.y <= minimumDistance.y && absDifference.z <= minimumDistance.z) return "against"
     return "none"

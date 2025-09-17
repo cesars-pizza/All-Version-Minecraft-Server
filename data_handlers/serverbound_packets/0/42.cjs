@@ -42,8 +42,8 @@ function ReadPacket(world, socket, data) {
                 if (!socket.thisPlayer.verified) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
 
-                    packetWriter.Server_Identification(socket)(socket, "Cool Server")
-                    var blocks = utils.worldgen.GenerateClassicWorld(socket)(world, socket, 0, 0, [])
+                    packetWriter.Server_Identification(socket)(world, socket, world.config.serverName, world.config.serverStatus)
+                    var blocks = utils.worldgen.GenerateClassicWorld(socket)(world, socket, 0, 0)
                     utils.world_packets(socket)(socket, blocks)
                     packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
                     for (var i = 0; i < world.loadedPlayers.length; i++) {
@@ -63,6 +63,7 @@ function ReadPacket(world, socket, data) {
                 }
             } else {
                 socket.setDisconnect("multipleInstances")
+                socket.thisPlayer.username = username.value
                 utils.disconnect(socket)(world, socket)
             }
         } else utils.disconnect(socket)(world, socket)

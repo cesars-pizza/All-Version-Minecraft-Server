@@ -21,7 +21,8 @@ var world = {
     },
     builds: [],
     blockUpdates: [],
-    disconnectedPlayers: []
+    disconnectedPlayers: [],
+    versions: []
 }
 
 setupLogs()
@@ -36,7 +37,9 @@ async function loadWorld() {
         if (thisPlayer == null) endOfPlayers = true
         else {
             if (thisPlayer.isFile() && thisPlayer.name.endsWith('.json')) {
-                world.players.push(JSON.parse(fs.readFileSync(`./world/players/${thisPlayer.name}`)))
+                var thisPlayerData = JSON.parse(fs.readFileSync(`./world/players/${thisPlayer.name}`))
+                thisPlayerData.save = false
+                world.players.push(thisPlayerData)
             }
         }
     }
@@ -60,6 +63,9 @@ async function loadWorld() {
     console.log(`WORLD Loaded ${world.registries.block.length} Block Registries`)
     blockRegistry.closeSync()
 
+    world.versions = JSON.parse(fs.readFileSync('./world/registries/version.json'))
+    console.log(`WORLD Loaded ${world.versions.length} Versions`)
+
     var buildFiles = fs.opendirSync('./world/builds')
     var endOfBuilds = false
     while (!endOfBuilds) {
@@ -67,7 +73,9 @@ async function loadWorld() {
         if (thisBuild == null) endOfBuilds = true
         else {
             if (thisBuild.isFile() && thisBuild.name.endsWith('.json')) {
-                world.builds.push(JSON.parse(fs.readFileSync(`./world/builds/${thisBuild.name}`)))
+                var thisBuildData = JSON.parse(fs.readFileSync(`./world/builds/${thisBuild.name}`))
+                thisBuildData.save = false
+                world.builds.push(thisBuildData)
             }
         }
     }
@@ -151,7 +159,7 @@ const server = net.createServer( (socket) => {
         socket.log("", false)
         socket.log("Closed Socket")
         fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
-        world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID})
+        world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
         world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
     })
     
@@ -160,7 +168,7 @@ const server = net.createServer( (socket) => {
         socket.log("", false)
         socket.log(`Socket Error: ${err.message}`);
         fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
-        world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID})
+        world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
         world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
     })
 });
@@ -181,10 +189,12 @@ function ServerTick() {
             for (var j = 0; j < world.loadedPlayers.length; j++) {
                 if (i != j) {
                     utils.tick_actions.spawn_player(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                    utils.tick_actions.message.JoinMessage(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].username)
                 }
             }
             world.loadedPlayers[i].tick.spawn = false
         }
+
         if (world.loadedPlayers[i].tick.position && world.loadedPlayers[i].tick.rotation) {
             for (var j = 0; j < world.loadedPlayers.length; j++) {
                 if (i != j) {
@@ -215,11 +225,12 @@ function ServerTick() {
 
         for (var j = 0; j < world.disconnectedPlayers.length; j++) {
             utils.tick_actions.despawn_player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.disconnectedPlayers[j].classicID)
+            utils.tick_actions.message.QuitMessage(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.disconnectedPlayers[j].username)
         }
 
         for (var j = 0; j < world.loadedPlayers[i].messages.length; j++) {
             for (var k = 0; k < world.loadedPlayers.length; k++) {
-                utils.tick_actions.message(world.loadedPlayers[k].socket)(world.loadedPlayers[k].socket, world.loadedPlayers[i].username, world.loadedPlayers[i].messages[j])
+                utils.tick_actions.message.PlayerMessage(world.loadedPlayers[k].socket)(world.loadedPlayers[k].socket, world.loadedPlayers[i].username, world.loadedPlayers[i].messages[j])
             }
             world.loadedPlayers[i].messages = []
         }

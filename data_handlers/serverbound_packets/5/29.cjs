@@ -28,11 +28,11 @@ function ReadPacket(world, socket, data) {
             var blockPos = {x: posX.value, y: posY.value, z: posZ.value}
 
             if (utils.math.NegMod(posX.value, 32) >= 16 && utils.math.NegMod(posZ.value, 32) >= 16) {
-                var hitBuildIndex = utils.builds.GetBuild(world, Math.floor(posX.value / 32), Math.floor(posZ.value / 32))
+                var hitBuildIndex = utils.builds.GetBuild(socket)(world, Math.floor(posX.value / 32), Math.floor(posZ.value / 32))
                 if (hitBuildIndex == undefined || world.builds[hitBuildIndex].creator == socket.thisPlayer.username) {
                     if (hitBuildIndex == undefined) {
                         hitBuildIndex = world.builds.length
-                        world.builds.push(utils.builds.GenerateBuild(Math.floor(posX.value / 32), Math.floor(posZ.value / 32), socket.thisPlayer.username, socket.thisPlayer.uvni))
+                        world.builds.push(utils.builds.GenerateBuild(socket)(Math.floor(posX.value / 32), Math.floor(posZ.value / 32), socket.thisPlayer.username, socket.thisPlayer.uvni))
                     }
 
                     if (posY.value <= 1) {

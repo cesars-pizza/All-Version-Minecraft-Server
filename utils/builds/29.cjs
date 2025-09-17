@@ -1,4 +1,4 @@
-const {World} = require('../data_structures.cjs');
+const {World} = require('../../data_structures.cjs');
 
 /**
  * @param {World} world 

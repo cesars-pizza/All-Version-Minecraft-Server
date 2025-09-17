@@ -5,8 +5,22 @@ const packetWriter = require('../../../data_handlers/clientbound_packets/packet_
 /** 
  * @param {Socket} socket 
  */
-function Message(socket, username, message) {
+function PlayerMessage(socket, username, message) {
     if (!message.endsWith('&')) packetWriter.Message(socket)(socket, 0, `<${username}> ${message}`)
 }
 
-module.exports = {Message}
+/** 
+ * @param {Socket} socket 
+ */
+function JoinMessage(socket, username) {
+    packetWriter.Message(socket)(socket, -1, `${username} joined the game.`)
+}
+
+/** 
+ * @param {Socket} socket 
+ */
+function QuitMessage(socket, username) {
+    packetWriter.Message(socket)(socket, -1, `${username} left the game.`)
+}
+
+module.exports = {PlayerMessage, JoinMessage, QuitMessage}

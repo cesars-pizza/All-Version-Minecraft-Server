@@ -26,7 +26,7 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
             blocks[0][z][x] = cobblestoneID
 
             if (chunkTypeX == 1 && chunkTypeZ == 1) {
-                var buildIndex = utils.builds.GetBuild(world, Math.floor(chunkX / 2), Math.floor(chunkZ / 2))
+                var buildIndex = utils.builds.GetBuild(socket)(world, Math.floor(chunkX / 2), Math.floor(chunkZ / 2))
                 if (buildIndex == undefined) blocks[1][z][x] = grassID
                 else {
                     blocks[1][z][x] = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, world.builds[buildIndex].floor)
@@ -56,7 +56,7 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
 
     var hasBuild = -1
     if (chunkTypeX == 1 && chunkTypeZ == 1) {
-        var buildIndex = utils.builds.GetBuild(world, Math.floor(chunkX / 2), Math.floor(chunkZ / 2))
+        var buildIndex = utils.builds.GetBuild(socket)(world, Math.floor(chunkX / 2), Math.floor(chunkZ / 2))
         if (buildIndex != undefined) hasBuild = buildIndex
     }
     if (hasBuild >= 0) {
@@ -119,11 +119,11 @@ function GenerateClassicWorld(world, socket, offsetX, offsetZ) {
  * @param {World} world 
  * @param {Position} blockPos 
  */
-function GetBlock(world, blockPos) {
+function GetBlock(world, socket, blockPos) {
     if (blockPos.y == 0) return "cobblestone"
     else if (blockPos.y == 1) {
         if ((blockPos.x % 32) > 15 && (blockPos.z % 32) > 15) {
-            var build = utils.builds.GetBuild(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
+            var build = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
 
             if (build == undefined) return "grass_block"
             else return world.builds[build].floor
@@ -133,7 +133,7 @@ function GetBlock(world, blockPos) {
         }
     } else {
         if ((blockPos.x % 32) > 15 && (blockPos.z % 32) > 15) {
-            var build = utils.builds.GetBuild(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
+            var build = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
 
             if (build == undefined) return "air"
             else return world.builds[build].blocks[blockPos.y - 2][blockPos.z % 16][blockPos.x % 16]

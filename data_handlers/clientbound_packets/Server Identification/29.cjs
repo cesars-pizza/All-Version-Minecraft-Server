@@ -8,7 +8,7 @@ var packetIdentifier = "Server Identification"
  * @param {Socket} socket 
  * @param {string} serverName 
  */
-function WritePacket(socket, serverName) {
+function WritePacket(world, socket, serverName) {
     socket.writePacket(packetID, packetIdentifier, dataWriter.writeString(socket, serverName))
 }
 
