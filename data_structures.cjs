@@ -34,13 +34,15 @@ class Config {
      * @param {number} maxPlayers 
      * @param {string} serverName 
      * @param {string} serverStatus 
+     * @param {number} hostPort 
      */
-    constructor(minUPVN, maxUPVN, maxPlayers, serverName, serverStatus) {
+    constructor(minUPVN, maxUPVN, maxPlayers, serverName, serverStatus, hostPort) {
         this.minUPVN = minUPVN
         this.maxUPVN = maxUPVN
         this.maxPlayers = maxPlayers
         this.serverName = serverName
         this.serverStatus = serverStatus
+        this.hostPort = hostPort
     }
 }
 

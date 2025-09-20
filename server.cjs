@@ -189,8 +189,8 @@ const server = net.createServer( (socket) => {
     })
 });
 
-server.listen(25565, () => {
-    console.log('TCP server listening on port 25565');
+server.listen(world.config.hostPort, () => {
+    console.log(`Started Server on Port ${world.config.hostPort}`);
 });
 
 server.on('error', (err) => {

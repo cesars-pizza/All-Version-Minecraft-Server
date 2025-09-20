@@ -3,5 +3,6 @@
     "maxUPVN": 999999,
     "maxPlayers": 127,
     "serverName": "All Version Server",
-    "serverStatus": "Connected"
+    "serverStatus": "Connected",
+    "hostPort": 25565
 }
