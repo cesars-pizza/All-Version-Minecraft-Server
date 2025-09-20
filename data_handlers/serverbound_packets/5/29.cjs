@@ -76,9 +76,8 @@ function ReadPacket(world, socket, data) {
                                     }
                                     world.loadedPlayers[i].save = true
                                     world.loadedPlayers[i].tick.position = true
-                                    packetWriter.Message(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, 0, "[System] You have been moved for intruding block placement")
-                                    packetWriter.Despawn_Player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.loadedPlayers[i].classicID)
-                                    packetWriter.Spawn_Player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, -1, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                                    world.loadedPlayers[i].tick.systemMessages.push("You have been moved for intruding block placement")
+                                    world.loadedPlayers[i].tick.teleportSelf = true
                                 }
                             }
                         }
@@ -97,9 +96,8 @@ function ReadPacket(world, socket, data) {
                                         }
                                         world.loadedPlayers[i].save = true
                                         world.loadedPlayers[i].tick.position = true
-                                        packetWriter.Message(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, 0, "[System] You have been moved for intruding block placement")
-                                        packetWriter.Despawn_Player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.loadedPlayers[i].classicID)
-                                        packetWriter.Spawn_Player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, -1, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                                        world.loadedPlayers[i].tick.systemMessages.push("You have been moved for intruding block placement")
+                                        world.loadedPlayers[i].tick.teleportSelf = true
                                     }
                                 }
                                 world.builds[hitBuildIndex].lastModified = new Date().getTime()

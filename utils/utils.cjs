@@ -17,5 +17,6 @@ module.exports = {
         set_block: require('./tick_actions/set_block/distributer.cjs'),
         despawn_player: require('./tick_actions/despawn_player/distributer.cjs').DespawnPlayer,
         message: require('./tick_actions/message/distributer.cjs'),
+        teleport: require('./tick_actions/teleport/distributer.cjs').TeleportSelf
     }
 }

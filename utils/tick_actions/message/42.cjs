@@ -23,4 +23,11 @@ function QuitMessage(socket, username) {
     packetWriter.Message(socket)(socket, -1, `${username} left the game.`)
 }
 
-module.exports = {PlayerMessage, JoinMessage, QuitMessage}
+/** 
+ * @param {Socket} socket 
+ */
+function SystemMessage(socket, message) {
+    packetWriter.Message(socket)(socket, 0, `[System] ${message}`)
+}
+
+module.exports = {PlayerMessage, JoinMessage, QuitMessage, SystemMessage}

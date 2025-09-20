@@ -25,7 +25,7 @@ function ReadPacket(world, socket, data) {
         var yaw = dataReader.readUByte(socket, data, posZ.nextPos)
         var pitch = dataReader.readUByte(socket, data, yaw.nextPos)
 
-        if (socket.disconnect == "") {
+        if (socket.disconnect == "" && !socket.thisPlayer.tick.teleportSelf) {
             var newPosition = {x: posX.value, y: posY.value, z: posZ.value}
             var newPositionShifted = {x: posX.value + 0.015625, y: posY.value - 1.59275, z: posZ.value + 0.015625}
 

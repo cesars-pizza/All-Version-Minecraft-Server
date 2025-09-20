@@ -21,7 +21,7 @@ function ReadPacket(world, socket, data) {
         var message = dataReader.readString(socket, data, playerID.nextPos)
 
         if (socket.disconnect == "") {
-            socket.thisPlayer.messages.push(message.value)
+            socket.thisPlayer.tick.messages.push(message.value)
         }
     }
     

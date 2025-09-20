@@ -38,7 +38,23 @@ async function loadWorld() {
         else {
             if (thisPlayer.isFile() && thisPlayer.name.endsWith('.json')) {
                 var thisPlayerData = JSON.parse(fs.readFileSync(`./world/players/${thisPlayer.name}`))
+                thisPlayerData.classicID = -1
+                thisPlayerData.inWorld = false
+                thisPlayerData.tick = {
+                    spawn: false,
+                    position: false,
+                    rotation: false,
+                    messages: [],
+                    systemMessages: [],
+                    teleportSelf: false
+                }
                 thisPlayerData.save = false
+                thisPlayerData.upvn = -2
+                thisPlayerData.uvni = -1
+                thisPlayerData.selectedRegistries = {
+                    block: -1
+                }
+                thisPlayerData.socket = {}
                 world.players.push(thisPlayerData)
             }
         }
@@ -228,11 +244,21 @@ function ServerTick() {
             utils.tick_actions.message.QuitMessage(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.disconnectedPlayers[j].username)
         }
 
-        for (var j = 0; j < world.loadedPlayers[i].messages.length; j++) {
+        for (var j = 0; j < world.loadedPlayers[i].tick.messages.length; j++) {
             for (var k = 0; k < world.loadedPlayers.length; k++) {
-                utils.tick_actions.message.PlayerMessage(world.loadedPlayers[k].socket)(world.loadedPlayers[k].socket, world.loadedPlayers[i].username, world.loadedPlayers[i].messages[j])
+                utils.tick_actions.message.PlayerMessage(world.loadedPlayers[k].socket)(world.loadedPlayers[k].socket, world.loadedPlayers[i].username, world.loadedPlayers[i].tick.messages[j])
             }
-            world.loadedPlayers[i].messages = []
+            world.loadedPlayers[i].tick.messages = []
+        }
+
+        for (var j = 0; j < world.loadedPlayers[i].tick.systemMessages.length; j++) {
+            utils.tick_actions.message.SystemMessage(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.loadedPlayers[i].tick.systemMessages[j])
+        }
+        world.loadedPlayers[i].tick.systemMessages = []
+
+        if (world.loadedPlayers[i].tick.teleportSelf) {
+            utils.tick_actions.teleport(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket)
+            world.loadedPlayers[i].tick.teleportSelf = false
         }
     }
     world.blockUpdates = []
@@ -247,10 +273,10 @@ function ServerSave() {
     for (var i = 0; i < world.players.length; i++) {
         if (world.players[i].save) {
             savedPlayerCount++
-            var thisPlayerSocket = world.players[i].socket
-            world.players[i].socket = undefined
-            fs.writeFileSync(`./world/players/${world.players[i].username}.json`, JSON.stringify(world.players[i]))
-            world.players[i].socket = thisPlayerSocket
+            fs.writeFileSync(`./world/players/${world.players[i].username}.json`, JSON.stringify(world.players[i], (key, value) => {
+                if (key == "classicID" || key == "inWorld" || key == "tick" || key == "save" || key == "upvn" || key == "uvni" || key == "selectedRegistries" || key == "socket") return undefined
+                return value
+            }))
             world.players[i].save = false
         }
     }

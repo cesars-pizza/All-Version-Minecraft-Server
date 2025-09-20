@@ -28,7 +28,6 @@ function ReadPacket(world, socket, data) {
                 socket.thisPlayer = utils.player.GetPlayer(socket)(world, socket, Username.value)
                 socket.thisPlayer.upvn = thisUPVN
                 socket.thisPlayer.uvni = thisUVNI
-                socket.thisPlayer.messages = []
                 socket.thisPlayer.selectedRegistries = {
                     block: utils.registry.block.GetBlockRegistry(world, socket.thisPlayer.uvni)
                 }
@@ -54,7 +53,7 @@ function ReadPacket(world, socket, data) {
                     socket.thisPlayer.socket = socket
                     socket.thisPlayer.classicID = utils.player.GetClassicID(socket)(world, socket)
                     socket.thisPlayer.inWorld = true
-                    socket.thisPlayer.tick = {spawn: true, position: false, rotation: false}
+                    socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], teleportSelf: false}
                 } else {
                     socket.setDisconnect("unverified")
                     utils.disconnect(socket)(world, socket)
