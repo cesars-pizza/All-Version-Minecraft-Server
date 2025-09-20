@@ -150,10 +150,10 @@ function CollidingWithBlock(socket, playerPos, blockPos) {
     }
     
     // Debug Hitboxes
-    //console.log(`blockCenter:      ${JSON.stringify(blockCenter)}`)
-    //console.log(`playerCenter:     ${JSON.stringify(playerCenter)}`)
-    //console.log(`absDifference:    ${JSON.stringify(absDifference)}`)
-    //console.log(`minAbsDifference: ${JSON.stringify(minimumDistance)}`)
+    console.log(`blockCenter:      ${JSON.stringify(blockCenter)}`)
+    console.log(`playerCenter:     ${JSON.stringify(playerCenter)}`)
+    console.log(`absDifference:    ${JSON.stringify(absDifference)}`)
+    console.log(`minAbsDifference: ${JSON.stringify(minimumDistance)}`)
 
     if (absDifference.x < minimumDistance.x && absDifference.y < minimumDistance.y && absDifference.z < minimumDistance.z) return "inside"
     if (absDifference.x <= minimumDistance.x && absDifference.y <= minimumDistance.y && absDifference.z <= minimumDistance.z) return "against"

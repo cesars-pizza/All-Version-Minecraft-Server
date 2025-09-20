@@ -4,6 +4,24 @@ This is a general overview of how the server protocol changes from version to ve
 
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
+## Java Edition Classic 0.0.18a_02
+
+This version can't be distinguished by the server from 0.0.17a.
+
+### Added Features
+
+Player skins can now be seen. This only works if you use a proxy to get the skins from the correct site. All players use the wide model no matter what they select their skin to have.
+
+Added more supported characters in chat.
+
+### Packets
+
+The Set Position and Orientaion clientbound packet now workd completely for player ID -1 (255)
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Classic_Protocol)
+
 ## Java Edition Classic 0.0.17a
 
 Protocol version number set to 4
