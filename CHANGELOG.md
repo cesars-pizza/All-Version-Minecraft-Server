@@ -4,6 +4,24 @@ This is a general overview of how the server protocol changes from version to ve
 
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
+## Java Edition Classic 0.0.19a_04
+
+Protocol Version set to 5
+
+This version has a tendency to freeze up and crash very often. Due to this, this version has not been fully tested as working.
+
+### Added Features
+
+Sponges and Glass Blocks were added to the game, replacing Cobblestone and Sand in the hotbar.
+
+The hotbar has a new gui displaying all selectable blocks.
+
+Falling blocks are no longer calculated client-side, removing ghost blocks of them and leaving the floating blocks.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Classic_Protocol)
+
 ## Java Edition Classic 0.0.18a_02
 
 This version can't be distinguished by the server from 0.0.17a.

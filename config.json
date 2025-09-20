@@ -4,5 +4,6 @@
     "maxPlayers": 127,
     "serverName": "All Version Server",
     "serverStatus": "Connected",
-    "hostPort": 25565
+    "hostPort": 25565,
+    "suppressNonUniversalBlocks": false
 }

@@ -45,5 +45,10 @@
     {"supported": true, "name": "Java Edition Classic 0.0.17a", "pvn": 4},
     {"supported": false},
     {"supported": false},
-    {"supported": true, "name": "Java Edition Classic 0.0.18a_02", "pvn": 4}
+    {"supported": true, "name": "Java Edition Classic 0.0.18a_02", "pvn": 4},
+    {"supported": false},
+    {"supported": false},
+    {"supported": false},
+    {"supported": false},
+    {"supported": true, "name": "Java Edition Classic 0.0.19a_04", "pvn": 5}
 ]

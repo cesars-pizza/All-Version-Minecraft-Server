@@ -22,7 +22,10 @@ var world = {
     builds: [],
     blockUpdates: [],
     disconnectedPlayers: [],
-    versions: []
+    versions: [],
+    universalRegistries: {
+        block: []
+    }
 }
 
 setupLogs()
@@ -63,6 +66,7 @@ async function loadWorld() {
     playerFiles.closeSync()
 
     var blockRegistry = fs.opendirSync('./world/registries/block')
+    var startedBlockRegistry = false
     var endofRegistry = false
     while (!endofRegistry) {
         var thisRegistry = blockRegistry.readSync()
@@ -71,12 +75,25 @@ async function loadWorld() {
             if (thisRegistry.isFile()) {
                 var nameNumber = Number(thisRegistry.name.replace('.json', ''))
                 if (thisRegistry.name.endsWith('.json') && nameNumber != NaN) {
-                    world.registries.block.push(JSON.parse(fs.readFileSync(`./world/registries/block/${thisRegistry.name}`)))
+                    var thisRegistryData = JSON.parse(fs.readFileSync(`./world/registries/block/${thisRegistry.name}`))
+                    if (thisRegistryData.maxUPVN >= world.config.minUPVN && thisRegistryData.minUPVN <= world.config.maxUPVN) {
+                        var entryKeys = Object.keys(thisRegistryData.entries)
+                        if (startedBlockRegistry) {
+                            for (var i = world.universalRegistries.block.length - 1; i >= 0; i--) {
+                                if (!entryKeys.includes(world.universalRegistries.block[i])) world.universalRegistries.block.splice(i, 1)
+                            }
+                        } else {
+                            startedBlockRegistry = true
+                            world.universalRegistries.block = entryKeys
+                        }
+                    }
+                    world.registries.block.push(thisRegistryData)
                 }
             }
         }
     }
     console.log(`WORLD Loaded ${world.registries.block.length} Block Registries`)
+    console.log(`WORLD Loaded ${world.universalRegistries.block.length} Universal Blocks`)
     blockRegistry.closeSync()
 
     world.versions = JSON.parse(fs.readFileSync('./world/registries/version.json'))
@@ -350,11 +367,22 @@ function IdentifyVersion(socket, data) {
             } else if (data[1] == 4) {
                 socket.log(`IDENTIFIED UPVN 1`)
                 socket.log(`IDENTIFIED UVNI 43 / 0.0.17a`)
+                socket.log(`WARNING: Version could be UVNI 46 / 0.0.18a_02`)
                 socket.identified = true
                 socket.thisPlayer.upvn = 1
                 socket.thisPlayer.uvni = 43
 
-                if (world.config.minUPVN > 0) socket.setDisconnect("invalidVersion")
+                if (world.config.minUPVN > 1) socket.setDisconnect("invalidVersion")
+
+                return
+            } else if (data[1] == 5) {
+                socket.log(`IDENTIFIED UPVN 2`)
+                socket.log(`IDENTIFIED UVNI 51 / 0.0.19a_04`)
+                socket.identified = true
+                socket.thisPlayer.upvn = 2
+                socket.thisPlayer.uvni = 51
+
+                if (world.config.minUPVN > 2) socket.setDisconnect("invalidVersion")
 
                 return
             }

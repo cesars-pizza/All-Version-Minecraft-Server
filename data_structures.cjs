@@ -35,14 +35,16 @@ class Config {
      * @param {string} serverName 
      * @param {string} serverStatus 
      * @param {number} hostPort 
+     * @param {boolean} suppressNonUniversalBlocks 
      */
-    constructor(minUPVN, maxUPVN, maxPlayers, serverName, serverStatus, hostPort) {
+    constructor(minUPVN, maxUPVN, maxPlayers, serverName, serverStatus, hostPort, suppressNonUniversalBlocks) {
         this.minUPVN = minUPVN
         this.maxUPVN = maxUPVN
         this.maxPlayers = maxPlayers
         this.serverName = serverName
         this.serverStatus = serverStatus
         this.hostPort = hostPort
+        this.suppressNonUniversalBlocks = suppressNonUniversalBlocks
     }
 }
 
@@ -58,8 +60,9 @@ class World {
      * @param {TickBlock[]} blockUpdates
      * @param {{classicID: number, username: string}[]} disconnectedPlayers 
      * @param {{supported: boolean, name: string, pvn: number}[]} versions 
+     * @param {{block: string[]}} universalRegistries 
      */
-    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, builds, blockUpdates, disconnectedPlayers, versions) {
+    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, builds, blockUpdates, disconnectedPlayers, versions, universalRegistries) {
         this.config = config
         this.players = players
         this.maxPlayerCount = maxPlayerCount
@@ -70,6 +73,7 @@ class World {
         this.blockUpdates = blockUpdates
         this.disconnectedPlayers = disconnectedPlayers
         this.versions = versions
+        this.universalRegistries = universalRegistries
     }
 }
 
@@ -157,11 +161,15 @@ class Registry {
     /**
      * @param {number} minUVNI 
      * @param {number} maxUVNI 
+     * @param {number} minUPVN 
+     * @param {number} maxUPVN 
      * @param {{}} entries 
      */
-    constructor(minUVNI, maxUVNI, entries) {
+    constructor(minUVNI, maxUVNI, minUPVN, maxUPVN, entries) {
         this.minUVNI = minUVNI
         this.maxUVNI = maxUVNI
+        this.minUPVN = minUPVN
+        this.maxUPVN = maxUPVN
         this.entries = entries
     }
 }
