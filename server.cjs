@@ -125,7 +125,7 @@ const server = net.createServer( (socket) => {
     socket.writePacket = (id, identifier, data, logBytes, consoleLog) => {
         var packet = dataWriter.writePacket(socket, id, data)
         if (consoleLog != false) socket.log(`CLIENTBOUND <-- ${id} "${identifier}" / ${packet.length} bytes`)
-        if (logBytes) socket.log(debug.DebugByteArrayNumbers(packet))
+        if (logBytes) HexViewBytes(data, `${socket.index}.${socket.packetCount}`)
         socket.write(packet, consoleLog)
     }
     socket.setDisconnect = (disconnectReason, consoleLog) => {
@@ -343,6 +343,16 @@ function IdentifyVersion(socket, data) {
                 socket.identified = true
                 socket.thisPlayer.upvn = 0
                 socket.thisPlayer.uvni = 42
+
+                if (world.config.minUPVN > 0) socket.setDisconnect("invalidVersion")
+
+                return
+            } else if (data[1] == 4) {
+                socket.log(`IDENTIFIED UPVN 1`)
+                socket.log(`IDENTIFIED UVNI 43 / 0.0.17a`)
+                socket.identified = true
+                socket.thisPlayer.upvn = 1
+                socket.thisPlayer.uvni = 43
 
                 if (world.config.minUPVN > 0) socket.setDisconnect("invalidVersion")
 

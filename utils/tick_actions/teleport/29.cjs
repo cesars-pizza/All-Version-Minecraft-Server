@@ -7,7 +7,7 @@ const packetWriter = require('../../../data_handlers/clientbound_packets/packet_
  */
 function TeleportSelf(socket) {
     packetWriter.Despawn_Player(socket)(socket, socket.thisPlayer.classicID)
-    packetWriter.Spawn_Player(socket)(socket, socket.thisPlayer.classicID, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
+    packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
 }
 
 module.exports = {TeleportSelf}

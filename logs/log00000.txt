@@ -1,15 +1,10 @@
-IDENTIFIED UPVN 0
-IDENTIFIED UVNI 42 / 0.0.16a_02
+IDENTIFIED UPVN 1
+IDENTIFIED UVNI 43 / 0.0.17a
 SERVERBOUND --> 0 "Player Identification" / 130 bytes
 CLIENTBOUND <-- 0 "Server Identification" / 130 bytes
 CLIENTBOUND <-- 2 "Level Initilize" / 1 bytes
 CLIENTBOUND <-- 4 "Level Finalize" / 7 bytes
 CLIENTBOUND <-- 7 "Spawn Player" / 74 bytes
-SERVERBOUND --> 8 "Position and Orientation" / 430 bytes
-SERVERBOUND --> 8 "Position and Orientation" / 420 bytes
-SERVERBOUND --> 8 "Position and Orientation" / 410 bytes
-SERVERBOUND --> 8 "Position and Orientation" / 400 bytes
-SERVERBOUND --> 8 "Position and Orientation" / 390 bytes
 SERVERBOUND --> 8 "Position and Orientation" / 380 bytes
 SERVERBOUND --> 8 "Position and Orientation" / 370 bytes
 SERVERBOUND --> 8 "Position and Orientation" / 360 bytes
@@ -88,8 +83,7 @@ SERVERBOUND --> 8 "Position and Orientation" / 10 bytes
 SERVERBOUND --> 8 "Position and Orientation" / 10 bytes
 SERVERBOUND --> 8 "Position and Orientation" / 10 bytes
 SERVERBOUND --> 8 "Position and Orientation" / 10 bytes
-SERVERBOUND --> 8 "Position and Orientation" / 20 bytes
-SERVERBOUND --> 8 "Position and Orientation" / 10 bytes
+SERVERBOUND --> 8 "Position and Orientation" / 40 bytes
 SERVERBOUND --> 8 "Position and Orientation" / 30 bytes
 SERVERBOUND --> 8 "Position and Orientation" / 20 bytes
 SERVERBOUND --> 8 "Position and Orientation" / 10 bytes
