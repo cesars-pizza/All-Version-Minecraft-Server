@@ -6,11 +6,11 @@ The goal of this project is to implement the server protocol of every archived v
 
 ## Progress
 
-The latest added version to this project is Java Edition Classic 0.0.20a_02, released on June 20th, 2009.
+The latest added version to this project is Java Edition Classic 0.0.21a, released on June 22nd, 2009.
 
-This is 8 / 961 Versions to be supported as of the latest snapshot 25w36b (Not currently the latest).
+This is 9 / 961 Versions to be supported as of the latest snapshot 25w36b (Not currently the latest).
 
-[----------------------------------------------------------------------------------------------------] (0.8%)
+[----------------------------------------------------------------------------------------------------] (0.9%)
 
 View the [changelog](https://github.com/cesars-pizza/All-Version-Minecraft-Server/blob/main/CHANGELOG.md) for details on changes in this version.
 
