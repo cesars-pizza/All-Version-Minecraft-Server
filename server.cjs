@@ -378,11 +378,28 @@ function IdentifyVersion(socket, data) {
             } else if (data[1] == 5) {
                 socket.log(`IDENTIFIED UPVN 2`)
                 socket.log(`IDENTIFIED UVNI 51 / 0.0.19a_04`)
+                socket.log(`WARNING: Version could be UVNI 53 / 0.0.19a_06`)
                 socket.identified = true
                 socket.thisPlayer.upvn = 2
                 socket.thisPlayer.uvni = 51
 
                 if (world.config.minUPVN > 2) socket.setDisconnect("invalidVersion")
+
+                return
+            }
+        } else if (data.length == 131) {
+            if (data[1] == 6) {
+                socket.log(`IDENTIFIED UPVN 3`)
+                socket.log(`IDENTIFIED UVNI 55 / 0.0.20a_01`)
+                socket.log(`WARNING: Version could be UVNI 56 / 0.0.20a_02`)
+                socket.log(`WARNING: Version could be UVNI 57 / 0.0.21a`)
+                socket.log(`WARNING: Version could be UVNI 64 / 0.0.22a_05`)
+                socket.log(`WARNING: Version could be UVNI 66 / 0.0.23a_01`)
+                socket.identified = true
+                socket.thisPlayer.upvn = 3
+                socket.thisPlayer.uvni = 55
+
+                if (world.config.minUPVN > 3) socket.setDisconnect("invalidVersion")
 
                 return
             }
