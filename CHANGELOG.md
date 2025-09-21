@@ -4,6 +4,20 @@ This is a general overview of how the server protocol changes from version to ve
 
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
+## Java Edition Classic 0.29
+
+This version can't be distinguished from 0.28_01
+
+### Added Features
+
+This version fixes the issue with rotation of other players
+
+Players can once again break bedrock
+
+### Packets
+
+Added the Update User Type clientbound packet to change whether or not the player can break bedrock after they've connected.
+
 ## Java Edition Classic 0.28_01
 
 Protocol Version set to 7
@@ -19,6 +33,8 @@ This version also adds access to more blocks that were previously in the game.
 Right click is now set to always place and left click is set to always break.
 
 The option to allow players to break bedrock no longer works, meaning if you set your plot floor to bedrock, you have to go on a different version to fix it.
+
+The rotation of other players is flipped across the X axis. This can't be corrected because it is fixed in later versions that can't be distinguished from this version.
 
 ### Packets
 
