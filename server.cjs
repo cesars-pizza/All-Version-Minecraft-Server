@@ -2,6 +2,7 @@ const net = require('net')
 const fs = require('fs')
 const {Socket, Config, World} = require('./data_structures.cjs')
 const packetReader = require('./data_handlers/serverbound_packets/packet_reader.cjs')
+const packetWriter = require('./data_handlers/clientbound_packets/packet_writer.cjs')
 const dataWriter = require('./data_handlers/data_writer.cjs')
 const utils = require('./utils/utils.cjs')
 

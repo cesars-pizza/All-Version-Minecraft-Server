@@ -1,9 +1,9 @@
 {
     "minUPVN": -1,
-    "maxUPVN": 999999,
+    "maxUPVN": 5,
     "maxPlayers": 127,
-    "serverName": "All Version Server",
-    "serverStatus": "Connected",
+    "serverName": "Minecraft Server",
+    "serverStatus": "Welcome to my Minecraft Server!",
     "hostPort": 25565,
     "suppressNonUniversalBlocks": false
 }

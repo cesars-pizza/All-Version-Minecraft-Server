@@ -42,7 +42,7 @@ function ReadPacket(world, socket, data) {
                 if (!socket.thisPlayer.verified) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
 
-                    packetWriter.Server_Identification(socket)(world, socket, world.config.serverName, world.config.serverStatus, true)
+                    packetWriter.Server_Identification(socket)(world, socket, world.config.serverName, world.config.serverStatus, false)
                     var blocks = utils.worldgen.GenerateClassicWorld(socket)(world, socket, 0, 0)
                     utils.world_packets(socket)(socket, blocks)
                     packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)

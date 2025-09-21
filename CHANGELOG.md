@@ -4,21 +4,9 @@ This is a general overview of how the server protocol changes from version to ve
 
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
-## Java Edition Classic 0.0.19a_06
-
-This version can't be distinguished from 0.0.19a_04
-
-This version still has issues with often crashing on startup and has also not been fully tested
-
-### Documentation
-
-Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Classic_Protocol)
-
 ## Java Edition Classic 0.0.19a_04
 
 Protocol Version set to 5
-
-This version has a tendency to freeze up and crash very often. Due to this, this version has not been fully tested as working.
 
 ### Added Features
 
