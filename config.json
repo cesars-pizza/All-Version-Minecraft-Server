@@ -3,7 +3,7 @@
     "maxUPVN": 999999,
     "maxPlayers": 127,
     "serverName": "All Version Server",
-    "serverStatus": "5 / 961!",
+    "serverStatus": "6 / 961 Supported Versions!",
     "hostPort": 25565,
-    "suppressNonUniversalBlocks": true
+    "suppressNonUniversalBlocks": false
 }

@@ -4,6 +4,32 @@ This is a general overview of how the server protocol changes from version to ve
 
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
+## Java Edition Classic 0.0.20a_01
+
+### Added Features
+
+This version adds 21 new blocks, over doubling the number of blocks previously in the game. The added blocks are wool (With different colors), dandelions, poppys, mushrooms, and the gold block.
+
+A menu can be opened by pressing B which gives access to almost all available blocks in this version.
+
+### Packets
+
+The Player Identification serverbound packet has an new unsused byte field always set to 0
+
+The Server Identification clientbound packet has a new user type field that determines whether or not the player can break bedrock (Always enabled on this server).
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Classic_Protocol)
+
+## Java Edition Classic 0.0.19a_06
+
+This version can't be distinguished by the server from 0.0.19a_04.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Classic_Protocol)
+
 ## Java Edition Classic 0.0.19a_04
 
 Protocol Version set to 5
