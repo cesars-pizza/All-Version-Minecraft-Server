@@ -403,6 +403,20 @@ function IdentifyVersion(socket, data) {
                 if (world.config.minUPVN > 3) socket.setDisconnect("invalidVersion")
 
                 return
+            } else if (data[1] == 7) {
+                socket.log(`IDENTIFIED UPVN 4`)
+                socket.log(`IDENTIFIED UVNI 79 / 0.28_01`)
+                socket.log(`WARNING: Version could be UVNI 80 / 0.29`)
+                socket.log(`WARNING: Version could be UVNI 81 / 0.29_01`)
+                socket.log(`WARNING: Version could be UVNI 82 / 0.29_02`)
+                socket.log(`WARNING: Version could be UVNI 83 / 0.30`)
+                socket.identified = true
+                socket.thisPlayer.upvn = 4
+                socket.thisPlayer.uvni = 79
+
+                if (world.config.minUPVN > 4) socket.setDisconnect("invalidVersion")
+
+                return
             }
         }
     }

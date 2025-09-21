@@ -4,6 +4,34 @@ This is a general overview of how the server protocol changes from version to ve
 
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
+## Java Edition Classic 0.28_01
+
+Protocol Version set to 7
+
+This is the first version to have blockstates.
+
+### Added Features
+
+This version adds 7 new blocks: iron block, smooth stone slab, bricks, tnt, bookshelf, mossy cobblestone, and obsidian.
+
+This version also adds access to more blocks that were previously in the game.
+
+Right click is now set to always place and left click is set to always break.
+
+The option to allow players to break bedrock no longer works, meaning if you set your plot floor to bedrock, you have to go on a different version to fix it.
+
+### Packets
+
+Disconnect Player clientbound packet has been readded.
+
+### Notes
+
+Placing two half slabs on top of each other creates a double slab. The only way to have multiple half slabs on top of each other is by going from top to bottom.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Classic_Protocol)
+
 ## Java Edition Classic 0.0.23a_01
 
 This version can't be distinguished from 0.0.20a_01
@@ -37,6 +65,8 @@ This version can't be distinguished from 0.0.20a_01
 Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Classic_Protocol)
 
 ## Java Edition Classic 0.0.20a_01
+
+Protocol Version Set to 6
 
 ### Added Features
 

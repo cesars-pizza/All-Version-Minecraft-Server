@@ -59,6 +59,7 @@ function ReadPacket(world, socket, data) {
                                 }
                                 if (blockPos.y == 1) updateSuccessful = true
                             } else {
+                                if (blockID.value == 44) blockID.value = 43
                                 if (validBlock) {
                                     world.builds[hitBuildIndex].floor = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID.value)
                                     world.builds[hitBuildIndex].lastModified = new Date().getTime()
@@ -93,24 +94,43 @@ function ReadPacket(world, socket, data) {
                     } else if (posY.value < 64) {
                         if (mode.value == 1) {
                             if (validBlock) {
-                                world.builds[hitBuildIndex].blocks[posY.value - 2][posZ.value % 16][posX.value % 16] = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID.value)
-                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, blockID.value)
-                                for (var i = 0; i < world.loadedPlayers.length; i++) {
-                                    if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
-                                        world.loadedPlayers[i].position = {
-                                            x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
-                                            y: 2,
-                                            z: Math.floor(world.loadedPlayers[i].position.z / 16) * 16 - 0.5,
+                                if (posY.value > 2 && blockID.value == 44 && utils.worldgen.GetBlock(socket)(world, socket, {x: posX.value, y: posY.value - 1, z: posZ.value}) == "smooth_stone_slab") {
+                                    world.builds[hitBuildIndex].blocks[posY.value - 3][posZ.value % 16][posX.value % 16] = "smooth_stone_slab[type=double]"
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: posX.value, y: posY.value - 1, z: posZ.value}, 43)
+                                    for (var i = 0; i < world.loadedPlayers.length; i++) {
+                                        if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
+                                            world.loadedPlayers[i].position = {
+                                                x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
+                                                y: 2,
+                                                z: Math.floor(world.loadedPlayers[i].position.z / 16) * 16 - 0.5,
+                                            }
+                                            world.loadedPlayers[i].save = true
+                                            world.loadedPlayers[i].tick.position = true
+                                            world.loadedPlayers[i].tick.systemMessages.push("You have been moved for intruding block placement")
+                                            world.loadedPlayers[i].tick.teleportSelf = true
                                         }
-                                        world.loadedPlayers[i].save = true
-                                        world.loadedPlayers[i].tick.position = true
-                                        world.loadedPlayers[i].tick.systemMessages.push("You have been moved for intruding block placement")
-                                        world.loadedPlayers[i].tick.teleportSelf = true
                                     }
+                                } else {
+                                    world.builds[hitBuildIndex].blocks[posY.value - 2][posZ.value % 16][posX.value % 16] = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID.value)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, blockID.value)
+                                    for (var i = 0; i < world.loadedPlayers.length; i++) {
+                                        if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
+                                            world.loadedPlayers[i].position = {
+                                                x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
+                                                y: 2,
+                                                z: Math.floor(world.loadedPlayers[i].position.z / 16) * 16 - 0.5,
+                                            }
+                                            world.loadedPlayers[i].save = true
+                                            world.loadedPlayers[i].tick.position = true
+                                            world.loadedPlayers[i].tick.systemMessages.push("You have been moved for intruding block placement")
+                                            world.loadedPlayers[i].tick.teleportSelf = true
+                                        }
+                                    }
+                                    updateSuccessful = true
                                 }
+                                
                                 world.builds[hitBuildIndex].lastModified = new Date().getTime()
                                 world.builds[hitBuildIndex].save = true
-                                updateSuccessful = true
                             } else socket.thisPlayer.tick.systemMessages.push("This block isn't available in all versions.")
                         } else {
                             world.builds[hitBuildIndex].blocks[posY.value - 2][posZ.value % 16][posX.value % 16] = "air"

@@ -55,7 +55,7 @@ class World {
      * @param {number} maxPlayerCount 
      * @param {string[]} loadingPlayerNames 
      * @param {Player[]} loadedPlayers
-     * @param {{block: Registry[]}} registries 
+     * @param {{block: BlockRegistry[]}} registries 
      * @param {Build[]} builds
      * @param {TickBlock[]} blockUpdates
      * @param {{classicID: number, username: string}[]} disconnectedPlayers 
@@ -174,6 +174,23 @@ class Registry {
     }
 }
 
+class BlockRegistry {
+    /**
+     * @param {number} minUVNI 
+     * @param {number} maxUVNI 
+     * @param {number} minUPVN 
+     * @param {number} maxUPVN 
+     * @param {{_entry: number | {states: {_state: string[]}, blockstates: {"_state=_value": number}, defaultID: number}}} entries 
+     */
+    constructor(minUVNI, maxUVNI, minUPVN, maxUPVN, entries) {
+        this.minUVNI = minUVNI
+        this.maxUVNI = maxUVNI
+        this.minUPVN = minUPVN
+        this.maxUPVN = maxUPVN
+        this.entries = entries
+    }
+}
+
 class Build {
     /**
      * @param {number} x 
@@ -216,4 +233,4 @@ class TickBlock {
     }
 }
 
-module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, Registry, TickBlock}
+module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, Registry, TickBlock, BlockRegistry}
