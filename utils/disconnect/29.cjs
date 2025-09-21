@@ -10,7 +10,7 @@ const utils = require('../utils.cjs')
 function Disconnect(world, socket) {
     world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(""))
 
-    packetWriter.Server_Identification(socket)(socket, "Server")
+    packetWriter.Server_Identification(socket)(world, socket, "Server")
 
     var blocks = [[]]
     for (var z = 0; z < 256; z++) {

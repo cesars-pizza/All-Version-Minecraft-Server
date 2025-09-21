@@ -16,6 +16,11 @@ The hotbar has a new gui displaying all selectable blocks.
 
 Falling blocks are no longer calculated client-side, removing ghost blocks of them and leaving the floating blocks.
 
+
+### Packets
+
+The Disconnect clientbound packet no longer works and has been replaced with setting the server name and status to the disconnect text and never sending the level finalize packet.
+
 ### Documentation
 
 Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Classic_Protocol)
