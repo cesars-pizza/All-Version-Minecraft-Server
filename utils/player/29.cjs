@@ -48,6 +48,9 @@ function GeneratePlayer(world, socket, username) {
             selected_slot: 0,
             slots: []
         },
+        settings: {
+            showPlotInfo: true
+        },
         verified: false,
         keepUnverified: false,
         lastUVNI: socket.thisPlayer.uvni,

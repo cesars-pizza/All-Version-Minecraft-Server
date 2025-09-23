@@ -40,6 +40,12 @@ Teleports to other player
 
 Teleports to a specific plot. Can teleport to plots outside of the 256 x 256 classic world (This is an unitentional feature of the classic client and can cause the game to run out of memory and crash).
 
+### /settings
+
+Allows for the modification of player settings
+
+plotInfo: Whether or not to show info of other players plots when being entered. Can be set to enable or disable.
+
 ## Copyright
 
 This project does not use any code sourced directly from Minecraft. It simply follows a protocol found within the game. 

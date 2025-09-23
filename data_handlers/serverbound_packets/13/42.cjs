@@ -101,6 +101,23 @@ function ReadPacket(world, socket, data) {
                         }
                     } else if (commandParts.length == 2) socket.thisPlayer.tick.errorMessages.push(`Missing argument: plotZ`)
                     else socket.thisPlayer.tick.errorMessages.push(`Missing argument: plotX`)
+                } else if (commandParts[0] == "/settings") {
+                    if (commandParts.length == 1) socket.thisPlayer.tick.errorMessages.push("Missing argument: setting")
+                    else if (commandParts.length == 2) {
+                        if (commandParts[1] == "plotInfo") socket.thisPlayer.tick.systemMessages.push(`Plot Info is currently set to ${socket.thisPlayer.settings.showPlotInfo ? "enabled" : "disabled"}`)
+                        else socket.thisPlayer.tick.errorMessages.push(`Unknown setting: "${commandParts[1]}"`)
+                    } else {
+                        if (commandParts[1] == "plotInfo") {
+                            if (commandParts[2] == "enable") {
+                                socket.thisPlayer.settings.showPlotInfo = true
+                                socket.thisPlayer.tick.systemMessages.push("Set Plot Info to enabled")
+                            } else if (commandParts[2] == "disable") {
+                                socket.thisPlayer.settings.showPlotInfo = false
+                                socket.thisPlayer.tick.systemMessages.push("Set Plot Info to disabled")
+                            } else socket.thisPlayer.tick.errorMessages.push('Plot Info must be set to either "enable" or "disable"')
+                        }
+                        else socket.thisPlayer.tick.errorMessages.push(`Unknown setting: "${commandParts[1]}"`)
+                    }
                 } else socket.thisPlayer.tick.errorMessages.push(`Unknown command: "${message.value.split(' ')[0]}"`)
             } else socket.thisPlayer.tick.messages.push(message.value)
         }

@@ -89,6 +89,7 @@ class Player {
      * @param {Rotation} rotation 
      * @param {{x: number, z: number}} classicWorldOffset
      * @param {{selected_slot: number, slots: Slot[]}} inventory 
+     * @param {{showPlotInfo: boolean}} settings
      * @param {boolean} verified 
      * @param {boolean} keepUnverified 
      * @param {number} lastUVNI 
@@ -101,13 +102,14 @@ class Player {
      * @param {{block: number}} selectedRegistries  
      * @param {Socket} socket
      */
-    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, verified, keepUnverified, lastUVNI, classicID, inWorld, tick, save, upvn, uvni, selectedRegistries, socket) {
+    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, inWorld, tick, save, upvn, uvni, selectedRegistries, socket) {
         this.uuid = uuid
         this.username = username
         this.position = position
         this.rotation = rotation
         this.classicWorldOffset = classicWorldOffset
         this.inventory = inventory
+        this.settings = settings
         this.verified = verified
         this.keepUnverified = keepUnverified
         this.lastUVNI = lastUVNI
