@@ -6,7 +6,7 @@ const packetWriter = require('../../data_handlers/clientbound_packets/packet_wri
  * @param {Socket} socket 
  * @param {number[][][]} blocks 
  */
-function GenerateBlocks(socket, blocks) {
+function GenerateBlocks(socket, blocks, notFirst) {
     var levelData = dataWriter.writeLevelData(socket, blocks)
     packetWriter.Level_Initilize(socket)(socket)
     packetWriter._alt.Level_Data_Chunk_alt0(socket)(socket, levelData)

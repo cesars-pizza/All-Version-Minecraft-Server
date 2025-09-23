@@ -43,6 +43,7 @@ function GeneratePlayer(world, socket, username) {
         username: username,
         position: {x: 1.5, y: 1, z: 1.5},
         rotation: {pitch: 0, yaw: 0},
+        classicWorldOffset: {x: 0, z: 0},
         inventory: {
             selected_slot: 0,
             slots: []

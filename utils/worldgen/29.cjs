@@ -105,7 +105,7 @@ function GenerateClassicWorld(world, socket, offsetX, offsetZ) {
             for (var innerY = 0; innerY < 64; innerY++) {
                 for (var innerZ = 0; innerZ < 16; innerZ++) {
                     for (var innerX = 0; innerX < 16; innerX++) {
-                        blocks[innerY][innerZ + 16 * z][innerX + 16 * x] = chunk[innerY][innerZ][innerX]
+                        blocks[innerY][utils.math.NegMod(innerZ + 16 * z, 256)][utils.math.NegMod(innerX + 16 * x, 256)] = chunk[innerY][innerZ][innerX]
                     }
                 }
             }

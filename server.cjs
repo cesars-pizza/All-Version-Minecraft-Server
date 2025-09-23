@@ -26,7 +26,11 @@ var world = {
     versions: [],
     universalRegistries: {
         block: []
-    }
+    },
+    serverFunctions: {
+        save: ServerSave
+    },
+    closeServer: false
 }
 
 setupLogs()
@@ -274,13 +278,35 @@ function ServerTick() {
         }
         world.loadedPlayers[i].tick.systemMessages = []
 
+        for (var j = 0; j < world.loadedPlayers[i].tick.errorMessages.length; j++) {
+            utils.tick_actions.message.ErrorMessage(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.loadedPlayers[i].tick.errorMessages[j])
+        }
+        world.loadedPlayers[i].tick.errorMessages = []
+
         if (world.loadedPlayers[i].tick.teleportSelf) {
             utils.tick_actions.teleport(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket)
             world.loadedPlayers[i].tick.teleportSelf = false
         }
+
+        if (world.loadedPlayers[i].tick.teleportOthers) {
+            for (var j = 0; j < world.loadedPlayers.length; j++) {
+                utils.tick_actions.move_player_pos_rot(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.loadedPlayers[j].classicID, world.loadedPlayers[j].position, world.loadedPlayers[j].rotation)
+            }
+        }
+
+        if (world.closeServer) {
+            world.loadedPlayers[i].socket.disconnect = "serverClosed"
+            utils.disconnect(world.loadedPlayers[i].socket)(world, world.loadedPlayers[i].socket)
+        }
     }
     world.blockUpdates = []
     world.disconnectedPlayers = []
+    if (world.closeServer) {
+        setTimeout(() => {
+            process.exit(1)
+        }, 1000)
+        world.closeServer = false
+    }
 }
 
 setInterval(ServerSave, 120000)

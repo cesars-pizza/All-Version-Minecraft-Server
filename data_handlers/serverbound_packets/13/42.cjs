@@ -1,4 +1,4 @@
-const {Socket} = require('../../../data_structures.cjs')
+const {Socket, World} = require('../../../data_structures.cjs')
 const dataReader = require('../../data_reader.cjs')
 const packetWriter = require('../../clientbound_packets/packet_writer.cjs')
 const utils = require('../../../utils/utils.cjs')
@@ -7,6 +7,7 @@ var packetID = 13
 var packetIdentifier = "Message"
 
 /** 
+ * @param {World} world 
  * @param {Socket} socket 
  * @param {Buffer} data 
  */
@@ -21,7 +22,87 @@ function ReadPacket(world, socket, data) {
         var message = dataReader.readString(socket, data, playerID.nextPos)
 
         if (socket.disconnect == "") {
-            socket.thisPlayer.tick.messages.push(message.value)
+            if (message.value[0] == "/") {
+                var commandParts = message.value.split(' ')
+
+                if (commandParts[0] == "/save") {
+                    world.serverFunctions.save()
+                    socket.thisPlayer.tick.systemMessages.push("Saved Server")
+                } else if (commandParts[0] == "/close") {
+                    world.closeServer = true
+                } else if (commandParts[0] == "/tp") {
+                    if (commandParts.length >= 2) {
+                        var playerIndex = world.loadedPlayers.map((player) => player.username).indexOf(commandParts[1])
+                        if (playerIndex >= 0) {
+                            var newPosition = {
+                                x: Math.round(world.loadedPlayers[playerIndex].position.x - 0.5) + 0.5,
+                                y: Math.round(world.loadedPlayers[playerIndex].position.y - 0.5) + 0.5,
+                                z: Math.round(world.loadedPlayers[playerIndex].position.z - 0.5) + 0.5
+                            }
+
+                            var classicWorldOffset = {
+                                x: Math.floor(socket.thisPlayer.position.x / 256),
+                                z: Math.floor(socket.thisPlayer.position.z / 256)
+                            }
+                            var newClassicWorldOffset = {
+                                x: Math.floor(newPosition.x / 256),
+                                z: Math.floor(newPosition.z / 256)
+                            }
+
+                            socket.thisPlayer.position = newPosition
+                            socket.thisPlayer.classicWorldOffset = newClassicWorldOffset
+                            socket.thisPlayer.tick.position = true
+                            socket.thisPlayer.tick.teleportSelf = true
+                            socket.thisPlayer.tick.systemMessages.push(`Teleported to ${commandParts[1]}`)
+                            if (classicWorldOffset.x != newClassicWorldOffset.x || classicWorldOffset.z != newClassicWorldOffset.z) {
+                                packetWriter.Server_Identification(socket)(world, socket, commandParts[1], "Teleporting...", true)
+                                utils.world_packets(socket)(socket, utils.worldgen.GenerateClassicWorld(socket)(world, socket, newClassicWorldOffset.x, newClassicWorldOffset.z))
+                            }
+                        } else socket.thisPlayer.tick.errorMessages.push(`${commandParts[1]} is not online.`)
+                    } else socket.thisPlayer.tick.errorMessages.push(`Missing argument: player`)
+                } else if (commandParts[0] == "/plotTp") {
+                    if (commandParts.length >= 3) {
+                        var plotPos = {
+                            x: Number(commandParts[1]),
+                            z: Number(commandParts[2])
+                        }
+
+                        if (!Number.isInteger(plotPos.x)) socket.thisPlayer.tick.errorMessages.push(`Argument plotX needs to be an integer`)
+                        else if (!Number.isInteger(plotPos.z)) socket.thisPlayer.tick.errorMessages.push(`Argument plotZ needs to be an integer`)
+                        else {
+                            if (plotPos.x < -32768 || plotPos.x > 32767) socket.thisPlayer.tick.errorMessages.push(`Argument plotX out of range [-32768...32767]`)
+                            else if (plotPos.x < -32768 || plotPos.x > 32767) socket.thisPlayer.tick.errorMessages.push(`Argument plotZ out of range [-32768...32767]`)
+                            else {
+                                var newPosition = {
+                                    x: plotPos.x * 32 + 15.5,
+                                    y: 2,
+                                    z: plotPos.z * 32 + 15.5
+                                }
+
+                                var classicWorldOffset = {
+                                    x: Math.floor(socket.thisPlayer.position.x / 256),
+                                    z: Math.floor(socket.thisPlayer.position.z / 256)
+                                }
+                                var newClassicWorldOffset = {
+                                    x: Math.floor(newPosition.x / 256),
+                                    z: Math.floor(newPosition.z / 256)
+                                }
+
+                                socket.thisPlayer.position = newPosition
+                                socket.thisPlayer.classicWorldOffset = newClassicWorldOffset
+                                socket.thisPlayer.tick.position = true
+                                socket.thisPlayer.tick.teleportSelf = true
+                                socket.thisPlayer.tick.systemMessages.push(`Teleported to plot ${plotPos.x}, ${plotPos.z}`)
+                                if (classicWorldOffset.x != newClassicWorldOffset.x || classicWorldOffset.z != newClassicWorldOffset.z) {
+                                    packetWriter.Server_Identification(socket)(world, socket, `Plot ${plotPos.x}, ${plotPos.z}`, "Teleporting...", true)
+                                    utils.world_packets(socket)(socket, utils.worldgen.GenerateClassicWorld(socket)(world, socket, newClassicWorldOffset.x, newClassicWorldOffset.z), true)
+                                }
+                            }
+                        }
+                    } else if (commandParts.length == 2) socket.thisPlayer.tick.errorMessages.push(`Missing argument: plotZ`)
+                    else socket.thisPlayer.tick.errorMessages.push(`Missing argument: plotX`)
+                } else socket.thisPlayer.tick.errorMessages.push(`Unknown command: "${message.value.split(' ')[0]}"`)
+            } else socket.thisPlayer.tick.messages.push(message.value)
         }
     }
     

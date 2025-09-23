@@ -43,7 +43,7 @@ function ReadPacket(world, socket, data) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
 
                     packetWriter.Server_Identification(socket)(world, socket, world.config.serverName, world.config.serverStatus, true)
-                    var blocks = utils.worldgen.GenerateClassicWorld(socket)(world, socket, 0, 0)
+                    var blocks = utils.worldgen.GenerateClassicWorld(socket)(world, socket, socket.thisPlayer.classicWorldOffset.x, socket.thisPlayer.classicWorldOffset.z)
                     utils.world_packets(socket)(socket, blocks)
                     packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
                     for (var i = 0; i < world.loadedPlayers.length; i++) {
@@ -56,7 +56,7 @@ function ReadPacket(world, socket, data) {
                     socket.thisPlayer.socket = socket
                     socket.thisPlayer.classicID = utils.player.GetClassicID(socket)(world, socket)
                     socket.thisPlayer.inWorld = true
-                    socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], teleportSelf: false}
+                    socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
                 } else {
                     socket.setDisconnect("unverified")
                     utils.disconnect(socket)(world, socket)

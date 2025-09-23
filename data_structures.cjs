@@ -9,7 +9,7 @@ class Socket {
      * @param {boolean} identified
      * @param {Buffer} dataBuffer    
      * @param {Player} thisPlayer 
-     * @param {"" | "maxPlayers" | "multipleInstances" | "invalidVersion" | "unverified"} disconnect 
+     * @param {"" | "maxPlayers" | "multipleInstances" | "invalidVersion" | "unverified" | "serverClosed"} disconnect 
      */
     constructor(logText, index, log, writePacket, setDisconnect, packetCount, identified, upvn, uvni, dataBuffer, thisPlayer, disconnect) {
         this.logText = logText
@@ -61,8 +61,10 @@ class World {
      * @param {{classicID: number, username: string}[]} disconnectedPlayers 
      * @param {{supported: boolean, name: string, pvn: number}[]} versions 
      * @param {{block: string[]}} universalRegistries 
+     * @param {{save: () => {}}} serverFunctions 
+     * @param {boolean} closeServer
      */
-    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, builds, blockUpdates, disconnectedPlayers, versions, universalRegistries) {
+    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, builds, blockUpdates, disconnectedPlayers, versions, universalRegistries, serverFunctions, closeServer) {
         this.config = config
         this.players = players
         this.maxPlayerCount = maxPlayerCount
@@ -74,6 +76,8 @@ class World {
         this.disconnectedPlayers = disconnectedPlayers
         this.versions = versions
         this.universalRegistries = universalRegistries
+        this.serverFunctions = serverFunctions
+        this.closeServer = closeServer
     }
 }
 
@@ -83,24 +87,26 @@ class Player {
      * @param {string} username 
      * @param {Position} position 
      * @param {Rotation} rotation 
+     * @param {{x: number, z: number}} classicWorldOffset
      * @param {{selected_slot: number, slots: Slot[]}} inventory 
      * @param {boolean} verified 
      * @param {boolean} keepUnverified 
      * @param {number} lastUVNI 
      * @param {number} classicID 
      * @param {boolean} inWorld 
-     * @param {{spawn: boolean, position: boolean, rotation: boolean, messages: string[], systemMessages: string[], teleportSelf: boolean}} tick 
+     * @param {{spawn: boolean, position: boolean, rotation: boolean, messages: string[], systemMessages: string[], errorMessages: string[], teleportSelf: boolean, teleportOthers: boolean}} tick 
      * @param {boolean} save 
      * @param {number} upvn 
      * @param {number} uvni
      * @param {{block: number}} selectedRegistries  
      * @param {Socket} socket
      */
-    constructor(uuid, username, position, rotation, inventory, verified, keepUnverified, lastUVNI, classicID, inWorld, tick, save, upvn, uvni, selectedRegistries, socket) {
+    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, verified, keepUnverified, lastUVNI, classicID, inWorld, tick, save, upvn, uvni, selectedRegistries, socket) {
         this.uuid = uuid
         this.username = username
         this.position = position
         this.rotation = rotation
+        this.classicWorldOffset = classicWorldOffset
         this.inventory = inventory
         this.verified = verified
         this.keepUnverified = keepUnverified

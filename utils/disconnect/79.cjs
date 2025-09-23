@@ -18,6 +18,8 @@ function Disconnect(world, socket) {
         packetWriter.Disconnect_Player(socket)(socket, `Player With The Name ${socket.thisPlayer.username} Is Already Connected.`)
     } else if (socket.disconnect == "unverified") {
         packetWriter.Disconnect_Player(socket)(socket, `This Account Has Been Previously Verified.`)
+    } else if (socket.disconnect == "serverClosed") {
+        packetWriter.Disconnect_Player(socket)(socket, `Server Closed.`)
     } else {
         packetWriter.Disconnect_Player(socket)(socket, `ERR: ${socket.disconnect}`)
     }

@@ -44,4 +44,15 @@ function SystemMessage(socket) {
     }
 }
 
-module.exports = {PlayerMessage, JoinMessage, QuitMessage, SystemMessage}
+/** 
+ * @param {Socket} socket 
+ */
+function ErrorMessage(socket) {
+    if (socket.thisPlayer.upvn >= 0 && socket.thisPlayer.upvn <= 4) return require('./42.cjs').ErrorMessage
+    else {
+        socket.log(`ERR: Cannot Run Error Message for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
+        return () => {}
+    }
+}
+
+module.exports = {PlayerMessage, JoinMessage, QuitMessage, SystemMessage, ErrorMessage}

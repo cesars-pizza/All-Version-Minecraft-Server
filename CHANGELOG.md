@@ -205,7 +205,7 @@ The client now displays the server's name and status while loading the terrain.
 
 ### Added Features
 
-Chat was added to the game. This allows the server to send messages when a player joins and quits and as clarification of why the player is teleported when a block is placed inside them. It also allows for a message to show up whenever you enter a plot containing information about it.
+Chat was added to the game. This allows the server to send messages when a player joins and quits and as clarification of why the player is teleported when a block is placed inside them. It also allows for a message to show up whenever you enter a plot containing information about it. This allows for new server commands.
 
 The client now detects if players are inside blocks being placed. This removes the previous function of teleporting players off of your plot when you place a block inside of them and allows players to block player building.
 

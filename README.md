@@ -22,6 +22,24 @@ Open the project folder in your desired console / terminal and run the command `
 
 Any settings including the server port and name can be edited inside of `config.json`
 
+## Commands
+
+### /save
+
+Saves all players and builds
+
+### /close
+
+Disconnects all players and turns off the server
+
+### /tp [player]
+
+Teleports to other player
+
+### /plotTp [plotX] [plotZ]
+
+Teleports to a specific plot. Can teleport to plots outside of the 256 x 256 classic world (This is an unitentional feature of the classic client and can cause the game to run out of memory and crash).
+
 ## Copyright
 
 This project does not use any code sourced directly from Minecraft. It simply follows a protocol found within the game. 

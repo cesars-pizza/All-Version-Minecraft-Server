@@ -15,6 +15,7 @@ function Disconnect(world, socket) {
     else if (socket.disconnect == "invalidVersion") errText = `This Server Has Blocked This Version.`
     else if (socket.disconnect == "multipleInstances") errText = `Player With The Name ${socket.thisPlayer.username} Is Already Connected.`
     else if (socket.disconnect == "unverified") errText = `This Account Has Been Previously Verified.`
+    else if (socket.disconnect == "serverClosed") errText = `Server Closed.`
     else errText = `ERR: ${socket.disconnect}`
 
     packetWriter.Server_Identification(socket)(world, socket, "Connection lost", errText)

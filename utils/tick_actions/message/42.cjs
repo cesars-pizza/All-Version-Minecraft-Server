@@ -30,4 +30,11 @@ function SystemMessage(socket, message) {
     packetWriter.Message(socket)(socket, 0, `&d[System] ${message}`)
 }
 
-module.exports = {PlayerMessage, JoinMessage, QuitMessage, SystemMessage}
+/** 
+ * @param {Socket} socket 
+ */
+function ErrorMessage(socket, message) {
+    packetWriter.Message(socket)(socket, 0, `&c${message}`)
+}
+
+module.exports = {PlayerMessage, JoinMessage, QuitMessage, SystemMessage, ErrorMessage}

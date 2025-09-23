@@ -52,6 +52,11 @@ function Disconnect(world, socket) {
         blocks = WriteString(blocks, "unverified client", {x: 64, y: 1, z: 3})
         thisPosition = {x: 25.15625, y: 2.59375, z: 46}
         thisRotation = {pitch: 255, yaw: 65}
+    } else if (socket.disconnect == "serverClosed") {
+        blocks = WriteString(blocks, "err", {x: 64, y: 10, z: 3})
+        blocks = WriteString(blocks, "server closed", {x: 64, y: 1, z: 3})
+        thisPosition = {x: 25.15625, y: 2.59375, z: 46}
+        thisRotation = {pitch: 255, yaw: 65}
     } else {
         blocks = WriteString(blocks, "err", {x: 39, y: 1, z: 3})
         thisPosition = {x: 30.625, y: 2.59375, z: 11.84375}
