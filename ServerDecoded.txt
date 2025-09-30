@@ -1,0 +1,1146 @@
+(x0001) 001 / Login Response
+(x0001) 050 / Pre-Chunk
+(x0051) 021 / Pickup Spawn
+(x0001) 050 / Pre-Chunk
+(x0015) 021 / Pickup Spawn
+(x0001) 003 / Chat Message
+(x0128) 050 / Pre-Chunk
+(x0001) 021 / Pickup Spawn
+(x0024) 050 / Pre-Chunk
+(x0009) 021 / Pickup Spawn
+(x0016) 050 / Pre-Chunk
+(x0003) 021 / Pickup Spawn
+(x0026) 050 / Pre-Chunk
+(x0017) 021 / Pickup Spawn
+(x0031) 050 / Pre-Chunk
+(x0004) 021 / Pickup Spawn
+(x0022) 050 / Pre-Chunk
+(x0007) 021 / Pickup Spawn
+(x0033) 050 / Pre-Chunk
+(x0008) 021 / Pickup Spawn
+(x0018) 050 / Pre-Chunk
+(x0002) 021 / Pickup Spawn
+(x0133) 050 / Pre-Chunk
+(x0001) 013 / Player Position & Look
+(x0001) 000 / Keep Alive
+(x0049) 030 / Entity
+(x0001) 050 / Pre-Chunk
+(x0003) 030 / Entity
+(x0007) 050 / Pre-Chunk
+(x0051) 030 / Entity
+(x0001) 053 / Block Change
+(x0008) 030 / Entity
+(x0011) 053 / Block Change
+(x0004) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0015) 053 / Block Change
+(x0001) 030 / Entity
+(x0008) 051 / Map Chunk
+(x0007) 053 / Block Change
+(x0001) 030 / Entity
+(x0001) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0050) 030 / Entity
+(x0001) 053 / Block Change
+(x0002) 030 / Entity
+(x0001) 053 / Block Change
+(x0001) 030 / Entity
+(x0005) 053 / Block Change
+(x0051) 030 / Entity
+(x0001) 053 / Block Change
+(x0004) 030 / Entity
+(x0005) 053 / Block Change
+(x0001) 030 / Entity
+(x0003) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 053 / Block Change
+(x0002) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 053 / Block Change
+(x0001) 030 / Entity
+(x0003) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0004) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0050) 030 / Entity
+(x0001) 051 / Map Chunk
+(x0002) 030 / Entity
+(x0001) 051 / Map Chunk
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0051) 030 / Entity
+(x0001) 051 / Map Chunk
+(x0004) 030 / Entity
+(x0001) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0001) 030 / Entity
+(x0008) 053 / Block Change
+(x0001) 030 / Entity
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 030 / Entity
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0050) 030 / Entity
+(x0001) 053 / Block Change
+(x0003) 030 / Entity
+(x0001) 053 / Block Change
+(x0051) 030 / Entity
+(x0001) 053 / Block Change
+(x0004) 030 / Entity
+(x0002) 053 / Block Change
+(x0001) 030 / Entity
+(x0001) 053 / Block Change
+
+ChunkX: 3:10
+ChunkZ: -1:10
+
+Chunk: (-7, -11)
+Chunk: (-7, -10)
+Chunk: (-7, -9)
+Chunk: (-7, -8)
+Chunk: (-7, -7)
+Chunk: (-7, -6)
+Chunk: (-7, -5)
+Chunk: (-7, -4)
+Chunk: (-7, -3)
+Chunk: (-7, -2)
+Chunk: (-7, -1)
+Chunk: (-7, 0)
+Chunk: (-7, 1)
+Chunk: (-7, 2)
+Chunk: (-7, 3)
+Chunk: (-7, 4)
+Chunk: (-7, 5)
+Chunk: (-7, 6)
+Chunk: (-7, 7)
+Chunk: (-7, 8)
+Chunk: (-7, 9)
+Chunk: (-6, -11)
+Chunk: (-6, -10)
+Chunk: (-6, -9)
+Chunk: (-6, -8)
+Chunk: (-6, -7)
+Chunk: (-6, -6)
+Chunk: (-6, -5)
+Chunk: (-6, -4)
+Chunk: (-6, -3)
+Chunk: (-6, -2)
+Chunk: (-6, -1)
+Chunk: (-6, 0)
+Chunk: (-6, 1)
+Chunk: (-6, 2)
+Chunk: (-6, 3)
+Chunk: (-6, 4)
+Chunk: (-6, 5)
+Chunk: (-6, 6)
+Chunk: (-6, 7)
+Chunk: (-6, 8)
+Chunk: (-6, 9)
+Chunk: (-5, -11)
+Chunk: (-5, -10)
+Chunk: (-5, -9)
+Chunk: (-5, -8)
+Chunk: (-5, -7)
+Chunk: (-5, -6)
+Chunk: (-5, -5)
+Chunk: (-5, -4)
+Chunk: (-5, -3)
+Chunk: (-5, -2)
+Chunk: (-5, -1)
+Chunk: (-5, 0)
+Chunk: (-5, 1)
+Chunk: (-5, 2)
+Chunk: (-5, 3)
+Chunk: (-5, 4)
+Chunk: (-5, 5)
+Chunk: (-5, 6)
+Chunk: (-5, 7)
+Chunk: (-5, 8)
+Chunk: (-5, 9)
+Chunk: (-4, -11)
+Chunk: (-4, -10)
+Chunk: (-4, -9)
+Chunk: (-4, -8)
+Chunk: (-4, -7)
+Chunk: (-4, -6)
+Chunk: (-4, -5)
+Chunk: (-4, -4)
+Chunk: (-4, -3)
+Chunk: (-4, -2)
+Chunk: (-4, -1)
+Chunk: (-4, 0)
+Chunk: (-4, 1)
+Chunk: (-4, 2)
+Chunk: (-4, 3)
+Chunk: (-4, 4)
+Chunk: (-4, 5)
+Chunk: (-4, 6)
+Chunk: (-4, 7)
+Chunk: (-4, 8)
+Chunk: (-4, 9)
+Chunk: (-3, -11)
+Chunk: (-3, -10)
+Chunk: (-3, -9)
+Chunk: (-3, -8)
+Chunk: (-3, -7)
+Chunk: (-3, -6)
+Chunk: (-3, -5)
+Chunk: (-3, -4)
+Chunk: (-3, -3)
+Chunk: (-3, -2)
+Chunk: (-3, -1)
+Chunk: (-3, 0)
+Chunk: (-3, 1)
+Chunk: (-3, 2)
+Chunk: (-3, 3)
+Chunk: (-3, 4)
+Chunk: (-3, 5)
+Chunk: (-3, 6)
+Chunk: (-3, 7)
+Chunk: (-3, 8)
+Chunk: (-3, 9)
+Chunk: (-2, -11)
+Chunk: (-2, -10)
+Chunk: (-2, -9)
+Chunk: (-2, -8)
+Chunk: (-2, -7)
+Chunk: (-2, -6)
+Chunk: (-2, -5)
+Chunk: (-2, -4)
+Chunk: (-2, -3)
+Chunk: (-2, -2)
+Chunk: (-2, -1)
+Chunk: (-2, 0)
+Chunk: (-2, 1)
+Chunk: (-2, 2)
+Chunk: (-2, 3)
+Chunk: (-2, 4)
+Chunk: (-2, 5)
+Chunk: (-2, 6)
+Chunk: (-2, 7)
+Chunk: (-2, 8)
+Chunk: (-2, 9)
+Chunk: (-1, -11)
+Chunk: (-1, -10)
+Chunk: (-1, -9)
+Chunk: (-1, -8)
+Chunk: (-1, -7)
+Chunk: (-1, -6)
+Chunk: (-1, -5)
+Chunk: (-1, -4)
+Chunk: (-1, -3)
+Chunk: (-1, -2)
+Chunk: (-1, -1)
+Chunk: (-1, 0)
+Chunk: (-1, 1)
+Chunk: (-1, 2)
+Chunk: (-1, 3)
+Chunk: (-1, 4)
+Chunk: (-1, 5)
+Chunk: (-1, 6)
+Chunk: (-1, 7)
+Chunk: (-1, 8)
+Chunk: (-1, 9)
+Chunk: (0, -11)
+Chunk: (0, -10)
+Chunk: (0, -9)
+Chunk: (0, -8)
+Chunk: (0, -7)
+Chunk: (0, -6)
+Chunk: (0, -5)
+Chunk: (0, -4)
+Chunk: (0, -3)
+Chunk: (0, -2)
+Chunk: (0, -1)
+Chunk: (0, 0)
+Chunk: (0, 1)
+Chunk: (0, 2)
+Chunk: (0, 3)
+Chunk: (0, 4)
+Chunk: (0, 5)
+Chunk: (0, 6)
+Chunk: (0, 7)
+Chunk: (0, 8)
+Chunk: (0, 9)
+Chunk: (1, -11)
+Chunk: (1, -10)
+Chunk: (1, -9)
+Chunk: (1, -8)
+Chunk: (1, -7)
+Chunk: (1, -6)
+Chunk: (1, -5)
+Chunk: (1, -4)
+Chunk: (1, -3)
+Chunk: (1, -2)
+Chunk: (1, -1)
+Chunk: (1, 0)
+Chunk: (1, 1)
+Chunk: (1, 2)
+Chunk: (1, 3)
+Chunk: (1, 4)
+Chunk: (1, 5)
+Chunk: (1, 6)
+Chunk: (1, 7)
+Chunk: (1, 8)
+Chunk: (1, 9)
+Chunk: (2, -11)
+Chunk: (2, -10)
+Chunk: (2, -9)
+Chunk: (2, -8)
+Chunk: (2, -7)
+Chunk: (2, -6)
+Chunk: (2, -5)
+Chunk: (2, -4)
+Chunk: (2, -3)
+Chunk: (2, -2)
+Chunk: (2, -1)
+Chunk: (2, 0)
+Chunk: (2, 1)
+Chunk: (2, 2)
+Chunk: (2, 3)
+Chunk: (2, 4)
+Chunk: (2, 5)
+Chunk: (2, 6)
+Chunk: (2, 7)
+Chunk: (2, 8)
+Chunk: (2, 9)
+Chunk: (3, -11)
+Chunk: (3, -10)
+Chunk: (3, -9)
+Chunk: (3, -8)
+Chunk: (3, -7)
+Chunk: (3, -6)
+Chunk: (3, -5)
+Chunk: (3, -4)
+Chunk: (3, -3)
+Chunk: (3, -2)
+Chunk: (3, -1)
+Chunk: (3, 0)
+Chunk: (3, 1)
+Chunk: (3, 2)
+Chunk: (3, 3)
+Chunk: (3, 4)
+Chunk: (3, 5)
+Chunk: (3, 6)
+Chunk: (3, 7)
+Chunk: (3, 8)
+Chunk: (3, 9)
+Chunk: (4, -11)
+Chunk: (4, -10)
+Chunk: (4, -9)
+Chunk: (4, -8)
+Chunk: (4, -7)
+Chunk: (4, -6)
+Chunk: (4, -5)
+Chunk: (4, -4)
+Chunk: (4, -3)
+Chunk: (4, -2)
+Chunk: (4, -1)
+Chunk: (4, 0)
+Chunk: (4, 1)
+Chunk: (4, 2)
+Chunk: (4, 3)
+Chunk: (4, 4)
+Chunk: (4, 5)
+Chunk: (4, 6)
+Chunk: (4, 7)
+Chunk: (4, 8)
+Chunk: (4, 9)
+Chunk: (5, -11)
+Chunk: (5, -10)
+Chunk: (5, -9)
+Chunk: (5, -8)
+Chunk: (5, -7)
+Chunk: (5, -6)
+Chunk: (5, -5)
+Chunk: (5, -4)
+Chunk: (5, -3)
+Chunk: (5, -2)
+Chunk: (5, -1)
+Chunk: (5, 0)
+Chunk: (5, 1)
+Chunk: (5, 2)
+Chunk: (5, 3)
+Chunk: (5, 4)
+Chunk: (5, 5)
+Chunk: (5, 6)
+Chunk: (5, 7)
+Chunk: (5, 8)
+Chunk: (5, 9)
+Chunk: (6, -11)
+Chunk: (6, -10)
+Chunk: (6, -9)
+Chunk: (6, -8)
+Chunk: (6, -7)
+Chunk: (6, -6)
+Chunk: (6, -5)
+Chunk: (6, -4)
+Chunk: (6, -3)
+Chunk: (6, -2)
+Chunk: (6, -1)
+Chunk: (6, 0)
+Chunk: (6, 1)
+Chunk: (6, 2)
+Chunk: (6, 3)
+Chunk: (6, 4)
+Chunk: (6, 5)
+Chunk: (6, 6)
+Chunk: (6, 7)
+Chunk: (6, 8)
+Chunk: (6, 9)
+Chunk: (7, -11)
+Chunk: (7, -10)
+Chunk: (7, -9)
+Chunk: (7, -8)
+Chunk: (7, -7)
+Chunk: (7, -6)
+Chunk: (7, -5)
+Chunk: (7, -4)
+Chunk: (7, -3)
+Chunk: (7, -2)
+Chunk: (7, -1)
+Chunk: (7, 0)
+Chunk: (7, 1)
+Chunk: (7, 2)
+Chunk: (7, 3)
+Chunk: (7, 4)
+Chunk: (7, 5)
+Chunk: (7, 6)
+Chunk: (7, 7)
+Chunk: (7, 8)
+Chunk: (7, 9)
+Chunk: (8, -11)
+Chunk: (8, -10)
+Chunk: (8, -9)
+Chunk: (8, -8)
+Chunk: (8, -7)
+Chunk: (8, -6)
+Chunk: (8, -5)
+Chunk: (8, -4)
+Chunk: (8, -3)
+Chunk: (8, -2)
+Chunk: (8, -1)
+Chunk: (8, 0)
+Chunk: (8, 1)
+Chunk: (8, 2)
+Chunk: (8, 3)
+Chunk: (8, 4)
+Chunk: (8, 5)
+Chunk: (8, 6)
+Chunk: (8, 7)
+Chunk: (8, 8)
+Chunk: (8, 9)
+Chunk: (9, -11)
+Chunk: (9, -10)
+Chunk: (9, -9)
+Chunk: (9, -8)
+Chunk: (9, -7)
+Chunk: (9, -6)
+Chunk: (9, -5)
+Chunk: (9, -4)
+Chunk: (9, -3)
+Chunk: (9, -2)
+Chunk: (9, -1)
+Chunk: (9, 0)
+Chunk: (9, 1)
+Chunk: (9, 2)
+Chunk: (9, 3)
+Chunk: (9, 4)
+Chunk: (9, 5)
+Chunk: (9, 6)
+Chunk: (9, 7)
+Chunk: (9, 8)
+Chunk: (9, 9)
+Chunk: (10, -11)
+Chunk: (10, -10)
+Chunk: (10, -9)
+Chunk: (10, -8)
+Chunk: (10, -7)
+Chunk: (10, -6)
+Chunk: (10, -5)
+Chunk: (10, -4)
+Chunk: (10, -3)
+Chunk: (10, -2)
+Chunk: (10, -1)
+Chunk: (10, 0)
+Chunk: (10, 1)
+Chunk: (10, 2)
+Chunk: (10, 3)
+Chunk: (10, 4)
+Chunk: (10, 5)
+Chunk: (10, 6)
+Chunk: (10, 7)
+Chunk: (10, 8)
+Chunk: (10, 9)
+Chunk: (11, -11)
+Chunk: (11, -10)
+Chunk: (11, -9)
+Chunk: (11, -8)
+Chunk: (11, -7)
+Chunk: (11, -6)
+Chunk: (11, -5)
+Chunk: (11, -4)
+Chunk: (11, -3)
+Chunk: (11, -2)
+Chunk: (11, -1)
+Chunk: (11, 0)
+Chunk: (11, 1)
+Chunk: (11, 2)
+Chunk: (11, 3)
+Chunk: (11, 4)
+Chunk: (11, 5)
+Chunk: (11, 6)
+Chunk: (11, 7)
+Chunk: (11, 8)
+Chunk: (11, 9)
+Chunk: (12, -11)
+Chunk: (12, -10)
+Chunk: (12, -9)
+Chunk: (12, -8)
+Chunk: (12, -7)
+Chunk: (12, -6)
+Chunk: (12, -5)
+Chunk: (12, -4)
+Chunk: (12, -3)
+Chunk: (12, -2)
+Chunk: (12, -1)
+Chunk: (12, 0)
+Chunk: (12, 1)
+Chunk: (12, 2)
+Chunk: (12, 3)
+Chunk: (12, 4)
+Chunk: (12, 5)
+Chunk: (12, 6)
+Chunk: (12, 7)
+Chunk: (12, 8)
+Chunk: (12, 9)
+Chunk: (13, -11)
+Chunk: (13, -10)
+Chunk: (13, -9)
+Chunk: (13, -8)
+Chunk: (13, -7)
+Chunk: (13, -6)
+Chunk: (13, -5)
+Chunk: (13, -4)
+Chunk: (13, -3)
+Chunk: (13, -2)
+Chunk: (13, -1)
+Chunk: (13, 0)
+Chunk: (13, 1)
+Chunk: (13, 2)
+Chunk: (13, 3)
+Chunk: (13, 4)
+Chunk: (13, 5)
+Chunk: (13, 6)
+Chunk: (13, 7)
+Chunk: (13, 8)
+Chunk: (13, 9)
+
+BC: (6, 4, 1) => 11
+BC: (6, 9, -5) => 11
+BC: (-6, 4, -6) => 11
+BC: (4, 71, 8) => 3
+BC: (8, 73, 4) => 0
+BC: (-5, 75, -7) => 3
+BC: (-4, 5, 2) => 11
+BC: (6, 3, 8) => 11
+BC: (7, 8, 1) => 11
+BC: (-1, 71, 4) => 3
+BC: (6, 5, -5) => 11
+BC: (-4, 7, 0) => 11
+BC: (-6, 8, 6) => 11
+BC: (6, 5, 8) => 11
+BC: (-6, 6, -10) => 11
+BC: (-4, 3, 2) => 11
+BC: (-6, 6, 2) => 11
+BC: (1, 6, -2) => 11
+BC: (8, 76, 1) => 3
+BC: (3, 5, -3) => 11
+BC: (-3, 5, 8) => 11
+BC: (-5, 4, 7) => 11
+BC: (5, 10, 0) => 11
+BC: (7, 10, 2) => 11
+BC: (-1, 8, -1) => 11
+BC: (6, 3, -5) => 11
+BC: (2, 70, 8) => 0
+BC: (-5, 9, 1) => 11
+BC: (9, 72, -2) => 3
+BC: (3, 5, -9) => 11
+BC: (-1, 78, 1) => 3
+BC: (3, 8, -2) => 11
+BC: (-5, 10, -5) => 11
+BC: (-6, 9, 7) => 11
+BC: (-3, 8, -7) => 11
+BC: (-4, 3, -9) => 11
+BC: (-2, 10, -10) => 11
+BC: (-6, 8, 6) => 11
+BC: (-6, 6, -2) => 11
+BC: (-5, 4, 4) => 11
+BC: (7, 10, 7) => 11
+BC: (-1, 79, 1) => 9
+BC: (4, 5, -1) => 11
+BC: (3, 3, -3) => 11
+BC: (-5, 76, -7) => 3
+BC: (-5, 6, 4) => 11
+BC: (12, 75, 0) => 0
+BC: (3, 68, 2) => 0
+BC: (-2, 2, 3) => 11
+BC: (-6, 6, -4) => 11
+BC: (-2, 8, -6) => 11
+BC: (-4, 7, -10) => 11
+BC: (-4, 5, -9) => 11
+BC: (-3, 10, 2) => 11
+BC: (5, 72, -1) => 0
+BC: (5, 8, 2) => 11
+BC: (7, 70, 8) => 3
+BC: (3, 4, -2) => 11
+BC: (9, 7, 7) => 11
+BC: (6, 3, 2) => 11
+BC: (-5, 9, -7) => 11
+BC: (7, 74, 8) => 0
+BC: (10, 73, 6) => 0
+BC: (0, 67, -9) => 3
+BC: (-6, 6, 2) => 11
+BC: (3, 8, -1) => 11
+BC: (4, 70, 7) => 3
+BC: (-5, 98, 1) => 3
+BC: (5, 69, -2) => 3
+BC: (5, 7, -6) => 11
+BC: (5, 67, 0) => 3
+BC: (-1, 5, 1) => 11
+BC: (-2, 86, 5) => 0
+BC: (-5, 3, 2) => 11
+BC: (-4, 9, -5) => 11
+BC: (6, 5, -5) => 11
+BC: (-5, 5, -9) => 11
+BC: (7, 5, 2) => 11
+BC: (-4, 7, -5) => 11
+BC: (5, 6, -6) => 11
+BC: (-6, 5, -4) => 11
+BC: (-5, 8, -7) => 11
+BC: (-3, 8, 2) => 11
+BC: (-6, 3, -7) => 11
+BC: (-3, 119, 3) => 0
+BC: (-3, 7, -4) => 11
+BC: (-3, 83, -7) => 0
+BC: (-5, 4, 4) => 11
+BC: (6, 4, -5) => 11
+BC: (5, 9, -4) => 11
+BC: (-5, 7, 8) => 11
+BC: (5, 7, 2) => 11
+BC: (3, 9, 0) => 11
+BC: (4, 10, -3) => 11
+BC: (2, 7, -3) => 11
+BC: (10, 90, 5) => 3
+BC: (-4, 8, 2) => 11
+BC: (1, 9, -6) => 11
+
+Player: 0
+Entity: 1057
+Entity: 1069
+Entity: 1070
+Entity: 1071
+Entity: 1072
+Entity: 1073
+Entity: 1074
+Entity: 1075
+Entity: 1076
+Entity: 1077
+Entity: 1086
+Entity: 1087
+Entity: 1088
+Entity: 1096
+Entity: 1097
+Entity: 1098
+Entity: 1099
+Entity: 1100
+Entity: 1101
+Entity: 1102
+Entity: 1103
+Entity: 1104
+Entity: 1105
+Entity: 1106
+Entity: 1132
+Entity: 1133
+Entity: 1134
+Entity: 1135
+Entity: 1136
+Entity: 1137
+Entity: 1147
+Entity: 1148
+Entity: 1149
+Entity: 1150
+Entity: 1165
+Entity: 1166
+Entity: 1167
+Entity: 1168
+Entity: 1169
+Entity: 1170
+Entity: 1171
+Entity: 1178
+Entity: 1179
+Entity: 1180
+Entity: 1181
+Entity: 1182
+Entity: 1183
+Entity: 1184
+Entity: 1185
+Entity: 1196
+Entity: 1197
+Entity: 841
+Entity: 759
+Entity: 125
+Entity: 126
+Entity: 127
+Entity: 128
+Entity: 129
+Entity: 130
+Entity: 131
+Entity: 132
+Entity: 133
+Entity: 134
+Entity: 135
+Entity: 154
+Entity: 155
+Entity: 156
+Entity: 157
+Entity: 158
+Entity: 159
+Entity: 160
+Entity: 161
+Entity: 162
+Entity: 163
+Entity: 164
+Entity: 165
+Entity: 166
+Entity: 167
+Entity: 168
+Entity: 169
+Entity: 170
+Entity: 171
+Entity: 172
+Entity: 173
+Entity: 174
+Entity: 175
+Entity: 176
+Entity: 177
+Entity: 178
+Entity: 179
+Entity: 180
+Entity: 181
+Entity: 182
+Entity: 183
+Entity: 184
+Entity: 185
+Entity: 186
+Entity: 187
+Entity: 188
+Entity: 189
+Entity: 194
+Entity: 195
+Entity: 196
+Entity: 197
+Entity: 198
+Entity: 199
+Entity: 760
+Entity: 891
+Entity: 887
+Entity: 489
+Entity: 885
+Entity: 839
+Entity: 890
+Entity: 737
+Entity: 821
+Entity: 892
+Entity: 886
+Entity: 1057
+Entity: 1069
+Entity: 1070
+Entity: 1071
+Entity: 1072
+Entity: 1073
+Entity: 1074
+Entity: 1075
+Entity: 1076
+Entity: 1077
+Entity: 1086
+Entity: 1087
+Entity: 1088
+Entity: 1096
+Entity: 1097
+Entity: 1098
+Entity: 1099
+Entity: 1100
+Entity: 1101
+Entity: 1102
+Entity: 1103
+Entity: 1104
+Entity: 1105
+Entity: 1106
+Entity: 1132
+Entity: 1133
+Entity: 1134
+Entity: 1135
+Entity: 1136
+Entity: 1137
+Entity: 1147
+Entity: 1148
+Entity: 1149
+Entity: 1150
+Entity: 1165
+Entity: 1166
+Entity: 1167
+Entity: 1168
+Entity: 1169
+Entity: 1170
+Entity: 1171
+Entity: 1178
+Entity: 1179
+Entity: 1180
+Entity: 1181
+Entity: 1182
+Entity: 1183
+Entity: 1184
+Entity: 1185
+Entity: 1196
+Entity: 1197
+Entity: 841
+Entity: 759
+Entity: 125
+Entity: 126
+Entity: 127
+Entity: 128
+Entity: 129
+Entity: 130
+Entity: 131
+Entity: 132
+Entity: 133
+Entity: 134
+Entity: 135
+Entity: 154
+Entity: 155
+Entity: 156
+Entity: 157
+Entity: 158
+Entity: 159
+Entity: 160
+Entity: 161
+Entity: 162
+Entity: 163
+Entity: 164
+Entity: 165
+Entity: 166
+Entity: 167
+Entity: 168
+Entity: 169
+Entity: 170
+Entity: 171
+Entity: 172
+Entity: 173
+Entity: 174
+Entity: 175
+Entity: 176
+Entity: 177
+Entity: 178
+Entity: 179
+Entity: 180
+Entity: 181
+Entity: 182
+Entity: 183
+Entity: 184
+Entity: 185
+Entity: 186
+Entity: 187
+Entity: 188
+Entity: 189
+Entity: 194
+Entity: 195
+Entity: 196
+Entity: 197
+Entity: 198
+Entity: 199
+Entity: 760
+Entity: 891
+Entity: 887
+Entity: 489
+Entity: 885
+Entity: 839
+Entity: 890
+Entity: 737
+Entity: 821
+Entity: 892
+Entity: 886
+Entity: 1057
+Entity: 1069
+Entity: 1070
+Entity: 1071
+Entity: 1072
+Entity: 1073
+Entity: 1074
+Entity: 1075
+Entity: 1076
+Entity: 1077
+Entity: 1086
+Entity: 1087
+Entity: 1088
+Entity: 1096
+Entity: 1097
+Entity: 1098
+Entity: 1099
+Entity: 1100
+Entity: 1101
+Entity: 1102
+Entity: 1103
+Entity: 1104
+Entity: 1105
+Entity: 1106
+Entity: 1132
+Entity: 1133
+Entity: 1134
+Entity: 1135
+Entity: 1136
+Entity: 1137
+Entity: 1147
+Entity: 1148
+Entity: 1149
+Entity: 1150
+Entity: 1165
+Entity: 1166
+Entity: 1167
+Entity: 1168
+Entity: 1169
+Entity: 1170
+Entity: 1171
+Entity: 1178
+Entity: 1179
+Entity: 1180
+Entity: 1181
+Entity: 1182
+Entity: 1183
+Entity: 1184
+Entity: 1185
+Entity: 1196
+Entity: 1197
+Entity: 841
+Entity: 759
+Entity: 125
+Entity: 126
+Entity: 127
+Entity: 128
+Entity: 129
+Entity: 130
+Entity: 131
+Entity: 132
+Entity: 133
+Entity: 134
+Entity: 135
+Entity: 154
+Entity: 155
+Entity: 156
+Entity: 157
+Entity: 158
+Entity: 159
+Entity: 160
+Entity: 161
+Entity: 162
+Entity: 163
+Entity: 164
+Entity: 165
+Entity: 166
+Entity: 167
+Entity: 168
+Entity: 169
+Entity: 170
+Entity: 171
+Entity: 172
+Entity: 173
+Entity: 174
+Entity: 175
+Entity: 176
+Entity: 177
+Entity: 178
+Entity: 179
+Entity: 180
+Entity: 181
+Entity: 182
+Entity: 183
+Entity: 184
+Entity: 185
+Entity: 186
+Entity: 187
+Entity: 188
+Entity: 189
+Entity: 194
+Entity: 195
+Entity: 196
+Entity: 197
+Entity: 198
+Entity: 199
+Entity: 760
+Entity: 891
+Entity: 887
+Entity: 489
+Entity: 885
+Entity: 839
+Entity: 890
+Entity: 737
+Entity: 821
+Entity: 892
+Entity: 886
+Entity: 1057
+Entity: 1069
+Entity: 1070
+Entity: 1071
+Entity: 1072
+Entity: 1073
+Entity: 1074
+Entity: 1075
+Entity: 1076
+Entity: 1077
+Entity: 1086
+Entity: 1087
+Entity: 1088
+Entity: 1096
+Entity: 1097
+Entity: 1098
+Entity: 1099
+Entity: 1100
+Entity: 1101
+Entity: 1102
+Entity: 1103
+Entity: 1104
+Entity: 1105
+Entity: 1106
+Entity: 1132
+Entity: 1133
+Entity: 1134
+Entity: 1135
+Entity: 1136
+Entity: 1137
+Entity: 1147
+Entity: 1148
+Entity: 1149
+Entity: 1150
+Entity: 1165
+Entity: 1166
+Entity: 1167
+Entity: 1168
+Entity: 1169
+Entity: 1170
+Entity: 1171
+Entity: 1178
+Entity: 1179
+Entity: 1180
+Entity: 1181
+Entity: 1182
+Entity: 1183
+Entity: 1184
+Entity: 1185
+Entity: 1196
+Entity: 1197
+Entity: 841
+Entity: 759
+Entity: 125
+Entity: 126
+Entity: 127
+Entity: 128
+Entity: 129
+Entity: 130
+Entity: 131
+Entity: 132
+Entity: 133
+Entity: 134
+Entity: 135
+Entity: 154
+Entity: 155
+Entity: 156
+Entity: 157
+Entity: 158
+Entity: 159
+Entity: 160
+Entity: 161
+Entity: 162
+Entity: 163
+Entity: 164
+Entity: 165
+Entity: 166
+Entity: 167
+Entity: 168
+Entity: 169
+Entity: 170
+Entity: 171
+Entity: 172
+Entity: 173
+Entity: 174
+Entity: 175
+Entity: 176
+Entity: 177
+Entity: 178
+Entity: 179
+Entity: 180
+Entity: 181
+Entity: 182
+Entity: 183
+Entity: 184
+Entity: 185
+Entity: 186
+Entity: 187
+Entity: 188
+Entity: 189
+Entity: 194
+Entity: 195
+Entity: 196
+Entity: 197
+Entity: 198
+Entity: 199
+Entity: 760
+Entity: 891
+Entity: 887
+
+Keep Alive: 4
+Login Response: 1
+Chat Message: 1
+Player Position & Look: 1
+Pickup Spawn: 117
+Entity: 460
+Pre-Chunk: 441
+Map Chunk: 49
+Multi Block Change: 3
+Block Change: 98

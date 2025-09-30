@@ -94,6 +94,7 @@ class Player {
      * @param {boolean} keepUnverified 
      * @param {number} lastUVNI 
      * @param {number} classicID 
+     * @param {number} alphaID 
      * @param {boolean} inWorld 
      * @param {{spawn: boolean, position: boolean, rotation: boolean, messages: string[], systemMessages: string[], errorMessages: string[], teleportSelf: boolean, teleportOthers: boolean}} tick 
      * @param {boolean} save 
@@ -102,7 +103,7 @@ class Player {
      * @param {{block: number}} selectedRegistries  
      * @param {Socket} socket
      */
-    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, inWorld, tick, save, upvn, uvni, selectedRegistries, socket) {
+    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, tick, save, upvn, uvni, selectedRegistries, socket) {
         this.uuid = uuid
         this.username = username
         this.position = position
@@ -114,6 +115,7 @@ class Player {
         this.keepUnverified = keepUnverified
         this.lastUVNI = lastUVNI
         this.classicID = classicID
+        this.alphaID = alphaID
         this.inWorld = inWorld
         this.tick = tick
         this.save = save

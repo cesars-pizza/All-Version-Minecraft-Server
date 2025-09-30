@@ -9,6 +9,11 @@ module.exports = {
     Despawn_Player: require('./Despawn Player/distributer.cjs').WritePacket,
     Message: require('./Message/distributer.cjs').WritePacket,
     Disconnect_Player: require('./Disconnect Player/distributer.cjs').WritePacket,
+    Login_Response: require('./Login Response/distributer.cjs').WritePacket,
+    Player_Position_And_Rotation: require('./Player Position And Look/distributer.cjs').WritePacket,
+    Pre_Chunk: require('./Pre Chunk/distributer.cjs').WritePacket,
+    Map_Chunk: require('./Map Chunk/distributer.cjs').WritePacket,
+    Block_Change: require('./Block Change/distributer.cjs').WritePacket,
     _alt: {
         Level_Data_Chunk_alt0: require('./Level Data Chunk/distributer.cjs').WritePacket_Alt0
     }

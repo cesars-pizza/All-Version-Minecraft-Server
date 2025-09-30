@@ -17,6 +17,13 @@ function GetClassicID(socket) {
 
 /**
  * @param {World} world 
+ */
+function GetAlphaID(socket) {
+    return require('./29.cjs').GetAlphaID
+}
+
+/**
+ * @param {World} world 
  * @param {Socket} socket 
  * @param {string} username 
  */
@@ -59,4 +66,4 @@ function CollidingWithChunkLayer(socket) {
     }
 }
 
-module.exports = {GetPlayer, GetClassicID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer}
+module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer}

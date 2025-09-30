@@ -34,6 +34,21 @@ function GetClassicID(world, socket) {
 
 /**
  * @param {World} world 
+ */
+function GetAlphaID(world, socket) {
+    var selectedID = 0
+    var invalidIDs = world.loadedPlayers.map(player => player.alphaID)
+    while (true) {
+        if (invalidIDs.includes(selectedID)) {
+            selectedID++
+
+            if (selectedID == 4294967296) return undefined
+        } else return selectedID
+    }
+}
+
+/**
+ * @param {World} world 
  * @param {Socket} socket 
  * @param {string} username 
  */
@@ -188,4 +203,4 @@ function CollidingWithChunkLayer(socket, playerPos, layerPos) {
     return "none"
 }
 
-module.exports = {GetPlayer, GetClassicID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer}
+module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer}

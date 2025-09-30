@@ -1,6 +1,6 @@
 module.exports = [
     require('./0/distributer.cjs').ReadPacket,
-    undefined,
+    require('./1/distributer.cjs').ReadPacket,
     undefined,
     undefined,
     undefined,
@@ -9,8 +9,13 @@ module.exports = [
     undefined,
     require('./8/distributer.cjs').ReadPacket,
     undefined,
+    require('./10/distributer.cjs').ReadPacket,
+    require('./11/distributer.cjs').ReadPacket,
+    require('./12/distributer.cjs').ReadPacket,
+    require('./13/distributer.cjs').ReadPacket,
+    require('./14/distributer.cjs').ReadPacket,
     undefined,
     undefined,
     undefined,
-    require('./13/distributer.cjs').ReadPacket
+    require('./18/distributer.cjs').ReadPacket
 ]

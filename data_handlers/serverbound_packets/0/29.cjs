@@ -41,7 +41,7 @@ function ReadPacket(world, socket, data) {
 
                     packetWriter.Server_Identification(socket)(world, socket, world.config.serverName)
                     var blocks = utils.worldgen.GenerateClassicWorld(socket)(world, socket, socket.thisPlayer.classicWorldOffset.x, socket.thisPlayer.classicWorldOffset.z)
-                    utils.world_packets(socket)(socket, blocks)
+                    utils.world_packets.GenerateBlocks(socket)(socket, blocks)
                     packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
                     for (var i = 0; i < world.loadedPlayers.length; i++) {
                         packetWriter.Spawn_Player(socket)(socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
@@ -52,6 +52,7 @@ function ReadPacket(world, socket, data) {
 
                     socket.thisPlayer.socket = socket
                     socket.thisPlayer.classicID = utils.player.GetClassicID(socket)(world, socket)
+                    socket.thisPlayer.alphaID = utils.player.GetAlphaID(socket)(world, socket)
                     socket.thisPlayer.inWorld = true
                     socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
                 } else {

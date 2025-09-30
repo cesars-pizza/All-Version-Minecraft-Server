@@ -1,5 +1,5 @@
 module.exports = {
-    world_packets: require('./world_packets/distributer.cjs').GenerateBlocks,
+    world_packets: require('./world_packets/distributer.cjs'),
     player: require('./player/distributer.cjs'),
     disconnect: require('./disconnect/distributer.cjs').Disconnect,
     math: require('./math.cjs'),

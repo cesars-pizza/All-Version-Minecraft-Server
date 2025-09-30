@@ -56,7 +56,7 @@ function ReadPacket(world, socket, data) {
                             socket.thisPlayer.tick.systemMessages.push(`Teleported to ${commandParts[1]}`)
                             if (classicWorldOffset.x != newClassicWorldOffset.x || classicWorldOffset.z != newClassicWorldOffset.z) {
                                 packetWriter.Server_Identification(socket)(world, socket, commandParts[1], "Teleporting...", true)
-                                utils.world_packets(socket)(socket, utils.worldgen.GenerateClassicWorld(socket)(world, socket, newClassicWorldOffset.x, newClassicWorldOffset.z))
+                                utils.world_packets.GenerateBlocks(socket)(socket, utils.worldgen.GenerateClassicWorld(socket)(world, socket, newClassicWorldOffset.x, newClassicWorldOffset.z))
                             }
                         } else socket.thisPlayer.tick.errorMessages.push(`${commandParts[1]} is not online.`)
                     } else socket.thisPlayer.tick.errorMessages.push(`Missing argument: player`)
@@ -95,7 +95,7 @@ function ReadPacket(world, socket, data) {
                                 socket.thisPlayer.tick.systemMessages.push(`Teleported to plot ${plotPos.x}, ${plotPos.z}`)
                                 if (classicWorldOffset.x != newClassicWorldOffset.x || classicWorldOffset.z != newClassicWorldOffset.z) {
                                     packetWriter.Server_Identification(socket)(world, socket, `Plot ${plotPos.x}, ${plotPos.z}`, "Teleporting...", true)
-                                    utils.world_packets(socket)(socket, utils.worldgen.GenerateClassicWorld(socket)(world, socket, newClassicWorldOffset.x, newClassicWorldOffset.z), true)
+                                    utils.world_packets.GenerateBlocks(socket)(socket, utils.worldgen.GenerateClassicWorld(socket)(world, socket, newClassicWorldOffset.x, newClassicWorldOffset.z), true)
                                 }
                             }
                         }

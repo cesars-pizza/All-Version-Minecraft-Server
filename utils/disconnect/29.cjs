@@ -63,7 +63,7 @@ function Disconnect(world, socket) {
         thisRotation = {pitch: 252, yaw: 64}
     }
 
-    utils.world_packets(socket)(socket, blocks)
+    utils.world_packets.GenerateBlocks(socket)(socket, blocks)
     packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, thisPosition, thisRotation)
 }
 
