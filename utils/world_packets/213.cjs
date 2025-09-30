@@ -20,35 +20,32 @@ function GenerateBlocks(socket, chunkX, chunkZ, blocks, blockMeta, blockLight, s
  * @param {number[][]} blocks 
  */
 function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, prevChunkX, prevChunkZ) {
-    console.log(chunkX)
-    console.log(chunkZ)
     if (prevChunkX == undefined || prevChunkZ == undefined) {
-        packetWriter.Pre_Chunk(socket)(socket, chunkX, chunkZ, true)
-        var unformattedLevelData = utils.worldgen.GenerateBlocks(socket)(world, socket, chunkX, chunkZ)
-        var levelData = dataWriter.writeLevelData(socket, unformattedLevelData)
-        packetWriter.Block_Change(socket)(world, socket, {x: chunkX * 16 + 1, y: 0, z: chunkZ * 16 + 1}, 4, 0)
-        packetWriter.Map_Chunk(socket)(socket, chunkX, chunkZ, levelData)
-                
-        for (var x = chunkX - renderDistance; x <= chunkX + renderDistance; x++) {
-            for (var z = chunkZ - renderDistance; z <= chunkZ + renderDistance; z++) {
-                if (x != chunkX || z != chunkZ) {
-                    packetWriter.Pre_Chunk(socket)(socket, x, z, true)
-                    //packetWriter.Block_Change(socket)(world, socket, {x: x * 16 + 1, y: 0, z: z * 16 + 1}, 4, 0)
-                }
-            }
-        }
-        
-        packetWriter.Player_Position_And_Rotation(socket)(world, socket, socket.thisPlayer.position, socket.thisPlayer.rotation, true)
         
         for (var x = chunkX - renderDistance; x <= chunkX + renderDistance; x++) {
             for (var z = chunkZ - renderDistance; z <= chunkZ + renderDistance; z++) {
-                if (x != chunkX || z != chunkZ) {
-                    var unformattedLevelData = utils.worldgen.GenerateBlocks(socket)(world, socket, x, z)
-                    var levelData = dataWriter.writeLevelData(socket, unformattedLevelData)
-                    packetWriter.Map_Chunk(socket)(socket, x, z, levelData)
-                }
+                packetWriter.Pre_Chunk(socket)(socket, x, z, true)
             }
         }
+
+        
+        for (var x = chunkX - renderDistance; x <= chunkX + renderDistance; x+=16) {
+            for (var z = chunkZ - renderDistance; z <= chunkZ + renderDistance; z+=16) {
+                var unformattedLevelDatas = []
+                var loadPlayer = false
+                for (var innerX = 0; innerX < 16 && x + innerX <= chunkX + renderDistance; innerX++) {
+                    unformattedLevelDatas[innerX] = []
+                    for (var innerZ = 0; innerZ < 16 && z + innerZ <= chunkZ + renderDistance; innerZ++) {
+                        if (x + innerX == chunkX && z + innerZ == chunkZ) loadPlayer = true
+                        unformattedLevelDatas[innerX][innerZ] = utils.worldgen.GenerateBlocks(socket)(world, socket, x + innerX, z + innerZ)
+                    }
+                }
+                var levelData = dataWriter.writeLevelData(socket, unformattedLevelDatas)
+                packetWriter.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
+                if (loadPlayer) packetWriter.Player_Position_And_Rotation(socket)(world, socket, socket.thisPlayer.position, socket.thisPlayer.rotation, true)
+            }
+        }
+
     } else {
         for (var x = prevChunkX - renderDistance; x <= prevChunkX + renderDistance; x++) {
             var distanceX = Math.abs(x - chunkX)

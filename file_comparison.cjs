@@ -1,9 +1,9 @@
 const fs = require('fs')
 
-var file1 = fs.readFileSync('./debug/levelDataCompressed.gz')
-var file2 = fs.readFileSync('./debug/levelDataCompressedReal.gz')
+var file1 = fs.readFileSync('./data_structures.cjs')
+var file2 = fs.readFileSync('./decode_packets.js')
 
-var text = "./debug/levelDataCompressed.gz\n./debug/levelDataCompressedReal.gz\n\n"
+var text = "./data_structures.cjs\n./decode_packets.js\n\n"
 
 var length1 = file1.length
 var length2 = file2.length
@@ -44,17 +44,19 @@ for (var i = 0; i < smallestLineCount; i++) {
 if (smallestLineCount != largestLineCount) {
     var addressString = largestLineCount.toString(16).padStart(addressLength, '0') + '0'
 
-    if (lineCount1 == largestLineCount) var line = Array.from(file1.subarray(largestLineCount * 16))
+    var line = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    if (lineCount1 == largestLineCount) line = Array.from(file1.subarray((largestLineCount - 1) * 16))
+    else line = Array.from(file2.subarray((largestLineCount - 1) * 16))
     var lineBytes = line.map(value => value.toString(16).padStart(2, '0')).join(' ')    
     var lineAscii = line.map(byte => (byte >= 32 && byte <= 126) ? String.fromCharCode(byte) : '.').join('');
 
     if (lineCount1 == largestLineCount) {
-        text += `${addressString}    ${lineBytes}    ${lineAscii}`
+        text += `${addressString}    ${lineBytes}    ${lineAscii}\n`
         text += `${addressString}    End of File                                         End of File`
     } else {
-        text += `${addressString}    End of File                                         End of File`
+        text += `${addressString}    End of File                                         End of File\n`
         text += `${addressString}    ${lineBytes}    ${lineAscii}`
     }
 }
 
-fs.writeFileSync('./debug/hex_compression_dump.txt', text)
+fs.writeFileSync('./debug/file_comp.txt', text)

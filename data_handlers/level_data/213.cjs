@@ -3,41 +3,96 @@ const { HexViewBytes } = require('../../server.cjs')
 const dataWriter = require('../data_writer.cjs')
 const fs = require('fs')
 
-function Write(socket, blocks, blockMeta, blockLight, skyLight) {
+function Write(socket, data) {
     var dataStream = []
-    for (var x = 0; x < blocks[0][0].length; x++) {
-        for (var z = 0; z < blocks[0].length; z++) {
-            for (var y = 0; y < blocks.length; y++) {
-                dataStream.push(blocks[y][z][x])
+
+    socket.log(`Chunk Size: (${data.length}, ${data[0].length})`)
+
+    for (var x = 0; x < data.length; x++) {
+        for (var z = 0; z < data[0].length; z++) {
+            for (var innerX = 0; innerX < 16; innerX++) {
+                for (var innerZ = 0; innerZ < 16; innerZ++) {
+                    for (var y = 0; y < 128; y++) {
+                        dataStream.push(data[x][z].blocks[y][innerZ][innerX])
+                    }
+                }
+            }
+
+            for (var innerX = 0; innerX < 16; innerX++) {
+                for (var innerZ = 0; innerZ < 16; innerZ++) {
+                    for (var y = 0; y < 128; y+=2) {
+                        dataStream.push(data[x][z].blockMeta[y][innerZ][innerX] * 16 + data[x][z].blockMeta[y + 1][innerZ][innerX])
+                    }
+                }
+            }
+
+            for (var innerX = 0; innerX < 16; innerX++) {
+                for (var innerZ = 0; innerZ < 16; innerZ++) {
+                    for (var y = 0; y < 128; y+=2) {
+                        dataStream.push(data[x][z].blockLight[y][innerZ][innerX] * 16 + data[x][z].blockLight[y + 1][innerZ][innerX])
+                    }
+                }
+            }
+
+            for (var innerX = 0; innerX < 16; innerX++) {
+                for (var innerZ = 0; innerZ < 16; innerZ++) {
+                    for (var y = 0; y < 128; y+=2) {
+                        dataStream.push(data[x][z].skyLight[y][innerZ][innerX] * 16 + data[x][z].skyLight[y + 1][innerZ][innerX])
+                    }
+                }
             }
         }
     }
 
-    for (var x = 0; x < blockMeta.length; x++) {
-        for (var z = 0; z < blockMeta[0].length; z++) {
-            for (var y = 0; y < blockMeta[0][0].length / 2; y++) {
-                dataStream.push(blockMeta[y * 2][z][x] * 16 + blockMeta[y * 2 + 1][z][x])
-            }
-        }
-    }
-
-    for (var x = 0; x < blockLight.length; x++) {
-        for (var z = 0; z < blockLight[0].length; z++) {
-            for (var y = 0; y < blockLight[0][0].length / 2; y++) {
-                dataStream.push(blockLight[y * 2][z][x] * 16 + blockLight[y * 2 + 1][z][x])
-            }
-        }
-    }
-
-    for (var x = 0; x < skyLight.length; x++) {
-        for (var z = 0; z < skyLight[0].length; z++) {
-            for (var y = 0; y < skyLight[0][0].length / 2; y++) {
-                dataStream.push(skyLight[y * 2][z][x] * 16 + skyLight[y * 2 + 1][z][x])
-            }
-        }
-    }
+    //for (var x = 0; x < data.length; x++) {
+    //    for (var innerX = 0; innerX < 16; innerX++) {
+    //        for (var z = 0; z < data[0].length; z++) {
+    //            for (var innerZ = 0; innerZ < 16; innerZ++) {
+    //                for (var y = 0; y < 128; y++) {
+    //                    dataStream.push(data[x][z].blocks[y][innerZ][innerX])
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+//
+    //for (var x = 0; x < data.length; x++) {
+    //    for (var innerX = 0; innerX < 16; innerX++) {
+    //        for (var z = 0; z < data[0].length; z++) {
+    //            for (var innerZ = 0; innerZ < 16; innerZ++) {
+    //                for (var y = 0; y < 128; y += 2) {
+    //                    dataStream.push(data[x][z].blockMeta[y][innerZ][innerX] * 16 + data[x][z].blockMeta[y + 1][innerZ][innerX])
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+//
+    //for (var x = 0; x < data.length; x++) {
+    //    for (var innerX = 0; innerX < 16; innerX++) {
+    //        for (var z = 0; z < data[0].length; z++) {
+    //            for (var innerZ = 0; innerZ < 16; innerZ++) {
+    //                for (var y = 0; y < 128; y += 2) {
+    //                    dataStream.push(data[x][z].blockLight[y][innerZ][innerX] * 16 + data[x][z].blockLight[y + 1][innerZ][innerX])
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+//
+    //for (var x = 0; x < data.length; x++) {
+    //    for (var innerX = 0; innerX < 16; innerX++) {
+    //        for (var z = 0; z < data[0].length; z++) {
+    //            for (var innerZ = 0; innerZ < 16; innerZ++) {
+    //                for (var y = 0; y < 128; y += 2) {
+    //                    dataStream.push(data[x][z].skyLight[y][innerZ][innerX] * 16 + data[x][z].skyLight[y + 1][innerZ][innerX])
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
     
-    HexViewBytes(Buffer.from(dataStream), 'chunkData')
+    HexViewBytes(dataStream, 'ChunkData')
 
     dataStream = dataWriter.writeZlib(socket, dataStream)
 
