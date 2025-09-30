@@ -181,7 +181,19 @@ function ReadPacket(world, socket, data) {
                             } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
                             giveItem = true
                         } else if (placedName == "rail") {
+                            var playerDirection = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw)
 
+                            if (playerDirection == "east" || playerDirection == "west") playerDirection = "east_west"
+                            else playerDirection = "north_south"
+
+                            if (facingBlockReplacable) {
+                                if (validBlock) {
+                                    world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName + `[shape=${playerDirection}]`
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + `[shape=${playerDirection}]`, true, facingBlock.block)
+                                    updateSuccessful = true
+                                } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
+                                giveItem = true
+                            }
                         } else if (placedName == "lever") {
                             var playerDirectionFlipped = face.value != 1
                             var playerDirection = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw + (playerDirectionFlipped ? 180 : 0))
@@ -281,7 +293,27 @@ function ReadPacket(world, socket, data) {
                                 }
                             }
                         } else if (placedName == "oak_sign") {
+                            if (facingBlockReplacable) {
+                                if (validBlock) {
+                                    if (face.value > 1) {
+                                        var playerDirection = "north"
+                                        if (face.value == 3) playerDirection = "south"
+                                        if (face.value == 4) playerDirection = "west"
+                                        if (face.value == 5) playerDirection = "east"
 
+                                        world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = `oak_wall_sign[facing=${playerDirection}]`
+                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, `oak_wall_sign[facing=${playerDirection}]`, true, facingBlock.block)
+                                        updateSuccessful = true
+                                    } else {
+                                        var playerDirection = utils.player.GetDirection16Num(socket)(socket, socket.thisPlayer.rotation.yaw + 180)
+
+                                        world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = `oak_sign[rotation=${playerDirection}]`
+                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, `oak_sign[rotation=${playerDirection}]`, true, facingBlock.block)
+                                        updateSuccessful = true
+                                    }
+                                } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
+                                giveItem = true
+                            }
                         } else if (utils.tag(world, placedName, "doors")) {
                             if (validBlock) {
                                 if (facingBlockReplacable) {

@@ -24,15 +24,26 @@ function ReadPacket(world, socket, data) {
         blockPosRaw.y = dataReader.readByte(socket, data, blockPosRaw.x.nextPos)
         blockPosRaw.z = dataReader.readInt(socket, data, blockPosRaw.y.nextPos)
         var face = dataReader.readByte(socket, data, blockPosRaw.z.nextPos)
-
         
         if (socket.disconnect == "") {
             var blockPos = {x: blockPosRaw.x.value, y: blockPosRaw.y.value, z: blockPosRaw.z.value}
             var updateSuccessful = false
 
             var prevBlock = utils.worldgen.GetBlock(socket)(world, socket, blockPos)
-            
-            if (utils.math.NegMod(blockPos.x, 32) >= 16 && utils.math.NegMod(blockPos.z, 32) >= 16) {
+
+            if (status.value == 2) socket.thisPlayer.digging.ticks = 0
+            else if (status.value == 3) socket.thisPlayer.digging = {
+                blockPos: blockPos,
+                ticks: 999
+            }
+            else if (blockPos.x == socket.thisPlayer.digging.blockPos.x && blockPos.y == socket.thisPlayer.digging.blockPos.y && blockPos.z == socket.thisPlayer.digging.blockPos.z) socket.thisPlayer.digging.ticks++
+            else socket.thisPlayer.digging = {
+                blockPos: blockPos,
+                ticks: 1
+            }
+
+            if (utils.math.NegMod(blockPos.x, 32) >= 16 && utils.math.NegMod(blockPos.z, 32) >= 16 && socket.thisPlayer.digging.ticks >= 6) {
+
                 var hitBuildIndex = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
                 if (hitBuildIndex == undefined || world.builds[hitBuildIndex].creator == socket.thisPlayer.username) {
                     if (hitBuildIndex == undefined) {
