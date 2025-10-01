@@ -15,6 +15,13 @@ function ReadPacket(world, socket, data) {
     var splitIndex = data.length - 12
 
     if (splitIndex >= 0) {
+        var status = dataReader.readByte(socket, data, 1)
+        var blockPos = {}
+        blockPos.x = dataReader.readInt(socket, data, status.nextPos)
+        blockPos.y = dataReader.readByte(socket, data, blockPos.x.nextPos)
+        blockPos.z = dataReader.readInt(socket, data, blockPos.y.nextPos)
+        var face = dataReader.readByte(socket, data, blockPos.z.nextPos)
+
         socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
     }
     

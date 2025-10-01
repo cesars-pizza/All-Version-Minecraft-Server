@@ -1,5 +1,6 @@
 class Socket {
     /**
+     * @param {boolean} isClosed
      * @param {string} logText 
      * @param {number} index 
      * @param {(message: string, consoleLog: boolean | null) => void} log 
@@ -11,7 +12,8 @@ class Socket {
      * @param {Player} thisPlayer 
      * @param {"" | "maxPlayers" | "multipleInstances" | "invalidVersion" | "unverified" | "serverClosed"} disconnect 
      */
-    constructor(logText, index, log, writePacket, setDisconnect, packetCount, identified, upvn, uvni, dataBuffer, thisPlayer, disconnect) {
+    constructor(isClosed, logText, index, log, writePacket, setDisconnect, packetCount, identified, upvn, uvni, dataBuffer, thisPlayer, disconnect) {
+        this.isClosed = isClosed
         this.logText = logText
         this.index = index
         this.log = log
@@ -96,6 +98,7 @@ class Player {
      * @param {number} classicID 
      * @param {number} alphaID 
      * @param {boolean} inWorld 
+     * @param {boolean} allowMovement
      * @param {{spawn: boolean, position: boolean, rotation: boolean, messages: string[], systemMessages: string[], errorMessages: string[], teleportSelf: boolean, teleportOthers: boolean}} tick 
      * @param {boolean} save 
      * @param {number} upvn 
@@ -103,7 +106,7 @@ class Player {
      * @param {{block: number}} selectedRegistries  
      * @param {Socket} socket
      */
-    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, tick, save, upvn, uvni, selectedRegistries, socket) {
+    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, allowMovement, tick, save, upvn, uvni, selectedRegistries, socket) {
         this.uuid = uuid
         this.username = username
         this.position = position
@@ -117,6 +120,7 @@ class Player {
         this.classicID = classicID
         this.alphaID = alphaID
         this.inWorld = inWorld
+        this.allowMovement = allowMovement
         this.tick = tick
         this.save = save
         this.upvn = upvn

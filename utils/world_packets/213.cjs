@@ -28,6 +28,10 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
             }
         }
 
+        packetWriter.Player_Position_And_Look(socket)(world, socket, socket.thisPlayer.position, socket.thisPlayer.position.y + 1.6, socket.thisPlayer.rotation, true)
+        var positionInterval = setInterval((world, socket) => {
+            packetWriter.Player_Position_And_Look(socket)(world, socket, socket.thisPlayer.position, socket.thisPlayer.position.y + 1.6, socket.thisPlayer.rotation, true)
+        }, 50, world, socket)
         
         for (var x = chunkX - renderDistance; x <= chunkX + renderDistance; x+=16) {
             for (var z = chunkZ - renderDistance; z <= chunkZ + renderDistance; z+=16) {
@@ -42,10 +46,10 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
                 }
                 var levelData = dataWriter.writeLevelData(socket, unformattedLevelDatas)
                 packetWriter.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
-                if (loadPlayer) packetWriter.Player_Position_And_Rotation(socket)(world, socket, socket.thisPlayer.position, socket.thisPlayer.rotation, true)
             }
         }
 
+        setTimeout((value, socket) => {clearInterval(value); socket.thisPlayer.allowMovement = true}, 1000, positionInterval, socket)
     } else {
         for (var x = prevChunkX - renderDistance; x <= prevChunkX + renderDistance; x++) {
             var distanceX = Math.abs(x - chunkX)

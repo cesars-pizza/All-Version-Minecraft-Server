@@ -92,8 +92,6 @@ function Write(socket, data) {
     //    }
     //}
     
-    HexViewBytes(dataStream, 'ChunkData')
-
     dataStream = dataWriter.writeZlib(socket, dataStream)
 
     return dataStream

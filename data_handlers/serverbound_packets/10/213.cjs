@@ -14,7 +14,7 @@ var packetIdentifier = "Player"
 function ReadPacket(world, socket, data) {
     var splitIndex = data.length - 2
 
-    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
+    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`, false)
     if (splitIndex >= 0) {
     }
     

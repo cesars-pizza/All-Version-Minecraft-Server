@@ -30,6 +30,7 @@ function ReadPacket(world, socket, data) {
                 socket.thisPlayer.socket = socket
                 socket.thisPlayer.classicID = utils.player.GetClassicID(socket)(world, socket)
                 socket.thisPlayer.alphaID = utils.player.GetAlphaID(socket)(world, socket)
+                socket.thisPlayer.allowMovement = false
                 socket.thisPlayer.upvn = thisUPVN
                 socket.thisPlayer.uvni = thisUVNI
                 socket.thisPlayer.selectedRegistries = {
@@ -40,21 +41,21 @@ function ReadPacket(world, socket, data) {
                     y: 2,
                     z: Math.floor(socket.thisPlayer.position.z / 16) * 16 - 0.5,
                 }
-                socket.thisPlayer.position.y += 5
                 if (!socket.thisPlayer.verified) {
+                    socket.thisPlayer.position.y += 0
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
-
+                    
                     packetWriter.Login_Response(socket)(world, socket, socket.thisPlayer.alphaID, world.config.serverName, world.config.serverStatus, 0, 0)
-                    utils.world_packets.GenerateRenderDistance(socket)(world, socket, 5, Math.floor(socket.thisPlayer.position.x / 16), Math.floor(socket.thisPlayer.position.z / 16), undefined, undefined)
+                    utils.world_packets.GenerateRenderDistance(socket)(world, socket, 10, Math.floor(socket.thisPlayer.position.x / 16), Math.floor(socket.thisPlayer.position.z / 16), undefined, undefined)
                     //for (var i = 0; i < world.loadedPlayers.length; i++) {
                         //    packetWriter.Spawn_Player(socket)(socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
                         //}
-
-                    world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(socket.thisPlayer.username))
+                        
+                        socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
+                        world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(socket.thisPlayer.username))
                     world.loadedPlayers.push(socket.thisPlayer)
 
                     socket.thisPlayer.inWorld = true
-                    socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
                 } else {
                     socket.setDisconnect("unverified")
                     utils.disconnect(socket)(world, socket)

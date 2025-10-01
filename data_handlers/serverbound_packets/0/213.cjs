@@ -15,7 +15,9 @@ function ReadPacket(world, socket, data) {
     var splitIndex = data.length - 1
 
     if (splitIndex >= 0) {
-        socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
+        socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`, false)
+
+        packetWriter.Keep_Alive(socket)(world, socket)
     }
     
     return splitIndex

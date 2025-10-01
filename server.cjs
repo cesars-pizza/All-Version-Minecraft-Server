@@ -137,6 +137,7 @@ async function setupLogs() {
 }
 
 const server = net.createServer( (socket) => {
+    socket.isClosed = false
     socket.logText = ""
     socket.index = socketIndex
     socketIndex++
@@ -193,21 +194,27 @@ const server = net.createServer( (socket) => {
     });
 
     socket.on('end', () => {
-        clearInterval(socket.keepAlive)
-        socket.log("", false)
-        socket.log("Closed Socket")
-        fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
-        world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
-        world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
+        if (!socket.isClosed) {
+            clearInterval(socket.keepAlive)
+            socket.log("", false)
+            socket.log("Closed Socket")
+            fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
+            world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
+            world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
+            socket.isClosed = true
+        }
     })
     
     socket.on('error', (err) => {
-        clearInterval(socket.keepAlive)
-        socket.log("", false)
-        socket.log(`Socket Error: ${err.message}`);
-        fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
-        world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
-        world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
+        if (!socket.isClosed) {
+            clearInterval(socket.keepAlive)
+            socket.log("", false)
+            socket.log(`Socket Error: ${err.message}`);
+            fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
+            world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
+            world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
+            socket.isClosed = true
+        }
     })
 });
 

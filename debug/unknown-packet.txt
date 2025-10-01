@@ -1,2 +1,4 @@
-Length: 11 bytes
-0000  ff 00 08 51 75 69 74 74 69 6e 67                 ...Quitting
+Length: 41 bytes
+0000  40 2a 69 d3 74 67 0c 3c 3f ef 5c 28 f3 33 33 34  @*i.tg.<?.\(.334
+0010  40 04 cc cc cc cc cc cd 3f e5 0f 28 08 f9 07 7d  @.......?..(...}
+0020  c2 9f e6 66 41 92 66 5e 01                       ...fA.f^.
