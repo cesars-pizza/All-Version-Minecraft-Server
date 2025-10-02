@@ -28,10 +28,6 @@ function ReadPacket(world, socket, data) {
 
         var onGround = dataReader.readBool(socket, data, rotation.pitch.nextPos)
 
-        socket.log(`Position: (${position.x.value}, ${position.y.value} => ${position.stance.value}, ${position.z.value})`)
-        socket.log(`Rotation: (${rotation.pitch.value}, ${rotation.yaw.value})`)
-        socket.log(`On Ground: ${onGround.value}`)
-
         if (socket.disconnect == "" && !socket.thisPlayer.tick.teleportSelf && socket.thisPlayer.allowMovement) {
             var newPosition = {x: position.x.value, y: position.y.value, z: position.z.value}
             var newPositionShifted = newPosition
@@ -56,15 +52,24 @@ function ReadPacket(world, socket, data) {
                 utils.player.GetPlayer(socket)(world, socket, socket.thisPlayer.username).save = true
             }
 
-            if (socket.thisPlayer.settings.showPlotInfo) {
-                var prevInBuild = socket.thisPlayer.position.x % 32 >= 16 && socket.thisPlayer.position.z % 32 >= 16
-                var currInBuild = newPositionShifted.x % 32 >= 16 && newPositionShifted.z % 32 >= 16
-                if (!prevInBuild && currInBuild) {
-                    var build = utils.builds.GetBuild(socket)(world, Math.floor(newPositionShifted.x / 32), Math.floor(newPositionShifted.z / 32))
-                    if (build != undefined && world.builds[build].creator != socket.thisPlayer.username) {
-                        var buildInfo = utils.builds.GetBuildInfo(socket)(world, socket, Math.floor(newPositionShifted.x / 32), Math.floor(newPositionShifted.z / 32))
-                        for (var i = 0; i < buildInfo.length; i++) {
-                            packetWriter.Message(socket)(socket, 0, buildInfo[i])
+            if (difX || difZ) {
+                var prevChunk = {x: Math.floor(socket.thisPlayer.position.x / 16), z: Math.floor(socket.thisPlayer.position.z / 16)}
+                var newChunk = {x: Math.floor(newPositionShifted.x / 16), z: Math.floor(newPositionShifted.z / 16)}
+
+                if (prevChunk.x != newChunk.x || prevChunk.z != newChunk.z) {
+                    utils.world_packets.GenerateRenderDistance(socket)(world, socket, 10, newChunk.x, newChunk.z, prevChunk.x, prevChunk.z)
+                }
+
+                if (socket.thisPlayer.settings.showPlotInfo) {
+                    var prevInBuild = socket.thisPlayer.position.x % 32 >= 16 && socket.thisPlayer.position.z % 32 >= 16
+                    var currInBuild = newPositionShifted.x % 32 >= 16 && newPositionShifted.z % 32 >= 16
+                    if (!prevInBuild && currInBuild) {
+                        var build = utils.builds.GetBuild(socket)(world, Math.floor(newPositionShifted.x / 32), Math.floor(newPositionShifted.z / 32))
+                        if (build != undefined && world.builds[build].creator != socket.thisPlayer.username) {
+                            var buildInfo = utils.builds.GetBuildInfo(socket)(world, socket, Math.floor(newPositionShifted.x / 32), Math.floor(newPositionShifted.z / 32))
+                            for (var i = 0; i < buildInfo.length; i++) {
+                                packetWriter.Message(socket)(socket, 0, buildInfo[i])
+                            }
                         }
                     }
                 }

@@ -71,16 +71,51 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
             }
         }
 
-        for (var x = chunkX - renderDistance; x <= chunkX + renderDistance; x++) {
-            var distanceX = Math.abs(x - prevChunkX)
-            for (var z = chunkZ - renderDistance; z <= chunkZ + renderDistance; z++) {
-                var distanceZ = Math.abs(z - prevChunkZ)
+        var XBlockMinX = Math.max(prevChunkX + renderDistance + 1, chunkX - renderDistance)
+        var XBlockMaxX = chunkX + renderDistance
+        var XBlockMinZ = chunkZ - renderDistance
+        var XBlockMaxZ = chunkZ + renderDistance
+        if (chunkX < prevChunkX) {
+            XBlockMinX = chunkX - renderDistance
+            XBlockMaxX = Math.min(prevChunkX - renderDistance - 1, chunkX + renderDistance)
+        }
 
-                if (distanceX > renderDistance || distanceZ > renderDistance) {
-                    var unformattedLevelData = utils.worldgen.GenerateBlocks(socket)(world, socket, x, z)
-                    var levelData = dataWriter.writeLevelData(socket, unformattedLevelData.blocks, unformattedLevelData.blockMeta, unformattedLevelData.blockLight, unformattedLevelData.skyLight)
-                    packetWriter.Map_Chunk(socket)(socket, x, z, levelData)
+        var ZBlockMinX = Math.max(prevChunkX - renderDistance, chunkX - renderDistance)
+        var ZBlockMaxX = Math.min(prevChunkX + renderDistance, chunkX + renderDistance)
+        var ZBlockMinZ = prevChunkZ + renderDistance + 1
+        var ZBlockMaxZ = chunkZ + renderDistance
+        if (chunkZ < prevChunkZ) {
+            ZBlockMinZ = chunkZ - renderDistance
+            ZBlockMaxZ = prevChunkZ - renderDistance - 1
+        }
+
+        for (var x = XBlockMinX; x <= XBlockMaxX; x+=16) {
+            for (var z = XBlockMinZ; z <= XBlockMaxZ; z+=16) {
+                var unformattedLevelDatas = []
+                var loadPlayer = false
+                for (var innerX = 0; innerX < 16 && x + innerX <= XBlockMaxX; innerX++) {
+                    unformattedLevelDatas[innerX] = []
+                    for (var innerZ = 0; innerZ < 16 && z + innerZ <= XBlockMaxZ; innerZ++) {
+                        unformattedLevelDatas[innerX][innerZ] = utils.worldgen.GenerateBlocks(socket)(world, socket, x + innerX, z + innerZ)
+                    }
                 }
+                var levelData = dataWriter.writeLevelData(socket, unformattedLevelDatas)
+                packetWriter.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
+            }
+        }
+
+        for (var x = ZBlockMinX; x <= ZBlockMaxX; x+=16) {
+            for (var z = ZBlockMinZ; z <= ZBlockMaxZ; z+=16) {
+                var unformattedLevelDatas = []
+                var loadPlayer = false
+                for (var innerX = 0; innerX < 16 && x + innerX <= ZBlockMaxX; innerX++) {
+                    unformattedLevelDatas[innerX] = []
+                    for (var innerZ = 0; innerZ < 16 && z + innerZ <= ZBlockMaxZ; innerZ++) {
+                        unformattedLevelDatas[innerX][innerZ] = utils.worldgen.GenerateBlocks(socket)(world, socket, x + innerX, z + innerZ)
+                    }
+                }
+                var levelData = dataWriter.writeLevelData(socket, unformattedLevelDatas)
+                packetWriter.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
             }
         }
     }

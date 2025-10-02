@@ -21,9 +21,6 @@ function ReadPacket(world, socket, data) {
 
         var onGround = dataReader.readBool(socket, data, rotation.pitch.nextPos)
 
-        socket.log(`Rotation: (${rotation.pitch.value}, ${rotation.yaw.value})`)
-        socket.log(`On Ground: ${onGround.value}`)
-
         if (socket.disconnect == "" && !socket.thisPlayer.tick.teleportSelf && socket.thisPlayer.allowMovement) {
             var difPitch = socket.thisPlayer.rotation.pitch != rotation.pitch.value
             var difYaw = socket.thisPlayer.rotation.yaw != rotation.yaw.value
@@ -36,7 +33,7 @@ function ReadPacket(world, socket, data) {
             socket.thisPlayer.rotation = {pitch: rotation.pitch.value, yaw: rotation.yaw.value}
         }
 
-        socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
+        socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`, false)
     }
     
     return splitIndex
