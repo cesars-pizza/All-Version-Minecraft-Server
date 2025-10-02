@@ -22,13 +22,17 @@ function GetBlockName(world, registry, id) {
     var thisRegistry = world.registries.block[registry].entries
     var registryEntries = Object.keys(thisRegistry)
     
+    var metaID = ""
+    if (typeof(id) == "number") metaID = `${id}:0`
+    else metaID = id
+
     for (var i = 0; i < registryEntries.length; i++) {
         if (typeof(thisRegistry[registryEntries[i]]) == "number") {
             if (thisRegistry[registryEntries[i]] == id) return registryEntries[i]
         } else {
             var blockStates = Object.keys(thisRegistry[registryEntries[i]].blockstatesShort)
             for (var j = 0; j < blockStates.length; j++) {
-                if (thisRegistry[registryEntries[i]].blockstatesShort[blockStates[j]] == id) {
+                if (thisRegistry[registryEntries[i]].blockstatesShort[blockStates[j]] === id || thisRegistry[registryEntries[i]].blockstatesShort[blockStates[j]] === metaID) {
                     if (blockStates[j] == "*") return registryEntries[i]
                     else return `${registryEntries[i]}[${blockStates[j]}]`
                 }
@@ -43,6 +47,7 @@ function GetBlockName(world, registry, id) {
  * @param {World} world 
  * @param {number} registry 
  * @param {string} block 
+ * @returns {number | {id: number, metadata: number}}
  */
 function GetBlockID(world, registry, block) {
     var blockName = ""
@@ -79,10 +84,26 @@ function GetBlockID(world, registry, block) {
 
             var blockStateIDs = Object.keys(blockID.blockstates)
             for (var i = 0; i < blockStateIDs.length; i++) {
-                if (stateText == blockStateIDs[i]) return blockID.blockstates[blockStateIDs[i]]
+                if (stateText == blockStateIDs[i]) {
+                    if (typeof(blockID.blockstates[blockStateIDs[i]]) == "number") return blockID.blockstates[blockStateIDs[i]]
+                    else {
+                        var blockIDParts = blockID.blockstates[blockStateIDs[i]].split(':')
+                        return {
+                            id: Number(blockIDParts[0]),
+                            metadata: Number(blockIDParts[1])
+                        }
+                    }
+                }
             }
 
-            return blockID.defaultID
+            if (typeof(blockID.defaultID) == "number") return blockID.defaultID
+            else {
+                var blockIDParts = blockID.defaultID.split(':')
+                return {
+                    id: Number(blockIDParts[0]),
+                    metadata: Number(blockIDParts[1])
+                }
+            }
         }
     }
 }

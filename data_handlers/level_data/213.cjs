@@ -21,7 +21,7 @@ function Write(socket, data) {
             for (var innerX = 0; innerX < 16; innerX++) {
                 for (var innerZ = 0; innerZ < 16; innerZ++) {
                     for (var y = 0; y < 128; y+=2) {
-                        dataStream.push(data[x][z].blockMeta[y][innerZ][innerX] * 16 + data[x][z].blockMeta[y + 1][innerZ][innerX])
+                        dataStream.push(data[x][z].blockMeta[y][innerZ][innerX] + data[x][z].blockMeta[y + 1][innerZ][innerX] * 16)
                     }
                 }
             }

@@ -49,6 +49,24 @@
         "tnt": 46,
         "bookshelf": 47,
         "mossy_cobblestone": 48,
-        "obsidian": 49
+        "obsidian": 49,
+        "oak_stairs": {
+            "states": {
+                "facing": ["east", "west", "south", "north"]
+            },
+            "blockstates": {
+                "facing=east": "53:0",
+                "facing=west": "53:1",
+                "facing=north": "53:2",
+                "facing=south": "53:3"
+            },
+            "blockstatesShort": {
+                "*": "53:0",
+                "facing=west": "53:1",
+                "facing=north": "53:2",
+                "facing=south": "53:3"
+            },
+            "defaultID": "53:0"
+        }
     }
 }

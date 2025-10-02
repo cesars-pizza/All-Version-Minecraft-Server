@@ -14,10 +14,31 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
     var cobblestoneID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, "cobblestone")
     var grassID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, "grass_block")
     var logID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, "oak_log")
-    var northStairID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, "stone")
-    var eastStairID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, "stone")
-    var southStairID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, "stone")
-    var westStairID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, "stone")
+    var northStairID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, "oak_stairs[facing=north]")
+    var eastStairID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, "oak_stairs[facing=east]")
+    var southStairID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, "oak_stairs[facing=south]")
+    var westStairID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, "oak_stairs[facing=west]")
+
+    var blockMetadata = []
+    var blockLight = []
+    var skyLight = []
+    for (var y = 0; y < 128; y++) {
+        blockMetadata[y] = []
+        blockLight[y] = []
+        skyLight[y] = []
+
+        for (var z = 0; z < 16; z++) {
+            blockMetadata[y][z] = []
+            blockLight[y][z] = []
+            skyLight[y][z] = []
+
+            for (var x = 0; x < 16; x++) {
+                blockMetadata[y][z][x] = 0
+                blockLight[y][z][x] = 15
+                skyLight[y][z][x] = 15
+            }
+        }
+    }
 
     var blocks = [[], []]
     
@@ -46,14 +67,20 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
         blocks[1][15][15] = logID
 
         if (chunkTypeX == 1) {
-            for (var x = 1; x < 15; x++) {
-                blocks[1][0][x]= northStairID
-                blocks[1][15][x] = southStairID
+            for (var x = 0; x < 16; x++) {
+                blocks[1][0][x] = southStairID.id
+                blockMetadata[1][0][x] = southStairID.metadata
+
+                blocks[1][15][x] = northStairID.id
+                blockMetadata[1][15][x] = northStairID.metadata
             }
         } else if (chunkTypeZ == 1) {
-            for (var z = 1; z < 15; z++) {
-                blocks[1][z][0] = westStairID
-                blocks[1][z][15] = eastStairID
+            for (var z = 0; z < 16; z++) {
+                blocks[1][z][0] = westStairID.id
+                blockMetadata[1][z][0] = westStairID.metadata
+
+                blocks[1][z][15] = eastStairID.id
+                blockMetadata[1][z][15] = eastStairID.metadata
             }
         }
     }
@@ -82,27 +109,6 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
                 for (var x = 0; x < 16; x++) {
                     blocks[y][z][x] = airID
                 }
-            }
-        }
-    }
-
-    var blockMetadata = []
-    var blockLight = []
-    var skyLight = []
-    for (var y = 0; y < 128; y++) {
-        blockMetadata[y] = []
-        blockLight[y] = []
-        skyLight[y] = []
-
-        for (var z = 0; z < 16; z++) {
-            blockMetadata[y][z] = []
-            blockLight[y][z] = []
-            skyLight[y][z] = []
-
-            for (var x = 0; x < 16; x++) {
-                blockMetadata[y][z][x] = 0
-                blockLight[y][z][x] = 15
-                skyLight[y][z][x] = 15
             }
         }
     }
