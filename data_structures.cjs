@@ -57,12 +57,12 @@ class World {
      * @param {number} maxPlayerCount 
      * @param {string[]} loadingPlayerNames 
      * @param {Player[]} loadedPlayers
-     * @param {{block: BlockRegistry[]}} registries 
+     * @param {{block: BlockRegistry[], item: Registry[]}} registries 
      * @param {Build[]} builds
      * @param {TickBlock[]} blockUpdates
      * @param {{classicID: number, username: string}[]} disconnectedPlayers 
      * @param {{supported: boolean, name: string, pvn: number}[]} versions 
-     * @param {{block: string[]}} universalRegistries 
+     * @param {{block: string[], item: string[]}} universalRegistries 
      * @param {{save: () => {}}} serverFunctions 
      * @param {boolean} closeServer
      */

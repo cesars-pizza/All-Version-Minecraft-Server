@@ -18,14 +18,16 @@ var world = {
     loadingPlayerNames: [],
     loadedPlayers: [],
     registries: {
-        block: []
+        block: [],
+        item: []
     },
     builds: [],
     blockUpdates: [],
     disconnectedPlayers: [],
     versions: [],
     universalRegistries: {
-        block: []
+        block: [],
+        item: []
     },
     serverFunctions: {
         save: ServerSave
@@ -100,6 +102,37 @@ async function loadWorld() {
     console.log(`WORLD Loaded ${world.registries.block.length} Block Registries`)
     console.log(`WORLD Loaded ${world.universalRegistries.block.length} Universal Blocks`)
     blockRegistry.closeSync()
+
+    var itemRegistry = fs.opendirSync('./world/registries/item')
+    var startedItemRegistry = false
+    endofRegistry = false
+    while (!endofRegistry) {
+        var thisRegistry = itemRegistry.readSync()
+        if (thisRegistry == null) endofRegistry = true
+        else {
+            if (thisRegistry.isFile()) {
+                var nameNumber = Number(thisRegistry.name.replace('.json', ''))
+                if (thisRegistry.name.endsWith('.json') && nameNumber != NaN) {
+                    var thisRegistryData = JSON.parse(fs.readFileSync(`./world/registries/item/${thisRegistry.name}`))
+                    if (thisRegistryData.maxUPVN >= world.config.minUPVN && thisRegistryData.minUPVN <= world.config.maxUPVN) {
+                        var entryKeys = Object.keys(thisRegistryData.entries)
+                        if (startedItemRegistry) {
+                            for (var i = world.universalRegistries.item.length - 1; i >= 0; i--) {
+                                if (!entryKeys.includes(world.universalRegistries.item[i])) world.universalRegistries.item.splice(i, 1)
+                            }
+                        } else {
+                            startedItemRegistry = true
+                            world.universalRegistries.item = entryKeys
+                        }
+                    }
+                    world.registries.item.push(thisRegistryData)
+                }
+            }
+        }
+    }
+    console.log(`WORLD Loaded ${world.registries.item.length} Item Registries`)
+    console.log(`WORLD Loaded ${world.universalRegistries.item.length} Universal Items`)
+    itemRegistry.closeSync()
 
     world.versions = JSON.parse(fs.readFileSync('./world/registries/version.json'))
     console.log(`WORLD Loaded ${world.versions.length} Versions`)
