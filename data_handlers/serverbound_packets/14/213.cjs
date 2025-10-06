@@ -2,6 +2,7 @@ const {Socket, World} = require('../../../data_structures.cjs')
 const dataReader = require('../../data_reader.cjs')
 const packetWriter = require('../../clientbound_packets/packet_writer.cjs')
 const utils = require('../../../utils/utils.cjs')
+const { HexViewBytes } = require('../../../server.cjs')
 
 var packetID = 14
 var packetIdentifier = "Player Digging"
@@ -15,14 +16,81 @@ function ReadPacket(world, socket, data) {
     var splitIndex = data.length - 12
 
     if (splitIndex >= 0) {
-        var status = dataReader.readByte(socket, data, 1)
-        var blockPos = {}
-        blockPos.x = dataReader.readInt(socket, data, status.nextPos)
-        blockPos.y = dataReader.readByte(socket, data, blockPos.x.nextPos)
-        blockPos.z = dataReader.readInt(socket, data, blockPos.y.nextPos)
-        var face = dataReader.readByte(socket, data, blockPos.z.nextPos)
-
         socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
+
+        var status = dataReader.readByte(socket, data, 1)
+        var blockPosRaw = {}
+        blockPosRaw.x = dataReader.readInt(socket, data, status.nextPos)
+        blockPosRaw.y = dataReader.readByte(socket, data, blockPosRaw.x.nextPos)
+        blockPosRaw.z = dataReader.readInt(socket, data, blockPosRaw.y.nextPos)
+        var face = dataReader.readByte(socket, data, blockPosRaw.z.nextPos)
+
+        if (socket.disconnect == "") {
+            var blockPos = {x: blockPosRaw.x.value, y: blockPosRaw.y.value, z: blockPosRaw.z.value}
+            var updateSuccessful = false
+            
+            if (status.value == 0 && utils.math.NegMod(blockPos.x, 32) >= 16 && utils.math.NegMod(blockPos.z, 32) >= 16) {
+                var hitBuildIndex = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
+                if (hitBuildIndex == undefined || world.builds[hitBuildIndex].creator == socket.thisPlayer.username) {
+                    if (hitBuildIndex == undefined) {
+                        hitBuildIndex = world.builds.length
+                        world.builds.push(utils.builds.GenerateBuild(socket)(Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32), socket.thisPlayer.username, socket.thisPlayer.uvni))
+                    }
+
+                    if (blockPos.y <= 1) {
+                        var chunkX = Math.floor(blockPos.x / 16)
+                        var chunkZ = Math.floor(blockPos.z / 16)
+
+                        if (utils.player.CollidingWithChunkLayer(socket)(socket, socket.thisPlayer.position, {x: chunkX, y: 1, z: chunkZ}) != "inside") {
+                            var floorID = world.universalRegistries.block.indexOf(world.builds[hitBuildIndex].floor)
+                            floorID++
+                            if (floorID == 0 || floorID >= world.universalRegistries.block.length) floorID = 1
+                            var thisRegistryFloorID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, world.universalRegistries.block[floorID])
+                            world.builds[hitBuildIndex].floor = world.universalRegistries.block[floorID]
+                            world.builds[hitBuildIndex].lastModified = new Date().getTime()
+                            world.builds[hitBuildIndex].save = true
+                            for (var x = 0; x < 16; x++) {
+                                for (var z = 0; z < 16; z++) {
+                                    var setX = chunkX * 16 + x
+                                    var setZ = chunkZ * 16 + z
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, thisRegistryFloorID)
+                                }
+                            }
+                            if (blockPos.y == 1) updateSuccessful = true
+
+                            for (var i = 0; i < world.loadedPlayers.length; i++) {
+                                if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithChunkLayer(socket)(socket, world.loadedPlayers[i].position, {x: chunkX, y: 1, z: chunkZ}) == "inside") {
+                                    world.loadedPlayers[i].position = {
+                                        x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
+                                        y: 2,
+                                        z: Math.floor(world.loadedPlayers[i].position.z / 16) * 16 - 0.5,
+                                    }
+                                    world.loadedPlayers[i].save = true
+                                    world.loadedPlayers[i].tick.position = true
+                                    world.loadedPlayers[i].tick.systemMessages.push("You have been moved for intruding block placement")
+                                    world.loadedPlayers[i].tick.teleportSelf = true
+                                }
+                            }
+                        }
+                    } else if (blockPos.y < 64) {
+                        world.builds[hitBuildIndex].blocks[blockPos.y - 2][blockPos.z % 16][blockPos.x % 16] = "stone"
+                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 1)
+                        world.builds[hitBuildIndex].lastModified = new Date().getTime()
+                        world.builds[hitBuildIndex].save = true
+                        updateSuccessful = true
+                    }
+                }
+            }
+
+            if (!updateSuccessful && blockPos.y < 64 && status.value == 3) {
+                var oldBlockUpdate = utils.tick_actions.set_block.GetBlockUpdate(socket)(world, {x: blockPos.x, y: blockPos.y, z: blockPos.z})
+
+                if (oldBlockUpdate == -1) {
+                    packetWriter.Set_Block(socket)(socket, blockPos, utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, utils.worldgen.GetBlock(socket)(world, socket, blockPos)))
+                }
+            }
+        }
+
     }
     
     return splitIndex

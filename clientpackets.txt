@@ -1,0 +1,317 @@
+(x0001) 001 / Login Request
+(x0001) 013 / Unknown
+(x0001) 010 / Player
+(x0001) 013 / Unknown
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 013 / Unknown
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 013 / Unknown
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0003) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 013 / Unknown
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 013 / Unknown
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0003) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 013 / Unknown
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 013 / Unknown
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0003) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0027) 010 / Player
+(x0001) 014 / Player Digging
+(x0001) 013 / Unknown
+(x0001) 014 / Player Digging
+(x0002) 010 / Player
+(x0001) 013 / Unknown
+(x0001) 010 / Player
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0007) 010 / Player
+(x0001) 012 / Player Look
+(x0001) 010 / Player
+(x0001) 012 / Player Look
+(x0009) 010 / Player
+(x0001) 012 / Player Look
+(x0001) 010 / Player
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 012 / Player Look
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 018 / Arm Animation
+(x0002) 014 / Player Digging
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 014 / Player Digging
+(x0001) 011 / Player Position
+(x0001) 010 / Player
+(x0001) 014 / Player Digging
+(x0001) 011 / Player Position
+
+DIG: 1 (527, 0, 15) from 1
+DIG: 2 (0, 0, 0) from 0
+DIG: 0 (535, 3, 20) from 2
+DIG: 1 (535, 3, 20) from 2
+DIG: 1 (535, 3, 20) from 2
+DIG: 2 (0, 0, 0) from 0
+
+Keep Alive: 0
+Login Request: 1
+Player: 173
+Player Position: 124
+Player Look: 34
+Player Digging: 6
+Holding Change: 0
+Arm Animation: 1

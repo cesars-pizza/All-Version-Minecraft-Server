@@ -15,6 +15,8 @@ module.exports = {
     Pre_Chunk: require('./Pre Chunk/distributer.cjs').WritePacket,
     Map_Chunk: require('./Map Chunk/distributer.cjs').WritePacket,
     Block_Change: require('./Block Change/distributer.cjs').WritePacket,
+    Multi_Block_Change: require('./Multi Block Change/distributer.cjs').WritePacket,
+    Kick: require('./Kick/distributer.cjs').WritePacket,
     _alt: {
         Level_Data_Chunk_alt0: require('./Level Data Chunk/distributer.cjs').WritePacket_Alt0
     }

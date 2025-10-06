@@ -2,9 +2,10 @@ const {Socket, World} = require('../../../data_structures.cjs')
 const dataReader = require('../../data_reader.cjs')
 const packetWriter = require('../../clientbound_packets/packet_writer.cjs')
 const utils = require('../../../utils/utils.cjs')
+const {HexViewBytes} = require('../../../server.cjs')
 
-var packetID = 0
-var packetIdentifier = "Player Identification"
+var packetID = 2
+var packetIdentifier = "Handshake"
 
 /** 
  * @param {World} world 
@@ -12,22 +13,22 @@ var packetIdentifier = "Player Identification"
  * @param {Buffer} data 
  */
 function ReadPacket(world, socket, data) {
-    var splitIndex = data.length - 130
-
-    if (splitIndex >= 0) {
+    var packet = dataReader.readUByte(socket, data, 0)
+    var username = dataReader.readString(socket, data, packet.nextPos)
+    
+    if (username.value == undefined) return -999
+    else {
         socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
-
-        var ID = dataReader.readUByte(socket, data, 0)
-        var protocolVersion = dataReader.readUByte(socket, data, ID.nextPos)
-        var username = dataReader.readString(socket, data, protocolVersion.nextPos)
-        var verificationKey = dataReader.readString(socket, data, username.nextPos)
-
         if (socket.disconnect == "") {
             var hasOpenInstance = utils.player.HasOpenInstance(socket)(world, username.value)
             if (!hasOpenInstance) {
                 var thisUPVN = socket.thisPlayer.upvn
                 var thisUVNI = socket.thisPlayer.uvni
                 socket.thisPlayer = utils.player.GetPlayer(socket)(world, socket, username.value)
+                socket.thisPlayer.socket = socket
+                socket.thisPlayer.classicID = utils.player.GetClassicID(socket)(world, socket)
+                socket.thisPlayer.alphaID = utils.player.GetAlphaID(socket)(world, socket)
+                socket.thisPlayer.allowMovement = false
                 socket.thisPlayer.upvn = thisUPVN
                 socket.thisPlayer.uvni = thisUVNI
                 socket.thisPlayer.selectedRegistries = {
@@ -40,24 +41,16 @@ function ReadPacket(world, socket, data) {
                     z: Math.floor(socket.thisPlayer.position.z / 16) * 16 - 0.5,
                 }
                 if (!socket.thisPlayer.verified) {
+                    socket.thisPlayer.position.y += 0
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
-
-                    packetWriter.Server_Identification(socket)(world, socket, world.config.serverName, world.config.serverStatus)
-                    var blocks = utils.worldgen.GenerateClassicWorld(socket)(world, socket, socket.thisPlayer.classicWorldOffset.x, socket.thisPlayer.classicWorldOffset.z)
-                    utils.world_packets.GenerateBlocks(socket)(socket, blocks)
-                    packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
-                    for (var i = 0; i < world.loadedPlayers.length; i++) {
-                        packetWriter.Spawn_Player(socket)(socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
-                    }
-
+                    
+                    packetWriter.Login_Response(socket)(world, socket, socket.thisPlayer.alphaID, world.config.serverName, world.config.serverStatus, 0, 0)
+                    utils.world_packets.GenerateRenderDistance(socket)(world, socket, 10, Math.floor(socket.thisPlayer.position.x / 16), Math.floor(socket.thisPlayer.position.z / 16), undefined, undefined)
+                    socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
                     world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(socket.thisPlayer.username))
                     world.loadedPlayers.push(socket.thisPlayer)
 
-                    socket.thisPlayer.socket = socket
-                    socket.thisPlayer.classicID = utils.player.GetClassicID(socket)(world, socket)
-                    socket.thisPlayer.alphaID = utils.player.GetAlphaID(socket)(world, socket)
                     socket.thisPlayer.inWorld = true
-                    socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
                 } else {
                     socket.setDisconnect("unverified")
                     utils.disconnect(socket)(world, socket)
@@ -69,9 +62,8 @@ function ReadPacket(world, socket, data) {
             }
         } else utils.disconnect(socket)(world, socket)
 
+        return data.length - (packet.length + username.length)
     }
-    
-    return splitIndex
 }
 
 module.exports = {ReadPacket}

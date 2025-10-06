@@ -29,7 +29,8 @@ function ReadPacket(world, socket, data) {
                 socket.thisPlayer.upvn = thisUPVN
                 socket.thisPlayer.uvni = thisUVNI
                 socket.thisPlayer.selectedRegistries = {
-                    block: utils.registry.block.GetBlockRegistry(world, socket.thisPlayer.uvni)
+                    block: utils.registry.block.GetBlockRegistry(world, socket.thisPlayer.uvni),
+                    item: utils.registry.item.GetItemRegistry(world, socket.thisPlayer.uvni)
                 }
                 if (socket.thisPlayer.position.x % 32 >= 16 && socket.thisPlayer.position.z % 32 >= 16) socket.thisPlayer.position = {
                     x: Math.floor(socket.thisPlayer.position.x / 16) * 16 - 0.5,

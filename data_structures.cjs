@@ -103,7 +103,7 @@ class Player {
      * @param {boolean} save 
      * @param {number} upvn 
      * @param {number} uvni
-     * @param {{block: number}} selectedRegistries  
+     * @param {{block: number, item: number}} selectedRegistries  
      * @param {Socket} socket
      */
     constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, allowMovement, tick, save, upvn, uvni, selectedRegistries, socket) {

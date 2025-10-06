@@ -501,6 +501,16 @@ function IdentifyVersion(socket, data) {
             if (world.config.minUPVN > 8) socket.setDisconnect("invalidVersion")
 
             return
+        } else if (data[0] == 2) {
+            socket.log(`IDENTIFIED UPVN 9`)
+            socket.log(`IDENTIFIED UVNI 214 / Alpha v1.0.16`)
+            socket.identified = true
+            socket.thisPlayer.upvn = 9
+            socket.thisPlayer.uvni = 214
+
+            if (world.config.minUPVN > 9) socket.setDisconnect("invalidVersion")
+
+            return
         }
     }
 

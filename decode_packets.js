@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-var data = fs.readFileSync('./ServerDump.txt')
+var data = fs.readFileSync('./serverdata.bin')
 
 var position = 0
 var packetsRaw = []
@@ -52,6 +52,11 @@ while(position < data.length) {
         position += 4
         packetsRaw.push(30)
         packetCounts[30]++
+    } else if (data[position] == 31) {
+        position += 8
+
+        packetsRaw.push(31)
+        packetCounts[31]++
     } else if (data[position] == 50) {
         position += 1
         var chunkX = data[position] * 16777216 + data[position + 1] * 65536 + data[position + 2] * 256 + data[position + 3]
@@ -76,8 +81,33 @@ while(position < data.length) {
         packetsRaw.push(51)
         packetCounts[51]++
     } else if (data[position] == 52) {
-        position += 9
-        position += (data[position] * 256 + data[position + 1]) * 4 + 2
+        position += 1
+        var chunkX = data[position] * 16777216 + data[position + 1] * 65536 + data[position + 2] * 256 + data[position + 3]
+        if (chunkX >= 0x80000000) chunkX -= 0x100000000
+        position += 4
+        var chunkZ = data[position] * 16777216 + data[position + 1] * 65536 + data[position + 2] * 256 + data[position + 3]
+        if (chunkZ >= 0x80000000) chunkZ -= 0x100000000
+        position += 4
+
+        var count = data[position] * 256 + data[position + 1]
+        position += 2
+
+        var changes = []
+        for (var i = 0; i < count; i++) {
+            changes.push({x: chunkX * 16 + ((data[position] & 0xf0) >> 4), y: data[position + 1], z: chunkZ * 16 + (data[position] & 0x0f), multi: true})
+            position += 2
+        }
+        for (var i = 0; i < count; i++) {
+            changes[i].id = data[position]
+            position += 1
+        }
+        for (var i = 0; i < count; i++) {
+            changes[i].meta = data[position]
+            position += 1
+        }
+
+        blockChanges = blockChanges.concat(changes)
+
         packetsRaw.push(52)
         packetCounts[52]++
     } else if (data[position] == 53) {
@@ -95,7 +125,7 @@ while(position < data.length) {
         var blockMeta = data[position]
         position += 1
 
-        blockChanges.push({x: Math.floor(blockPosX / 16), y: blockPosY, z: Math.floor(blockPosZ / 16), id: blockType, meta: blockMeta})
+        blockChanges.push({x: blockPosX, y: blockPosY, z: blockPosZ, id: blockType, meta: blockMeta, multi: false})
 
         packetsRaw.push(53)
         packetCounts[53]++
@@ -121,6 +151,7 @@ for (var i = 0; i < packetsCompressed.length; i++) {
     else if (packetsCompressed[i].id == 13) log += `${countText} 013 / Player Position & Look\n`
     else if (packetsCompressed[i].id == 21) log += `${countText} 021 / Pickup Spawn\n`
     else if (packetsCompressed[i].id == 30) log += `${countText} 030 / Entity\n`
+    else if (packetsCompressed[i].id == 31) log += `${countText} 031 / Entity Relative Move\n`
     else if (packetsCompressed[i].id == 50) log += `${countText} 050 / Pre-Chunk\n`
     else if (packetsCompressed[i].id == 51) log += `${countText} 051 / Map Chunk\n`
     else if (packetsCompressed[i].id == 52) log += `${countText} 052 / Multi Block Change\n`
@@ -137,7 +168,7 @@ for (var i = 0; i < chunks.length; i++) {
 
 log += "\n"
 for (var i = 0; i < blockChanges.length; i++) {
-    log += `BC: (${blockChanges[i].x}, ${blockChanges[i].y}, ${blockChanges[i].z}) => ${blockChanges[i].id}\n`
+    log += `${blockChanges[i].multi ? "M" : " "}BC: (${blockChanges[i].x}, ${blockChanges[i].y}, ${blockChanges[i].z}) => ${blockChanges[i].id}:${blockChanges[i].meta}\n`
 }
 
 log += `\nPlayer: ${playerID}\n`
@@ -156,4 +187,4 @@ log += `Map Chunk: ${packetCounts[51]}\n`
 log += `Multi Block Change: ${packetCounts[52]}\n`
 log += `Block Change: ${packetCounts[53]}\n`
 
-fs.writeFileSync("./ServerDecoded.txt", Buffer.from(log))
+fs.writeFileSync("./serverpackets2.txt", Buffer.from(log))

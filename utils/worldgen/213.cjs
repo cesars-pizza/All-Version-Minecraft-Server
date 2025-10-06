@@ -34,7 +34,7 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
 
             for (var x = 0; x < 16; x++) {
                 blockMetadata[y][z][x] = 0
-                blockLight[y][z][x] = 15
+                blockLight[y][z][x] = 0
                 skyLight[y][z][x] = 15
             }
         }

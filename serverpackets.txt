@@ -1,0 +1,2299 @@
+(x0001) 001 / Login Response
+(x0001) 050 / Pre-Chunk
+(x0001) 021 / Pickup Spawn
+(x0001) 003 / Chat Message
+(x0014) 050 / Pre-Chunk
+(x0001) 013 / Player Position & Look
+(x0001) 000 / Keep Alive
+(x0426) 050 / Pre-Chunk
+(x0001) 053 / Block Change
+(x0001) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 030 / Entity
+(x0005) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0006) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0004) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0004) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0004) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0004) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0008) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0001) 000 / Keep Alive
+(x0002) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0004) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 000 / Keep Alive
+(x0002) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0006) 051 / Map Chunk
+(x0001) 030 / Entity
+(x0030) 051 / Map Chunk
+(x0001) 000 / Keep Alive
+(x0008) 051 / Map Chunk
+(x0001) 030 / Entity
+(x0026) 051 / Map Chunk
+(x0042) 050 / Pre-Chunk
+(x0002) 051 / Map Chunk
+(x0001) 000 / Keep Alive
+(x0004) 051 / Map Chunk
+(x0001) 030 / Entity
+(x0032) 051 / Map Chunk
+(x0001) 000 / Keep Alive
+(x0008) 051 / Map Chunk
+(x0001) 030 / Entity
+(x0028) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 000 / Keep Alive
+(x0003) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0004) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0003) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0042) 050 / Pre-Chunk
+(x0001) 053 / Block Change
+(x0007) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0008) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0005) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0003) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0005) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0001) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0002) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0007) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0002) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0006) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 000 / Keep Alive
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0002) 052 / Multi Block Change
+(x0001) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 052 / Multi Block Change
+(x0005) 053 / Block Change
+(x0003) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 030 / Entity
+(x0002) 053 / Block Change
+(x0002) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0001) 051 / Map Chunk
+(x0003) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0003) 052 / Multi Block Change
+(x0005) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0002) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 051 / Map Chunk
+(x0007) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0016) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0006) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0002) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0006) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0009) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0042) 050 / Pre-Chunk
+(x0006) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0005) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 000 / Keep Alive
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 052 / Multi Block Change
+(x0003) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0008) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0004) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0003) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0003) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0007) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0006) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0002) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0003) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0004) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0002) 051 / Map Chunk
+(x0041) 050 / Pre-Chunk
+(x0001) 030 / Entity
+(x0001) 050 / Pre-Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0002) 053 / Block Change
+(x0001) 051 / Map Chunk
+(x0001) 052 / Multi Block Change
+(x0002) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0004) 051 / Map Chunk
+(x0005) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0001) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0003) 053 / Block Change
+(x0002) 051 / Map Chunk
+(x0004) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0001) 052 / Multi Block Change
+(x0009) 053 / Block Change
+(x0001) 030 / Entity
+(x0016) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0005) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0002) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0001) 030 / Entity
+(x0009) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0003) 053 / Block Change
+(x0001) 021 / Pickup Spawn
+(x0001) 030 / Entity
+(x0005) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0009) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0001) 030 / Entity
+(x0002) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0007) 053 / Block Change
+(x0001) 031 / Entity Relative Move
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0001) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0005) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0008) 053 / Block Change
+(x0001) 030 / Entity
+(x0004) 053 / Block Change
+(x0001) 052 / Multi Block Change
+(x0009) 053 / Block Change
+(x0001) 030 / Entity
+(x0001) 053 / Block Change
+(x0002) 052 / Multi Block Change
+(x0004) 053 / Block Change
+(x0001) 000 / Keep Alive
+(x0001) 052 / Multi Block Change
+(x0004) 053 / Block Change
+
+ChunkX: 0:11
+ChunkZ: -0.5:10.5
+
+Chunk: (-11, -10)
+Chunk: (-11, -9)
+Chunk: (-11, -8)
+Chunk: (-11, -7)
+Chunk: (-11, -6)
+Chunk: (-11, -5)
+Chunk: (-11, -4)
+Chunk: (-11, -3)
+Chunk: (-11, -2)
+Chunk: (-11, -1)
+Chunk: (-11, 0)
+Chunk: (-11, 1)
+Chunk: (-11, 2)
+Chunk: (-11, 3)
+Chunk: (-11, 4)
+Chunk: (-11, 5)
+Chunk: (-11, 6)
+Chunk: (-11, 7)
+Chunk: (-11, 8)
+Chunk: (-11, 9)
+Chunk: (-11, 10)
+Chunk: (-10, -10)
+Chunk: (-10, -9)
+Chunk: (-10, -8)
+Chunk: (-10, -7)
+Chunk: (-10, -6)
+Chunk: (-10, -5)
+Chunk: (-10, -4)
+Chunk: (-10, -3)
+Chunk: (-10, -2)
+Chunk: (-10, -1)
+Chunk: (-10, 0)
+Chunk: (-10, 1)
+Chunk: (-10, 2)
+Chunk: (-10, 3)
+Chunk: (-10, 4)
+Chunk: (-10, 5)
+Chunk: (-10, 6)
+Chunk: (-10, 7)
+Chunk: (-10, 8)
+Chunk: (-10, 9)
+Chunk: (-10, 10)
+Chunk: (-9, -10)
+Chunk: (-9, -9)
+Chunk: (-9, -8)
+Chunk: (-9, -7)
+Chunk: (-9, -6)
+Chunk: (-9, -5)
+Chunk: (-9, -4)
+Chunk: (-9, -3)
+Chunk: (-9, -2)
+Chunk: (-9, -1)
+Chunk: (-9, 0)
+Chunk: (-9, 1)
+Chunk: (-9, 2)
+Chunk: (-9, 3)
+Chunk: (-9, 4)
+Chunk: (-9, 5)
+Chunk: (-9, 6)
+Chunk: (-9, 7)
+Chunk: (-9, 8)
+Chunk: (-9, 9)
+Chunk: (-9, 10)
+Chunk: (-8, -10)
+Chunk: (-8, -9)
+Chunk: (-8, -8)
+Chunk: (-8, -7)
+Chunk: (-8, -6)
+Chunk: (-8, -5)
+Chunk: (-8, -4)
+Chunk: (-8, -3)
+Chunk: (-8, -2)
+Chunk: (-8, -1)
+Chunk: (-8, 0)
+Chunk: (-8, 1)
+Chunk: (-8, 2)
+Chunk: (-8, 3)
+Chunk: (-8, 4)
+Chunk: (-8, 5)
+Chunk: (-8, 6)
+Chunk: (-8, 7)
+Chunk: (-8, 8)
+Chunk: (-8, 9)
+Chunk: (-8, 10)
+Chunk: (-7, -10)
+Chunk: (-7, -9)
+Chunk: (-7, -8)
+Chunk: (-7, -7)
+Chunk: (-7, -6)
+Chunk: (-7, -5)
+Chunk: (-7, -4)
+Chunk: (-7, -3)
+Chunk: (-7, -2)
+Chunk: (-7, -1)
+Chunk: (-7, 0)
+Chunk: (-7, 1)
+Chunk: (-7, 2)
+Chunk: (-7, 3)
+Chunk: (-7, 4)
+Chunk: (-7, 5)
+Chunk: (-7, 6)
+Chunk: (-7, 7)
+Chunk: (-7, 8)
+Chunk: (-7, 9)
+Chunk: (-7, 10)
+Chunk: (-6, -10)
+Chunk: (-6, -9)
+Chunk: (-6, -8)
+Chunk: (-6, -7)
+Chunk: (-6, -6)
+Chunk: (-6, -5)
+Chunk: (-6, -4)
+Chunk: (-6, -3)
+Chunk: (-6, -2)
+Chunk: (-6, -1)
+Chunk: (-6, 0)
+Chunk: (-6, 1)
+Chunk: (-6, 2)
+Chunk: (-6, 3)
+Chunk: (-6, 4)
+Chunk: (-6, 5)
+Chunk: (-6, 6)
+Chunk: (-6, 7)
+Chunk: (-6, 8)
+Chunk: (-6, 9)
+Chunk: (-6, 10)
+Chunk: (-5, -10)
+Chunk: (-5, -9)
+Chunk: (-5, -8)
+Chunk: (-5, -7)
+Chunk: (-5, -6)
+Chunk: (-5, -5)
+Chunk: (-5, -4)
+Chunk: (-5, -3)
+Chunk: (-5, -2)
+Chunk: (-5, -1)
+Chunk: (-5, 0)
+Chunk: (-5, 1)
+Chunk: (-5, 2)
+Chunk: (-5, 3)
+Chunk: (-5, 4)
+Chunk: (-5, 5)
+Chunk: (-5, 6)
+Chunk: (-5, 7)
+Chunk: (-5, 8)
+Chunk: (-5, 9)
+Chunk: (-5, 10)
+Chunk: (-4, -10)
+Chunk: (-4, -9)
+Chunk: (-4, -8)
+Chunk: (-4, -7)
+Chunk: (-4, -6)
+Chunk: (-4, -5)
+Chunk: (-4, -4)
+Chunk: (-4, -3)
+Chunk: (-4, -2)
+Chunk: (-4, -1)
+Chunk: (-4, 0)
+Chunk: (-4, 1)
+Chunk: (-4, 2)
+Chunk: (-4, 3)
+Chunk: (-4, 4)
+Chunk: (-4, 5)
+Chunk: (-4, 6)
+Chunk: (-4, 7)
+Chunk: (-4, 8)
+Chunk: (-4, 9)
+Chunk: (-4, 10)
+Chunk: (-3, -10)
+Chunk: (-3, -9)
+Chunk: (-3, -8)
+Chunk: (-3, -7)
+Chunk: (-3, -6)
+Chunk: (-3, -5)
+Chunk: (-3, -4)
+Chunk: (-3, -3)
+Chunk: (-3, -2)
+Chunk: (-3, -1)
+Chunk: (-3, 0)
+Chunk: (-3, 1)
+Chunk: (-3, 2)
+Chunk: (-3, 3)
+Chunk: (-3, 4)
+Chunk: (-3, 5)
+Chunk: (-3, 6)
+Chunk: (-3, 7)
+Chunk: (-3, 8)
+Chunk: (-3, 9)
+Chunk: (-3, 10)
+Chunk: (-2, -10)
+Chunk: (-2, -9)
+Chunk: (-2, -8)
+Chunk: (-2, -7)
+Chunk: (-2, -6)
+Chunk: (-2, -5)
+Chunk: (-2, -4)
+Chunk: (-2, -3)
+Chunk: (-2, -2)
+Chunk: (-2, -1)
+Chunk: (-2, 0)
+Chunk: (-2, 1)
+Chunk: (-2, 2)
+Chunk: (-2, 3)
+Chunk: (-2, 4)
+Chunk: (-2, 5)
+Chunk: (-2, 6)
+Chunk: (-2, 7)
+Chunk: (-2, 8)
+Chunk: (-2, 9)
+Chunk: (-2, 10)
+Chunk: (-1, -10)
+Chunk: (-1, -9)
+Chunk: (-1, -8)
+Chunk: (-1, -7)
+Chunk: (-1, -6)
+Chunk: (-1, -5)
+Chunk: (-1, -4)
+Chunk: (-1, -3)
+Chunk: (-1, -2)
+Chunk: (-1, -1)
+Chunk: (-1, 0)
+Chunk: (-1, 1)
+Chunk: (-1, 2)
+Chunk: (-1, 3)
+Chunk: (-1, 4)
+Chunk: (-1, 5)
+Chunk: (-1, 6)
+Chunk: (-1, 7)
+Chunk: (-1, 8)
+Chunk: (-1, 9)
+Chunk: (-1, 10)
+Chunk: (0, -10)
+Chunk: (0, -9)
+Chunk: (0, -8)
+Chunk: (0, -7)
+Chunk: (0, -6)
+Chunk: (0, -5)
+Chunk: (0, -4)
+Chunk: (0, -3)
+Chunk: (0, -2)
+Chunk: (0, -1)
+Chunk: (0, 0)
+Chunk: (0, 1)
+Chunk: (0, 2)
+Chunk: (0, 3)
+Chunk: (0, 4)
+Chunk: (0, 5)
+Chunk: (0, 6)
+Chunk: (0, 7)
+Chunk: (0, 8)
+Chunk: (0, 9)
+Chunk: (0, 10)
+Chunk: (1, -10)
+Chunk: (1, -9)
+Chunk: (1, -8)
+Chunk: (1, -7)
+Chunk: (1, -6)
+Chunk: (1, -5)
+Chunk: (1, -4)
+Chunk: (1, -3)
+Chunk: (1, -2)
+Chunk: (1, -1)
+Chunk: (1, 0)
+Chunk: (1, 1)
+Chunk: (1, 2)
+Chunk: (1, 3)
+Chunk: (1, 4)
+Chunk: (1, 5)
+Chunk: (1, 6)
+Chunk: (1, 7)
+Chunk: (1, 8)
+Chunk: (1, 9)
+Chunk: (1, 10)
+Chunk: (2, -10)
+Chunk: (2, -9)
+Chunk: (2, -8)
+Chunk: (2, -7)
+Chunk: (2, -6)
+Chunk: (2, -5)
+Chunk: (2, -4)
+Chunk: (2, -3)
+Chunk: (2, -2)
+Chunk: (2, -1)
+Chunk: (2, 0)
+Chunk: (2, 1)
+Chunk: (2, 2)
+Chunk: (2, 3)
+Chunk: (2, 4)
+Chunk: (2, 5)
+Chunk: (2, 6)
+Chunk: (2, 7)
+Chunk: (2, 8)
+Chunk: (2, 9)
+Chunk: (2, 10)
+Chunk: (3, -10)
+Chunk: (3, -9)
+Chunk: (3, -8)
+Chunk: (3, -7)
+Chunk: (3, -6)
+Chunk: (3, -5)
+Chunk: (3, -4)
+Chunk: (3, -3)
+Chunk: (3, -2)
+Chunk: (3, -1)
+Chunk: (3, 0)
+Chunk: (3, 1)
+Chunk: (3, 2)
+Chunk: (3, 3)
+Chunk: (3, 4)
+Chunk: (3, 5)
+Chunk: (3, 6)
+Chunk: (3, 7)
+Chunk: (3, 8)
+Chunk: (3, 9)
+Chunk: (3, 10)
+Chunk: (4, -10)
+Chunk: (4, -9)
+Chunk: (4, -8)
+Chunk: (4, -7)
+Chunk: (4, -6)
+Chunk: (4, -5)
+Chunk: (4, -4)
+Chunk: (4, -3)
+Chunk: (4, -2)
+Chunk: (4, -1)
+Chunk: (4, 0)
+Chunk: (4, 1)
+Chunk: (4, 2)
+Chunk: (4, 3)
+Chunk: (4, 4)
+Chunk: (4, 5)
+Chunk: (4, 6)
+Chunk: (4, 7)
+Chunk: (4, 8)
+Chunk: (4, 9)
+Chunk: (4, 10)
+Chunk: (5, -10)
+Chunk: (5, -9)
+Chunk: (5, -8)
+Chunk: (5, -7)
+Chunk: (5, -6)
+Chunk: (5, -5)
+Chunk: (5, -4)
+Chunk: (5, -3)
+Chunk: (5, -2)
+Chunk: (5, -1)
+Chunk: (5, 0)
+Chunk: (5, 1)
+Chunk: (5, 2)
+Chunk: (5, 3)
+Chunk: (5, 4)
+Chunk: (5, 5)
+Chunk: (5, 6)
+Chunk: (5, 7)
+Chunk: (5, 8)
+Chunk: (5, 9)
+Chunk: (5, 10)
+Chunk: (6, -10)
+Chunk: (6, -9)
+Chunk: (6, -8)
+Chunk: (6, -7)
+Chunk: (6, -6)
+Chunk: (6, -5)
+Chunk: (6, -4)
+Chunk: (6, -3)
+Chunk: (6, -2)
+Chunk: (6, -1)
+Chunk: (6, 0)
+Chunk: (6, 1)
+Chunk: (6, 2)
+Chunk: (6, 3)
+Chunk: (6, 4)
+Chunk: (6, 5)
+Chunk: (6, 6)
+Chunk: (6, 7)
+Chunk: (6, 8)
+Chunk: (6, 9)
+Chunk: (6, 10)
+Chunk: (7, -10)
+Chunk: (7, -9)
+Chunk: (7, -8)
+Chunk: (7, -7)
+Chunk: (7, -6)
+Chunk: (7, -5)
+Chunk: (7, -4)
+Chunk: (7, -3)
+Chunk: (7, -2)
+Chunk: (7, -1)
+Chunk: (7, 0)
+Chunk: (7, 1)
+Chunk: (7, 2)
+Chunk: (7, 3)
+Chunk: (7, 4)
+Chunk: (7, 5)
+Chunk: (7, 6)
+Chunk: (7, 7)
+Chunk: (7, 8)
+Chunk: (7, 9)
+Chunk: (7, 10)
+Chunk: (8, -10)
+Chunk: (8, -9)
+Chunk: (8, -8)
+Chunk: (8, -7)
+Chunk: (8, -6)
+Chunk: (8, -5)
+Chunk: (8, -4)
+Chunk: (8, -3)
+Chunk: (8, -2)
+Chunk: (8, -1)
+Chunk: (8, 0)
+Chunk: (8, 1)
+Chunk: (8, 2)
+Chunk: (8, 3)
+Chunk: (8, 4)
+Chunk: (8, 5)
+Chunk: (8, 6)
+Chunk: (8, 7)
+Chunk: (8, 8)
+Chunk: (8, 9)
+Chunk: (8, 10)
+Chunk: (9, -10)
+Chunk: (9, -9)
+Chunk: (9, -8)
+Chunk: (9, -7)
+Chunk: (9, -6)
+Chunk: (9, -5)
+Chunk: (9, -4)
+Chunk: (9, -3)
+Chunk: (9, -2)
+Chunk: (9, -1)
+Chunk: (9, 0)
+Chunk: (9, 1)
+Chunk: (9, 2)
+Chunk: (9, 3)
+Chunk: (9, 4)
+Chunk: (9, 5)
+Chunk: (9, 6)
+Chunk: (9, 7)
+Chunk: (9, 8)
+Chunk: (9, 9)
+Chunk: (9, 10)
+Chunk: (-11, -10)
+Chunk: (-11, -9)
+Chunk: (-11, -8)
+Chunk: (-11, -7)
+Chunk: (-11, -6)
+Chunk: (-11, -5)
+Chunk: (-11, -4)
+Chunk: (-11, -3)
+Chunk: (-11, -2)
+Chunk: (-11, -1)
+Chunk: (-11, 0)
+Chunk: (-11, 1)
+Chunk: (-11, 2)
+Chunk: (-11, 3)
+Chunk: (-11, 4)
+Chunk: (-11, 5)
+Chunk: (-11, 6)
+Chunk: (-11, 7)
+Chunk: (-11, 8)
+Chunk: (-11, 9)
+Chunk: (-11, 10)
+Chunk: (10, -10)
+Chunk: (10, -9)
+Chunk: (10, -8)
+Chunk: (10, -7)
+Chunk: (10, -6)
+Chunk: (10, -5)
+Chunk: (10, -4)
+Chunk: (10, -3)
+Chunk: (10, -2)
+Chunk: (10, -1)
+Chunk: (10, 0)
+Chunk: (10, 1)
+Chunk: (10, 2)
+Chunk: (10, 3)
+Chunk: (10, 4)
+Chunk: (10, 5)
+Chunk: (10, 6)
+Chunk: (10, 7)
+Chunk: (10, 8)
+Chunk: (10, 9)
+Chunk: (10, 10)
+Chunk: (-10, -11)
+Chunk: (-10, 10)
+Chunk: (-9, -11)
+Chunk: (-9, 10)
+Chunk: (-8, -11)
+Chunk: (-8, 10)
+Chunk: (-7, -11)
+Chunk: (-7, 10)
+Chunk: (-6, -11)
+Chunk: (-6, 10)
+Chunk: (-5, -11)
+Chunk: (-5, 10)
+Chunk: (-4, -11)
+Chunk: (-4, 10)
+Chunk: (-3, -11)
+Chunk: (-3, 10)
+Chunk: (-2, -11)
+Chunk: (-2, 10)
+Chunk: (-1, -11)
+Chunk: (-1, 10)
+Chunk: (0, -11)
+Chunk: (0, 10)
+Chunk: (1, -11)
+Chunk: (1, 10)
+Chunk: (2, -11)
+Chunk: (2, 10)
+Chunk: (3, -11)
+Chunk: (3, 10)
+Chunk: (4, -11)
+Chunk: (4, 10)
+Chunk: (5, -11)
+Chunk: (5, 10)
+Chunk: (6, -11)
+Chunk: (6, 10)
+Chunk: (7, -11)
+Chunk: (7, 10)
+Chunk: (8, -11)
+Chunk: (8, 10)
+Chunk: (9, -11)
+Chunk: (9, 10)
+Chunk: (10, -11)
+Chunk: (10, 10)
+Chunk: (-10, -11)
+Chunk: (-10, -10)
+Chunk: (-10, -9)
+Chunk: (-10, -8)
+Chunk: (-10, -7)
+Chunk: (-10, -6)
+Chunk: (-10, -5)
+Chunk: (-10, -4)
+Chunk: (-10, -3)
+Chunk: (-10, -2)
+Chunk: (-10, -1)
+Chunk: (-10, 0)
+Chunk: (-10, 1)
+Chunk: (-10, 2)
+Chunk: (-10, 3)
+Chunk: (-10, 4)
+Chunk: (-10, 5)
+Chunk: (-10, 6)
+Chunk: (-10, 7)
+Chunk: (-10, 8)
+Chunk: (-10, 9)
+Chunk: (11, -11)
+Chunk: (11, -10)
+Chunk: (11, -9)
+Chunk: (11, -8)
+Chunk: (11, -7)
+Chunk: (11, -6)
+Chunk: (11, -5)
+Chunk: (11, -4)
+Chunk: (11, -3)
+Chunk: (11, -2)
+Chunk: (11, -1)
+Chunk: (11, 0)
+Chunk: (11, 1)
+Chunk: (11, 2)
+Chunk: (11, 3)
+Chunk: (11, 4)
+Chunk: (11, 5)
+Chunk: (11, 6)
+Chunk: (11, 7)
+Chunk: (11, 8)
+Chunk: (11, 9)
+Chunk: (-9, -11)
+Chunk: (-9, 10)
+Chunk: (-8, -11)
+Chunk: (-8, 10)
+Chunk: (-7, -11)
+Chunk: (-7, 10)
+Chunk: (-6, -11)
+Chunk: (-6, 10)
+Chunk: (-5, -11)
+Chunk: (-5, 10)
+Chunk: (-4, -11)
+Chunk: (-4, 10)
+Chunk: (-3, -11)
+Chunk: (-3, 10)
+Chunk: (-2, -11)
+Chunk: (-2, 10)
+Chunk: (-1, -11)
+Chunk: (-1, 10)
+Chunk: (0, -11)
+Chunk: (0, 10)
+Chunk: (1, -11)
+Chunk: (1, 10)
+Chunk: (2, -11)
+Chunk: (2, 10)
+Chunk: (3, -11)
+Chunk: (3, 10)
+Chunk: (4, -11)
+Chunk: (4, 10)
+Chunk: (5, -11)
+Chunk: (5, 10)
+Chunk: (6, -11)
+Chunk: (6, 10)
+Chunk: (7, -11)
+Chunk: (7, 10)
+Chunk: (8, -11)
+Chunk: (8, 10)
+Chunk: (9, -11)
+Chunk: (9, 10)
+Chunk: (10, -11)
+Chunk: (10, 10)
+Chunk: (11, -11)
+Chunk: (11, 10)
+
+ BC: (-145, 8, 12) => 11:0
+MBC: (-156, 10, -21) => 11:0
+MBC: (-147, 10, -27) => 11:0
+ BC: (-147, 10, -101) => 11:0
+ BC: (-152, 4, 18) => 11:0
+MBC: (-147, 5, 11) => 11:0
+MBC: (-147, 6, 13) => 11:0
+ BC: (-146, 8, -100) => 11:0
+ BC: (-146, 7, -132) => 11:0
+ BC: (-159, 10, -16) => 11:0
+ BC: (-146, 10, -106) => 11:0
+ BC: (-150, 5, 5) => 11:0
+ BC: (-154, 7, 12) => 11:0
+ BC: (-151, 10, -29) => 11:0
+ BC: (-145, 8, -7) => 11:0
+MBC: (-157, 9, -20) => 11:0
+MBC: (-155, 7, -22) => 11:0
+MBC: (-152, 9, -31) => 11:0
+ BC: (-157, 8, -25) => 11:0
+ BC: (-145, 9, -130) => 11:0
+ BC: (-155, 7, -26) => 11:0
+ BC: (-153, 9, -2) => 11:0
+ BC: (-150, 8, -25) => 11:0
+ BC: (-147, 10, -109) => 11:0
+ BC: (-151, 6, -25) => 11:0
+ BC: (-148, 7, 10) => 11:0
+ BC: (-154, 4, 9) => 11:0
+ BC: (-160, 8, 139) => 11:0
+ BC: (-148, 6, 16) => 11:0
+ BC: (-153, 3, 11) => 11:0
+ BC: (-153, 9, 15) => 11:0
+ BC: (-154, 10, 16) => 11:0
+ BC: (-147, 4, 9) => 11:0
+ BC: (-145, 8, -131) => 11:0
+ BC: (-155, 70, 157) => 0:0
+ BC: (-153, 6, 12) => 11:0
+ BC: (-147, 10, -26) => 11:0
+ BC: (-150, 9, -30) => 11:0
+ BC: (-151, 6, -1) => 11:0
+ BC: (-152, 3, 8) => 11:0
+ BC: (-147, 6, -2) => 11:0
+MBC: (-152, 9, -27) => 11:0
+MBC: (-148, 9, -29) => 11:0
+MBC: (-154, 10, -30) => 11:0
+MBC: (-156, 5, 9) => 11:0
+MBC: (-160, 10, 2) => 11:0
+ BC: (-157, 10, -67) => 11:0
+ BC: (-146, 9, -97) => 11:0
+ BC: (-155, 3, 9) => 11:0
+ BC: (-158, 5, 8) => 11:0
+ BC: (-150, 7, -24) => 11:0
+ BC: (-155, 9, -33) => 11:0
+MBC: (-156, 9, 1) => 11:0
+MBC: (-157, 6, 9) => 11:0
+ BC: (-148, 9, -106) => 11:0
+ BC: (-155, 3, 11) => 11:0
+ BC: (-150, 6, -2) => 11:0
+ BC: (-145, 10, -136) => 11:0
+MBC: (-150, 10, -27) => 11:0
+MBC: (-151, 6, -26) => 11:0
+MBC: (-152, 73, 136) => 0:0
+MBC: (-152, 69, 135) => 0:0
+MBC: (-153, 69, 135) => 0:0
+MBC: (-153, 69, 136) => 0:0
+MBC: (-153, 70, 136) => 0:0
+MBC: (-153, 71, 136) => 0:0
+MBC: (-153, 72, 136) => 18:14
+ BC: (-154, 9, 1) => 11:0
+ BC: (-157, 6, 11) => 11:0
+ BC: (-154, 7, -24) => 11:0
+ BC: (-160, 8, 136) => 11:0
+ BC: (-155, 9, 1) => 11:0
+ BC: (-151, 7, 12) => 11:0
+ BC: (-159, 10, -22) => 11:0
+ BC: (-146, 5, -1) => 11:0
+MBC: (-153, 4, 15) => 11:0
+MBC: (-152, 3, 12) => 11:0
+ BC: (-150, 9, -29) => 11:0
+ BC: (-156, 10, -33) => 11:0
+ BC: (-152, 72, 133) => 0:0
+ BC: (-154, 4, 17) => 11:0
+ BC: (-145, 7, 11) => 11:0
+ BC: (-159, 2, 15) => 11:0
+ BC: (-157, 8, -23) => 11:0
+ BC: (-148, 4, 32) => 11:0
+ BC: (-151, 6, 13) => 11:0
+ BC: (-160, 8, -34) => 11:0
+ BC: (-154, 10, -33) => 11:0
+ BC: (-154, 9, 16) => 11:0
+ BC: (-154, 4, 15) => 11:0
+ BC: (-156, 9, -21) => 11:0
+MBC: (-156, 4, 10) => 11:0
+MBC: (-156, 6, 10) => 11:0
+ BC: (-148, 4, 33) => 11:0
+ BC: (-149, 3, 11) => 11:0
+ BC: (-150, 6, -1) => 11:0
+ BC: (-154, 7, -27) => 11:0
+ BC: (-156, 7, 13) => 11:0
+ BC: (-155, 10, -22) => 11:0
+MBC: (-152, 72, 8) => 0:0
+MBC: (-148, 5, 12) => 11:0
+MBC: (-154, 6, 15) => 11:0
+MBC: (-149, 7, 8) => 11:0
+ BC: (138, 10, -146) => 11:0
+ BC: (143, 9, -145) => 11:0
+ BC: (-143, 7, -147) => 11:0
+ BC: (143, 9, -147) => 11:0
+ BC: (-22, 71, -147) => 0:0
+ BC: (141, 10, -148) => 11:0
+ BC: (-4, 3, -150) => 11:0
+MBC: (0, 4, -153) => 11:0
+MBC: (0, 74, -152) => 18:0
+ BC: (-142, 4, -148) => 11:0
+ BC: (43, 3, -158) => 11:0
+ BC: (143, 9, -148) => 11:0
+ BC: (15, 3, -152) => 11:0
+ BC: (41, 5, -158) => 11:0
+ BC: (-9, 7, -154) => 11:0
+MBC: (127, 9, -176) => 10:0
+MBC: (127, 10, -176) => 10:0
+ BC: (166, 7, -38) => 11:0
+ BC: (161, 9, -128) => 11:0
+MBC: (170, 9, -132) => 11:0
+MBC: (167, 4, -134) => 11:0
+ BC: (42, 3, -158) => 11:0
+ BC: (166, 7, 3) => 11:0
+ BC: (167, 10, -71) => 11:0
+ BC: (171, 10, -136) => 11:0
+ BC: (40, 4, -160) => 11:0
+MBC: (162, 3, -148) => 11:0
+MBC: (169, 8, -148) => 11:0
+MBC: (166, 9, -105) => 11:0
+MBC: (161, 4, -108) => 11:0
+ BC: (162, 4, -113) => 11:0
+ BC: (157, 2, -152) => 11:0
+ BC: (-10, 6, -147) => 11:0
+ BC: (12, 2, -151) => 11:0
+ BC: (172, 7, 47) => 11:0
+MBC: (164, 6, -46) => 11:0
+MBC: (165, 10, -36) => 11:0
+ BC: (161, 8, -106) => 11:0
+ BC: (170, 7, -116) => 11:0
+ BC: (-7, 8, -157) => 11:0
+ BC: (168, 4, 38) => 11:0
+ BC: (168, 7, -125) => 11:0
+ BC: (160, 5, -129) => 11:0
+ BC: (17, 3, -153) => 11:0
+MBC: (151, 5, -158) => 11:0
+MBC: (155, 10, -160) => 11:0
+MBC: (-6, 16, -160) => 0:0
+MBC: (-7, 9, -159) => 0:0
+MBC: (-8, 9, -159) => 0:0
+MBC: (-8, 9, -158) => 0:0
+MBC: (-7, 9, -158) => 0:0
+ BC: (22, 2, -158) => 11:0
+ BC: (42, 5, -157) => 11:0
+MBC: (-5, 8, -145) => 11:0
+MBC: (-7, 9, -158) => 0:0
+MBC: (-8, 9, -159) => 0:0
+MBC: (-8, 9, -158) => 0:0
+MBC: (-7, 9, -159) => 0:0
+ BC: (53, 2, -149) => 11:0
+ BC: (173, 6, -24) => 11:0
+ BC: (162, 4, -104) => 11:0
+ BC: (164, 4, -121) => 11:0
+MBC: (168, 4, -144) => 11:0
+MBC: (171, 6, -139) => 11:0
+ BC: (51, 2, -148) => 11:0
+ BC: (168, 7, -150) => 11:0
+ BC: (92, 32, -156) => 0:0
+ BC: (167, 7, 33) => 11:0
+ BC: (49, 3, -152) => 11:0
+ BC: (143, 9, -146) => 11:0
+ BC: (161, 3, -151) => 11:0
+MBC: (-140, 35, -152) => 13:0
+MBC: (-143, 35, -153) => 13:0
+ BC: (175, 9, 29) => 10:0
+MBC: (165, 8, -133) => 11:0
+MBC: (175, 5, -142) => 10:0
+ BC: (170, 7, -145) => 11:0
+ BC: (43, 4, -157) => 11:0
+MBC: (-12, 7, -152) => 11:0
+MBC: (-6, 17, -160) => 0:0
+MBC: (-7, 10, -159) => 0:0
+MBC: (-8, 10, -159) => 0:0
+MBC: (-8, 10, -158) => 0:0
+MBC: (-7, 10, -158) => 0:0
+MBC: (149, 29, -159) => 0:0
+MBC: (144, 28, -145) => 0:0
+MBC: (144, 29, -146) => 0:0
+MBC: (-9, 8, -156) => 11:0
+MBC: (-7, 10, -158) => 0:0
+MBC: (-8, 10, -159) => 0:0
+MBC: (-8, 10, -158) => 0:0
+MBC: (-7, 10, -159) => 0:0
+ BC: (175, 9, 29) => 11:0
+ BC: (171, 5, -20) => 11:0
+ BC: (170, 7, -33) => 11:0
+ BC: (160, 10, -69) => 11:0
+ BC: (162, 5, -122) => 11:0
+ BC: (144, 25, -145) => 13:0
+ BC: (163, 9, -109) => 11:0
+ BC: (171, 7, -117) => 11:0
+ BC: (171, 3, -131) => 11:0
+ BC: (134, 10, -147) => 11:0
+MBC: (-8, 7, -148) => 11:0
+MBC: (-12, 7, -150) => 11:0
+MBC: (-10, 8, -148) => 11:0
+MBC: (-7, 11, -159) => 0:0
+MBC: (-8, 11, -159) => 0:0
+MBC: (-8, 11, -158) => 0:0
+MBC: (-7, 11, -158) => 0:0
+ BC: (144, 29, -145) => 0:0
+ BC: (167, 7, -131) => 11:0
+MBC: (-2, 4, -145) => 11:0
+MBC: (-7, 11, -158) => 0:0
+MBC: (-8, 11, -159) => 0:0
+MBC: (-8, 11, -158) => 0:0
+MBC: (-7, 11, -159) => 0:0
+ BC: (14, 2, -149) => 11:0
+ BC: (16, 3, -150) => 11:0
+ BC: (168, 6, -149) => 11:0
+ BC: (141, 9, -147) => 11:0
+MBC: (144, 25, -146) => 13:0
+MBC: (144, 52, -148) => 13:0
+ BC: (173, 7, -32) => 11:0
+MBC: (174, 5, 46) => 11:0
+MBC: (164, 4, 39) => 11:0
+ BC: (162, 7, -102) => 11:0
+ BC: (169, 3, -133) => 11:0
+ BC: (40, 2, -159) => 11:0
+ BC: (169, 6, -152) => 11:0
+MBC: (153, 10, -160) => 11:0
+MBC: (151, 5, -159) => 11:0
+MBC: (-13, 5, -149) => 11:0
+MBC: (-13, 6, -153) => 11:0
+MBC: (-9, 6, -152) => 11:0
+MBC: (-6, 14, -160) => 13:0
+ BC: (172, 10, -101) => 11:0
+MBC: (164, 3, -119) => 11:0
+MBC: (175, 5, -128) => 10:0
+ BC: (167, 3, -146) => 11:0
+MBC: (-140, 36, -152) => 13:0
+MBC: (-143, 36, -153) => 13:0
+MBC: (-140, 39, -152) => 0:0
+ BC: (144, 30, -145) => 0:0
+MBC: (-21, 32, -156) => 0:0
+MBC: (-23, 32, -157) => 0:0
+MBC: (-22, 32, -156) => 0:0
+MBC: (-23, 32, -156) => 0:0
+MBC: (-7, 12, -159) => 0:0
+MBC: (-8, 12, -159) => 0:0
+MBC: (-8, 12, -158) => 0:0
+MBC: (-7, 12, -158) => 0:0
+ BC: (173, 8, -13) => 11:0
+ BC: (171, 4, 41) => 11:0
+ BC: (171, 8, -47) => 11:0
+ BC: (163, 8, -66) => 11:0
+ BC: (165, 5, -130) => 11:0
+MBC: (-2, 5, -145) => 11:0
+MBC: (-5, 6, -147) => 11:0
+MBC: (-4, 2, -148) => 11:0
+MBC: (-7, 12, -158) => 0:0
+MBC: (-8, 12, -159) => 0:0
+MBC: (-8, 12, -158) => 0:0
+MBC: (-7, 12, -159) => 0:0
+MBC: (-141, 34, -153) => 13:0
+MBC: (-142, 34, -154) => 13:0
+MBC: (-20, 26, -157) => 13:0
+MBC: (-21, 26, -156) => 13:0
+MBC: (-23, 26, -157) => 13:0
+MBC: (-23, 26, -156) => 13:0
+MBC: (-22, 26, -156) => 13:0
+MBC: (-22, 26, -155) => 13:0
+MBC: (-23, 26, -155) => 13:0
+MBC: (-21, 26, -155) => 13:0
+MBC: (-23, 26, -158) => 13:0
+ BC: (173, 8, 8) => 11:0
+ BC: (169, 2, -20) => 11:0
+ BC: (174, 68, -81) => 0:0
+MBC: (172, 5, -127) => 11:0
+MBC: (173, 3, -127) => 11:0
+ BC: (152, 3, -153) => 11:0
+MBC: (137, 10, -147) => 11:0
+MBC: (137, 10, -148) => 11:0
+ BC: (163, 8, -93) => 11:0
+ BC: (169, 8, -129) => 11:0
+MBC: (-12, 6, -147) => 11:0
+MBC: (-2, 6, -145) => 11:0
+MBC: (-7, 7, -157) => 11:0
+MBC: (-6, 15, -160) => 13:0
+MBC: (-21, 26, -157) => 13:0
+MBC: (-22, 26, -157) => 13:0
+MBC: (-22, 26, -158) => 13:0
+MBC: (-21, 26, -158) => 13:0
+ BC: (144, 26, -145) => 13:0
+MBC: (-140, 37, -152) => 13:0
+MBC: (-143, 37, -153) => 13:0
+ BC: (169, 3, -23) => 11:0
+ BC: (172, 4, 39) => 11:0
+ BC: (175, 3, -116) => 10:0
+MBC: (-7, 5, -158) => 13:0
+MBC: (-8, 4, -160) => 11:0
+MBC: (-7, 5, -159) => 13:0
+MBC: (-8, 5, -159) => 13:0
+MBC: (-8, 5, -158) => 13:0
+ BC: (165, 4, -149) => 11:0
+MBC: (-144, 30, -154) => 13:0
+MBC: (-141, 31, -156) => 13:0
+ BC: (163, 7, -121) => 11:0
+ BC: (40, 4, -159) => 11:0
+ BC: (169, 6, -150) => 11:0
+MBC: (-1, 5, -145) => 11:0
+MBC: (-4, 2, -149) => 11:0
+MBC: (-8, 5, -158) => 13:0
+MBC: (-7, 5, -158) => 13:0
+MBC: (-8, 5, -159) => 13:0
+MBC: (-7, 5, -159) => 13:0
+ BC: (171, 9, -126) => 11:0
+ BC: (168, 8, -129) => 11:0
+ BC: (-12, 6, -148) => 11:0
+ BC: (143, 10, -147) => 11:0
+MBC: (144, 26, -146) => 13:0
+MBC: (144, 27, -145) => 13:0
+MBC: (-20, 27, -157) => 13:0
+MBC: (-21, 27, -156) => 13:0
+MBC: (-23, 27, -157) => 13:0
+MBC: (-22, 27, -156) => 13:0
+MBC: (-23, 27, -156) => 13:0
+MBC: (-22, 27, -155) => 13:0
+MBC: (-23, 27, -155) => 13:0
+MBC: (-23, 27, -158) => 13:0
+MBC: (-21, 27, -155) => 13:0
+MBC: (165, 10, -39) => 11:0
+MBC: (168, 9, -40) => 11:0
+ BC: (167, 5, 40) => 11:0
+ BC: (165, 2, -148) => 11:0
+ BC: (171, 5, 1) => 11:0
+MBC: (-10, 6, -146) => 11:0
+MBC: (-2, 2, -149) => 11:0
+MBC: (-7, 6, -159) => 13:0
+MBC: (-8, 6, -159) => 13:0
+MBC: (-8, 6, -158) => 13:0
+MBC: (-7, 6, -158) => 13:0
+ BC: (39, 4, -158) => 11:0
+MBC: (151, 3, -156) => 11:0
+MBC: (149, 25, -159) => 13:0
+MBC: (-141, 35, -153) => 13:0
+MBC: (-142, 35, -154) => 13:0
+MBC: (-21, 27, -157) => 13:0
+MBC: (-22, 27, -157) => 13:0
+MBC: (-22, 27, -158) => 13:0
+MBC: (-21, 27, -158) => 13:0
+ BC: (173, 10, -12) => 11:0
+ BC: (173, 3, -19) => 11:0
+ BC: (167, 10, -74) => 11:0
+ BC: (172, 7, -118) => 11:0
+ BC: (19, 2, -156) => 11:0
+MBC: (154, 2, -153) => 11:0
+MBC: (144, 28, -145) => 13:0
+ BC: (41, 4, -156) => 11:0
+ BC: (135, 10, -147) => 11:0
+MBC: (-7, 6, -158) => 13:0
+MBC: (-8, 6, -159) => 13:0
+MBC: (-8, 6, -158) => 13:0
+MBC: (-7, 6, -159) => 13:0
+ BC: (92, 26, -156) => 13:0
+MBC: (-141, 36, -152) => 13:0
+MBC: (-140, 36, -153) => 13:0
+MBC: (-142, 36, -153) => 13:0
+MBC: (-142, 36, -152) => 13:0
+MBC: (-141, 36, -154) => 13:0
+MBC: (-141, 36, -151) => 13:0
+MBC: (-140, 36, -154) => 13:0
+MBC: (-142, 36, -151) => 13:0
+MBC: (-141, 36, -155) => 13:0
+MBC: (-20, 28, -157) => 13:0
+MBC: (-21, 28, -156) => 13:0
+MBC: (-23, 28, -157) => 13:0
+MBC: (-22, 28, -156) => 13:0
+MBC: (-23, 28, -156) => 13:0
+MBC: (-22, 28, -155) => 13:0
+MBC: (-23, 28, -155) => 13:0
+MBC: (-23, 28, -158) => 13:0
+MBC: (-21, 28, -155) => 13:0
+ BC: (165, 7, -46) => 11:0
+MBC: (-11, 7, -147) => 11:0
+MBC: (-2, 4, -152) => 11:0
+ BC: (51, 2, -150) => 11:0
+ BC: (162, 3, -107) => 11:0
+ BC: (168, 4, -145) => 11:0
+MBC: (-144, 31, -154) => 13:0
+MBC: (-141, 32, -156) => 13:0
+ BC: (-22, 28, -157) => 13:0
+MBC: (-7, 7, -159) => 13:0
+MBC: (-8, 7, -159) => 13:0
+MBC: (-8, 7, -158) => 13:0
+MBC: (-7, 7, -158) => 13:0
+ BC: (175, 7, -39) => 10:0
+ BC: (161, 9, -102) => 11:0
+ BC: (172, 9, -125) => 11:0
+ BC: (165, 2, -150) => 11:0
+MBC: (-12, 8, -150) => 11:0
+MBC: (-9, 5, -147) => 11:0
+MBC: (-7, 7, -158) => 13:0
+MBC: (-8, 7, -159) => 13:0
+MBC: (-8, 7, -158) => 13:0
+MBC: (-7, 7, -159) => 13:0
+ BC: (19, 3, -155) => 11:0
+ BC: (142, 10, -149) => 11:0
+MBC: (-21, 29, -156) => 13:0
+MBC: (-23, 29, -157) => 13:0
+MBC: (-22, 29, -156) => 13:0
+MBC: (-23, 29, -156) => 13:0
+ BC: (174, 5, 26) => 11:0
+MBC: (172, 4, 40) => 11:0
+MBC: (167, 6, 36) => 11:0
+ BC: (17, 2, -154) => 11:0
+ BC: (2, 4, -156) => 11:0
+ BC: (132, 10, -145) => 11:0
+MBC: (-143, 31, -154) => 13:0
+MBC: (-144, 31, -155) => 13:0
+MBC: (-142, 32, -155) => 13:0
+ BC: (164, 9, -39) => 11:0
+ BC: (164, 9, -72) => 11:0
+ BC: (169, 5, -133) => 11:0
+ BC: (166, 3, -146) => 11:0
+MBC: (-7, 6, -145) => 11:0
+MBC: (-7, 8, -159) => 13:0
+MBC: (-8, 8, -159) => 13:0
+MBC: (-8, 8, -158) => 13:0
+MBC: (-7, 8, -158) => 13:0
+MBC: (-144, 32, -154) => 13:0
+MBC: (-141, 33, -156) => 13:0
+ BC: (171, 2, -24) => 11:0
+ BC: (172, 3, -131) => 11:0
+MBC: (162, 3, -151) => 11:0
+MBC: (167, 5, -147) => 11:0
+ BC: (164, 9, -73) => 11:0
+ BC: (160, 4, -132) => 11:0
+ BC: (140, 10, -149) => 11:0
+ BC: (152, 3, -156) => 11:0
+ BC: (170, 8, 4) => 11:0
+ BC: (-11, 7, -155) => 11:0
+ BC: (23, 2, -159) => 11:0
+ BC: (163, 4, -16) => 11:0
+ BC: (169, 7, -146) => 11:0
+ BC: (44, 4, -157) => 11:0
+ BC: (160, 10, -40) => 11:0
+ BC: (160, 9, -68) => 11:0
+ BC: (161, 9, -99) => 11:0
+ BC: (-8, 8, -146) => 11:0
+ BC: (5, 6, -156) => 11:0
+ BC: (174, 9, 9) => 11:0
+ BC: (175, 7, 24) => 10:0
+ BC: (42, 3, -156) => 11:0
+ BC: (-10, 6, -152) => 11:0
+ BC: (7, 2, -147) => 11:0
+ BC: (172, 10, -13) => 11:0
+ BC: (163, 7, -91) => 11:0
+ BC: (167, 8, -128) => 11:0
+ BC: (46, 5, -154) => 11:0
+ BC: (-3, 4, -149) => 11:0
+ BC: (2, 4, -155) => 11:0
+ BC: (167, 3, -144) => 11:0
+ BC: (50, 4, -149) => 11:0
+ BC: (-7, 8, -147) => 11:0
+ BC: (170, 10, -13) => 11:0
+ BC: (163, 5, 39) => 11:0
+ BC: (162, 8, -99) => 11:0
+ BC: (169, 5, -136) => 11:0
+ BC: (140, 9, -148) => 11:0
+ BC: (168, 7, -145) => 11:0
+MBC: (-12, 6, -150) => 11:0
+MBC: (-3, 4, -150) => 11:0
+MBC: (-7, 7, -145) => 11:0
+ BC: (12, 2, -148) => 11:0
+ BC: (168, 9, -39) => 11:0
+MBC: (-10, 7, -145) => 11:0
+MBC: (-8, 5, -146) => 11:0
+ BC: (15, 3, -151) => 11:0
+ BC: (170, 3, -16) => 11:0
+ BC: (163, 10, -72) => 11:0
+ BC: (53, 2, -147) => 11:0
+ BC: (166, 5, 3) => 11:0
+ BC: (175, 4, 29) => 10:0
+MBC: (175, 9, -127) => 10:0
+MBC: (170, 7, -115) => 11:0
+MBC: (168, 7, -115) => 11:0
+ BC: (142, 9, -148) => 11:0
+MBC: (-8, 6, -154) => 11:0
+MBC: (-2, 2, -152) => 11:0
+ BC: (175, 8, -121) => 10:0
+ BC: (138, 9, -146) => 11:0
+MBC: (4, 5, -155) => 11:0
+MBC: (1, 5, -153) => 11:0
+ BC: (160, 7, -100) => 11:0
+ BC: (164, 8, -134) => 11:0
+MBC: (-9, 5, -155) => 11:0
+MBC: (-10, 7, -152) => 11:0
+ BC: (175, 4, 26) => 10:0
+ BC: (167, 5, -127) => 11:0
+ BC: (149, 4, -159) => 11:0
+ BC: (-8, 7, -153) => 11:0
+ BC: (161, 6, -14) => 11:0
+ BC: (171, 6, 31) => 11:0
+ BC: (174, 9, 32) => 11:0
+MBC: (175, 4, -118) => 11:0
+MBC: (174, 6, -119) => 11:0
+ BC: (48, 2, -150) => 11:0
+ BC: (169, 5, 39) => 11:0
+ BC: (48, 4, -153) => 11:0
+ BC: (154, 10, -159) => 11:0
+ BC: (163, 10, -94) => 11:0
+ BC: (171, 3, -133) => 11:0
+ BC: (150, 5, -158) => 11:0
+MBC: (-10, 5, -145) => 11:0
+MBC: (-8, 8, -147) => 11:0
+ BC: (165, 6, 5) => 11:0
+ BC: (162, 8, -89) => 11:0
+ BC: (164, 9, -90) => 11:0
+ BC: (50, 2, -150) => 11:0
+ BC: (174, 7, 44) => 11:0
+MBC: (167, 3, -116) => 11:0
+MBC: (173, 8, -125) => 11:0
+ BC: (-1, 4, -155) => 11:0
+ BC: (16, 2, -153) => 11:0
+ BC: (167, 4, -125) => 11:0
+MBC: (-12, 5, -153) => 11:0
+MBC: (-7, 7, -147) => 11:0
+ BC: (151, 6, -160) => 11:0
+ BC: (172, 8, -12) => 11:0
+ BC: (175, 9, -128) => 10:0
+ BC: (-9, 7, -153) => 11:0
+ BC: (163, 6, -122) => 11:0
+ BC: (163, 3, -131) => 11:0
+ BC: (-9, 5, -153) => 11:0
+ BC: (154, 5, -155) => 11:0
+ BC: (-12, 8, -149) => 11:0
+MBC: (-7, 7, -157) => 11:0
+MBC: (-13, 6, -149) => 11:0
+ BC: (168, 5, 5) => 11:0
+MBC: (170, 4, -135) => 11:0
+MBC: (163, 10, -137) => 11:0
+ BC: (174, 2, -20) => 11:0
+ BC: (165, 9, -40) => 11:0
+ BC: (169, 9, 47) => 11:0
+ BC: (164, 9, -83) => 11:0
+ BC: (162, 3, -134) => 11:0
+ BC: (-9, 7, -145) => 11:0
+ BC: (168, 9, 31) => 11:0
+ BC: (167, 4, -116) => 11:0
+ BC: (167, 8, -134) => 11:0
+ BC: (143, 10, -150) => 11:0
+ BC: (-9, 8, -146) => 11:0
+ BC: (-7, 8, -157) => 11:0
+ BC: (174, 6, 33) => 11:0
+ BC: (169, 4, -144) => 11:0
+ BC: (1, 5, -154) => 11:0
+ BC: (160, 6, -102) => 11:0
+ BC: (142, 9, -146) => 11:0
+ BC: (4, 5, -154) => 11:0
+ BC: (170, 5, 39) => 11:0
+ BC: (162, 7, -119) => 11:0
+ BC: (-6, 7, -159) => 11:0
+ BC: (134, 10, -145) => 11:0
+ BC: (171, 7, -34) => 11:0
+ BC: (160, 9, -86) => 11:0
+ BC: (175, 3, -127) => 10:0
+ BC: (150, 6, -158) => 11:0
+ BC: (135, 9, -146) => 11:0
+ BC: (168, 55, -164) => 10:0
+ BC: (160, 3, -117) => 11:0
+ BC: (-9, 7, -155) => 11:0
+ BC: (160, 7, 4) => 11:0
+ BC: (170, 5, -21) => 11:0
+MBC: (37, 71, -147) => 0:0
+MBC: (44, 3, -155) => 11:0
+ BC: (172, 10, -5) => 11:0
+ BC: (46, 5, -152) => 11:0
+ BC: (-10, 7, -149) => 11:0
+ BC: (150, 5, -157) => 11:0
+MBC: (15, 2, -152) => 11:0
+MBC: (7, 2, -146) => 11:0
+MBC: (0, 5, -155) => 11:0
+ BC: (162, 9, -65) => 11:0
+ BC: (161, 8, -107) => 11:0
+ BC: (43, 3, -155) => 11:0
+ BC: (-12, 6, -146) => 11:0
+MBC: (167, 7, -148) => 0:0
+MBC: (167, 6, -149) => 0:0
+MBC: (167, 7, -147) => 0:0
+MBC: (168, 9, -150) => 0:0
+MBC: (168, 9, -149) => 0:0
+MBC: (168, 9, -148) => 0:0
+MBC: (169, 9, -150) => 0:0
+ BC: (175, 5, -17) => 11:0
+ BC: (47, 4, -150) => 11:0
+MBC: (168, 9, -150) => 0:0
+MBC: (168, 9, -149) => 0:0
+MBC: (168, 9, -148) => 0:0
+MBC: (169, 9, -150) => 0:0
+MBC: (167, 6, -149) => 0:0
+MBC: (167, 7, -148) => 0:0
+MBC: (167, 7, -147) => 0:0
+ BC: (165, 9, -135) => 11:0
+ BC: (-9, 6, -155) => 11:0
+ BC: (171, 10, -48) => 11:0
+MBC: (163, 4, -150) => 11:0
+MBC: (167, 8, -148) => 0:0
+MBC: (167, 7, -149) => 0:0
+MBC: (167, 8, -147) => 0:0
+ BC: (-17, 73, -158) => 0:0
+ BC: (135, 10, -148) => 11:0
+ BC: (175, 5, -28) => 11:0
+ BC: (174, 6, 42) => 11:0
+ BC: (162, 8, -70) => 11:0
+MBC: (168, 6, -124) => 11:0
+MBC: (167, 5, -117) => 11:0
+ BC: (-13, 6, -152) => 11:0
+MBC: (167, 7, -149) => 0:0
+MBC: (167, 8, -148) => 0:0
+MBC: (167, 8, -147) => 0:0
+ BC: (175, 6, -126) => 11:0
+MBC: (171, 7, -152) => 11:0
+MBC: (168, 6, -147) => 10:0
+MBC: (167, 6, -147) => 10:2
+MBC: (168, 4, -148) => 13:0
+MBC: (-8, 8, -145) => 11:0
+MBC: (-10, 6, -156) => 11:0
+ BC: (175, 10, 25) => 11:0
+ BC: (171, 68, -79) => 0:0
+ BC: (173, 7, -122) => 11:0
+ BC: (150, 6, -159) => 11:0
+ BC: (141, 10, -146) => 11:0
+MBC: (168, 4, -148) => 13:0
+MBC: (167, 9, -148) => 0:0
+MBC: (167, 8, -149) => 0:0
+MBC: (165, 9, -35) => 11:0
+MBC: (167, 10, -45) => 11:0
+ BC: (168, 5, -128) => 11:0
+MBC: (167, 8, -149) => 0:0
+MBC: (167, 9, -148) => 0:0
+MBC: (171, 9, -8) => 11:0
+MBC: (165, 2, -14) => 11:0
+ BC: (175, 4, -29) => 11:0
+ BC: (169, 5, -143) => 11:0
+ BC: (17, 2, -157) => 11:0
+ BC: (-3, 6, -146) => 11:0
+MBC: (167, 4, -147) => 13:0
+MBC: (168, 6, -150) => 13:0
+MBC: (168, 6, -149) => 13:0
+MBC: (169, 6, -150) => 13:0
+MBC: (170, 6, -150) => 13:0
+MBC: (170, 6, -149) => 13:0
+MBC: (167, 3, -149) => 13:0
+MBC: (167, 51, -148) => 13:0
+ BC: (160, 5, -109) => 11:0
+MBC: (162, 2, -120) => 11:0
+MBC: (175, 7, -128) => 11:0
+MBC: (-7, 6, -155) => 11:0
+MBC: (-8, 5, -157) => 11:0
+ BC: (168, 8, 44) => 11:0
+ BC: (165, 8, -88) => 11:0
+ BC: (166, 7, -130) => 11:0
+ BC: (167, 7, 6) => 11:0
+MBC: (175, 5, 41) => 11:0
+MBC: (172, 7, 39) => 11:0
+ BC: (175, 9, -122) => 11:0
+ BC: (168, 6, -137) => 11:0
+MBC: (168, 5, -148) => 13:0
+MBC: (169, 6, -149) => 13:0
+MBC: (169, 6, -148) => 13:0
+MBC: (167, 3, -148) => 13:0
+ BC: (168, 9, -68) => 11:0
+ BC: (160, 8, -98) => 11:0
+MBC: (170, 8, -147) => 11:0
+MBC: (166, 50, -148) => 13:0
+MBC: (167, 4, -148) => 13:0
+MBC: (168, 6, -148) => 13:0
+MBC: (167, 5, -149) => 13:0
+MBC: (167, 6, -147) => 13:0
+ BC: (42, 4, -156) => 11:0
+ BC: (-6, 7, -145) => 11:0
+ BC: (162, 5, 36) => 11:0
+ BC: (168, 6, -117) => 11:0
+ BC: (-25, 76, -158) => 0:0
+ BC: (-10, 8, -146) => 11:0
+ BC: (16, 3, -152) => 11:0
+MBC: (167, 5, -149) => 13:0
+MBC: (167, 6, -147) => 13:0
+MBC: (168, 6, -148) => 13:0
+MBC: (167, 4, -148) => 13:0
+ BC: (166, 6, 6) => 11:0
+ BC: (-3, 6, -145) => 11:0
+ BC: (166, 4, -149) => 11:0
+ BC: (174, 8, -36) => 11:0
+ BC: (161, 9, -85) => 11:0
+ BC: (160, 7, -128) => 11:0
+ BC: (168, 7, -134) => 11:0
+ BC: (-4, 3, -151) => 11:0
+MBC: (167, 5, -148) => 13:0
+MBC: (167, 6, -149) => 13:0
+ BC: (170, 7, -1) => 11:0
+ BC: (160, 10, -138) => 11:0
+MBC: (167, 6, -149) => 13:0
+MBC: (167, 5, -148) => 13:0
+MBC: (167, 6, -148) => 0:0
+ BC: (163, 8, -86) => 11:0
+MBC: (169, 7, -149) => 11:0
+MBC: (167, 6, -148) => 13:0
+MBC: (167, 7, -149) => 13:0
+ BC: (48, 2, -151) => 11:0
+ BC: (167, 8, 31) => 11:0
+ BC: (160, 4, 37) => 11:0
+ BC: (19, 3, -160) => 11:0
+MBC: (167, 7, -149) => 13:0
+MBC: (167, 6, -148) => 13:0
+ BC: (172, 5, 40) => 11:0
+ BC: (171, 7, -153) => 11:0
+MBC: (-8, 6, -148) => 11:0
+MBC: (-9, 6, -153) => 11:0
+ BC: (44, 3, -156) => 11:0
+ BC: (-7, 77, -154) => 0:0
+ BC: (168, 8, 34) => 11:0
+MBC: (-4, 3, -152) => 11:0
+MBC: (-6, 5, -159) => 11:0
+ BC: (165, 10, -72) => 11:0
+MBC: (173, 6, -126) => 11:0
+MBC: (168, 6, -116) => 11:0
+ BC: (-16, 75, -153) => 0:0
+ BC: (2, 5, -156) => 11:0
+ BC: (164, 3, -148) => 11:0
+ BC: (170, 10, -39) => 11:0
+ BC: (-4, 5, -145) => 11:0
+MBC: (170, 7, 6) => 11:0
+MBC: (167, 5, 3) => 11:0
+ BC: (150, 3, -159) => 11:0
+ BC: (-7, 5, -146) => 11:0
+ BC: (175, 6, -19) => 11:0
+ BC: (171, 8, -33) => 11:0
+ BC: (-12, 7, -146) => 11:0
+MBC: (169, 8, -148) => 10:0
+MBC: (168, 8, -148) => 10:2
+MBC: (167, 8, -148) => 0:0
+MBC: (167, 9, -148) => 0:0
+MBC: (168, 9, -148) => 0:0
+ BC: (174, 8, 6) => 11:0
+ BC: (172, 7, -127) => 11:0
+ BC: (170, 6, -137) => 11:0
+ BC: (5, 6, -157) => 11:0
+ BC: (170, 8, -33) => 11:0
+ BC: (167, 5, -138) => 11:0
+ BC: (170, 8, -146) => 11:0
+ BC: (161, 3, -14) => 11:0
+ BC: (163, 10, -37) => 11:0
+ BC: (175, 4, -117) => 11:0
+ BC: (-22, 71, -146) => 0:0
+ BC: (-11, 5, -149) => 11:0
+ BC: (161, 9, -40) => 11:0
+ BC: (162, 10, -106) => 11:0
+ BC: (2, 5, -155) => 11:0
+MBC: (38, 3, -160) => 11:0
+MBC: (40, 4, -157) => 11:0
+ BC: (26, 77, -146) => 0:0
+ BC: (161, 9, -64) => 11:0
+ BC: (169, 66, -102) => 0:0
+ BC: (40, 4, -158) => 11:0
+ BC: (3, 5, -155) => 11:0
+ BC: (175, 7, 23) => 11:0
+ BC: (142, 9, -145) => 11:0
+ BC: (50, 3, -151) => 11:0
+ BC: (170, 9, -15) => 11:0
+ BC: (165, 8, 42) => 11:0
+ BC: (165, 10, -69) => 11:0
+ BC: (45, 4, -155) => 11:0
+ BC: (15, 3, -150) => 11:0
+ BC: (168, 6, -147) => 11:0
+ BC: (171, 5, 4) => 11:0
+ BC: (51, 4, -149) => 11:0
+ BC: (17, 2, -152) => 11:0
+ BC: (2, 5, -153) => 11:0
+ BC: (174, 8, 8) => 11:0
+MBC: (163, 9, -43) => 11:0
+MBC: (171, 2, -44) => 11:0
+MBC: (173, 10, -46) => 11:0
+ BC: (137, 9, -146) => 11:0
+ BC: (169, 4, -117) => 11:0
+ BC: (137, 9, -148) => 11:0
+MBC: (-7, 5, -156) => 11:0
+MBC: (-4, 2, -150) => 11:0
+ BC: (166, 4, -14) => 11:0
+ BC: (170, 9, 46) => 11:0
+ BC: (165, 5, -44) => 11:0
+ BC: (163, 7, -89) => 11:0
+ BC: (-4, 2, -151) => 11:0
+MBC: (170, 6, -16) => 11:0
+MBC: (164, 5, -15) => 11:0
+ BC: (161, 8, -88) => 11:0
+ BC: (162, 9, -98) => 11:0
+ BC: (164, 7, -124) => 11:0
+ BC: (49, 3, -151) => 11:0
+ BC: (170, 6, -145) => 11:0
+ BC: (43, 3, -157) => 11:0
+ BC: (-12, 7, -153) => 11:0
+MBC: (170, 8, -149) => 11:2
+MBC: (169, 8, -149) => 11:0
+ BC: (172, 7, 8) => 11:0
+ BC: (168, 6, 39) => 11:0
+ BC: (166, 5, -116) => 11:0
+ BC: (169, 4, -140) => 11:0
+ BC: (162, 7, -45) => 11:0
+ BC: (168, 4, -138) => 11:0
+ BC: (-3, 3, -150) => 11:0
+ BC: (18, 3, -157) => 11:0
+ BC: (170, 7, -15) => 11:0
+ BC: (167, 7, 4) => 11:0
+ BC: (169, 3, -145) => 11:0
+ BC: (141, 10, -150) => 11:0
+ BC: (-8, 77, -154) => 0:0
+ BC: (175, 7, 47) => 11:0
+MBC: (170, 7, -117) => 11:0
+MBC: (161, 5, -114) => 11:0
+ BC: (-7, 8, -156) => 11:0
+ BC: (171, 5, -128) => 11:0
+ BC: (154, 2, -155) => 11:0
+MBC: (-1, 4, -145) => 11:0
+MBC: (-11, 5, -146) => 11:0
+ BC: (174, 7, -3) => 11:0
+ BC: (167, 5, -44) => 11:0
+ BC: (174, 3, -127) => 11:0
+ BC: (-8, 7, -157) => 11:0
+ BC: (151, 3, -157) => 11:0
+ BC: (174, 9, -41) => 11:0
+ BC: (163, 5, -14) => 11:0
+ BC: (169, 5, -138) => 11:0
+ BC: (160, 5, -110) => 11:0
+ BC: (165, 5, -121) => 11:0
+ BC: (-10, 5, -151) => 11:0
+ BC: (164, 9, -106) => 11:0
+MBC: (173, 9, -120) => 11:0
+MBC: (169, 6, -114) => 11:0
+ BC: (168, 8, -148) => 11:2
+ BC: (-18, 81, -155) => 0:0
+ BC: (-9, 5, -158) => 11:0
+ BC: (168, 8, 43) => 11:0
+ BC: (170, 9, -33) => 11:0
+ BC: (165, 6, -128) => 11:0
+MBC: (-13, 7, -151) => 11:0
+MBC: (-11, 8, -148) => 11:0
+ BC: (174, 8, 5) => 11:0
+ BC: (173, 6, 46) => 11:0
+ BC: (167, 9, -73) => 11:0
+ BC: (162, 7, -103) => 11:0
+ BC: (163, 9, -135) => 11:0
+ BC: (165, 10, 30) => 11:0
+ BC: (163, 9, -41) => 11:0
+ BC: (174, 5, -117) => 11:0
+ BC: (171, 9, 7) => 11:0
+ BC: (169, 10, -68) => 11:0
+ BC: (175, 3, -116) => 11:0
+ BC: (169, 8, -148) => 11:0
+ BC: (173, 7, 42) => 11:0
+ BC: (170, 5, 4) => 11:0
+ BC: (165, 10, -95) => 11:0
+ BC: (160, 6, -108) => 11:0
+ BC: (163, 5, -113) => 11:0
+ BC: (160, 8, -99) => 11:0
+ BC: (161, 5, -134) => 11:0
+ BC: (164, 10, -94) => 11:0
+MBC: (163, 7, -123) => 11:0
+MBC: (164, 2, -122) => 11:0
+ BC: (169, 8, -130) => 11:0
+ BC: (170, 9, -35) => 11:0
+ BC: (174, 6, 32) => 11:0
+ BC: (162, 9, -71) => 11:0
+ BC: (170, 9, -135) => 11:0
+ BC: (169, 66, -100) => 0:0
+ BC: (172, 5, -129) => 11:0
+ BC: (172, 8, 6) => 11:0
+ BC: (163, 7, -48) => 11:0
+ BC: (166, 9, -132) => 11:0
+ BC: (170, 8, 6) => 11:0
+ BC: (169, 8, -36) => 11:0
+ BC: (163, 5, -124) => 11:0
+ BC: (172, 3, -42) => 11:0
+ BC: (167, 5, -14) => 11:0
+ BC: (174, 3, -48) => 11:0
+ BC: (160, 6, -117) => 11:0
+MBC: (164, 6, -16) => 11:0
+MBC: (173, 10, -13) => 11:0
+ BC: (161, 10, -64) => 11:0
+ BC: (170, 2, -20) => 11:0
+ BC: (160, 6, -106) => 11:0
+MBC: (172, 6, 29) => 11:0
+MBC: (173, 5, 31) => 11:0
+ BC: (169, 7, 42) => 11:0
+ BC: (173, 6, -116) => 11:0
+ BC: (171, 5, 2) => 11:0
+ BC: (160, 8, -46) => 11:0
+ BC: (162, 8, -103) => 11:0
+ BC: (162, 3, -122) => 11:0
+ BC: (175, 4, -42) => 11:0
+ BC: (161, 8, -69) => 11:0
+ BC: (168, 3, -138) => 11:0
+ BC: (172, 2, 10) => 11:0
+ BC: (169, 10, 43) => 11:0
+ BC: (166, 10, -35) => 11:0
+ BC: (163, 7, -90) => 11:0
+ BC: (168, 8, -132) => 11:0
+ BC: (170, 6, -140) => 11:0
+ BC: (170, 3, -13) => 11:0
+ BC: (170, 7, -20) => 11:0
+ BC: (171, 10, -45) => 11:0
+ BC: (162, 8, -107) => 11:0
+ BC: (172, 4, -119) => 11:0
+ BC: (171, 4, -48) => 11:0
+ BC: (175, 7, -38) => 11:0
+ BC: (169, 7, 32) => 11:0
+ BC: (165, 3, -116) => 11:0
+ BC: (161, 3, -104) => 11:0
+ BC: (169, 8, -38) => 11:0
+ BC: (174, 3, -28) => 11:0
+ BC: (170, 6, -127) => 11:0
+MBC: (162, 10, -39) => 11:0
+MBC: (165, 7, -39) => 11:0
+ BC: (171, 9, -127) => 11:0
+ BC: (173, 5, 47) => 11:0
+ BC: (160, 10, -71) => 11:0
+ BC: (168, 5, -135) => 11:0
+ BC: (170, 5, 7) => 11:0
+ BC: (173, 10, -3) => 11:0
+ BC: (171, 68, -78) => 0:0
+ BC: (171, 5, -125) => 11:0
+ BC: (173, 6, 41) => 11:0
+ BC: (167, 9, -107) => 11:0
+ BC: (174, 4, -142) => 11:0
+ BC: (173, 8, -4) => 11:0
+ BC: (175, 4, 29) => 11:0
+ BC: (166, 7, 41) => 11:0
+ BC: (164, 7, -96) => 11:0
+ BC: (171, 9, -128) => 11:0
+ BC: (168, 9, -130) => 11:0
+ BC: (167, 8, -72) => 11:0
+ BC: (160, 6, -100) => 11:0
+ BC: (172, 6, 44) => 11:0
+ BC: (174, 8, 29) => 11:0
+ BC: (165, 5, -128) => 11:0
+ BC: (163, 5, -129) => 11:0
+ BC: (170, 9, -13) => 11:0
+ BC: (166, 6, 40) => 11:0
+MBC: (161, 5, -108) => 11:0
+MBC: (161, 7, -101) => 11:0
+ BC: (175, 9, -127) => 11:0
+MBC: (164, 6, -44) => 11:0
+MBC: (166, 9, -44) => 11:0
+ BC: (161, 3, -116) => 11:0
+ BC: (167, 4, -11) => 11:0
+ BC: (171, 5, -130) => 11:0
+ BC: (161, 7, -37) => 11:0
+ BC: (166, 4, 37) => 11:0
+MBC: (169, 9, -72) => 11:0
+MBC: (161, 8, -67) => 11:0
+ BC: (171, 6, -114) => 11:0
+ BC: (170, 4, -132) => 11:0
+ BC: (161, 6, 35) => 11:0
+MBC: (164, 6, -36) => 11:0
+MBC: (174, 8, -33) => 11:0
+MBC: (161, 5, -119) => 11:0
+MBC: (175, 6, -120) => 11:0
+MBC: (165, 4, -126) => 11:0
+ BC: (169, 5, -15) => 11:0
+ BC: (175, 6, 25) => 11:0
+ BC: (163, 2, -125) => 11:0
+ BC: (162, 7, 3) => 11:0
+ BC: (173, 4, -26) => 11:0
+ BC: (172, 10, -72) => 11:0
+ BC: (163, 9, -92) => 11:0
+ BC: (160, 4, -16) => 11:0
+ BC: (161, 10, -67) => 11:0
+ BC: (161, 8, -102) => 11:0
+ BC: (160, 7, -46) => 11:0
+ BC: (161, 4, -109) => 11:0
+MBC: (168, 4, -133) => 11:0
+MBC: (171, 9, -134) => 11:0
+ BC: (171, 7, 7) => 11:0
+ BC: (172, 10, -102) => 11:0
+ BC: (160, 6, -119) => 11:0
+ BC: (27, 67, 8) => 0:0
+ BC: (162, 6, 3) => 11:0
+ BC: (169, 10, -37) => 11:0
+ BC: (172, 5, 32) => 11:0
+ BC: (27, 67, 8) => 0:0
+MBC: (173, 2, -44) => 11:0
+MBC: (168, 10, -48) => 11:0
+ BC: (171, 8, -126) => 11:0
+ BC: (165, 8, -134) => 11:0
+ BC: (171, 4, -126) => 11:0
+ BC: (161, 10, -39) => 11:0
+ BC: (175, 6, -118) => 11:0
+ BC: (161, 6, -120) => 11:0
+ BC: (165, 5, -139) => 11:0
+ BC: (167, 3, -13) => 11:0
+ BC: (166, 8, 45) => 11:0
+ BC: (165, 9, -96) => 11:0
+MBC: (160, 5, -128) => 11:0
+MBC: (173, 7, -126) => 11:0
+ BC: (167, 7, -134) => 11:0
+ BC: (162, 6, -45) => 11:0
+ BC: (167, 7, 43) => 11:0
+ BC: (169, 4, -115) => 11:0
+ BC: (164, 10, -72) => 11:0
+ BC: (161, 8, -97) => 11:0
+MBC: (163, 6, 36) => 11:0
+MBC: (166, 7, 40) => 11:0
+ BC: (162, 7, -47) => 11:0
+ BC: (160, 8, -101) => 11:0
+ BC: (170, 4, -25) => 11:0
+ BC: (167, 9, 41) => 11:0
+MBC: (161, 4, -135) => 11:0
+MBC: (169, 4, -142) => 11:0
+ BC: (166, 4, -116) => 11:0
+ BC: (167, 6, -115) => 11:0
+ BC: (162, 9, -85) => 11:0
+ BC: (170, 3, -25) => 11:0
+ BC: (167, 7, -124) => 11:0
+ BC: (174, 4, -18) => 11:0
+ BC: (172, 5, -130) => 11:0
+ BC: (165, 5, -16) => 11:0
+MBC: (160, 5, -118) => 11:0
+MBC: (162, 5, -128) => 11:0
+ BC: (162, 7, -99) => 11:0
+MBC: (173, 6, -140) => 11:0
+MBC: (165, 4, -130) => 11:0
+ BC: (165, 9, -39) => 11:0
+ BC: (174, 10, -88) => 11:0
+ BC: (165, 4, -116) => 11:0
+ BC: (168, 6, 1) => 11:0
+ BC: (166, 7, 32) => 11:0
+ BC: (163, 7, -88) => 11:0
+ BC: (172, 10, -45) => 11:0
+ BC: (167, 8, -126) => 11:0
+ BC: (173, 68, -82) => 0:0
+ BC: (165, 5, 3) => 11:0
+ BC: (171, 4, 39) => 11:0
+ BC: (164, 9, -66) => 11:0
+ BC: (164, 10, -89) => 11:0
+ BC: (171, 5, -23) => 11:0
+ BC: (175, 5, -41) => 11:0
+ BC: (165, 5, -123) => 11:0
+ BC: (175, 3, -27) => 11:0
+MBC: (174, 8, -127) => 11:0
+MBC: (166, 3, -114) => 11:0
+ BC: (169, 6, 33) => 11:0
+ BC: (164, 9, -134) => 11:0
+ BC: (171, 4, 3) => 11:0
+ BC: (173, 4, -116) => 11:0
+ BC: (166, 6, 4) => 11:0
+ BC: (172, 10, -87) => 11:0
+ BC: (171, 10, -5) => 11:0
+ BC: (174, 9, -126) => 11:0
+ BC: (167, 6, -113) => 11:0
+ BC: (173, 5, -4) => 11:0
+MBC: (168, 10, -43) => 11:0
+MBC: (164, 10, -41) => 11:0
+MBC: (168, 3, -116) => 11:0
+MBC: (160, 3, -118) => 11:0
+ BC: (164, 7, 38) => 11:0
+ BC: (161, 8, -100) => 11:0
+ BC: (163, 5, 4) => 11:0
+ BC: (168, 10, -70) => 11:0
+MBC: (164, 6, 37) => 11:0
+MBC: (168, 7, 37) => 11:0
+ BC: (170, 7, 5) => 11:0
+ BC: (174, 8, 31) => 11:0
+ BC: (165, 7, 42) => 11:0
+ BC: (167, 9, -133) => 11:0
+
+Player: 0
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 42
+Entity: 348
+Entity: 42
+Entity: 42
+Entity: 348
+
+Keep Alive: 20
+Login Response: 1
+Chat Message: 1
+Player Position & Look: 1
+Pickup Spawn: 2
+Entity: 21
+Pre-Chunk: 609
+Map Chunk: 499
+Multi Block Change: 139
+Block Change: 659

@@ -1,7 +1,7 @@
 module.exports = [
     require('./0/distributer.cjs').ReadPacket,
     require('./1/distributer.cjs').ReadPacket,
-    undefined,
+    require('./2/distributer.cjs').ReadPacket,
     undefined,
     undefined,
     require('./5/distributer.cjs').ReadPacket,

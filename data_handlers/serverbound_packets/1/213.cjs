@@ -34,7 +34,8 @@ function ReadPacket(world, socket, data) {
                 socket.thisPlayer.upvn = thisUPVN
                 socket.thisPlayer.uvni = thisUVNI
                 socket.thisPlayer.selectedRegistries = {
-                    block: utils.registry.block.GetBlockRegistry(world, socket.thisPlayer.uvni)
+                    block: utils.registry.block.GetBlockRegistry(world, socket.thisPlayer.uvni),
+                    item: utils.registry.item.GetItemRegistry(world, socket.thisPlayer.uvni)
                 }
                 if (socket.thisPlayer.position.x % 32 >= 16 && socket.thisPlayer.position.z % 32 >= 16) socket.thisPlayer.position = {
                     x: Math.floor(socket.thisPlayer.position.x / 16) * 16 - 0.5,
@@ -47,12 +48,8 @@ function ReadPacket(world, socket, data) {
                     
                     packetWriter.Login_Response(socket)(world, socket, socket.thisPlayer.alphaID, world.config.serverName, world.config.serverStatus, 0, 0)
                     utils.world_packets.GenerateRenderDistance(socket)(world, socket, 10, Math.floor(socket.thisPlayer.position.x / 16), Math.floor(socket.thisPlayer.position.z / 16), undefined, undefined)
-                    //for (var i = 0; i < world.loadedPlayers.length; i++) {
-                        //    packetWriter.Spawn_Player(socket)(socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
-                        //}
-                        
-                        socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
-                        world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(socket.thisPlayer.username))
+                    socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
+                    world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(socket.thisPlayer.username))
                     world.loadedPlayers.push(socket.thisPlayer)
 
                     socket.thisPlayer.inWorld = true

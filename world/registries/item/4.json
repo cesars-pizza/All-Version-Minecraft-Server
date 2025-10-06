@@ -1,8 +1,8 @@
 {
     "minUVNI": 213,
-    "maxUVNI": 213,
+    "maxUVNI": 214,
     "minUPVN": 8,
-    "maxUPVN": 8,
+    "maxUPVN": 9,
     "entries": {
         "air": 0,
         "stone": 1,
