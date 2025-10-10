@@ -42,6 +42,10 @@ while(position < data.length) {
         position += 42
         packetsRaw.push(13)
         packetCounts[13]++
+    } else if (data[position] == 17) {
+        position += 6
+        packetsRaw.push(17)
+        packetCounts[17]++
     } else if (data[position] == 21) {
         position += 23
         packetsRaw.push(21)
@@ -149,6 +153,7 @@ for (var i = 0; i < packetsCompressed.length; i++) {
     else if (packetsCompressed[i].id == 1) log += `${countText} 001 / Login Response\n`
     else if (packetsCompressed[i].id == 3) log += `${countText} 003 / Chat Message\n`
     else if (packetsCompressed[i].id == 13) log += `${countText} 013 / Player Position & Look\n`
+    else if (packetsCompressed[i].id == 17) log += `${countText} 017 / Add To Inventory\n`
     else if (packetsCompressed[i].id == 21) log += `${countText} 021 / Pickup Spawn\n`
     else if (packetsCompressed[i].id == 30) log += `${countText} 030 / Entity\n`
     else if (packetsCompressed[i].id == 31) log += `${countText} 031 / Entity Relative Move\n`
@@ -180,6 +185,7 @@ log += `\nKeep Alive: ${packetCounts[0]}\n`
 log += `Login Response: ${packetCounts[1]}\n`
 log += `Chat Message: ${packetCounts[3]}\n`
 log += `Player Position & Look: ${packetCounts[13]}\n`
+log += `Add To Inventory: ${packetCounts[17]}\n`
 log += `Pickup Spawn: ${packetCounts[21]}\n`
 log += `Entity: ${packetCounts[30]}\n`
 log += `Pre-Chunk: ${packetCounts[50]}\n`

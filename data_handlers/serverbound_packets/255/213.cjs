@@ -17,9 +17,10 @@ function ReadPacket(world, socket, data) {
     var packet = dataReader.readUByte(socket, data, 0)
     var reason = dataReader.readString(socket, data, packet.nextPos)
     
+    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
+    
     if (reason.value == undefined) return -999
     else {
-        socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
         
         if (!socket.isClosed) {
             clearInterval(socket.keepAlive)

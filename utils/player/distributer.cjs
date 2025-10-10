@@ -52,6 +52,7 @@ function HasOpenInstance(socket) {
  */
 function CollidingWithBlock(socket) {
     if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').CollidingWithBlock
+    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').CollidingWithBlock
     else {
         socket.log(`ERR: Cannot Run Colliding With Block for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return () => {}
@@ -60,6 +61,7 @@ function CollidingWithBlock(socket) {
 
 function CollidingWithChunkLayer(socket) {
     if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').CollidingWithChunkLayer
+    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').CollidingWithChunkLayer
     else {
         socket.log(`ERR: Cannot Run Colliding With Chunk Layer for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return () => {}

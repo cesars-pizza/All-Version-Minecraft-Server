@@ -14,6 +14,8 @@ var packetIdentifier = "Player Look"
 function ReadPacket(world, socket, data) {
     var splitIndex = data.length - 10
 
+    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`, false)
+
     if (splitIndex >= 0) {
         var rotation = {}
         rotation.yaw = dataReader.readFloat(socket, data, 1)
@@ -32,8 +34,6 @@ function ReadPacket(world, socket, data) {
 
             socket.thisPlayer.rotation = {pitch: rotation.pitch.value, yaw: rotation.yaw.value}
         }
-
-        socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`, false)
     }
     
     return splitIndex

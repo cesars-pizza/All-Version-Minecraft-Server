@@ -104,9 +104,10 @@ class Player {
      * @param {number} upvn 
      * @param {number} uvni
      * @param {{block: number, item: number}} selectedRegistries  
+     * @param {number} floorChangeCooldown
      * @param {Socket} socket
      */
-    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, allowMovement, tick, save, upvn, uvni, selectedRegistries, socket) {
+    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, allowMovement, tick, save, upvn, uvni, selectedRegistries, floorChangeCooldown, socket) {
         this.uuid = uuid
         this.username = username
         this.position = position
@@ -126,6 +127,7 @@ class Player {
         this.upvn = upvn
         this.uvni = uvni
         this.selectedRegistries = selectedRegistries
+        this.floorChangeCooldown = floorChangeCooldown
         this.socket = socket
     }
 }

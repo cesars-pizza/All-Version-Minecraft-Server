@@ -18,9 +18,10 @@ function ReadPacket(world, socket, data) {
     var username = dataReader.readString(socket, data, protocolVersion.nextPos)
     var password = dataReader.readString(socket, data, username.nextPos)
     
+    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
+    
     if (isNaN(protocolVersion.value) || username.value == undefined || password.value == undefined) return -999
     else {
-        socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
         if (socket.disconnect == "") {
             var hasOpenInstance = utils.player.HasOpenInstance(socket)(world, username.value)
             if (!hasOpenInstance) {
@@ -37,6 +38,8 @@ function ReadPacket(world, socket, data) {
                     block: utils.registry.block.GetBlockRegistry(world, socket.thisPlayer.uvni),
                     item: utils.registry.item.GetItemRegistry(world, socket.thisPlayer.uvni)
                 }
+                socket.thisPlayer.floorChangeCooldown = 0
+
                 if (socket.thisPlayer.position.x % 32 >= 16 && socket.thisPlayer.position.z % 32 >= 16) socket.thisPlayer.position = {
                     x: Math.floor(socket.thisPlayer.position.x / 16) * 16 - 0.5,
                     y: 2,

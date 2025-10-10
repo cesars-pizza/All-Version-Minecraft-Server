@@ -15,10 +15,11 @@ function SetBlock(world, socket, position, blockID) {
  * @param {World} world 
  * @param {Socket} socket 
  * @param {Position} position 
- * @param {number} blockID 
+ * @param {number | string} blockID 
  */
 function AddBlockUpdate(world, socket, position, blockID) {
-    var blockIdentifier = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID)
+    var blockIdentifier = blockID
+    if (typeof(blockID) == "number") blockIdentifier = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID)
 
     var oldBlockUpdate = GetBlockUpdate(world, position)
 

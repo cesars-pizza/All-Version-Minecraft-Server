@@ -14,6 +14,8 @@ var packetIdentifier = "Player Position"
 function ReadPacket(world, socket, data) {
     var splitIndex = data.length - 34
 
+    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`, false)
+
     if (splitIndex >= 0) {
         var position = {}
         position.x = dataReader.readDouble(socket, data, 1)
@@ -66,8 +68,6 @@ function ReadPacket(world, socket, data) {
 
             socket.thisPlayer.position = newPositionShifted
         }
-
-        socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`, false)
     }
     
     return splitIndex

@@ -60,6 +60,11 @@ while(position < data.length) {
 
         packetsRaw.push(14)
         packetCounts[14]++
+    } else if (data[position] == 15) {
+        position += 13
+
+        packetsRaw.push(15)
+        packetCounts[15]++
     } else if (data[position] == 16) {
         position += 7
 
@@ -91,7 +96,9 @@ for (var i = 0; i < packetsCompressed.length; i++) {
     else if (packetsCompressed[i].id == 10) log += `${countText} 010 / Player\n`
     else if (packetsCompressed[i].id == 11) log += `${countText} 011 / Player Position\n`
     else if (packetsCompressed[i].id == 12) log += `${countText} 012 / Player Look\n`
+    else if (packetsCompressed[i].id == 13) log += `${countText} 013 / Player Position & Look\n`
     else if (packetsCompressed[i].id == 14) log += `${countText} 014 / Player Digging\n`
+    else if (packetsCompressed[i].id == 15) log += `${countText} 015 / Player Block Placement\n`
     else if (packetsCompressed[i].id == 16) log += `${countText} 016 / Holding Change\n`
     else if (packetsCompressed[i].id == 18) log += `${countText} 018 / Arm Animation\n`
     else log += `(x0001) ${packetsCompressed[i].id.toString().padStart(3, '0')} / Unknown\n`
@@ -107,7 +114,9 @@ log += `Login Request: ${packetCounts[1]}\n`
 log += `Player: ${packetCounts[10]}\n`
 log += `Player Position: ${packetCounts[11]}\n`
 log += `Player Look: ${packetCounts[12]}\n`
+log += `Player Position & Look: ${packetCounts[13]}\n`
 log += `Player Digging: ${packetCounts[14]}\n`
+log += `Player Block Placement: ${packetCounts[15]}\n`
 log += `Holding Change: ${packetCounts[16]}\n`
 log += `Arm Animation: ${packetCounts[18]}\n`
 

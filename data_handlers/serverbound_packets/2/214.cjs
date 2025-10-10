@@ -16,9 +16,10 @@ function ReadPacket(world, socket, data) {
     var packet = dataReader.readUByte(socket, data, 0)
     var username = dataReader.readString(socket, data, packet.nextPos)
     
+    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
+    
     if (username.value == undefined) return -999
     else {
-        socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
         if (socket.disconnect == "") {
             var hasOpenInstance = utils.player.HasOpenInstance(socket)(world, username.value)
             if (!hasOpenInstance) {

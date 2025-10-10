@@ -19,7 +19,7 @@ function GetItemRegistry(world, uvni) {
  * @param {number} id 
  */
 function GetItemName(world, registry, id) {
-    var thisRegistry = world.registries.block[registry].entries
+    var thisRegistry = world.registries.item[registry].entries
     var registryEntries = Object.keys(thisRegistry)
 
     for (var i = 0; i < registryEntries.length; i++) {
@@ -36,7 +36,7 @@ function GetItemName(world, registry, id) {
  * @returns {number | {id: number, metadata: number}}
  */
 function GetItemID(world, registry, item) {
-    var itemID = world.registries.block[registry].entries[item]
+    var itemID = world.registries.item[registry].entries[item]
 
     if (itemID == undefined) return 0
     else return itemID

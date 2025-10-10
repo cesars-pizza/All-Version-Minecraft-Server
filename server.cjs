@@ -263,6 +263,8 @@ server.on('error', (err) => {
 setInterval(ServerTick, 50)
 function ServerTick() {
     for (var i = 0; i < world.loadedPlayers.length; i++) {
+        if (world.loadedPlayers[i].floorChangeCooldown > 0) world.loadedPlayers[i].floorChangeCooldown--
+
         if (world.loadedPlayers[i].tick.spawn) {
             for (var j = 0; j < world.loadedPlayers.length; j++) {
                 if (i != j) {
@@ -382,6 +384,7 @@ function ServerSave() {
  * @param {Buffer} data
  */
 function ReadPacket(socket, data) {
+
     if (socket.dataBuffer.length > 0) data = Buffer.from(Array.from(socket.dataBuffer).concat(Array.from(data)))
     socket.dataBuffer = []
 

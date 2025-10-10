@@ -47,20 +47,7 @@
         "red_mushroom": 40,
         "gold_block": 41,
         "iron_block": 42,
-        "smooth_stone_slab": {
-            "states": {
-                "type": ["bottom", "double"]
-            },
-            "blockstates": {
-                "type=double": 43,
-                "type=bottom": 44
-            },
-            "blockstatesShort": {
-                "type=double": 43,
-                "*": 44
-            },
-            "defaultID": 44
-        },
+        "smooth_stone_slab": 44,
         "bricks": 45,
         "tnt": 46,
         "bookshelf": 47,

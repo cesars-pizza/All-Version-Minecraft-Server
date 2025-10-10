@@ -136,10 +136,10 @@ function GetBlock(world, socket, blockPos) {
         } else {
             if ((blockPos.x % 32 > 0 && blockPos.x % 32 < 15) || (blockPos.z % 32 > 0 && blockPos.z % 32 < 15)) return "air"
             else {
-                if (blockPos.x == 0 && blockPos.z >= 16) return "oak_stair[facing=west]"
-                else if (blockPos.x == 15 && blockPos.z >= 16) return "oak_stair[facing=east]"
-                else if (blockPos.z == 0 && blockPos.x >= 16) return "oak_stair[facing=north]"
-                else if (blockPos.z == 15 && blockPos.x >= 16) return "oak_stair[facing=south]"
+                if ((blockPos.x % 32) == 0 && (blockPos.z % 32) >= 16) return "oak_stairs[facing=west]"
+                else if ((blockPos.x % 32) == 15 && (blockPos.z % 32) >= 16) return "oak_stairs[facing=east]"
+                else if ((blockPos.z % 32) == 0 && (blockPos.x % 32) >= 16) return "oak_stairs[facing=north]"
+                else if ((blockPos.z % 32) == 15 && (blockPos.x % 32) >= 16) return "oak_stairs[facing=south]"
                 else return "oak_log"
             }
         }

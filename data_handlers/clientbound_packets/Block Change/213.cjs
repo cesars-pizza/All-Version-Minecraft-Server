@@ -16,11 +16,6 @@ function WritePacket(world, socket, position, block, blockMeta) {
         dataWriter.writeByte(socket, block),
         dataWriter.writeByte(socket, blockMeta)
     ))
-
-    socket.log(`X: ${position.x} => ${dataWriter.writeInt(socket, position.x)}`)
-    socket.log(`Y: ${position.y} => ${dataWriter.writeByte(socket, position.y)}`)
-    socket.log(`Z: ${position.z} => ${dataWriter.writeInt(socket, position.z)}`)
-    socket.log(`Block: ${block}:${blockMeta}`)
 }
 
 module.exports = {WritePacket}

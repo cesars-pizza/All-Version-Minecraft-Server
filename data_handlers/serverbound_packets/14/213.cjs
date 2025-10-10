@@ -15,9 +15,9 @@ var packetIdentifier = "Player Digging"
 function ReadPacket(world, socket, data) {
     var splitIndex = data.length - 12
 
-    if (splitIndex >= 0) {
-        socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
+    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
 
+    if (splitIndex >= 0) {
         var status = dataReader.readByte(socket, data, 1)
         var blockPosRaw = {}
         blockPosRaw.x = dataReader.readInt(socket, data, status.nextPos)
@@ -29,7 +29,7 @@ function ReadPacket(world, socket, data) {
             var blockPos = {x: blockPosRaw.x.value, y: blockPosRaw.y.value, z: blockPosRaw.z.value}
             var updateSuccessful = false
             
-            if (status.value == 0 && utils.math.NegMod(blockPos.x, 32) >= 16 && utils.math.NegMod(blockPos.z, 32) >= 16) {
+            if (utils.math.NegMod(blockPos.x, 32) >= 16 && utils.math.NegMod(blockPos.z, 32) >= 16) {
                 var hitBuildIndex = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
                 if (hitBuildIndex == undefined || world.builds[hitBuildIndex].creator == socket.thisPlayer.username) {
                     if (hitBuildIndex == undefined) {
@@ -41,7 +41,9 @@ function ReadPacket(world, socket, data) {
                         var chunkX = Math.floor(blockPos.x / 16)
                         var chunkZ = Math.floor(blockPos.z / 16)
 
-                        if (utils.player.CollidingWithChunkLayer(socket)(socket, socket.thisPlayer.position, {x: chunkX, y: 1, z: chunkZ}) != "inside") {
+                        if (socket.thisPlayer.floorChangeCooldown == 0 && utils.player.CollidingWithChunkLayer(socket)(socket, socket.thisPlayer.position, {x: chunkX, y: 1, z: chunkZ}) != "inside") {
+                            socket.thisPlayer.floorChangeCooldown = 5
+                            
                             var floorID = world.universalRegistries.block.indexOf(world.builds[hitBuildIndex].floor)
                             floorID++
                             if (floorID == 0 || floorID >= world.universalRegistries.block.length) floorID = 1
@@ -73,8 +75,8 @@ function ReadPacket(world, socket, data) {
                             }
                         }
                     } else if (blockPos.y < 64) {
-                        world.builds[hitBuildIndex].blocks[blockPos.y - 2][blockPos.z % 16][blockPos.x % 16] = "stone"
-                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 1)
+                        world.builds[hitBuildIndex].blocks[blockPos.y - 2][blockPos.z % 16][blockPos.x % 16] = "air"
+                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0)
                         world.builds[hitBuildIndex].lastModified = new Date().getTime()
                         world.builds[hitBuildIndex].save = true
                         updateSuccessful = true
@@ -86,7 +88,9 @@ function ReadPacket(world, socket, data) {
                 var oldBlockUpdate = utils.tick_actions.set_block.GetBlockUpdate(socket)(world, {x: blockPos.x, y: blockPos.y, z: blockPos.z})
 
                 if (oldBlockUpdate == -1) {
-                    packetWriter.Set_Block(socket)(socket, blockPos, utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, utils.worldgen.GetBlock(socket)(world, socket, blockPos)))
+                    var replacementBlock = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, utils.worldgen.GetBlock(socket)(world, socket, blockPos))
+                    if (typeof(replacementBlock) == "number") packetWriter.Block_Change(socket)(world, socket, blockPos, replacementBlock, 0)
+                    else packetWriter.Block_Change(socket)(world, socket, blockPos, replacementBlock.id, replacementBlock.metadata)
                 }
             }
         }
