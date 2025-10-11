@@ -68,4 +68,8 @@ function CollidingWithChunkLayer(socket) {
     }
 }
 
-module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer}
+function GetDirectionNESW(socket) {
+    return require('./29.cjs').GetDirectionNESW
+}
+
+module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer, GetDirectionNESW}

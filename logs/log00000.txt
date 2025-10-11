@@ -1,0 +1,1249 @@
+IDENTIFIED UPVN 8
+IDENTIFIED UVNI 213 / Alpha v1.0.15
+SERVERBOUND --> 1 "Login Request" / 3 bytes
+SERVERBOUND --> 1 "Login Request" / 26 bytes
+CLIENTBOUND <-- 1 "Login Response" / 55 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+Chunk Size: (16, 16)
+CLIENTBOUND <-- 51 "Map Chunk" / 61978 bytes
+Chunk Size: (16, 5)
+CLIENTBOUND <-- 51 "Map Chunk" / 19052 bytes
+Chunk Size: (5, 16)
+CLIENTBOUND <-- 51 "Map Chunk" / 17857 bytes
+Chunk Size: (5, 5)
+CLIENTBOUND <-- 51 "Map Chunk" / 5768 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 1964 bytes
+SERVERBOUND --> 10 "Player" / 1922 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 1920 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 1878 bytes
+SERVERBOUND --> 10 "Player" / 1836 bytes
+SERVERBOUND --> 11 "Player Position" / 1834 bytes
+SERVERBOUND --> 10 "Player" / 1800 bytes
+SERVERBOUND --> 11 "Player Position" / 1798 bytes
+SERVERBOUND --> 10 "Player" / 1764 bytes
+SERVERBOUND --> 11 "Player Position" / 1762 bytes
+SERVERBOUND --> 10 "Player" / 1728 bytes
+SERVERBOUND --> 11 "Player Position" / 1726 bytes
+SERVERBOUND --> 10 "Player" / 1692 bytes
+SERVERBOUND --> 11 "Player Position" / 1690 bytes
+SERVERBOUND --> 10 "Player" / 1656 bytes
+SERVERBOUND --> 11 "Player Position" / 1654 bytes
+SERVERBOUND --> 10 "Player" / 1620 bytes
+SERVERBOUND --> 11 "Player Position" / 1618 bytes
+SERVERBOUND --> 10 "Player" / 1584 bytes
+SERVERBOUND --> 11 "Player Position" / 1582 bytes
+SERVERBOUND --> 10 "Player" / 1548 bytes
+SERVERBOUND --> 11 "Player Position" / 1546 bytes
+SERVERBOUND --> 10 "Player" / 1512 bytes
+SERVERBOUND --> 11 "Player Position" / 1510 bytes
+SERVERBOUND --> 10 "Player" / 1476 bytes
+SERVERBOUND --> 11 "Player Position" / 1474 bytes
+SERVERBOUND --> 10 "Player" / 1440 bytes
+SERVERBOUND --> 11 "Player Position" / 1438 bytes
+SERVERBOUND --> 10 "Player" / 1404 bytes
+SERVERBOUND --> 11 "Player Position" / 1402 bytes
+SERVERBOUND --> 10 "Player" / 1368 bytes
+SERVERBOUND --> 11 "Player Position" / 1366 bytes
+SERVERBOUND --> 10 "Player" / 1332 bytes
+SERVERBOUND --> 11 "Player Position" / 1330 bytes
+SERVERBOUND --> 10 "Player" / 1296 bytes
+SERVERBOUND --> 11 "Player Position" / 1294 bytes
+SERVERBOUND --> 10 "Player" / 1260 bytes
+SERVERBOUND --> 11 "Player Position" / 1258 bytes
+SERVERBOUND --> 10 "Player" / 1224 bytes
+SERVERBOUND --> 11 "Player Position" / 1222 bytes
+SERVERBOUND --> 10 "Player" / 1188 bytes
+SERVERBOUND --> 11 "Player Position" / 1186 bytes
+SERVERBOUND --> 10 "Player" / 1152 bytes
+SERVERBOUND --> 11 "Player Position" / 1150 bytes
+SERVERBOUND --> 10 "Player" / 1116 bytes
+SERVERBOUND --> 11 "Player Position" / 1114 bytes
+SERVERBOUND --> 10 "Player" / 1080 bytes
+SERVERBOUND --> 11 "Player Position" / 1078 bytes
+SERVERBOUND --> 10 "Player" / 1044 bytes
+SERVERBOUND --> 11 "Player Position" / 1042 bytes
+SERVERBOUND --> 10 "Player" / 1008 bytes
+SERVERBOUND --> 11 "Player Position" / 1006 bytes
+SERVERBOUND --> 10 "Player" / 972 bytes
+SERVERBOUND --> 11 "Player Position" / 970 bytes
+SERVERBOUND --> 10 "Player" / 936 bytes
+SERVERBOUND --> 11 "Player Position" / 934 bytes
+SERVERBOUND --> 10 "Player" / 900 bytes
+SERVERBOUND --> 11 "Player Position" / 898 bytes
+SERVERBOUND --> 10 "Player" / 864 bytes
+SERVERBOUND --> 11 "Player Position" / 862 bytes
+SERVERBOUND --> 10 "Player" / 828 bytes
+SERVERBOUND --> 11 "Player Position" / 826 bytes
+SERVERBOUND --> 10 "Player" / 792 bytes
+SERVERBOUND --> 11 "Player Position" / 790 bytes
+SERVERBOUND --> 10 "Player" / 756 bytes
+SERVERBOUND --> 11 "Player Position" / 754 bytes
+SERVERBOUND --> 10 "Player" / 720 bytes
+SERVERBOUND --> 11 "Player Position" / 718 bytes
+SERVERBOUND --> 10 "Player" / 684 bytes
+SERVERBOUND --> 11 "Player Position" / 682 bytes
+SERVERBOUND --> 10 "Player" / 648 bytes
+SERVERBOUND --> 11 "Player Position" / 646 bytes
+SERVERBOUND --> 10 "Player" / 612 bytes
+SERVERBOUND --> 11 "Player Position" / 610 bytes
+SERVERBOUND --> 10 "Player" / 576 bytes
+SERVERBOUND --> 11 "Player Position" / 574 bytes
+SERVERBOUND --> 10 "Player" / 540 bytes
+SERVERBOUND --> 11 "Player Position" / 538 bytes
+SERVERBOUND --> 10 "Player" / 504 bytes
+SERVERBOUND --> 11 "Player Position" / 502 bytes
+SERVERBOUND --> 10 "Player" / 468 bytes
+SERVERBOUND --> 11 "Player Position" / 466 bytes
+SERVERBOUND --> 10 "Player" / 432 bytes
+SERVERBOUND --> 11 "Player Position" / 430 bytes
+SERVERBOUND --> 10 "Player" / 396 bytes
+SERVERBOUND --> 11 "Player Position" / 394 bytes
+SERVERBOUND --> 10 "Player" / 360 bytes
+SERVERBOUND --> 11 "Player Position" / 358 bytes
+SERVERBOUND --> 10 "Player" / 324 bytes
+SERVERBOUND --> 11 "Player Position" / 322 bytes
+SERVERBOUND --> 10 "Player" / 288 bytes
+SERVERBOUND --> 11 "Player Position" / 286 bytes
+SERVERBOUND --> 10 "Player" / 252 bytes
+SERVERBOUND --> 11 "Player Position" / 250 bytes
+SERVERBOUND --> 10 "Player" / 216 bytes
+SERVERBOUND --> 11 "Player Position" / 214 bytes
+SERVERBOUND --> 10 "Player" / 180 bytes
+SERVERBOUND --> 11 "Player Position" / 178 bytes
+SERVERBOUND --> 10 "Player" / 144 bytes
+SERVERBOUND --> 11 "Player Position" / 142 bytes
+SERVERBOUND --> 10 "Player" / 108 bytes
+SERVERBOUND --> 11 "Player Position" / 106 bytes
+SERVERBOUND --> 10 "Player" / 72 bytes
+SERVERBOUND --> 11 "Player Position" / 70 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 19 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 76 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 11 "Player Position" / 33 bytes
+SERVERBOUND --> 11 "Player Position" / 76 bytes
+SERVERBOUND --> 10 "Player" / 42 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 40 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 4 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 10 "Player" / 27 bytes
+SERVERBOUND --> 11 "Player Position" / 25 bytes
+SERVERBOUND --> 11 "Player Position" / 76 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 11 "Player Position" / 25 bytes
+SERVERBOUND --> 11 "Player Position" / 75 bytes
+SERVERBOUND --> 10 "Player" / 41 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 39 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 4 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 39 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 41 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 5 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 1 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 12 "Player Look" / 2 bytes
+SERVERBOUND --> 12 "Player Look" / 54 bytes
+SERVERBOUND --> 10 "Player" / 44 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 12 "Player Look" / 3 bytes
+SERVERBOUND --> 12 "Player Look" / 12 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 10 "Player" / 19 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 76 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 17 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 1 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 9 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 17 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 25 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 33 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 34 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 10 "Player" / 1 bytes
+SERVERBOUND --> 10 "Player" / 40 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 38 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 10 "Player" / 35 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 33 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 36 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 38 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 39 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 41 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 12 "Player Look" / 6 bytes
+SERVERBOUND --> 12 "Player Look" / 54 bytes
+SERVERBOUND --> 10 "Player" / 44 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 12 "Player Look" / 4 bytes
+SERVERBOUND --> 12 "Player Look" / 51 bytes
+SERVERBOUND --> 10 "Player" / 41 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 39 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 41 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 1 bytes
+SERVERBOUND --> 10 "Player" / 4 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 17 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 25 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 33 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 34 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 35 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 36 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 37 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 39 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 40 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 41 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 4 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 78 bytes
+SERVERBOUND --> 11 "Player Position" / 76 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 11 "Player Position" / 33 bytes
+SERVERBOUND --> 11 "Player Position" / 73 bytes
+SERVERBOUND --> 10 "Player" / 39 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 37 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 5 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 1 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 10 "Player" / 27 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 25 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 34 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 38 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 40 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 4 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 19 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 4 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 2 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 4 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 10 "Player" / 4 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 10 "Player" / 4 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 10 "Player" / 4 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 10 "Player" / 4 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 10 "Player" / 4 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 14 "Player Digging" / 12 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 33 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 45 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+CLIENTBOUND <-- 17 "Add To Inventory" / 6 bytes
+SERVERBOUND --> 0 "Keep Alive" / 9 bytes
+CLIENTBOUND <-- 0 "Keep Alive" / 1 bytes
+SERVERBOUND --> 0 "Keep Alive" / 8 bytes
+CLIENTBOUND <-- 0 "Keep Alive" / 1 bytes
+SERVERBOUND --> 0 "Keep Alive" / 7 bytes
+CLIENTBOUND <-- 0 "Keep Alive" / 1 bytes
+SERVERBOUND --> 0 "Keep Alive" / 6 bytes
+CLIENTBOUND <-- 0 "Keep Alive" / 1 bytes
+SERVERBOUND --> 0 "Keep Alive" / 5 bytes
+CLIENTBOUND <-- 0 "Keep Alive" / 1 bytes
+SERVERBOUND --> 0 "Keep Alive" / 4 bytes
+CLIENTBOUND <-- 0 "Keep Alive" / 1 bytes
+SERVERBOUND --> 0 "Keep Alive" / 3 bytes
+CLIENTBOUND <-- 0 "Keep Alive" / 1 bytes
+SERVERBOUND --> 0 "Keep Alive" / 2 bytes
+CLIENTBOUND <-- 0 "Keep Alive" / 1 bytes
+SERVERBOUND --> 0 "Keep Alive" / 1 bytes
+CLIENTBOUND <-- 0 "Keep Alive" / 1 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+Set Position: (559.5, 2, 15.5)
+CLIENTBOUND <-- 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 10 "Player" / 4 bytes
+SERVERBOUND --> 16 "Holding Change" / 2 bytes
+SERVERBOUND --> 16 "Holding Change" / 49 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 9 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 36 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 38 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 41 bytes
+SERVERBOUND --> 13 "Player Position And Look" / 42 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 25 bytes
+SERVERBOUND --> 11 "Player Position" / 33 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 4 bytes
+SERVERBOUND --> 12 "Player Look" / 43 bytes
+SERVERBOUND --> 11 "Player Position" / 33 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 8 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 2 bytes
+SERVERBOUND --> 12 "Player Look" / 10 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 3 bytes
+SERVERBOUND --> 12 "Player Look" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 5 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 19 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+Chunk Size: (16, 1)
+CLIENTBOUND <-- 51 "Map Chunk" / 3054 bytes
+Chunk Size: (5, 1)
+CLIENTBOUND <-- 51 "Map Chunk" / 994 bytes
+SERVERBOUND --> 10 "Player" / 108 bytes
+SERVERBOUND --> 11 "Player Position" / 106 bytes
+SERVERBOUND --> 10 "Player" / 72 bytes
+SERVERBOUND --> 11 "Player Position" / 70 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 35 bytes
+SERVERBOUND --> 11 "Player Position" / 33 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 3 bytes
+SERVERBOUND --> 12 "Player Look" / 27 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 4 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 19 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 11 "Player Position" / 25 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 1 bytes
+SERVERBOUND --> 12 "Player Look" / 6 bytes
+SERVERBOUND --> 12 "Player Look" / 7 bytes
+SERVERBOUND --> 12 "Player Look" / 8 bytes
+SERVERBOUND --> 12 "Player Look" / 9 bytes
+SERVERBOUND --> 12 "Player Look" / 10 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 25 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 4 bytes
+SERVERBOUND --> 12 "Player Look" / 27 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 4 bytes
+SERVERBOUND --> 12 "Player Look" / 27 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 5 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 2 bytes
+SERVERBOUND --> 12 "Player Look" / 8 bytes
+SERVERBOUND --> 12 "Player Look" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 4 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 2 bytes
+SERVERBOUND --> 12 "Player Look" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 4 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 1 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+CLIENTBOUND <-- 50 "Pre-Chunk" / 10 bytes
+Chunk Size: (1, 16)
+CLIENTBOUND <-- 51 "Map Chunk" / 4272 bytes
+Chunk Size: (1, 5)
+CLIENTBOUND <-- 51 "Map Chunk" / 1293 bytes
+SERVERBOUND --> 10 "Player" / 80 bytes
+SERVERBOUND --> 11 "Player Position" / 78 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 6 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 10 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 5 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 1 bytes
+SERVERBOUND --> 12 "Player Look" / 9 bytes
+SERVERBOUND --> 12 "Player Look" / 27 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 2 bytes
+SERVERBOUND --> 12 "Player Look" / 27 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 5 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 5 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 7 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 2 bytes
+SERVERBOUND --> 12 "Player Look" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 5 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 6 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 5 bytes
+SERVERBOUND --> 12 "Player Look" / 43 bytes
+SERVERBOUND --> 11 "Player Position" / 33 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 10 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 3 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 2 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 2 bytes
+SERVERBOUND --> 12 "Player Look" / 7 bytes
+SERVERBOUND --> 12 "Player Look" / 9 bytes
+SERVERBOUND --> 12 "Player Look" / 10 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 25 bytes
+SERVERBOUND --> 11 "Player Position" / 33 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 2 bytes
+SERVERBOUND --> 12 "Player Look" / 9 bytes
+SERVERBOUND --> 12 "Player Look" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 25 bytes
+SERVERBOUND --> 11 "Player Position" / 33 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 10 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 5 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 5 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 2 bytes
+SERVERBOUND --> 12 "Player Look" / 10 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 6 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 6 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 3 bytes
+SERVERBOUND --> 12 "Player Look" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 33 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 5 bytes
+SERVERBOUND --> 12 "Player Look" / 44 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 12 "Player Look" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 19 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 27 bytes
+SERVERBOUND --> 11 "Player Position" / 25 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 27 bytes
+SERVERBOUND --> 11 "Player Position" / 25 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 27 bytes
+SERVERBOUND --> 11 "Player Position" / 25 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 1 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 27 bytes
+SERVERBOUND --> 11 "Player Position" / 25 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 19 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 11 "Player Position" / 33 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 19 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 3 bytes
+SERVERBOUND --> 11 "Player Position" / 1 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 19 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 19 bytes
+SERVERBOUND --> 11 "Player Position" / 17 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 2 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 11 bytes
+SERVERBOUND --> 11 "Player Position" / 9 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 36 bytes
+SERVERBOUND --> 11 "Player Position" / 34 bytes
+SERVERBOUND --> 10 "Player" / 13 bytes
+SERVERBOUND --> 255 "Disconnect" / 11 bytes
+
+Client Disconnect: Quitting

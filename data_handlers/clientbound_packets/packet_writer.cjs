@@ -12,6 +12,7 @@ module.exports = {
 
     Keep_Alive: require('./Keep Alive/distributer.cjs').WritePacket,
     Login_Response: require('./Login Response/distributer.cjs').WritePacket,
+    Chat_Message: require('./Chat Message/distributer.cjs').WritePacket,
     Player_Position_And_Look: require('./Player Position And Look/distributer.cjs').WritePacket,
     Add_To_Inventory: require('./Add To Inventory/distributer.cjs').WritePacket,
     Pre_Chunk: require('./Pre Chunk/distributer.cjs').WritePacket,
@@ -19,7 +20,10 @@ module.exports = {
     Block_Change: require('./Block Change/distributer.cjs').WritePacket,
     Multi_Block_Change: require('./Multi Block Change/distributer.cjs').WritePacket,
     Kick: require('./Kick/distributer.cjs').WritePacket,
+
     _alt: {
-        Level_Data_Chunk_alt0: require('./Level Data Chunk/distributer.cjs').WritePacket_Alt0
+        Level_Data_Chunk_alt0: require('./Level Data Chunk/distributer.cjs').WritePacket_Alt0,
+
+        Map_Chunk_alt0: require('./Map Chunk/distributer.cjs').WritePacket_Alt0
     }
 }

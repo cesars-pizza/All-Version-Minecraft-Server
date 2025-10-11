@@ -1,4 +1,5 @@
 const { World, Socket, Position } = require("../../data_structures.cjs");
+const utils = require("../utils.cjs");
 
 /**
  * @param {World} world 
@@ -69,6 +70,7 @@ function GeneratePlayer(world, socket, username) {
         verified: false,
         keepUnverified: false,
         lastUVNI: socket.thisPlayer.uvni,
+        joinCount: 0,
         save: true
     }
 
@@ -203,4 +205,14 @@ function CollidingWithChunkLayer(socket, playerPos, layerPos) {
     return "none"
 }
 
-module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer}
+function GetDirectionNESW(socket, yaw) {
+    console.log(yaw)
+    if (utils.math.NegMod(yaw + 45, 360) < 90) return "south"
+    else if (utils.math.NegMod(yaw - 45, 360) < 90) return "west"
+    else if (utils.math.NegMod(yaw - 135, 360) < 90) return "north"
+    else if (utils.math.NegMod(yaw - 225, 360) < 90) return "east"
+
+    return "???"
+}
+
+module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer, GetDirectionNESW}

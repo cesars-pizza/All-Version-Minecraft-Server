@@ -21,6 +21,7 @@ function ReadPacket(world, socket, data) {
 
         if (socket.disconnect == "") {
             if (message.value == "give") packetWriter.Add_To_Inventory(socket)(world, socket, 1, 64, 0)
+            else if (message.value == "pos") packetWriter.Chat_Message(socket)(world, socket, `(${socket.thisPlayer.position.x}, ${socket.thisPlayer.position.y}, ${socket.thisPlayer.position.z}) facing (${utils.math.NegMod(socket.thisPlayer.rotation.pitch, 360)}, ${utils.math.NegMod(socket.thisPlayer.rotation.yaw, 360)})`)
         }
 
         return data.length - (1 + message.length)

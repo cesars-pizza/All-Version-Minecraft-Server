@@ -68,11 +68,11 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
 
         if (chunkTypeX == 1) {
             for (var x = 0; x < 16; x++) {
-                blocks[1][0][x] = southStairID.id
-                blockMetadata[1][0][x] = southStairID.metadata
+                blocks[1][0][x] = northStairID.id
+                blockMetadata[1][0][x] = northStairID.metadata
 
-                blocks[1][15][x] = northStairID.id
-                blockMetadata[1][15][x] = northStairID.metadata
+                blocks[1][15][x] = southStairID.id
+                blockMetadata[1][15][x] = southStairID.metadata
             }
         } else if (chunkTypeZ == 1) {
             for (var z = 0; z < 16; z++) {
@@ -96,7 +96,14 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
             for (var z = 0; z < 16; z++) {
                 blocks[y][z] = []
                 for (var x = 0; x < 16; x++) {
-                    if (y < 64) blocks[y][z][x] = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, world.builds[buildIndex].blocks[y - 2][z][x])
+                    if (y < 64) {
+                        var thisBlock = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, world.builds[buildIndex].blocks[y - 2][z][x])
+                        if (typeof(thisBlock) == "number") blocks[y][z][x] = thisBlock
+                        else {
+                            blocks[y][z][x] = thisBlock.id
+                            blockMetadata[y][z][x] = thisBlock.metadata
+                        }
+                    }
                     else blocks[y][z][x] = airID
                 }
             }
@@ -138,8 +145,8 @@ function GetBlock(world, socket, blockPos) {
             else {
                 if ((blockPos.x % 32) == 0 && (blockPos.z % 32) >= 16) return "oak_stairs[facing=west]"
                 else if ((blockPos.x % 32) == 15 && (blockPos.z % 32) >= 16) return "oak_stairs[facing=east]"
-                else if ((blockPos.z % 32) == 0 && (blockPos.x % 32) >= 16) return "oak_stairs[facing=north]"
-                else if ((blockPos.z % 32) == 15 && (blockPos.x % 32) >= 16) return "oak_stairs[facing=south]"
+                else if ((blockPos.z % 32) == 0 && (blockPos.x % 32) >= 16) return "oak_stairs[facing=south]"
+                else if ((blockPos.z % 32) == 15 && (blockPos.x % 32) >= 16) return "oak_stairs[facing=north]"
                 else return "oak_log"
             }
         }

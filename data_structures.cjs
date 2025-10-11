@@ -105,9 +105,10 @@ class Player {
      * @param {number} uvni
      * @param {{block: number, item: number}} selectedRegistries  
      * @param {number} floorChangeCooldown
+     * @param {number} joinCount
      * @param {Socket} socket
      */
-    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, allowMovement, tick, save, upvn, uvni, selectedRegistries, floorChangeCooldown, socket) {
+    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, allowMovement, tick, save, upvn, uvni, selectedRegistries, floorChangeCooldown, joinCount, socket) {
         this.uuid = uuid
         this.username = username
         this.position = position
@@ -128,6 +129,7 @@ class Player {
         this.uvni = uvni
         this.selectedRegistries = selectedRegistries
         this.floorChangeCooldown = floorChangeCooldown
+        this.joinCount = joinCount
         this.socket = socket
     }
 }

@@ -25,7 +25,6 @@ function ReadPacket(world, socket, data) {
         var face = dataReader.readByte(socket, data, posZ.nextPos)
 
         if (socket.disconnect == "") {
-            console.log(item.value)
             var placedName = utils.registry.item.GetItemName(world, socket.thisPlayer.selectedRegistries.item, item.value)
             if (placedName == "water_bucket") placedName = "water"
             else if (placedName == "lava_bucket") placedName = "lava"
@@ -98,7 +97,6 @@ function ReadPacket(world, socket, data) {
                             }
                         }
                     } else if (facingBlock.y < 64) {
-                        console.log(placedName)
                         if (placedName == "smooth_stone_slab") {
                             if (validBlock) {
                                 if (face.value == 1) {
@@ -133,17 +131,33 @@ function ReadPacket(world, socket, data) {
                         } else if (placedName == "torch") {
 
                         } else if (placedName == "oak_stairs") {
+                            var playerDirection = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw)
 
+                            if (facingBlock.block == "air" && utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
+                                if (validBlock) {
+                                    world.builds[hitBuildIndex].blocks[facingBlock.y - 2][facingBlock.z % 16][facingBlock.x % 16] = placedName + `[facing=${playerDirection}]`
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + `[facing=${playerDirection}]`)
+                                    updateSuccessful = true
+                                } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
+                            }
                         } else if (placedName == "chest") {
-
+                            
                         } else if (placedName == "furnace") {
-
+                            
                         } else if (placedName == "ladder") {
-
+                            
                         } else if (placedName == "rail") {
 
                         } else if (placedName == "cobblestone_stairs") {
+                            var playerDirection = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw)
 
+                            if (facingBlock.block == "air" && utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
+                                if (validBlock) {
+                                    world.builds[hitBuildIndex].blocks[facingBlock.y - 2][facingBlock.z % 16][facingBlock.x % 16] = placedName + `[facing=${playerDirection}]`
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + `[facing=${playerDirection}]`)
+                                    updateSuccessful = true
+                                } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
+                            }
                         } else if (placedName == "lever") {
 
                         } else if (placedName == "stone_pressure_plate") {
@@ -185,7 +199,6 @@ function ReadPacket(world, socket, data) {
                         } else if (placedName == "furnace_minecart") {
 
                         } else {
-                            console.log(facingBlock.block)
                             if (facingBlock.block == "air" && utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                 if (validBlock) {
                                     world.builds[hitBuildIndex].blocks[facingBlock.y - 2][facingBlock.z % 16][facingBlock.x % 16] = placedName

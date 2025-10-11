@@ -79,16 +79,16 @@
             "blockstates": {
                 "facing=east": "53:0",
                 "facing=west": "53:1",
-                "facing=north": "53:2",
-                "facing=south": "53:3"
+                "facing=north": "53:3",
+                "facing=south": "53:2"
             },
             "blockstatesShort": {
                 "facing=east": "53:0",
                 "facing=west": "53:1",
-                "*": "53:2",
-                "facing=south": "53:3"
+                "*": "53:3",
+                "facing=south": "53:2"
             },
-            "defaultID": "53:2"
+            "defaultID": "53:3"
         },
         "chest": {
             "states": {
@@ -406,16 +406,16 @@
             "blockstates": {
                 "facing=east": "67:0",
                 "facing=west": "67:1",
-                "facing=north": "67:2",
-                "facing=south": "67:3"
+                "facing=north": "67:3",
+                "facing=south": "67:2"
             },
             "blockstatesShort": {
                 "facing=east": "67:0",
                 "facing=west": "67:1",
-                "*": "67:2",
-                "facing=south": "67:3"
+                "*": "67:3",
+                "facing=south": "67:2"
             },
-            "defaultID": "67:2"
+            "defaultID": "67:3"
         },
         "oak_wall_sign": {
             "states": {
