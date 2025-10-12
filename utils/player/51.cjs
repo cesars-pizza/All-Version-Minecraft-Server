@@ -13,7 +13,8 @@ function GeneratePlayer(world, socket, username) {
         rotation: {pitch: 0, yaw: 0},
         inventory: {
             selected_slot: 0,
-            slots: []
+            slots: [],
+            bucket_tracker: {empty: 0, water: 0, lava: 0}
         },
         verified: false,
         keepUnverified: false,

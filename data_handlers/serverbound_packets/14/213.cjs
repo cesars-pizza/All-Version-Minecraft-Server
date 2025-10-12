@@ -75,7 +75,7 @@ function ReadPacket(world, socket, data) {
                             }
                         }
                     } else if (blockPos.y < 64) {
-                        world.builds[hitBuildIndex].blocks[blockPos.y - 2][blockPos.z % 16][blockPos.x % 16] = "air"
+                        world.builds[hitBuildIndex].blocks[blockPos.y - 2][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = "air"
                         utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0, false)
                         world.builds[hitBuildIndex].lastModified = new Date().getTime()
                         world.builds[hitBuildIndex].save = true

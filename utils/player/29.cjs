@@ -62,7 +62,8 @@ function GeneratePlayer(world, socket, username) {
         classicWorldOffset: {x: 0, z: 0},
         inventory: {
             selected_slot: 0,
-            slots: []
+            slots: [],
+            bucket_tracker: {empty: 0, water: 0, lava: 0}
         },
         settings: {
             showPlotInfo: true

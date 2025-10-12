@@ -47,6 +47,8 @@ function ReadPacket(world, socket, data) {
             
                 var secondInvHasValidBlock = false
                 if (socket.thisPlayer.joinCount % 2 == 0) {
+                    socket.thisPlayer.inventory.bucket_tracker = {empty: 0, water: 0, lava: 0}
+
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("chest")) packetWriter.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "chest"), 64); secondInvHasValidBlock = true
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("redstone_wire")) packetWriter.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "redstone"), 64); secondInvHasValidBlock = true
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("diamond_ore")) packetWriter.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "diamond_ore"), 64); secondInvHasValidBlock = true
@@ -82,6 +84,8 @@ function ReadPacket(world, socket, data) {
                 }
                 
                 if (socket.thisPlayer.joinCount % 2 == 1 || !secondInvHasValidBlock) {
+                    socket.thisPlayer.inventory.bucket_tracker = {empty: 1, water: 1, lava: 1}
+
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("stone")) packetWriter.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "stone"), 64)
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("grass_block")) packetWriter.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "grass_block"), 64)
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("dirt")) packetWriter.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "dirt"), 64)

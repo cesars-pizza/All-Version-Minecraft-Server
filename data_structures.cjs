@@ -90,7 +90,7 @@ class Player {
      * @param {Position} position 
      * @param {Rotation} rotation 
      * @param {{x: number, z: number}} classicWorldOffset
-     * @param {{selected_slot: number, slots: Slot[]}} inventory 
+     * @param {{selected_slot: number, slots: Slot[], bucket_tracker: {empty: number, water: number, lava: number}}} inventory 
      * @param {{showPlotInfo: boolean}} settings
      * @param {boolean} verified 
      * @param {boolean} keepUnverified 

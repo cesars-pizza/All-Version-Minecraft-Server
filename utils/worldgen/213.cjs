@@ -135,28 +135,28 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
 function GetBlock(world, socket, blockPos) {
     if (blockPos.y == 0) return "cobblestone"
     else if (blockPos.y == 1) {
-        if ((blockPos.x % 32) > 15 && (blockPos.z % 32) > 15) {
+        if (utils.math.NegMod(blockPos.x, 32) > 15 && utils.math.NegMod(blockPos.z, 32) > 15) {
             var build = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
 
             if (build == undefined) return "grass_block"
             else return world.builds[build].floor
         } else {
-            if ((blockPos.x % 32 > 0 && blockPos.x % 32 < 15) || (blockPos.z % 32 > 0 && blockPos.z % 32 < 15)) return "air"
+            if ((utils.math.NegMod(blockPos.x, 32) > 0 && utils.math.NegMod(blockPos.x, 32) < 15) || (utils.math.NegMod(blockPos.z, 32) > 0 && utils.math.NegMod(blockPos.z, 32) < 15)) return "air"
             else {
-                if ((blockPos.x % 32) == 0 && (blockPos.z % 32) >= 16) return "oak_stairs[facing=west]"
-                else if ((blockPos.x % 32) == 15 && (blockPos.z % 32) >= 16) return "oak_stairs[facing=east]"
-                else if ((blockPos.z % 32) == 0 && (blockPos.x % 32) >= 16) return "oak_stairs[facing=south]"
-                else if ((blockPos.z % 32) == 15 && (blockPos.x % 32) >= 16) return "oak_stairs[facing=north]"
+                if (utils.math.NegMod(blockPos.x, 32) == 0 && utils.math.NegMod(blockPos.z, 32) >= 16) return "oak_stairs[facing=west]"
+                else if (utils.math.NegMod(blockPos.x, 32) == 15 && utils.math.NegMod(blockPos.z, 32) >= 16) return "oak_stairs[facing=east]"
+                else if (utils.math.NegMod(blockPos.z, 32) == 0 && utils.math.NegMod(blockPos.x, 32) >= 16) return "oak_stairs[facing=south]"
+                else if (utils.math.NegMod(blockPos.z, 32) == 15 && utils.math.NegMod(blockPos.x, 32) >= 16) return "oak_stairs[facing=north]"
                 else return "oak_log"
             }
         }
     } else if (blockPos.y >= 64) return "air"
     else {
-        if ((blockPos.x % 32) > 15 && (blockPos.z % 32) > 15) {
+        if (utils.math.NegMod(blockPos.x, 32) > 15 && utils.math.NegMod(blockPos.z, 32) > 15) {
             var build = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
 
             if (build == undefined) return "air"
-            else return world.builds[build].blocks[blockPos.y - 2][blockPos.z % 16][blockPos.x % 16]
+            else return world.builds[build].blocks[blockPos.y - 2][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x % 16)]
         } else return "air"
     }
 }
