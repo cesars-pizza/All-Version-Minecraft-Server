@@ -39,6 +39,10 @@ function ReadPacket(world, socket, data) {
                     y: 2,
                     z: Math.floor(socket.thisPlayer.position.z / 16) * 16 - 0.5,
                 }
+                socket.thisPlayer.classicWorldOffset = {
+                    x: Math.floor(socket.thisPlayer.position.x / 256),
+                    z: Math.floor(socket.thisPlayer.position.z / 256)
+                }
                 if (!socket.thisPlayer.verified) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
 

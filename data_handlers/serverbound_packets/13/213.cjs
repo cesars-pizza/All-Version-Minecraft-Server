@@ -29,10 +29,19 @@ function ReadPacket(world, socket, data) {
 
         var onGround = dataReader.readBool(socket, data, rotation.pitch.nextPos)
 
-        if (socket.disconnect == "" && !socket.thisPlayer.tick.teleportSelf && socket.thisPlayer.allowMovement) {
-            var newPosition = {x: position.x.value, y: position.y.value, z: position.z.value}
-            var newPositionShifted = newPosition
+        var newPosition = {x: position.x.value, y: position.y.value, z: position.z.value}
+        var newPositionShifted = newPosition
 
+        var difX = socket.thisPlayer.position.x != newPositionShifted.x
+        var difY = socket.thisPlayer.position.y != newPositionShifted.y
+        var difZ = socket.thisPlayer.position.z != newPositionShifted.z
+        var difPitch = socket.thisPlayer.rotation.pitch != rotation.pitch.value
+        var difYaw = socket.thisPlayer.rotation.yaw != rotation.yaw.value
+
+        var prevChunk = {x: Math.floor(socket.thisPlayer.position.x / 16), z: Math.floor(socket.thisPlayer.position.z / 16)}
+        var newChunk = {x: Math.floor(newPositionShifted.x / 16), z: Math.floor(newPositionShifted.z / 16)}
+
+        if (socket.disconnect == "" && !socket.thisPlayer.tick.teleportSelf && socket.thisPlayer.allowMovement) {
             if ((position.x.value == 8.5 && position.y.value == 65 && position.z.value == 8.5) || position.y.value < 1) {
                 socket.thisPlayer.tick.teleportSelf = true
             
@@ -113,12 +122,6 @@ function ReadPacket(world, socket, data) {
                 return
             }
 
-            var difX = socket.thisPlayer.position.x != newPositionShifted.x
-            var difY = socket.thisPlayer.position.y != newPositionShifted.y
-            var difZ = socket.thisPlayer.position.z != newPositionShifted.z
-            var difPitch = socket.thisPlayer.rotation.pitch != rotation.pitch.value
-            var difYaw = socket.thisPlayer.rotation.yaw != rotation.yaw.value
-
             if (difX || difY || difZ) {
                 socket.thisPlayer.tick.position = true
                 utils.player.GetPlayer(socket)(world, socket, socket.thisPlayer.username).save = true
@@ -129,13 +132,6 @@ function ReadPacket(world, socket, data) {
             }
 
             if (difX || difZ) {
-                var prevChunk = {x: Math.floor(socket.thisPlayer.position.x / 16), z: Math.floor(socket.thisPlayer.position.z / 16)}
-                var newChunk = {x: Math.floor(newPositionShifted.x / 16), z: Math.floor(newPositionShifted.z / 16)}
-
-                if (prevChunk.x != newChunk.x || prevChunk.z != newChunk.z) {
-                    utils.world_packets.GenerateRenderDistance(socket)(world, socket, 10, newChunk.x, newChunk.z, prevChunk.x, prevChunk.z)
-                }
-
                 if (socket.thisPlayer.settings.showPlotInfo) {
                     var prevInBuild = socket.thisPlayer.position.x % 32 >= 16 && socket.thisPlayer.position.z % 32 >= 16
                     var currInBuild = newPositionShifted.x % 32 >= 16 && newPositionShifted.z % 32 >= 16
@@ -144,7 +140,7 @@ function ReadPacket(world, socket, data) {
                         if (build != undefined && world.builds[build].creator != socket.thisPlayer.username) {
                             var buildInfo = utils.builds.GetBuildInfo(socket)(world, socket, Math.floor(newPositionShifted.x / 32), Math.floor(newPositionShifted.z / 32))
                             for (var i = 0; i < buildInfo.length; i++) {
-                                packetWriter.Message(socket)(socket, 0, buildInfo[i])
+                                packetWriter.Chat_Message(socket)(world, socket, buildInfo[i])
                             }
                         }
                     }
@@ -155,7 +151,7 @@ function ReadPacket(world, socket, data) {
             socket.thisPlayer.rotation = {pitch: rotation.pitch.value, yaw: rotation.yaw.value}
         }
     }
-    
+
     return splitIndex
 }
 

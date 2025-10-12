@@ -12,7 +12,7 @@ var packetIdentifier = "Player Identification"
  * @param {Buffer} data 
  */
 function ReadPacket(world, socket, data) {
-    var splitIndex = data.length - 130
+    var splitIndex = data.length - 131
 
     if (splitIndex >= 0) {
         socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
@@ -39,6 +39,10 @@ function ReadPacket(world, socket, data) {
                     x: Math.floor(socket.thisPlayer.position.x / 16) * 16 - 0.5,
                     y: 2,
                     z: Math.floor(socket.thisPlayer.position.z / 16) * 16 - 0.5,
+                }
+                socket.thisPlayer.classicWorldOffset = {
+                    x: Math.floor(socket.thisPlayer.position.x / 256),
+                    z: Math.floor(socket.thisPlayer.position.z / 256)
                 }
                 if (!socket.thisPlayer.verified) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username

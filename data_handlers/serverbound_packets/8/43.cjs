@@ -14,8 +14,8 @@ var packetIdentifier = "Position and Orientation"
 function ReadPacket(world, socket, data) {
     var splitIndex = data.length - 10
 
+    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`, false)
     if (splitIndex >= 0) {
-        socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`, false)
 
         var id = dataReader.readUByte(socket, data, 0)
         var playerID = dataReader.readByte(socket, data, id.nextPos)

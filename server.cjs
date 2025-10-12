@@ -268,7 +268,7 @@ function ServerTick() {
         if (world.loadedPlayers[i].tick.spawn) {
             for (var j = 0; j < world.loadedPlayers.length; j++) {
                 if (i != j) utils.tick_actions.spawn_player(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
-                utils.tick_actions.message.JoinMessage(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].username)
+                if (i != j) utils.tick_actions.message.JoinMessage(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].username)
             }
             world.loadedPlayers[i].tick.spawn = false
         }
