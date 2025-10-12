@@ -169,7 +169,7 @@ async function setupLogs() {
     await fs.mkdir("./debug", () => {})
 }
 
-const server = net.createServer( (socket) => {
+const server = net.createServer(/** @param {Socket} socket */(socket) => {
     socket.isClosed = false
     socket.logText = ""
     socket.index = socketIndex
@@ -188,7 +188,7 @@ const server = net.createServer( (socket) => {
         socket.disconnect = disconnectReason
         if (consoleLog != false) socket.log("DISCONNECT " + disconnectReason)
     }
-    
+
     socket.packetCount = 0
     socket.identified = false
 

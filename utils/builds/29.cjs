@@ -1,4 +1,4 @@
-const {World} = require('../../data_structures.cjs');
+const {World, Build} = require('../../data_structures.cjs');
 
 /**
  * @param {World} world 
@@ -12,7 +12,7 @@ function GetBuild(world, x, z) {
     return undefined
 }
 
-function GenerateBuild(tileX, tileZ, creator, uvni) {
+function GenerateBuild(tileX, tileZ, creator, uvni, settings) {
     var blocks = []
     for (var y = 0; y < 62; y++) {
         blocks[y] = []
@@ -24,18 +24,19 @@ function GenerateBuild(tileX, tileZ, creator, uvni) {
         }
     }
 
-    return {
-        x: tileX,
-        z: tileZ,
-        creator: creator,
-        size: "small",
-        blocks: blocks,
-        floor: "grass_block",
-        uvni: uvni,
-        created: new Date().getTime(),
-        lastModified: new Date().getTime(),
-        save: true
-    }
+    var returnValue = new Build()
+    returnValue.x = tileX
+    returnValue.z = tileZ
+    returnValue.creator = creator
+    returnValue.size = "small"
+    returnValue.blocks = blocks
+    returnValue.floor = "grass_block"
+    returnValue.uvni = uvni
+    returnValue.created = new Date().getTime()
+    returnValue.lastModified = new Date().getTime()
+    returnValue.save = true
+    returnValue.settings = settings
+    return returnValue
 }
 
 module.exports = {GetBuild, GenerateBuild}

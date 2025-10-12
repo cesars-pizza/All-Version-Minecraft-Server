@@ -78,6 +78,18 @@ function ReadPacket(world, socket, data) {
                     if (commandParts.length == 1) socket.thisPlayer.tick.errorMessages.push("Missing argument: setting")
                     else if (commandParts.length == 2) {
                         if (commandParts[1] == "plotInfo") socket.thisPlayer.tick.systemMessages.push(`Plot Info is currently set to ${socket.thisPlayer.settings.showPlotInfo ? "enabled" : "disabled"}`)
+                        else if (commandParts[1] == "plot.blockUpdate" || commandParts[1] == "plot.redstoneUpdate" || commandParts[1] == "plot.liquidUpdate") {
+                            if (utils.math.NegMod(socket.thisPlayer.position.x, 32) >= 16 && utils.math.NegMod(socket.thisPlayer.position.z, 32) >= 16) {
+                                var plot = {x: Math.floor(socket.thisPlayer.position.x / 32), z: Math.floor(socket.thisPlayer.position.z / 32)}
+                                var plotID = utils.builds.GetBuild(socket)(world, plot.x, plot.z)
+                                if (plotID == undefined || world.builds[plotID].creator != socket.thisPlayer.username) socket.thisPlayer.tick.errorMessages.push(`You do not own this plot`)
+                                else {
+                                    if (commandParts[1] == "plot.blockUpdate") socket.thisPlayer.tick.systemMessages.push(`Block Update for Plot (${plot.x}, ${plot.z}) is currently set to ${world.builds[plotID].settings.blockUpdates ? "enabled" : "disabled"}`)
+                                    else if (commandParts[1] == "plot.redstoneUpdate") socket.thisPlayer.tick.systemMessages.push(`Redstone Update for Plot (${plot.x}, ${plot.z}) is currently set to ${world.builds[plotID].settings.redstoneUpdates ? "enabled" : "disabled"}`)
+                                    else if (commandParts[1] == "plot.liquidUpdate") socket.thisPlayer.tick.systemMessages.push(`Liquid Update for Plot (${plot.x}, ${plot.z}) is currently set to ${world.builds[plotID].settings.liquidUpdates ? "enabled" : "disabled"}`)
+                                }
+                            } else socket.thisPlayer.tick.errorMessages.push(`You are not currently in a plot`)
+                        }
                         else socket.thisPlayer.tick.errorMessages.push(`Unknown setting: "${commandParts[1]}"`)
                     } else {
                         if (commandParts[1] == "plotInfo") {
@@ -88,6 +100,66 @@ function ReadPacket(world, socket, data) {
                                 socket.thisPlayer.settings.showPlotInfo = false
                                 socket.thisPlayer.tick.systemMessages.push("Set Plot Info to disabled")
                             } else socket.thisPlayer.tick.errorMessages.push('Plot Info must be set to either "enable" or "disable"')
+                        } else if (commandParts[1] == "plot.blockUpdate") {
+                            if (commandParts[2] == "enable" || commandParts[2] == "disable") {
+                                if (utils.math.NegMod(socket.thisPlayer.position.x, 32) >= 16 && utils.math.NegMod(socket.thisPlayer.position.z, 32) >= 16) {
+                                    var plot = {x: Math.floor(socket.thisPlayer.position.x / 32), z: Math.floor(socket.thisPlayer.position.z / 32)}
+                                    var plotID = utils.builds.GetBuild(socket)(world, plot.x, plot.z)
+                                    if (plotID == undefined || world.builds[plotID].creator != socket.thisPlayer.username) socket.thisPlayer.tick.errorMessages.push(`You do not own this plot`)
+                                    else {
+                                        world.builds[plotID].settings.blockUpdates = commandParts[2] == "enable"
+                                        socket.thisPlayer.tick.systemMessages.push(`Set Block Update for Plot (${plot.x}, ${plot.z}) to ${commandParts[2]}d`)
+                                    }
+                                } else socket.thisPlayer.tick.errorMessages.push(`You are not currently in a plot`)
+                            } else if (commandParts[2] == "enableDefault") {
+                                socket.thisPlayer.settings.defaultBuildSettings.blockUpdates = true
+                                socket.thisPlayer.tick.systemMessages.push("Set Block Update to enabled for all new plots")
+                            } else if (commandParts[2] == "disableDefault") {
+                                socket.thisPlayer.settings.defaultBuildSettings.blockUpdates = false
+                                socket.thisPlayer.tick.systemMessages.push("Set Block Update to disabled for all new plots")
+                            } else if (commandParts[2] == "default") {
+                                socket.thisPlayer.tick.systemMessages.push(`Block Update is currently defaulted to ${socket.thisPlayer.settings.defaultBuildSettings.blockUpdates ? "enabled" : "disabled"}`)
+                            } else socket.thisPlayer.tick.systemMessages.push('Block Update must be set to one of "enable", "disable", "enableDefault", or "disableDefault"')
+                        } else if (commandParts[1] == "plot.redstoneUpdate") {
+                            if (commandParts[2] == "enable" || commandParts[2] == "disable") {
+                                if (utils.math.NegMod(socket.thisPlayer.position.x, 32) >= 16 && utils.math.NegMod(socket.thisPlayer.position.z, 32) >= 16) {
+                                    var plot = {x: Math.floor(socket.thisPlayer.position.x / 32), z: Math.floor(socket.thisPlayer.position.z / 32)}
+                                    var plotID = utils.builds.GetBuild(socket)(world, plot.x, plot.z)
+                                    if (plotID == undefined || world.builds[plotID].creator != socket.thisPlayer.username) socket.thisPlayer.tick.errorMessages.push(`You do not own this plot`)
+                                    else {
+                                        world.builds[plotID].settings.redstoneUpdates = commandParts[2] == "enable"
+                                        socket.thisPlayer.tick.systemMessages.push(`Set Redstone Update for Plot (${plot.x}, ${plot.z}) to ${commandParts[2]}d`)
+                                    }
+                                } else socket.thisPlayer.tick.errorMessages.push(`You are not currently in a plot`)
+                            } else if (commandParts[2] == "enableDefault") {
+                                socket.thisPlayer.settings.defaultBuildSettings.redstoneUpdates = true
+                                socket.thisPlayer.tick.systemMessages.push("Set Redstone Update to enabled for all new plots")
+                            } else if (commandParts[2] == "disableDefault") {
+                                socket.thisPlayer.settings.defaultBuildSettings.redstoneUpdates = false
+                                socket.thisPlayer.tick.systemMessages.push("Set Redstone Update to disabled for all new plots")
+                            } else if (commandParts[2] == "default") {
+                                socket.thisPlayer.tick.systemMessages.push(`Redstone Update is currently defaulted to ${socket.thisPlayer.settings.defaultBuildSettings.redstoneUpdates ? "enabled" : "disabled"}`)
+                            } else socket.thisPlayer.tick.systemMessages.push('Redstone Update must be set to one of "enable", "disable", "enableDefault", or "disableDefault"')
+                        } else if (commandParts[1] == "plot.liquidUpdate") {
+                            if (commandParts[2] == "enable" || commandParts[2] == "disable") {
+                                if (utils.math.NegMod(socket.thisPlayer.position.x, 32) >= 16 && utils.math.NegMod(socket.thisPlayer.position.z, 32) >= 16) {
+                                    var plot = {x: Math.floor(socket.thisPlayer.position.x / 32), z: Math.floor(socket.thisPlayer.position.z / 32)}
+                                    var plotID = utils.builds.GetBuild(socket)(world, plot.x, plot.z)
+                                    if (plotID == undefined || world.builds[plotID].creator != socket.thisPlayer.username) socket.thisPlayer.tick.errorMessages.push(`You do not own this plot`)
+                                    else {
+                                        world.builds[plotID].settings.liquidUpdates = commandParts[2] == "enable"
+                                        socket.thisPlayer.tick.systemMessages.push(`Set Liquid Update for Plot (${plot.x}, ${plot.z}) to ${commandParts[2]}d`)
+                                    }
+                                } else socket.thisPlayer.tick.errorMessages.push(`You are not currently in a plot`)
+                            } else if (commandParts[2] == "enableDefault") {
+                                socket.thisPlayer.settings.defaultBuildSettings.liquidUpdates = true
+                                socket.thisPlayer.tick.systemMessages.push("Set Liquid Update to enabled for all new plots")
+                            } else if (commandParts[2] == "disableDefault") {
+                                socket.thisPlayer.settings.defaultBuildSettings.liquidUpdates = false
+                                socket.thisPlayer.tick.systemMessages.push("Set Liquid Update to disabled for all new plots")
+                            } else if (commandParts[2] == "default") {
+                                socket.thisPlayer.tick.systemMessages.push(`Liquid Update is currently defaulted to ${socket.thisPlayer.settings.defaultBuildSettings.liquidUpdates ? "enabled" : "disabled"}`)
+                            } else socket.thisPlayer.tick.systemMessages.push('Liquid Update must be set to one of "enable", "disable", "enableDefault", or "disableDefault"')
                         }
                         else socket.thisPlayer.tick.errorMessages.push(`Unknown setting: "${commandParts[1]}"`)
                     }

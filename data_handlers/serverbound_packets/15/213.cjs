@@ -54,7 +54,7 @@ function ReadPacket(world, socket, data) {
                 if (hitBuildIndex == undefined || world.builds[hitBuildIndex].creator == socket.thisPlayer.username) {
                     if (hitBuildIndex == undefined) {
                         hitBuildIndex = world.builds.length
-                        world.builds.push(utils.builds.GenerateBuild(socket)(Math.floor(facingBlock.x / 32), Math.floor(facingBlock.z / 32), socket.thisPlayer.username, socket.thisPlayer.uvni))
+                        world.builds.push(utils.builds.GenerateBuild(socket)(Math.floor(facingBlock.x / 32), Math.floor(facingBlock.z / 32), socket.thisPlayer.username, socket.thisPlayer.uvni, socket.thisPlayer.settings.defaultBuildSettings))
                     }
 
                     if (facingBlock.y <= 1) {

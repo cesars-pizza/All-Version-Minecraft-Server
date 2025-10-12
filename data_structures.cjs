@@ -1,4 +1,6 @@
-class Socket {
+const net = require('net')
+
+class Socket extends net.Socket {
     /**
      * @param {boolean} isClosed
      * @param {string} logText 
@@ -91,7 +93,7 @@ class Player {
      * @param {Rotation} rotation 
      * @param {{x: number, z: number}} classicWorldOffset
      * @param {{selected_slot: number, slots: Slot[], bucket_tracker: {empty: number, water: number, lava: number}}} inventory 
-     * @param {{showPlotInfo: boolean}} settings
+     * @param {{showPlotInfo: boolean, defaultBuildSettings: {blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean}}} settings
      * @param {boolean} verified 
      * @param {boolean} keepUnverified 
      * @param {number} lastUVNI 
@@ -221,8 +223,9 @@ class Build {
      * @param {number} created 
      * @param {number} lastModified 
      * @param {boolean} save 
+     * @param {{blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean}} settings
      */
-    constructor(x, z, creator, size, blocks, floor, uvni, created, lastModified, save) {
+    constructor(x, z, creator, size, blocks, floor, uvni, created, lastModified, save, settings) {
         this.x = x
         this.z = z
         this.creator = creator
@@ -233,6 +236,7 @@ class Build {
         this.created = created
         this.lastModified = lastModified
         this.save = save
+        this.settings = settings
     }
 }
 
@@ -253,4 +257,4 @@ class TickBlock {
     }
 }
 
-module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, Registry, TickBlock, BlockRegistry}
+module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, Registry, TickBlock, BlockRegistry, Build}
