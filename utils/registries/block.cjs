@@ -68,6 +68,13 @@ function GetBlockID(world, registry, block) {
     if (blockID == undefined) return 0
     else {
         if (typeof(blockID) == "number") return blockID
+        else if (typeof(blockID) == "string") {
+            var blockIDParts = blockID.split(':')
+                return {
+                    id: Number(blockIDParts[0]),
+                    metadata: Number(blockIDParts[1])
+                }
+        } 
         else {
             var selectedBlockStates = Object.keys(blockStates)
             var allBlockStates = Object.keys(blockID.states)

@@ -53,7 +53,7 @@ function ReadPacket(world, socket, data) {
                                     for (var z = 0; z < 16; z++) {
                                         var setX = chunkX * 16 + x
                                         var setZ = chunkZ * 16 + z
-                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, thisRegistryFloorID)
+                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, thisRegistryFloorID, false)
                                     }
                                 }
                             } else {
@@ -65,7 +65,7 @@ function ReadPacket(world, socket, data) {
                                         for (var z = 0; z < 16; z++) {
                                             var setX = chunkX * 16 + x
                                             var setZ = chunkZ * 16 + z
-                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, blockID.value)
+                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, blockID.value, false)
                                         }
                                     }
                                 }
@@ -93,7 +93,7 @@ function ReadPacket(world, socket, data) {
                                 var blockCollision = utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, blockPos)
                                 if (blockCollision != "inside") {
                                     world.builds[hitBuildIndex].blocks[blockPos.y - 2][blockPos.z % 16][blockPos.x % 16] = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID.value)
-                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, blockID.value)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, blockID.value, false)
                                     for (var i = 0; i < world.loadedPlayers.length; i++) {
                                         if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
                                             world.loadedPlayers[i].position = {
@@ -113,7 +113,7 @@ function ReadPacket(world, socket, data) {
                             }
                         } else {
                             world.builds[hitBuildIndex].blocks[blockPos.y - 2][blockPos.z % 16][blockPos.x % 16] = "air"
-                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0)
+                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0, false)
                             world.builds[hitBuildIndex].lastModified = new Date().getTime()
                             world.builds[hitBuildIndex].save = true
                         }

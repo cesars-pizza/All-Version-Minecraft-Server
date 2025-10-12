@@ -6,17 +6,13 @@ const utils = require('../../utils.cjs')
 /** 
  * @param {Socket} socket 
  */
-function SetBlock(world, socket, position, blockID) {
-    console.log(blockID)
+function SetBlock(world, socket, position, blockID, doubleSet) {
     var blockID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, blockID)
-    console.log(blockID)
     if (typeof(blockID) == "number") {
-        packetWriter.Block_Change(socket)(world, socket, position, blockID, 0)
+        packetWriter.Block_Change(socket)(world, socket, position, blockID, 0, doubleSet)
     }
     else {
-        console.log(blockID.id)
-        console.log(blockID.metadata)
-        packetWriter.Block_Change(socket)(world, socket, position, blockID.id, blockID.metadata)
+        packetWriter.Block_Change(socket)(world, socket, position, blockID.id, blockID.metadata, doubleSet)
     }
 }
 

@@ -5,5 +5,5 @@
     "serverName": "All Version Server",
     "serverStatus": "16 / 961 Supported Versions!",
     "hostPort": 25565,
-    "suppressNonUniversalBlocks": false
+    "suppressNonUniversalBlocks": true
 }

@@ -9,16 +9,15 @@ var packetIdentifier = "Block Change"
  * @param {Socket} socket 
  * @param {Position} position 
  */
-function WritePacket(world, socket, position, block, blockMeta) {
-    console.log(block)
-    console.log(blockMeta)
-
-    socket.writePacket(packetID, packetIdentifier, dataWriter.writeInt(socket, position.x).concat(
-        dataWriter.writeByte(socket, position.y),
-        dataWriter.writeInt(socket, position.z),
-        dataWriter.writeByte(socket, 1),
-        dataWriter.writeByte(socket, 0)
-    ))
+function WritePacket(world, socket, position, block, blockMeta, doubleSet) {
+    if (doubleSet) {
+        socket.writePacket(packetID, packetIdentifier, dataWriter.writeInt(socket, position.x).concat(
+            dataWriter.writeByte(socket, position.y),
+            dataWriter.writeInt(socket, position.z),
+            dataWriter.writeByte(socket, 1),
+            dataWriter.writeByte(socket, 0)
+        ))
+    }
     socket.writePacket(packetID, packetIdentifier, dataWriter.writeInt(socket, position.x).concat(
         dataWriter.writeByte(socket, position.y),
         dataWriter.writeInt(socket, position.z),

@@ -150,7 +150,8 @@ function GetBlock(world, socket, blockPos) {
                 else return "oak_log"
             }
         }
-    } else {
+    } else if (blockPos.y >= 64) return "air"
+    else {
         if ((blockPos.x % 32) > 15 && (blockPos.z % 32) > 15) {
             var build = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
 

@@ -16,8 +16,9 @@ function SetBlock(world, socket, position, blockID) {
  * @param {Socket} socket 
  * @param {Position} position 
  * @param {number | string} blockID 
+ * @param {boolean} doubleSet 
  */
-function AddBlockUpdate(world, socket, position, blockID) {
+function AddBlockUpdate(world, socket, position, blockID, doubleSet) {
     var blockIdentifier = blockID
     if (typeof(blockID) == "number") blockIdentifier = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID)
 
@@ -28,7 +29,8 @@ function AddBlockUpdate(world, socket, position, blockID) {
             x: position.x,
             y: position.y,
             z: position.z,
-            id: blockIdentifier
+            id: blockIdentifier,
+            doubleSet: doubleSet
         })
     } else world.blockUpdates[oldBlockUpdate].id = blockIdentifier
 }

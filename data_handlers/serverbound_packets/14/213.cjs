@@ -55,7 +55,7 @@ function ReadPacket(world, socket, data) {
                                 for (var z = 0; z < 16; z++) {
                                     var setX = chunkX * 16 + x
                                     var setZ = chunkZ * 16 + z
-                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, thisRegistryFloorID)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, thisRegistryFloorID, false)
                                 }
                             }
                             if (blockPos.y == 1) updateSuccessful = true
@@ -76,7 +76,7 @@ function ReadPacket(world, socket, data) {
                         }
                     } else if (blockPos.y < 64) {
                         world.builds[hitBuildIndex].blocks[blockPos.y - 2][blockPos.z % 16][blockPos.x % 16] = "air"
-                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0)
+                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0, false)
                         world.builds[hitBuildIndex].lastModified = new Date().getTime()
                         world.builds[hitBuildIndex].save = true
                         updateSuccessful = true
@@ -89,8 +89,8 @@ function ReadPacket(world, socket, data) {
 
                 if (oldBlockUpdate == -1) {
                     var replacementBlock = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, utils.worldgen.GetBlock(socket)(world, socket, blockPos))
-                    if (typeof(replacementBlock) == "number") packetWriter.Block_Change(socket)(world, socket, blockPos, replacementBlock, 0)
-                    else packetWriter.Block_Change(socket)(world, socket, blockPos, replacementBlock.id, replacementBlock.metadata)
+                    if (typeof(replacementBlock) == "number") packetWriter.Block_Change(socket)(world, socket, blockPos, replacementBlock, 0, false)
+                    else packetWriter.Block_Change(socket)(world, socket, blockPos, replacementBlock.id, replacementBlock.metadata, false)
                 }
             }
         }

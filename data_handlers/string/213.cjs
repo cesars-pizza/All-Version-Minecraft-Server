@@ -15,7 +15,7 @@ function Read(data, position) {
     }
     else {
         return {
-            value: Buffer.from(Array.from(data).slice(length.nextPos, length.nextPos + length.value)).toString(),
+            value: Buffer.from(Array.from(data).slice(length.nextPos, length.nextPos + length.value)).toString('utf8'),
             length: length.length + length.value,
             nextPos: length.nextPos + length.value
         }
@@ -26,8 +26,8 @@ function Read(data, position) {
  * @param {string} value 
  */
 function Write(value) {
-    var length = data_writer.writeShort({uvni: -1}, value.length)
-    var text = Array.from(Uint8Array.from(Buffer.from(value)))
+    var text = Array.from(Uint8Array.from(Buffer.from(value, 'utf8')))
+    var length = data_writer.writeShort({uvni: -1}, text.length)
 
     return length.concat(text)
 }

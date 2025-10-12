@@ -242,12 +242,14 @@ class TickBlock {
      * @param {number} y 
      * @param {number} z 
      * @param {number} id 
+     * @param {boolean} doubleSet 
      */
-    constructor(x, y, z, id) {
+    constructor(x, y, z, id, doubleSet) {
         this.x = x
         this.y = y
         this.z = z
         this.id = id
+        this.doubleSet = doubleSet
     }
 }
 
