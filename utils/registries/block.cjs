@@ -27,9 +27,10 @@ function GetBlockName(world, registry, id) {
     else metaID = id
 
     for (var i = 0; i < registryEntries.length; i++) {
-        if (typeof(thisRegistry[registryEntries[i]]) == "number") {
+        if (typeof(thisRegistry[registryEntries[i]]) != "object") {
             if (thisRegistry[registryEntries[i]] == id) return registryEntries[i]
-        } else {
+        }
+        else {
             var blockStates = Object.keys(thisRegistry[registryEntries[i]].blockstatesShort)
             for (var j = 0; j < blockStates.length; j++) {
                 if (thisRegistry[registryEntries[i]].blockstatesShort[blockStates[j]] === id || thisRegistry[registryEntries[i]].blockstatesShort[blockStates[j]] === metaID) {

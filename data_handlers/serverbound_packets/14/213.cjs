@@ -25,9 +25,12 @@ function ReadPacket(world, socket, data) {
         blockPosRaw.z = dataReader.readInt(socket, data, blockPosRaw.y.nextPos)
         var face = dataReader.readByte(socket, data, blockPosRaw.z.nextPos)
 
+        
         if (socket.disconnect == "") {
             var blockPos = {x: blockPosRaw.x.value, y: blockPosRaw.y.value, z: blockPosRaw.z.value}
             var updateSuccessful = false
+
+            var prevBlock = utils.worldgen.GetBlock(socket)(world, socket, blockPos)
             
             if (utils.math.NegMod(blockPos.x, 32) >= 16 && utils.math.NegMod(blockPos.z, 32) >= 16) {
                 var hitBuildIndex = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
@@ -45,6 +48,7 @@ function ReadPacket(world, socket, data) {
                             socket.thisPlayer.floorChangeCooldown = 5
                             
                             var floorID = world.universalRegistries.block.indexOf(world.builds[hitBuildIndex].floor)
+                            var prevFloorID = floorID
                             floorID++
                             if (floorID == 0 || floorID >= world.universalRegistries.block.length) floorID = 1
                             var thisRegistryFloorID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, world.universalRegistries.block[floorID])
@@ -55,7 +59,7 @@ function ReadPacket(world, socket, data) {
                                 for (var z = 0; z < 16; z++) {
                                     var setX = chunkX * 16 + x
                                     var setZ = chunkZ * 16 + z
-                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, thisRegistryFloorID, false)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, thisRegistryFloorID, false, prevFloorID)
                                 }
                             }
                             if (blockPos.y == 1) updateSuccessful = true
@@ -76,7 +80,20 @@ function ReadPacket(world, socket, data) {
                         }
                     } else if (blockPos.y < 64) {
                         world.builds[hitBuildIndex].blocks[blockPos.y - 2][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = "air"
-                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0, false)
+                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0, false, prevBlock)
+                        console.log(prevBlock)
+                        if (prevBlock.startsWith('oak_door') || prevBlock.startsWith("iron_door")) {
+                            console.log(prevBlock)
+                            if (!prevBlock.includes('half=upper') && blockPos.y < 63) {
+                                world.builds[hitBuildIndex].blocks[blockPos.y - 1][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = "air"
+                                if (!prevBlock.includes('[')) prevBlock = prevBlock + '[half=lower]'
+                                else if (!prevBlock.includes('half=lower')) prevBlock = prevBlock.replace(']', ',half=lower]')
+                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y + 1, z: blockPos.z}, 0, false, prevBlock.replace('half=lower', 'half=upper'))
+                            } else if (prevBlock.includes('half=upper') && blockPos.y > 3) {
+                                world.builds[hitBuildIndex].blocks[blockPos.y - 3][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = "air"
+                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y + 1, z: blockPos.z}, 0, false, prevBlock.replace('half=upper', 'half=lower'))
+                            }
+                        }
                         world.builds[hitBuildIndex].lastModified = new Date().getTime()
                         world.builds[hitBuildIndex].save = true
                         updateSuccessful = true

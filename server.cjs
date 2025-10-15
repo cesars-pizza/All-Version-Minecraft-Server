@@ -1,6 +1,6 @@
 const net = require('net')
 const fs = require('fs')
-const {Socket, Config, World} = require('./data_structures.cjs')
+const {Socket, Config, World, Build} = require('./data_structures.cjs')
 const packetReader = require('./data_handlers/serverbound_packets/packet_reader.cjs')
 const packetWriter = require('./data_handlers/clientbound_packets/packet_writer.cjs')
 const dataWriter = require('./data_handlers/data_writer.cjs')
@@ -144,6 +144,7 @@ async function loadWorld() {
         if (thisBuild == null) endOfBuilds = true
         else {
             if (thisBuild.isFile() && thisBuild.name.endsWith('.json')) {
+                /** @type {Build} */
                 var thisBuildData = JSON.parse(fs.readFileSync(`./world/builds/${thisBuild.name}`))
                 thisBuildData.save = false
                 world.builds.push(thisBuildData)

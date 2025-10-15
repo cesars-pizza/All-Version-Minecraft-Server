@@ -163,6 +163,8 @@ function ReadPacket(world, socket, data) {
                         }
                         else socket.thisPlayer.tick.errorMessages.push(`Unknown setting: "${commandParts[1]}"`)
                     }
+                } else if (commandParts[0] == "/place") {
+                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, socket.thisPlayer.position, utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, commandParts[1]), false, "air")
                 } else socket.thisPlayer.tick.errorMessages.push(`Unknown command: "${message.value.split(' ')[0]}"`)
             } else socket.thisPlayer.tick.messages.push(message.value)
         }

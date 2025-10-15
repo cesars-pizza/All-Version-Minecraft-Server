@@ -49,6 +49,8 @@ function ReadPacket(world, socket, data) {
                 if (!socket.thisPlayer.verified) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
                     
+                    console.log(utils.registry.block.GetBlockID(world, 4, "oak_door[facing=east,hinge=left,half=lower]"))
+
                     packetWriter.Login_Response(socket)(world, socket, socket.thisPlayer.alphaID, world.config.serverName, world.config.serverStatus, 0, 0)
                     utils.world_packets.GenerateRenderDistance(socket)(world, socket, 10, Math.floor(socket.thisPlayer.position.x / 16), Math.floor(socket.thisPlayer.position.z / 16), undefined, undefined)
                     socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}

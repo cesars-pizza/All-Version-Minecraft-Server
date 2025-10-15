@@ -224,8 +224,9 @@ class Build {
      * @param {number} lastModified 
      * @param {boolean} save 
      * @param {{blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean}} settings
+     * @param {{position: Position, blockID: string, prevBlockID: string, priority: number, doubleSet: boolean, delay: number}[]} scheduledBlockUpdates 
      */
-    constructor(x, z, creator, size, blocks, floor, uvni, created, lastModified, save, settings) {
+    constructor(x, z, creator, size, blocks, floor, uvni, created, lastModified, save, settings, scheduledBlockUpdates) {
         this.x = x
         this.z = z
         this.creator = creator
@@ -237,6 +238,7 @@ class Build {
         this.lastModified = lastModified
         this.save = save
         this.settings = settings
+        this.scheduledBlockUpdates = scheduledBlockUpdates
     }
 }
 

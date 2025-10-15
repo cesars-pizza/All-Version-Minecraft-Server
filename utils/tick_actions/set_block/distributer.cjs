@@ -19,6 +19,18 @@ function AddBlockUpdate(socket) {
     return require('./29.cjs').AddBlockUpdate
 }
 
+function SendPostPlacementUpdate(socket) {
+    return require('./29.cjs').SendPostPlacementUpdate
+}
+
+function SendNeighborChangedUpdate(socket) {
+    return require('./29.cjs').SendNeighborChangedUpdate
+}
+
+function ScheduleBlockUpdate(socket) {
+    return require('./29.cjs').ScheduleBlockUpdate
+}
+
 /** 
  * @param {Socket} socket 
  */
@@ -26,4 +38,4 @@ function GetBlockUpdate(socket) {
     return require('./29.cjs').GetBlockUpdate
 }
 
-module.exports = {SetBlock, AddBlockUpdate, GetBlockUpdate}
+module.exports = {SetBlock, AddBlockUpdate, SendPostPlacementUpdate, SendNeighborChangedUpdate, ScheduleBlockUpdate, GetBlockUpdate}

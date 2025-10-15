@@ -63,6 +63,7 @@ function ReadPacket(world, socket, data) {
 
                         if (utils.player.CollidingWithChunkLayer(socket)(socket, socket.thisPlayer.position, {x: chunkX, y: 1, z: chunkZ}) != "inside") {
                             if (validBlock) {
+                                var prevFloor = world.builds[hitBuildIndex].floor
                                 world.builds[hitBuildIndex].floor = placedName
                                 world.builds[hitBuildIndex].lastModified = new Date().getTime()
                                 world.builds[hitBuildIndex].save = true
@@ -70,7 +71,7 @@ function ReadPacket(world, socket, data) {
                                     for (var z = 0; z < 16; z++) {
                                         var setX = chunkX * 16 + x
                                         var setZ = chunkZ * 16 + z
-                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, placedName, false)
+                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, placedName, false, prevFloor)
                                     }
                                 }
                                 if (facingBlock.y == 1) updateSuccessful = true
@@ -99,7 +100,7 @@ function ReadPacket(world, socket, data) {
                                     if (originalBlock.block == placedName) {
                                         if (utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, originalBlock) != "inside") {
                                             world.builds[hitBuildIndex].blocks[originalBlock.y - 2][utils.math.NegMod(originalBlock.z, 16)][utils.math.NegMod(originalBlock.x, 16)] = placedName + "[type=double]"
-                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, originalBlock, placedName + "[type=double]", false)
+                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, originalBlock, placedName + "[type=double]", false, originalBlock.block)
                                             if (facingBlock.block == "air" || facingBlock.block == "fire") packetWriter.Block_Change(socket)(world, socket, facingBlock, 0, 0, false)
                                             updateSuccessful = true
                                             giveItem = true
@@ -107,7 +108,7 @@ function ReadPacket(world, socket, data) {
                                     } else {
                                         if (facingBlock.block == "air" || facingBlock.block == "fire" && utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                             world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName
-                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false)
+                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                             updateSuccessful = true
                                             giveItem = true
                                         }
@@ -116,11 +117,11 @@ function ReadPacket(world, socket, data) {
                                     if (utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                         if (facingBlock.block == placedName) {
                                             world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName + "[type=double]"
-                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + "[type=double]", false)
+                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + "[type=double]", false, facingBlock.block)
                                             updateSuccessful = true
                                         } else if (facingBlock.block == "air" || facingBlock.block == "fire") {
                                             world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName
-                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false)
+                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                             updateSuccessful = true
                                             giveItem = true
                                         }
@@ -132,7 +133,7 @@ function ReadPacket(world, socket, data) {
                                 if (facingBlock.block == "air" || facingBlock.block == "fire") {
                                     if (face.value == 0 || face.value == 1) {
                                         world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName
-                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, true)
+                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, true, facingBlock.block)
                                     } else {
                                         var playerDirection = "???"
                                         if (face.value == 2) playerDirection = "north"
@@ -141,7 +142,7 @@ function ReadPacket(world, socket, data) {
                                         else if (face.value == 5) playerDirection = "east"
 
                                         world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = `wall_torch[facing=${playerDirection}]`
-                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, `wall_torch[facing=${playerDirection}]`, true)
+                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, `wall_torch[facing=${playerDirection}]`, true, facingBlock.block)
                                     }
 
                                     updateSuccessful = true
@@ -154,7 +155,7 @@ function ReadPacket(world, socket, data) {
                             if (facingBlock.block == "air" || facingBlock.block == "fire" && utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                 if (validBlock) {
                                     world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName + `[facing=${playerDirection}]`
-                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + `[facing=${playerDirection}]`, true)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + `[facing=${playerDirection}]`, true, facingBlock.block)
                                     updateSuccessful = true
                                 } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
                                 giveItem = true
@@ -177,7 +178,7 @@ function ReadPacket(world, socket, data) {
                             if (validBlock) {
                                 if (facingBlock.block == "air" || facingBlock.block == "fire") {
                                     world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName + `[facing=${playerDirection}]`
-                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + `[facing=${playerDirection}]`, true)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + `[facing=${playerDirection}]`, true, facingBlock.block)
                                     updateSuccessful = true
                                 }
                             } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
@@ -190,7 +191,7 @@ function ReadPacket(world, socket, data) {
                             if (facingBlock.block == "air" || facingBlock.block == "fire" && utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                 if (validBlock) {
                                     world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName + `[facing=${playerDirection}]`
-                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + `[facing=${playerDirection}]`, true)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + `[facing=${playerDirection}]`, true, facingBlock.block)
                                     updateSuccessful = true
                                 } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
                                 giveItem = true
@@ -206,7 +207,7 @@ function ReadPacket(world, socket, data) {
                                 if (facingBlock.block == "air" || facingBlock.block == "fire") {
                                     if (face.value == 0 || face.value == 1) {
                                         world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName
-                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, true)
+                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, true, facingBlock.block)
                                     } else {
                                         var playerDirection = "???"
                                         if (face.value == 2) playerDirection = "north"
@@ -215,7 +216,7 @@ function ReadPacket(world, socket, data) {
                                         else if (face.value == 5) playerDirection = "east"
 
                                         world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = `redstone_wall_torch[facing=${playerDirection}]`
-                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, `redstone_wall_torch[facing=${playerDirection}]`, true)
+                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, `redstone_wall_torch[facing=${playerDirection}]`, true, facingBlock.block)
                                     }
 
                                     updateSuccessful = true
@@ -227,7 +228,7 @@ function ReadPacket(world, socket, data) {
                         } else if (placedName == "bucket") {
                             if (facingBlock.block == "water" || facingBlock.block == "lava") {
                                 world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = "air"
-                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, "air", false)
+                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, "air", false, facingBlock.block)
                                 socket.thisPlayer.inventory.bucket_tracker.empty--
                                 if (facingBlock.block == "water") socket.thisPlayer.inventory.bucket_tracker.water++
                                 else socket.thisPlayer.inventory.bucket_tracker.lava++
@@ -237,7 +238,7 @@ function ReadPacket(world, socket, data) {
                             if (validBlock) {
                                 if (facingBlock.block == "air" || facingBlock.block == "fire" || facingBlock.block == "water" || facingBlock.block == "lava") {
                                     world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName
-                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                     socket.thisPlayer.inventory.bucket_tracker.water--
                                     socket.thisPlayer.inventory.bucket_tracker.empty++
                                     updateSuccessful = true
@@ -247,7 +248,7 @@ function ReadPacket(world, socket, data) {
                             if (validBlock) {
                                 if (facingBlock.block == "air" || facingBlock.block == "fire" || facingBlock.block == "water" || facingBlock.block == "lava") {
                                     world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName
-                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                     socket.thisPlayer.inventory.bucket_tracker.lava--
                                     socket.thisPlayer.inventory.bucket_tracker.empty++
                                     updateSuccessful = true
@@ -257,18 +258,80 @@ function ReadPacket(world, socket, data) {
                             if (validBlock) {
                                 if (facingBlock.block == "air" || facingBlock.block == "fire") {
                                     world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName
-                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                     updateSuccessful = true
                                 }
                             }
-                        } else if (placedName == "redstone_wire") {
-
                         } else if (placedName == "oak_sign") {
 
                         } else if (placedName == "oak_door") {
+                            if (validBlock) {
+                                if (facingBlock.block == "air" || facingBlock.block == "fire" || facingBlock.block == "water" || facingBlock.block == "water") {
+                                    var aboveFacingBlock = utils.worldgen.GetBlock(socket)(world, socket, {x: facingBlock.x, y: facingBlock.y + 1, z: facingBlock.z})
+                                    if (aboveFacingBlock == "air" || aboveFacingBlock == "fire" || aboveFacingBlock == "water" || aboveFacingBlock == "lava") {
+                                        giveItem = true
+                                        if (facingBlock.y < 63) {
+                                            var playerFacing = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw)
 
+                                            var connectingDoorBlock = "air"
+                                            if (playerFacing == "north") connectingDoorBlock = utils.worldgen.GetBlock(socket)(world, socket, {x: facingBlock.x - 1, y: facingBlock.y, z: facingBlock.z})
+                                            else if (playerFacing == "east") connectingDoorBlock = utils.worldgen.GetBlock(socket)(world, socket, {x: facingBlock.x, y: facingBlock.y, z: facingBlock.z - 1})
+                                            else if (playerFacing == "south") connectingDoorBlock = utils.worldgen.GetBlock(socket)(world, socket, {x: facingBlock.x + 1, y: facingBlock.y, z: facingBlock.z})
+                                            else if (playerFacing == "west") connectingDoorBlock = utils.worldgen.GetBlock(socket)(world, socket, {x: facingBlock.x, y: facingBlock.y, z: facingBlock.z + 1})
+
+                                            var reverseHinge = false
+                                            if ((connectingDoorBlock.startsWith("oak_door") || connectingDoorBlock.startsWith("iron_door")) && !connectingDoorBlock.includes('hinge=right') && ((playerFacing == "north" && !connectingDoorBlock.includes('facing=')) || (connectingDoorBlock.includes(`facing=${playerFacing}`)))) reverseHinge = true
+
+                                            console.log(playerFacing)
+                                            console.log(connectingDoorBlock)
+                                            console.log(reverseHinge)
+                                            console.log(utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, `${placedName}[facing=${playerFacing},hinge=${reverseHinge ? "right" : "left"},half=lower]`))
+
+                                            world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = `${placedName}[facing=${playerFacing},hinge=${reverseHinge ? "right" : "left"},half=lower]`
+                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, `${placedName}[facing=${playerFacing},hinge=${reverseHinge ? "right" : "left"},half=lower]`, true, facingBlock.block)
+
+                                            world.builds[hitBuildIndex].blocks[facingBlock.y - 1][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = `${placedName}[facing=${playerFacing},hinge=${reverseHinge ? "right" : "left"},half=upper]`
+                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: facingBlock.x, y: facingBlock.y + 1, z: facingBlock.z}, `${placedName}[facing=${playerFacing},hinge=${reverseHinge ? "right" : "left"},half=upper]`, true, aboveFacingBlock)
+
+                                            updateSuccessful = true
+                                        }
+                                    }
+                                }
+                            }
                         } else if (placedName == "iron_door") {
+                            if (validBlock) {
+                                if (facingBlock.block == "air" || facingBlock.block == "fire" || facingBlock.block == "water" || facingBlock.block == "water") {
+                                    var aboveFacingBlock = utils.worldgen.GetBlock(socket)(world, socket, {x: facingBlock.x, y: facingBlock.y + 1, z: facingBlock.z})
+                                    if (aboveFacingBlock == "air" || aboveFacingBlock == "fire" || aboveFacingBlock == "water" || aboveFacingBlock == "lava") {
+                                        giveItem = true
+                                        if (facingBlock.y < 63) {
+                                            var playerFacing = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw)
 
+                                            var connectingDoorBlock = "air"
+                                            if (playerFacing == "north") connectingDoorBlock = utils.worldgen.GetBlock(socket)(world, socket, {x: facingBlock.x - 1, y: facingBlock.y, z: facingBlock.z})
+                                            else if (playerFacing == "east") connectingDoorBlock = utils.worldgen.GetBlock(socket)(world, socket, {x: facingBlock.x, y: facingBlock.y, z: facingBlock.z - 1})
+                                            else if (playerFacing == "south") connectingDoorBlock = utils.worldgen.GetBlock(socket)(world, socket, {x: facingBlock.x + 1, y: facingBlock.y, z: facingBlock.z})
+                                            else if (playerFacing == "west") connectingDoorBlock = utils.worldgen.GetBlock(socket)(world, socket, {x: facingBlock.x, y: facingBlock.y, z: facingBlock.z + 1})
+
+                                            var reverseHinge = false
+                                            if ((connectingDoorBlock.startsWith("oak_door") || connectingDoorBlock.startsWith("iron_door")) && !connectingDoorBlock.includes('hinge=right') && ((playerFacing == "north" && !connectingDoorBlock.includes('facing=')) || (connectingDoorBlock.includes(`facing=${playerFacing}`)))) reverseHinge = true
+
+                                            console.log(playerFacing)
+                                            console.log(connectingDoorBlock)
+                                            console.log(reverseHinge)
+                                            console.log(utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, `${placedName}[facing=${playerFacing},hinge=${reverseHinge ? "right" : "left"},half=lower]`))
+
+                                            world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = `${placedName}[facing=${playerFacing},hinge=${reverseHinge ? "right" : "left"},half=lower]`
+                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, `${placedName}[facing=${playerFacing},hinge=${reverseHinge ? "right" : "left"},half=lower]`, true, facingBlock.block)
+
+                                            world.builds[hitBuildIndex].blocks[facingBlock.y - 1][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = `${placedName}[facing=${playerFacing},hinge=${reverseHinge ? "right" : "left"},half=upper]`
+                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: facingBlock.x, y: facingBlock.y + 1, z: facingBlock.z}, `${placedName}[facing=${playerFacing},hinge=${reverseHinge ? "right" : "left"},half=upper]`, true, aboveFacingBlock)
+
+                                            updateSuccessful = true
+                                        }
+                                    }
+                                }
+                            }
                         } else if (placedName == "wheat") {
                             if (validBlock) {
                                 if (originalBlock.block.startsWith('wheat')) {
@@ -283,14 +346,14 @@ function ReadPacket(world, socket, data) {
                                     if (originalBlock.block == `${placedName}[age=6]`) newBlock = `${placedName}[age=7]`
 
                                     world.builds[hitBuildIndex].blocks[originalBlock.y - 2][utils.math.NegMod(originalBlock.z, 16)][utils.math.NegMod(originalBlock.x, 16)] = newBlock
-                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, originalBlock, newBlock, true)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, originalBlock, newBlock, true, originalBlock.block)
                                     updateSuccessful = true
                                 }
                                 else {
                                     giveItem = true
                                     if (facingBlock.block == "air" || facingBlock.block == "fire" && utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                         world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName
-                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false)
+                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                         updateSuccessful = true
                                     }
                                 }
@@ -307,7 +370,7 @@ function ReadPacket(world, socket, data) {
                             if (facingBlock.block == "air" || facingBlock.block == "fire" && utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                 if (validBlock) {
                                     world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName
-                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                     updateSuccessful = true
                                 } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
                                 giveItem = true
