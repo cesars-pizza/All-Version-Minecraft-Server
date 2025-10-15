@@ -11,155 +11,17 @@ var socketIndex = 0
 /**
  * @type {World}
  */
-var world = {
-    config: new Config(),
-    players: [],
-    maxPlayerCount: 0,
-    loadingPlayerNames: [],
-    loadedPlayers: [],
-    registries: {
-        block: [],
-        item: []
-    },
-    builds: [],
-    blockUpdates: [],
-    disconnectedPlayers: [],
-    versions: [],
-    universalRegistries: {
-        block: [],
-        item: []
-    },
-    serverFunctions: {
-        save: ServerSave
-    },
-    closeServer: false
-}
+var world = {}
 
-setupLogs()
-loadConfig()
-loadWorld()
+setup()
 
-async function loadWorld() {
-    var playerFiles = fs.opendirSync('./world/players')
-    var endOfPlayers = false
-    while (!endOfPlayers) {
-        var thisPlayer = playerFiles.readSync()
-        if (thisPlayer == null) endOfPlayers = true
-        else {
-            if (thisPlayer.isFile() && thisPlayer.name.endsWith('.json')) {
-                var thisPlayerData = JSON.parse(fs.readFileSync(`./world/players/${thisPlayer.name}`))
-                thisPlayerData.classicID = -1
-                thisPlayerData.inWorld = false
-                thisPlayerData.tick = {
-                    spawn: false,
-                    position: false,
-                    rotation: false,
-                    messages: [],
-                    systemMessages: [],
-                    teleportSelf: false
-                }
-                thisPlayerData.save = false
-                thisPlayerData.upvn = -2
-                thisPlayerData.uvni = -1
-                thisPlayerData.selectedRegistries = {
-                    block: -1
-                }
-                thisPlayerData.socket = {}
-                world.players.push(thisPlayerData)
-            }
-        }
-    }
-    console.log(`WORLD Loaded ${world.players.length} Players`)
-    playerFiles.closeSync()
+async function setup() {
+    await setupLogs()
 
-    var blockRegistry = fs.opendirSync('./world/registries/block')
-    var startedBlockRegistry = false
-    var endofRegistry = false
-    while (!endofRegistry) {
-        var thisRegistry = blockRegistry.readSync()
-        if (thisRegistry == null) endofRegistry = true
-        else {
-            if (thisRegistry.isFile()) {
-                var nameNumber = Number(thisRegistry.name.replace('.json', ''))
-                if (thisRegistry.name.endsWith('.json') && nameNumber != NaN) {
-                    var thisRegistryData = JSON.parse(fs.readFileSync(`./world/registries/block/${thisRegistry.name}`))
-                    if (thisRegistryData.maxUPVN >= world.config.minUPVN && thisRegistryData.minUPVN <= world.config.maxUPVN) {
-                        var entryKeys = Object.keys(thisRegistryData.entries)
-                        if (startedBlockRegistry) {
-                            for (var i = world.universalRegistries.block.length - 1; i >= 0; i--) {
-                                if (!entryKeys.includes(world.universalRegistries.block[i])) world.universalRegistries.block.splice(i, 1)
-                            }
-                        } else {
-                            startedBlockRegistry = true
-                            world.universalRegistries.block = entryKeys
-                        }
-                    }
-                    world.registries.block.push(thisRegistryData)
-                }
-            }
-        }
-    }
-    console.log(`WORLD Loaded ${world.registries.block.length} Block Registries`)
-    console.log(`WORLD Loaded ${world.universalRegistries.block.length} Universal Blocks`)
-    blockRegistry.closeSync()
+    world = await utils.load_world()
+    world.serverFunctions.save = ServerSave
 
-    var itemRegistry = fs.opendirSync('./world/registries/item')
-    var startedItemRegistry = false
-    endofRegistry = false
-    while (!endofRegistry) {
-        var thisRegistry = itemRegistry.readSync()
-        if (thisRegistry == null) endofRegistry = true
-        else {
-            if (thisRegistry.isFile()) {
-                var nameNumber = Number(thisRegistry.name.replace('.json', ''))
-                if (thisRegistry.name.endsWith('.json') && nameNumber != NaN) {
-                    var thisRegistryData = JSON.parse(fs.readFileSync(`./world/registries/item/${thisRegistry.name}`))
-                    if (thisRegistryData.maxUPVN >= world.config.minUPVN && thisRegistryData.minUPVN <= world.config.maxUPVN) {
-                        var entryKeys = Object.keys(thisRegistryData.entries)
-                        if (startedItemRegistry) {
-                            for (var i = world.universalRegistries.item.length - 1; i >= 0; i--) {
-                                if (!entryKeys.includes(world.universalRegistries.item[i])) world.universalRegistries.item.splice(i, 1)
-                            }
-                        } else {
-                            startedItemRegistry = true
-                            world.universalRegistries.item = entryKeys
-                        }
-                    }
-                    world.registries.item.push(thisRegistryData)
-                }
-            }
-        }
-    }
-    console.log(`WORLD Loaded ${world.registries.item.length} Item Registries`)
-    console.log(`WORLD Loaded ${world.universalRegistries.item.length} Universal Items`)
-    itemRegistry.closeSync()
-
-    world.versions = JSON.parse(fs.readFileSync('./world/registries/version.json'))
-    console.log(`WORLD Loaded ${world.versions.length} Versions`)
-
-    var buildFiles = fs.opendirSync('./world/builds')
-    var endOfBuilds = false
-    while (!endOfBuilds) {
-        var thisBuild = buildFiles.readSync()
-        if (thisBuild == null) endOfBuilds = true
-        else {
-            if (thisBuild.isFile() && thisBuild.name.endsWith('.json')) {
-                /** @type {Build} */
-                var thisBuildData = JSON.parse(fs.readFileSync(`./world/builds/${thisBuild.name}`))
-                thisBuildData.save = false
-                world.builds.push(thisBuildData)
-            }
-        }
-    }
-    console.log(`WORLD Loaded ${world.builds.length} Builds`)
-    buildFiles.closeSync()
-}
-
-async function loadConfig() {
-    world.config = JSON.parse(fs.readFileSync('./config.json'))
-    
-    world.maxPlayerCount = world.config.maxPlayers
-    if (world.config.minUPVN <= 83) maxPlayerCount = Math.min(world.maxPlayerCount, 128) // Need to test when this becomes 255
+    StartServer()
 }
 
 async function setupLogs() {
@@ -170,96 +32,98 @@ async function setupLogs() {
     await fs.mkdir("./debug", () => {})
 }
 
-const server = net.createServer(/** @param {Socket} socket */(socket) => {
-    socket.isClosed = false
-    socket.logText = ""
-    socket.index = socketIndex
-    socketIndex++
-    socket.log = (message, consoleLog) => {
-        socket.logText += message + "\n"
-        if (consoleLog != false) console.log("SOCKET " + message)
-    }
-    socket.writePacket = (id, identifier, data, logBytes, consoleLog) => {
-        var packet = dataWriter.writePacket(socket, id, data)
-        if (consoleLog != false) socket.log(`CLIENTBOUND <-- ${id} "${identifier}" / ${packet.length} bytes`)
-        if (logBytes) HexViewBytes(data, `${socket.index}.${socket.packetCount}`)
-        socket.write(packet, consoleLog)
-    }
-    socket.setDisconnect = (disconnectReason, consoleLog) => {
-        socket.disconnect = disconnectReason
-        if (consoleLog != false) socket.log("DISCONNECT " + disconnectReason)
-    }
+function StartServer() {
+    const server = net.createServer(/** @param {Socket} socket */(socket) => {
+        socket.isClosed = false
+        socket.logText = ""
+        socket.index = socketIndex
+        socketIndex++
+        socket.log = (message, consoleLog) => {
+            socket.logText += message + "\n"
+            if (consoleLog != false) console.log("SOCKET " + message)
+        }
+        socket.writePacket = (id, identifier, data, logBytes, consoleLog) => {
+            var packet = dataWriter.writePacket(socket, id, data)
+            if (consoleLog != false) socket.log(`CLIENTBOUND <-- ${id} "${identifier}" / ${packet.length} bytes`)
+            if (logBytes) HexViewBytes(data, `${socket.index}.${socket.packetCount}`)
+            socket.write(packet, consoleLog)
+        }
+        socket.setDisconnect = (disconnectReason, consoleLog) => {
+            socket.disconnect = disconnectReason
+            if (consoleLog != false) socket.log("DISCONNECT " + disconnectReason)
+        }
 
-    socket.packetCount = 0
-    socket.identified = false
+        socket.packetCount = 0
+        socket.identified = false
 
-    socket.dataBuffer = Buffer.alloc(0)
+        socket.dataBuffer = Buffer.alloc(0)
 
-    socket.thisPlayer = {
-        uuid: "",
-        username: "",
-        position: {x: 0, y: 1, z: 0},
-        rotation: {pitch: 0, yaw: 0},
-        inventory: {
-            selected_slot: 0,
-            slots: []
-        },
-        verified: false,
-        keepVerified: false,
-        lastUVNI: -1,
+        socket.thisPlayer = {
+            uuid: "",
+            username: "",
+            position: {x: 0, y: 1, z: 0},
+            rotation: {pitch: 0, yaw: 0},
+            inventory: {
+                selected_slot: 0,
+                slots: []
+            },
+            verified: false,
+            keepVerified: false,
+            lastUVNI: -1,
 
-        classicID: -1,
-        inWorld: false,
-        tick: {spawn: true, position: false, rotation: false},
-        save: false,
-        upvn: -2,
-        uvni: -1
-    }
-    
-    socket.disconnect = ""
+            classicID: -1,
+            inWorld: false,
+            tick: {spawn: true, position: false, rotation: false},
+            save: false,
+            upvn: -2,
+            uvni: -1
+        }
+        
+        socket.disconnect = ""
 
-    if (world.loadingPlayerNames.length + world.loadedPlayers.length >= world.maxPlayerCount) {
-        socket.setDisconnect("maxPlayers")
-    }
-    world.loadingPlayerNames.push("")
+        if (world.loadingPlayerNames.length + world.loadedPlayers.length >= world.maxPlayerCount) {
+            socket.setDisconnect("maxPlayers")
+        }
+        world.loadingPlayerNames.push("")
 
-    socket.on('data', (data) => {
-        ReadPacket(socket, data)
+        socket.on('data', (data) => {
+            ReadPacket(socket, data)
+        });
+
+        socket.on('end', () => {
+            if (!socket.isClosed) {
+                clearInterval(socket.keepAlive)
+                socket.log("", false)
+                socket.log("Closed Socket")
+                fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
+                world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
+                world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
+                socket.isClosed = true
+            }
+        })
+        
+        socket.on('error', (err) => {
+            if (!socket.isClosed) {
+                clearInterval(socket.keepAlive)
+                socket.log("", false)
+                socket.log(`Socket Error: ${err.message}`);
+                fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
+                world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
+                world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
+                socket.isClosed = true
+            }
+        })
     });
 
-    socket.on('end', () => {
-        if (!socket.isClosed) {
-            clearInterval(socket.keepAlive)
-            socket.log("", false)
-            socket.log("Closed Socket")
-            fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
-            world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
-            world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
-            socket.isClosed = true
-        }
-    })
-    
-    socket.on('error', (err) => {
-        if (!socket.isClosed) {
-            clearInterval(socket.keepAlive)
-            socket.log("", false)
-            socket.log(`Socket Error: ${err.message}`);
-            fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
-            world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
-            world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
-            socket.isClosed = true
-        }
-    })
-});
+    server.listen(world.config.hostPort, () => {
+        console.log(`Started Server on Port ${world.config.hostPort}`);
+    });
 
-server.listen(world.config.hostPort, () => {
-    console.log(`Started Server on Port ${world.config.hostPort}`);
-});
-
-server.on('error', (err) => {
-  console.error(`Server Error: ${err.message}`);
-  throw err;
-});
+    server.on('error', (err) => {
+    console.error(`Server Error: ${err.message}`);
+    throw err;
+    });
+}
 
 setInterval(ServerTick, 50)
 function ServerTick() {
