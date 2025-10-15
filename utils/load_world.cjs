@@ -16,6 +16,7 @@ var world = {
     },
     builds: [],
     blockUpdates: [],
+    tags: [],
     disconnectedPlayers: [],
     versions: [],
     universalRegistries: {
@@ -39,6 +40,8 @@ async function loadWorld() {
     loadVersions()
 
     loadBuilds()
+
+    loadTags()
 
     return world
 }
@@ -145,6 +148,44 @@ async function loadBuilds() {
     buildFiles.closeSync()
 
     console.log(`WORLD Loaded ${world.builds.length} Builds`)
+}
+
+async function loadTags() {
+    var tagFiles = fs.opendirSync('./world/tags')
+    var endOfTags = false
+    while (!endOfTags) {
+        var thisTag = tagFiles.readSync()
+        if (thisTag == null) endOfTags = true
+        else {
+            if (thisTag.isFile() && thisTag.name.endsWith('.json')) {
+                /** @type {{tag: string, values: string[]}} */
+                var thisTagData = JSON.parse(fs.readFileSync(`./world/tags/${thisTag.name}`))
+                world.tags.push(thisTagData)
+            }
+        }
+    }
+    tagFiles.closeSync()
+
+    for (var i = 0; i < world.tags.length; i++) {
+        var passed = false
+        while (!passed) {
+            passed = true
+
+            for (var j = 0; j < world.tags[i].values.length; j++) {
+                if (world.tags[i].values[j][0] == "#") {
+                    passed = false
+                    var subTag = world.tags[i].values[j].substring(1)
+                    var subTagIndex = world.tags.map(tag => tag.tag).indexOf(subTag)
+
+                    world.tags[i].values.splice(j, 1)
+
+                    world.tags[i].values = world.tags[i].values.concat(world.tags[subTagIndex].values)
+                }
+            }
+        }
+    }
+
+    console.log(`WORLD Loaded ${world.tags.length} Tags`)
 }
 
 module.exports = {loadWorld}

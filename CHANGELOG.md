@@ -1,6 +1,6 @@
 # Changelog
 
-This is a general overview of how the server protocol changes from version to version
+This is a general overview of how the server protocol changes from version to version.
 
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
@@ -149,7 +149,6 @@ Sponges and Glass Blocks were added to the game, replacing Cobblestone and Sand 
 The hotbar has a new gui displaying all selectable blocks.
 
 Falling blocks are no longer calculated client-side, removing ghost blocks of them and leaving the floating blocks.
-
 
 ### Packets
 

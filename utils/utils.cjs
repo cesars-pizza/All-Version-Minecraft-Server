@@ -20,5 +20,6 @@ module.exports = {
         message: require('./tick_actions/message/distributer.cjs'),
         teleport: require('./tick_actions/teleport/distributer.cjs').TeleportSelf
     },
-    load_world: require('./load_world.cjs').loadWorld
+    load_world: require('./load_world.cjs').loadWorld,
+    tag: require('./tags.cjs').GetBlockHasTag
 }
