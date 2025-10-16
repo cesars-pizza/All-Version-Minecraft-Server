@@ -183,7 +183,45 @@ function ReadPacket(world, socket, data) {
                         } else if (placedName == "rail") {
 
                         } else if (placedName == "lever") {
+                            var playerDirectionFlipped = face.value != 1
+                            var playerDirection = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw + (playerDirectionFlipped ? 180 : 0))
+                            
+                            var playerWall = "north"
+                            if (face.value == 3) playerWall = "south"
+                            else if (face.value == 4) playerWall = "west"
+                            else if (face.value == 5) playerWall = "east"
 
+                            var placedFace = "wall"
+                            if (face.value == 1) placedFace = "floor"
+                            else if (face.value > 1) playerDirection = playerWall
+
+                            if (facingBlockReplacable) {
+                                if (validBlock) {
+                                    world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName + `[facing=${playerDirection},face=${placedFace}]`
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + `[facing=${playerDirection},face=${placedFace}]`, false, facingBlock.block)
+                                    updateSuccessful = true
+                                } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
+                                giveItem = true
+                            }
+                        } else if (placedName == "stone_button") {
+                            var playerDirection = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw + 180)
+                            
+                            var playerWall = "north"
+                            if (face.value == 3) playerWall = "south"
+                            else if (face.value == 4) playerWall = "west"
+                            else if (face.value == 5) playerWall = "east"
+
+                            var placedFace = "wall"
+                            if (face.value > 1) playerDirection = playerWall
+
+                            if (facingBlockReplacable) {
+                                if (validBlock) {
+                                    world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = placedName + `[facing=${playerDirection},face=${placedFace}]`
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + `[facing=${playerDirection},face=${placedFace}]`, false, facingBlock.block)
+                                    updateSuccessful = true
+                                } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
+                                giveItem = true
+                            }
                         } else if (placedName == "redstone_torch") {
                             if (validBlock) {
                                 if (facingBlockReplacable) {
@@ -205,8 +243,6 @@ function ReadPacket(world, socket, data) {
                                     giveItem = true
                                 }
                             } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
-                        } else if (placedName == "stone_button") {
-                            
                         } else if (placedName == "bucket") {
                             if (facingBlock.block == "water" || facingBlock.block == "lava") {
                                 world.builds[hitBuildIndex].blocks[facingBlock.y - 2][utils.math.NegMod(facingBlock.z, 16)][utils.math.NegMod(facingBlock.x, 16)] = "air"

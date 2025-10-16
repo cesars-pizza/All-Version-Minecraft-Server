@@ -81,17 +81,17 @@ function ReadPacket(world, socket, data) {
                     } else if (blockPos.y < 64) {
                         world.builds[hitBuildIndex].blocks[blockPos.y - 2][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = "air"
                         utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0, false, prevBlock)
-                        console.log(prevBlock)
-                        if (prevBlock.startsWith('oak_door') || prevBlock.startsWith("iron_door")) {
+                        if (utils.tag(world, prevBlock, "doors")) {
                             console.log(prevBlock)
+                            console.log(blockPos.y)
                             if (!prevBlock.includes('half=upper') && blockPos.y < 63) {
                                 world.builds[hitBuildIndex].blocks[blockPos.y - 1][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = "air"
                                 if (!prevBlock.includes('[')) prevBlock = prevBlock + '[half=lower]'
                                 else if (!prevBlock.includes('half=lower')) prevBlock = prevBlock.replace(']', ',half=lower]')
                                 utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y + 1, z: blockPos.z}, 0, false, prevBlock.replace('half=lower', 'half=upper'))
-                            } else if (prevBlock.includes('half=upper') && blockPos.y > 3) {
+                            } else if (prevBlock.includes('half=upper') && blockPos.y > 2) {
                                 world.builds[hitBuildIndex].blocks[blockPos.y - 3][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = "air"
-                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y + 1, z: blockPos.z}, 0, false, prevBlock.replace('half=upper', 'half=lower'))
+                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y - 1, z: blockPos.z}, 0, false, prevBlock.replace('half=upper', 'half=lower'))
                             }
                         }
                         world.builds[hitBuildIndex].lastModified = new Date().getTime()

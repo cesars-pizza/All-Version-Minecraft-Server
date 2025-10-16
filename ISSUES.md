@@ -6,7 +6,7 @@ This is an outline of issues with specific clients.
 
 Creating a double slab above a single slab causes a temporary visual error.
 
-Torches placed on non-supporting block change direction client-side or turn invisible. This is fixed on rejoin.
+Torches, Levers, & Buttons placed on non-supporting block change direction client-side or use illegal blockstates. This is fixed on rejoin.
 
 Stairs will change direction client-side if next to a block. This is fixed on rejoin.
 
