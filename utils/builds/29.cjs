@@ -1,4 +1,5 @@
-const {World, Build} = require('../../data_structures.cjs');
+const {World, Build, Position} = require('../../data_structures.cjs');
+const { default: utils } = require('../utils.cjs');
 
 /**
  * @param {World} world 
@@ -39,4 +40,14 @@ function GenerateBuild(tileX, tileZ, creator, uvni, settings) {
     return returnValue
 }
 
-module.exports = {GetBuild, GenerateBuild}
+/**
+ * @param {World} world 
+ * @param {number} buildIndex 
+ * @param {Position} blockPos 
+ * @param {string} block 
+ */
+function SetBlockInBuild(world, buildIndex, blockPos, block) {
+    world.builds[buildIndex].blocks[blockPos.y - 2][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = block
+}
+
+module.exports = {GetBuild, GenerateBuild, SetBlockInBuild}

@@ -93,7 +93,7 @@ function ReadPacket(world, socket, data) {
                     } else if (blockPos.y < 64) {
                         if (mode.value == 1) {
                             if (validBlock) {
-                                world.builds[hitBuildIndex].blocks[blockPos.y - 2][blockPos.z % 16][blockPos.x % 16] = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID.value)
+                                utils.builds.SetBlockInBuild(socket)(world, hitBuildIndex, blockPos, utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID.value))
                                 utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, blockID.value, false, 0)
                                 for (var i = 0; i < world.loadedPlayers.length; i++) {
                                     if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
@@ -114,7 +114,7 @@ function ReadPacket(world, socket, data) {
                             } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
                         } else {
                             utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0, false, utils.worldgen.GetBlock(socket)(world, socket, blockPos))
-                            world.builds[hitBuildIndex].blocks[blockPos.y - 2][blockPos.z % 16][blockPos.x % 16] = "air"
+                            utils.builds.SetBlockInBuild(socket)(world, hitBuildIndex, blockPos, "air")
                             world.builds[hitBuildIndex].lastModified = new Date().getTime()
                             world.builds[hitBuildIndex].save = true
                             updateSuccessful = true

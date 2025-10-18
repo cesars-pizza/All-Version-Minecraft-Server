@@ -256,4 +256,8 @@ function GetDirection16Num(socket, yaw) {
     return 0
 }
 
-module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer, GetDirectionNESW, GetDirection16, GetDirection16Num}
+function InBuildChunk(position) {
+    return (utils.math.NegMod(position.x, 32) >= 16 && utils.math.NegMod(position.z, 32) >= 16)
+}
+
+module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer, GetDirectionNESW, GetDirection16, GetDirection16Num, InBuildChunk}

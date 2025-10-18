@@ -45,8 +45,8 @@ function ReadPacket(world, socket, data) {
             }
 
             if (socket.thisPlayer.settings.showPlotInfo) {
-                var prevInBuild = socket.thisPlayer.position.x % 32 >= 16 && socket.thisPlayer.position.z % 32 >= 16
-                var currInBuild = newPositionShifted.x % 32 >= 16 && newPositionShifted.z % 32 >= 16
+                var prevInBuild = utils.player.InBuildChunk(socket)(socket.thisPlayer.position)
+                var currInBuild = utils.player.InBuildChunk(socket)(newPositionShifted)
                 if (!prevInBuild && currInBuild) {
                     var build = utils.builds.GetBuild(socket)(world, Math.floor(newPositionShifted.x / 32), Math.floor(newPositionShifted.z / 32))
                     if (build != undefined && world.builds[build].creator != socket.thisPlayer.username) {

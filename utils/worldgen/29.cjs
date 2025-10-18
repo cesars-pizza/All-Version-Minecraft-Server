@@ -122,21 +122,21 @@ function GenerateClassicWorld(world, socket, offsetX, offsetZ) {
 function GetBlock(world, socket, blockPos) {
     if (blockPos.y == 0) return "cobblestone"
     else if (blockPos.y == 1) {
-        if ((blockPos.x % 32) > 15 && (blockPos.z % 32) > 15) {
+        if (utils.player.InBuildChunk(socket)(blockPos)) {
             var build = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
 
             if (build == undefined) return "grass_block"
             else return world.builds[build].floor
         } else {
-            if ((blockPos.x % 32 > 0 && blockPos.x % 32 < 15) || (blockPos.z % 32 > 0 && blockPos.z % 32 < 15)) return "air"
+            if ((utils.math.NegMod(blockPos.x, 32) > 0 && utils.math.NegMod(blockPos.x, 32) < 15) || (utils.math.NegMod(blockPos.z, 32) > 0 && utils.math.NegMod(blockPos.z, 32) < 15)) return "air"
             else return "oak_log"
         }
     } else {
-        if ((blockPos.x % 32) > 15 && (blockPos.z % 32) > 15) {
+        if (utils.player.InBuildChunk(socket)(blockPos)) {
             var build = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
 
             if (build == undefined) return "air"
-            else return world.builds[build].blocks[blockPos.y - 2][blockPos.z % 16][blockPos.x % 16]
+            else return world.builds[build].blocks[blockPos.y - 2][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)]
         } else return "air"
     }
 }

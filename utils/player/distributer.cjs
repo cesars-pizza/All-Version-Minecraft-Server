@@ -80,4 +80,8 @@ function GetDirection16Num(socket) {
     return require('./29.cjs').GetDirection16Num
 }
 
-module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer, GetDirectionNESW, GetDirection16, GetDirection16Num}
+function InBuildChunk(socket) {
+    return require('./29.cjs').InBuildChunk
+}
+
+module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer, GetDirectionNESW, GetDirection16, GetDirection16Num, InBuildChunk}

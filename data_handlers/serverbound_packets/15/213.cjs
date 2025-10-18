@@ -46,6 +46,9 @@ function ReadPacket(world, socket, data) {
             else if (face.value == 5) facingBlock.x++
             facingBlock.block = utils.worldgen.GetBlock(socket)(world, socket, facingBlock)
             var facingBlockReplacable = utils.tag(world, facingBlock.block, "replaceable")
+            if (!facingBlockReplacable) {
+                if (utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, facingBlock.block) == 0) facingBlockReplacable = true
+            }
 
             var updateSuccessful = false
             var giveItem = false

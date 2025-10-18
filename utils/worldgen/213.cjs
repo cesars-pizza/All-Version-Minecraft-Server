@@ -156,7 +156,7 @@ function GetBlock(world, socket, blockPos) {
             var build = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
 
             if (build == undefined) return "air"
-            else return world.builds[build].blocks[blockPos.y - 2][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x % 16)]
+            else return world.builds[build].blocks[blockPos.y - 2][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)]
         } else return "air"
     }
 }

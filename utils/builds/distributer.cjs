@@ -25,4 +25,8 @@ function GetBuildInfo(socket) {
     }
 }
 
-module.exports = {GetBuild, GenerateBuild, GetBuildInfo}
+function SetBlockInBuild(socket) {
+    return require('./29.cjs').SetBlockInBuild
+}
+
+module.exports = {GetBuild, GenerateBuild, GetBuildInfo, SetBlockInBuild}
