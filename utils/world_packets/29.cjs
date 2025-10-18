@@ -8,9 +8,9 @@ const packetWriter = require('../../data_handlers/clientbound_packets/packet_wri
  */
 function GenerateBlocks(socket, blocks, notFirst) {
     var levelData = dataWriter.writeLevelData(socket, blocks)
-    packetWriter.Level_Initilize(socket)(socket)
-    packetWriter._alt.Level_Data_Chunk_alt0(socket)(socket, levelData)
-    packetWriter.Level_Finalize(socket)(socket, 256, 64, 256)
+    packetWriter.Classic.Level_Initilize(socket)(socket)
+    packetWriter._alt.Classic.Level_Data_Chunk_alt0(socket)(socket, levelData)
+    packetWriter.Classic.Level_Finalize(socket)(socket, 256, 64, 256)
 }
 
 module.exports = {GenerateBlocks}

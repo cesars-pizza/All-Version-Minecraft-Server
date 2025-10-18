@@ -52,7 +52,7 @@ function ReadPacket(world, socket, data) {
                     if (build != undefined && world.builds[build].creator != socket.thisPlayer.username) {
                         var buildInfo = utils.builds.GetBuildInfo(socket)(world, socket, Math.floor(newPositionShifted.x / 32), Math.floor(newPositionShifted.z / 32))
                         for (var i = 0; i < buildInfo.length; i++) {
-                            packetWriter.Message(socket)(socket, 0, buildInfo[i])
+                            packetWriter.Classic.Message(socket)(socket, 0, buildInfo[i])
                         }
                     }
                 }

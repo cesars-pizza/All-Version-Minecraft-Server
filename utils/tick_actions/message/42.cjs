@@ -6,35 +6,35 @@ const packetWriter = require('../../../data_handlers/clientbound_packets/packet_
  * @param {Socket} socket 
  */
 function PlayerMessage(socket, username, message) {
-    if (!message.endsWith('&')) packetWriter.Message(socket)(socket, 0, `<${username}> ${message}`)
+    if (!message.endsWith('&')) packetWriter.Classic.Message(socket)(socket, 0, `<${username}> ${message}`)
 }
 
 /** 
  * @param {Socket} socket 
  */
 function JoinMessage(socket, username) {
-    packetWriter.Message(socket)(socket, -1, `${username} joined the game.`)
+    packetWriter.Classic.Message(socket)(socket, -1, `${username} joined the game.`)
 }
 
 /** 
  * @param {Socket} socket 
  */
 function QuitMessage(socket, username) {
-    packetWriter.Message(socket)(socket, -1, `${username} left the game.`)
+    packetWriter.Classic.Message(socket)(socket, -1, `${username} left the game.`)
 }
 
 /** 
  * @param {Socket} socket 
  */
 function SystemMessage(socket, message) {
-    packetWriter.Message(socket)(socket, 0, `&d[System] ${message}`)
+    packetWriter.Classic.Message(socket)(socket, 0, `&d[System] ${message}`)
 }
 
 /** 
  * @param {Socket} socket 
  */
 function ErrorMessage(socket, message) {
-    packetWriter.Message(socket)(socket, 0, `&c${message}`)
+    packetWriter.Classic.Message(socket)(socket, 0, `&c${message}`)
 }
 
 module.exports = {PlayerMessage, JoinMessage, QuitMessage, SystemMessage, ErrorMessage}

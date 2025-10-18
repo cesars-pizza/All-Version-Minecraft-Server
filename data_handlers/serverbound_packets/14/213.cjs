@@ -117,8 +117,8 @@ function ReadPacket(world, socket, data) {
 
                 if (oldBlockUpdate == -1) {
                     var replacementBlock = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, utils.worldgen.GetBlock(socket)(world, socket, blockPos))
-                    if (typeof(replacementBlock) == "number") packetWriter.Block_Change(socket)(world, socket, blockPos, replacementBlock, 0, false)
-                    else packetWriter.Block_Change(socket)(world, socket, blockPos, replacementBlock.id, replacementBlock.metadata, false)
+                    if (typeof(replacementBlock) == "number") packetWriter.Alpha.Block_Change(socket)(world, socket, blockPos, replacementBlock, 0, false)
+                    else packetWriter.Alpha.Block_Change(socket)(world, socket, blockPos, replacementBlock.id, replacementBlock.metadata, false)
                 }
             }
         }

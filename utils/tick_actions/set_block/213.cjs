@@ -9,10 +9,10 @@ const utils = require('../../utils.cjs')
 function SetBlock(world, socket, position, blockID, doubleSet) {
     var blockID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, blockID)
     if (typeof(blockID) == "number") {
-        packetWriter.Block_Change(socket)(world, socket, position, blockID, 0, doubleSet)
+        packetWriter.Alpha.Block_Change(socket)(world, socket, position, blockID, 0, doubleSet)
     }
     else {
-        packetWriter.Block_Change(socket)(world, socket, position, blockID.id, blockID.metadata, doubleSet)
+        packetWriter.Alpha.Block_Change(socket)(world, socket, position, blockID.id, blockID.metadata, doubleSet)
     }
 }
 

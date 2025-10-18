@@ -105,7 +105,7 @@ function ReadPacket(world, socket, data) {
                                         if (utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, originalBlock) != "inside") {
                                             world.builds[hitBuildIndex].blocks[originalBlock.y - 2][utils.math.NegMod(originalBlock.z, 16)][utils.math.NegMod(originalBlock.x, 16)] = placedName + "[type=double]"
                                             utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, originalBlock, placedName + "[type=double]", false, originalBlock.block)
-                                            if (facingBlockReplacable) packetWriter.Block_Change(socket)(world, socket, facingBlock, 0, 0, false)
+                                            if (facingBlockReplacable) packetWriter.Alpha.Block_Change(socket)(world, socket, facingBlock, 0, 0, false)
                                             updateSuccessful = true
                                             giveItem = true
                                         }
@@ -401,8 +401,8 @@ function ReadPacket(world, socket, data) {
                     var replaceBlock = 0
                     if (facingBlock.y < 64) {
                         replaceBlock = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, utils.worldgen.GetBlock(socket)(world, socket, facingBlock))
-                        if (typeof(replaceBlock) == "number") packetWriter.Block_Change(socket)(world, socket, facingBlock, replaceBlock, 0, false)
-                        else packetWriter.Block_Change(socket)(world, socket, facingBlock, replaceBlock.id, replaceBlock.metadata, false)
+                        if (typeof(replaceBlock) == "number") packetWriter.Alpha.Block_Change(socket)(world, socket, facingBlock, replaceBlock, 0, false)
+                        else packetWriter.Alpha.Block_Change(socket)(world, socket, facingBlock, replaceBlock.id, replaceBlock.metadata, false)
                     }
                 }
             } else {
@@ -426,7 +426,7 @@ function ReadPacket(world, socket, data) {
                 world.builds[hitBuildIndex].save = true
             }
 
-            if (giveItem) packetWriter.Add_To_Inventory(socket)(world, socket, item.value, 1, 0)
+            if (giveItem) packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, item.value, 1, 0)
         }
 
     }

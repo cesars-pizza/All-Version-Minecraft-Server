@@ -10,7 +10,7 @@ const utils = require('../utils.cjs')
 function Disconnect(world, socket) {
     world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(""))
 
-    packetWriter.Server_Identification(socket)(world, socket, "Server")
+    packetWriter.Classic.Server_Identification(socket)(world, socket, "Server")
 
     var blocks = [[]]
     for (var z = 0; z < 256; z++) {
@@ -64,7 +64,7 @@ function Disconnect(world, socket) {
     }
 
     utils.world_packets.GenerateBlocks(socket)(socket, blocks)
-    packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, thisPosition, thisRotation)
+    packetWriter.Classic.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, thisPosition, thisRotation)
 }
 
 function WriteCharacter(blocks, char, position) {

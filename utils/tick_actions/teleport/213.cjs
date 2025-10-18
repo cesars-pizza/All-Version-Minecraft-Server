@@ -6,7 +6,7 @@ const packetWriter = require('../../../data_handlers/clientbound_packets/packet_
  * @param {Socket} socket 
  */
 function TeleportSelf(socket) {
-    packetWriter.Player_Position_And_Look(socket)({}, socket, {x: socket.thisPlayer.position.x, y: socket.thisPlayer.position.y + 1, z: socket.thisPlayer.position.z}, socket.thisPlayer.position.y + 2.6, socket.thisPlayer.rotation, true)
+    packetWriter.Alpha.Player_Position_And_Look(socket)({}, socket, {x: socket.thisPlayer.position.x, y: socket.thisPlayer.position.y + 1, z: socket.thisPlayer.position.z}, socket.thisPlayer.position.y + 2.6, socket.thisPlayer.rotation, true)
 }
 
 module.exports = {TeleportSelf}

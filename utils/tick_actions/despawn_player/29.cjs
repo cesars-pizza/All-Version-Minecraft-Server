@@ -6,7 +6,7 @@ const packetWriter = require('../../../data_handlers/clientbound_packets/packet_
  * @param {Socket} socket 
  */
 function DespawnPlayer(socket, classicID) {
-    packetWriter.Despawn_Player(socket)(socket, classicID)
+    packetWriter.Classic.Despawn_Player(socket)(socket, classicID)
 }
 
 module.exports = {DespawnPlayer}

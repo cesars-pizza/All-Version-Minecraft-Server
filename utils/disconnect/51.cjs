@@ -18,9 +18,9 @@ function Disconnect(world, socket) {
     else if (socket.disconnect == "serverClosed") errText = `Server Closed.`
     else errText = `ERR: ${socket.disconnect}`
 
-    packetWriter.Server_Identification(socket)(world, socket, "Connection lost", errText)
+    packetWriter.Classic.Server_Identification(socket)(world, socket, "Connection lost", errText)
 
-    packetWriter.Level_Initilize(socket)(socket)
+    packetWriter.Classic.Level_Initilize(socket)(socket)
 }
 
 module.exports = {Disconnect}

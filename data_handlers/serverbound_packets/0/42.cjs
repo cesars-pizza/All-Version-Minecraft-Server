@@ -46,12 +46,12 @@ function ReadPacket(world, socket, data) {
                 if (!socket.thisPlayer.verified) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
 
-                    packetWriter.Server_Identification(socket)(world, socket, world.config.serverName, world.config.serverStatus)
+                    packetWriter.Classic.Server_Identification(socket)(world, socket, world.config.serverName, world.config.serverStatus)
                     var blocks = utils.worldgen.GenerateClassicWorld(socket)(world, socket, socket.thisPlayer.classicWorldOffset.x, socket.thisPlayer.classicWorldOffset.z)
                     utils.world_packets.GenerateBlocks(socket)(socket, blocks)
-                    packetWriter.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
+                    packetWriter.Classic.Spawn_Player(socket)(socket, -1, socket.thisPlayer.username, socket.thisPlayer.position, socket.thisPlayer.rotation)
                     for (var i = 0; i < world.loadedPlayers.length; i++) {
-                        packetWriter.Spawn_Player(socket)(socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                        packetWriter.Classic.Spawn_Player(socket)(socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
                     }
 
                     world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(socket.thisPlayer.username))

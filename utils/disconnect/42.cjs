@@ -11,17 +11,17 @@ function Disconnect(world, socket) {
     world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(""))    
 
     if (socket.disconnect == "maxPlayers") {
-        packetWriter.Disconnect_Player(socket)(socket, `This Server Is Full. (${world.maxPlayerCount} / ${world.maxPlayerCount})`)
+        packetWriter.Classic.Disconnect_Player(socket)(socket, `This Server Is Full. (${world.maxPlayerCount} / ${world.maxPlayerCount})`)
     } else if (socket.disconnect == "invalidVersion") {
-        packetWriter.Disconnect_Player(socket)(socket, `This Server Has Blocked This Version.`)
+        packetWriter.Classic.Disconnect_Player(socket)(socket, `This Server Has Blocked This Version.`)
     } else if (socket.disconnect == "multipleInstances") {
-        packetWriter.Disconnect_Player(socket)(socket, `Player With The Name ${socket.thisPlayer.username} Is Already Connected.`)
+        packetWriter.Classic.Disconnect_Player(socket)(socket, `Player With The Name ${socket.thisPlayer.username} Is Already Connected.`)
     } else if (socket.disconnect == "unverified") {
-        packetWriter.Disconnect_Player(socket)(socket, `This Account Has Been Previously Verified.`)
+        packetWriter.Classic.Disconnect_Player(socket)(socket, `This Account Has Been Previously Verified.`)
     } else if (socket.disconnect == "serverClosed") {
-        packetWriter.Disconnect_Player(socket)(socket, `Server Closed.`)
+        packetWriter.Classic.Disconnect_Player(socket)(socket, `Server Closed.`)
     } else {
-        packetWriter.Disconnect_Player(socket)(socket, `ERR: ${socket.disconnect}`)
+        packetWriter.Classic.Disconnect_Player(socket)(socket, `ERR: ${socket.disconnect}`)
     }
 
     socket.destroySoon()

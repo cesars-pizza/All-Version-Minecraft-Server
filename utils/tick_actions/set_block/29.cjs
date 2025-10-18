@@ -8,7 +8,7 @@ const utils = require('../../utils.cjs')
  */
 function SetBlock(world, socket, position, blockID) {
     var blockID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, blockID)
-    packetWriter.Set_Block(socket)(socket, position, blockID)
+    packetWriter.Classic.Set_Block(socket)(socket, position, blockID)
 }
 
 /**

@@ -8,10 +8,10 @@ const utils = require('../utils.cjs')
  * @param {number[][]} blocks 
  */
 function GenerateBlocks(socket, chunkX, chunkZ, blocks, blockMeta, blockLight, skyLight, initilize) {
-    packetWriter.Pre_Chunk(socket)(socket, chunkX, chunkZ, initilize)
+    packetWriter.Alpha.Pre_Chunk(socket)(socket, chunkX, chunkZ, initilize)
     if (initilize) {
         var levelData = dataWriter.writeLevelData(socket, blocks, blockMeta, blockLight, skyLight)
-        packetWriter.Map_Chunk(socket)(socket, chunkX, chunkZ, levelData)
+        packetWriter.Alpha.Map_Chunk(socket)(socket, chunkX, chunkZ, levelData)
     }
 }
 
@@ -24,13 +24,13 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
         
         for (var x = chunkX - renderDistance; x <= chunkX + renderDistance; x++) {
             for (var z = chunkZ - renderDistance; z <= chunkZ + renderDistance; z++) {
-                packetWriter.Pre_Chunk(socket)(socket, x, z, true)
+                packetWriter.Alpha.Pre_Chunk(socket)(socket, x, z, true)
             }
         }
 
-        packetWriter.Player_Position_And_Look(socket)(world, socket, socket.thisPlayer.position, socket.thisPlayer.position.y + 1.6, socket.thisPlayer.rotation, true)
+        packetWriter.Alpha.Player_Position_And_Look(socket)(world, socket, socket.thisPlayer.position, socket.thisPlayer.position.y + 1.6, socket.thisPlayer.rotation, true)
         var positionInterval = setInterval((world, socket) => {
-            packetWriter.Player_Position_And_Look(socket)(world, socket, socket.thisPlayer.position, socket.thisPlayer.position.y + 1.6, socket.thisPlayer.rotation, true)
+            packetWriter.Alpha.Player_Position_And_Look(socket)(world, socket, socket.thisPlayer.position, socket.thisPlayer.position.y + 1.6, socket.thisPlayer.rotation, true)
         }, 50, world, socket)
         
         for (var x = chunkX - renderDistance; x <= chunkX + renderDistance; x+=16) {
@@ -45,7 +45,7 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
                     }
                 }
                 var levelData = dataWriter.writeLevelData(socket, unformattedLevelDatas)
-                packetWriter.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
+                packetWriter.Alpha.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
             }
         }
 
@@ -56,7 +56,7 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
             for (var z = prevChunkZ - renderDistance; z <= prevChunkZ + renderDistance; z++) {
                 var distanceZ = Math.abs(z - chunkZ)
 
-                if (distanceX > renderDistance || distanceZ > renderDistance) packetWriter.Pre_Chunk(socket)(socket, x, z, false)
+                if (distanceX > renderDistance || distanceZ > renderDistance) packetWriter.Alpha.Pre_Chunk(socket)(socket, x, z, false)
             }
         }
 
@@ -66,7 +66,7 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
                 var distanceZ = Math.abs(z - prevChunkZ)
 
                 if (distanceX > renderDistance || distanceZ > renderDistance) {
-                    packetWriter.Pre_Chunk(socket)(socket, x, z, true)
+                    packetWriter.Alpha.Pre_Chunk(socket)(socket, x, z, true)
                 }
             }
         }
@@ -100,7 +100,7 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
                     }
                 }
                 var levelData = dataWriter.writeLevelData(socket, unformattedLevelDatas)
-                packetWriter.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
+                packetWriter.Alpha.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
             }
         }
 
@@ -115,7 +115,7 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
                     }
                 }
                 var levelData = dataWriter.writeLevelData(socket, unformattedLevelDatas)
-                packetWriter.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
+                packetWriter.Alpha.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
             }
         }
     }
