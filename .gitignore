@@ -1,0 +1,8 @@
+logs/**
+debug/**
+clientdata.bin
+clientpackets.txt
+clientpackets2.txt
+serverdata.bin
+serverpackets.txt
+serverpackets2.txt
