@@ -1,5 +1,5 @@
 const {World, Build, Position} = require('../../data_structures.cjs');
-const { default: utils } = require('../utils.cjs');
+const utils = require('../utils.cjs');
 
 /**
  * @param {World} world 
@@ -37,6 +37,7 @@ function GenerateBuild(tileX, tileZ, creator, uvni, settings) {
     returnValue.lastModified = new Date().getTime()
     returnValue.save = true
     returnValue.settings = settings
+    returnValue.music = {enabled: false, disc: "", blockPos: {x: 0, y: 0, z: 0}}
     return returnValue
 }
 

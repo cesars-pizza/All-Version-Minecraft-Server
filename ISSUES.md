@@ -14,6 +14,8 @@ Chests and Furnaces will change their direction client-side. If not surrounded b
 
 Players are in survival mode and can therefore die. Players die on every join.
 
+Client communicates block interaction (levers, doors, blocks w/ gui) on left click, but still interact client-side on right click. 
+
 ## Java Edition Classic 0.0.30
 
 This version can't be distinguished from 0.0.28_01, resulting in plots made in this version showing incorrectly on plot info.

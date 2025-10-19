@@ -81,6 +81,8 @@ function ReadPacket(world, socket, data) {
                     packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "saddle"), 1)
                     packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "chest_minecart"), 1)
                     packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "furnace_minecart"), 1)
+                    if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("jukebox")) packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "music_disc_cat"), 1)
+                    if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("jukebox")) packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "music_disc_13"), 1)
                 }
                 
                 if (socket.thisPlayer.joinCount % 2 == 1 || !secondInvHasValidBlock) {

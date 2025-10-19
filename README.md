@@ -52,6 +52,8 @@ plot.redstoneUpdate: Whether or not redstone components will function. Can be se
 
 plot.liquidUpdate: Whether or not water and lava will flow. Can be set to enableDefault or disableDefault. Can be set to enable or disable when in a plot. (currently does nothing)
 
+plot.publicinteractions: Whether or not other players are able to interact with blocks such as doors, levers, and buttons. Can be set to enable or disable when in a plot. (currently does nothing)
+
 ## Copyright
 
 This project does not use any code sourced directly from Minecraft. It simply follows a protocol found within the game. 
