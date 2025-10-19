@@ -9,3 +9,5 @@ serverpackets2.txt
 decode_packets_client.js
 decode_packets.js
 file_comparison.cjs
+world/players/**
+world/builds/**

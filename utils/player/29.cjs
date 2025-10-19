@@ -68,7 +68,7 @@ function GeneratePlayer(world, socket, username) {
     },
     player.settings = {
         showPlotInfo: true,
-        defaultBuildSettings: {blockUpdates: true, redstoneUpdates: true, liquidUpdates: true}
+        defaultBuildSettings: {blockUpdates: true, redstoneUpdates: true, liquidUpdates: true, publicInteractions: true}
     },
     player.verified = false,
     player.keepUnverified = false,

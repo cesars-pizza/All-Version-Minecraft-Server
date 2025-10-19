@@ -56,6 +56,12 @@ async function loadConfig() {
 }
 
 async function loadPlayers() {
+    if (!fs.existsSync('./world/players')) {
+        fs.mkdirSync('./world/players')
+        console.log(`WORLD Loaded 0 Players`)
+        return
+    }
+
     var playerFiles = fs.opendirSync('./world/players')
     var endOfPlayers = false
     while (!endOfPlayers) {
@@ -131,6 +137,12 @@ async function loadVersions() {
 }
 
 async function loadBuilds() {
+    if (!fs.existsSync('./world/builds')) {
+        fs.mkdirSync('./world/builds')
+        console.log(`WORLD Loaded 0 Builds`)
+        return
+    }
+
     var buildFiles = fs.opendirSync('./world/builds')
     var endOfBuilds = false
     while (!endOfBuilds) {

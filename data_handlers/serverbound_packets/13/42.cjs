@@ -187,6 +187,26 @@ function ReadPacket(world, socket, data) {
                             } else if (commandParts[2] == "default") {
                                 socket.thisPlayer.tick.systemMessages.push(`Liquid Update is currently defaulted to ${socket.thisPlayer.settings.defaultBuildSettings.liquidUpdates ? "enabled" : "disabled"}`)
                             } else socket.thisPlayer.tick.systemMessages.push('Liquid Update must be set to one of "enable", "disable", "enableDefault", or "disableDefault"')
+                        } else if (commandParts[1] == "plot.publicInterations") {
+                            if (commandParts[2] == "enable" || commandParts[2] == "disable") {
+                                if (utils.math.NegMod(socket.thisPlayer.position.x, 32) >= 16 && utils.math.NegMod(socket.thisPlayer.position.z, 32) >= 16) {
+                                    var plot = {x: Math.floor(socket.thisPlayer.position.x / 32), z: Math.floor(socket.thisPlayer.position.z / 32)}
+                                    var plotID = utils.builds.GetBuild(socket)(world, plot.x, plot.z)
+                                    if (plotID == undefined || world.builds[plotID].creator != socket.thisPlayer.username) socket.thisPlayer.tick.errorMessages.push(`You do not own this plot`)
+                                    else {
+                                        world.builds[plotID].settings.publicInteractions = commandParts[2] == "enable"
+                                        socket.thisPlayer.tick.systemMessages.push(`Set Public Interactions for Plot (${plot.x}, ${plot.z}) to ${commandParts[2]}d`)
+                                    }
+                                } else socket.thisPlayer.tick.errorMessages.push(`You are not currently in a plot`)
+                            } else if (commandParts[2] == "enableDefault") {
+                                socket.thisPlayer.settings.defaultBuildSettings.publicInteractions = true
+                                socket.thisPlayer.tick.systemMessages.push("Set Public Interactions to enabled for all new plots")
+                            } else if (commandParts[2] == "disableDefault") {
+                                socket.thisPlayer.settings.defaultBuildSettings.publicInteractions = false
+                                socket.thisPlayer.tick.systemMessages.push("Set Public Interactions to disabled for all new plots")
+                            } else if (commandParts[2] == "default") {
+                                socket.thisPlayer.tick.systemMessages.push(`Public Interactions is currently defaulted to ${socket.thisPlayer.settings.defaultBuildSettings.publicInteractions ? "enabled" : "disabled"}`)
+                            } else socket.thisPlayer.tick.systemMessages.push('Public Interactions must be set to one of "enable", "disable", "enableDefault", or "disableDefault"')
                         }
                         else socket.thisPlayer.tick.errorMessages.push(`Unknown setting: "${commandParts[1]}"`)
                     }

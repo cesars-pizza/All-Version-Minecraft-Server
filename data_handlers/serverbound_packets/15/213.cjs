@@ -55,6 +55,7 @@ function ReadPacket(world, socket, data) {
 
             if (utils.math.NegMod(facingBlock.x, 32) >= 16 && utils.math.NegMod(facingBlock.z, 32) >= 16) {
                 var hitBuildIndex = utils.builds.GetBuild(socket)(world, Math.floor(facingBlock.x / 32), Math.floor(facingBlock.z / 32))
+
                 if (hitBuildIndex == undefined || world.builds[hitBuildIndex].creator == socket.thisPlayer.username) {
                     if (hitBuildIndex == undefined) {
                         hitBuildIndex = world.builds.length

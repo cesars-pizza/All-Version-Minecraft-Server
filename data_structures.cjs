@@ -95,7 +95,7 @@ class Player {
      * @param {Rotation} rotation 
      * @param {{x: number, z: number}} classicWorldOffset
      * @param {{selected_slot: number, slots: Slot[], bucket_tracker: {empty: number, water: number, lava: number}}} inventory 
-     * @param {{showPlotInfo: boolean, defaultBuildSettings: {blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean}}} settings
+     * @param {{showPlotInfo: boolean, defaultBuildSettings: {blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean, publicInteractions}}} settings
      * @param {boolean} verified 
      * @param {boolean} keepUnverified 
      * @param {number} lastUVNI 
@@ -227,7 +227,7 @@ class Build {
      * @param {number} created 
      * @param {number} lastModified 
      * @param {boolean} save 
-     * @param {{blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean}} settings
+     * @param {{blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean, publicInteractions}} settings
      * @param {{position: Position, blockID: string, prevBlockID: string, priority: number, doubleSet: boolean, delay: number}[]} scheduledBlockUpdates 
      */
     constructor(x, z, creator, size, blocks, floor, uvni, created, lastModified, save, settings, scheduledBlockUpdates) {
