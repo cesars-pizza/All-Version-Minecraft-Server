@@ -1,0 +1,9 @@
+{
+    "tag": "fluids",
+    "values": [
+        "water",
+        "flowing_water",
+        "lava",
+        "flowing_lava"
+    ]
+}

@@ -2,7 +2,9 @@
     "tag": "replaceable",
     "values": [
         "air",
+        "flowing_water",
         "water",
+        "flowing_lava",
         "lava",
         "short_grass",
         "fern",

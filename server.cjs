@@ -127,6 +127,29 @@ function StartServer() {
 
 setInterval(ServerTick, 50)
 function ServerTick() {
+    for (var i = 0; i < world.builds.length; i++) {
+        for (var j = -3; j <= 4; j++) {
+            for (var k = 0; k < world.builds[i].scheduledBlockUpdates.length; k++) {
+                if (world.builds[i].scheduledBlockUpdates[k].priority == j) {
+                    world.builds[i].scheduledBlockUpdates[k].delay--
+                    if (world.builds[i].scheduledBlockUpdates[k].delay == 0) {
+                        utils.builds.SetBlockInBuild({})(world, i, world.builds[i].scheduledBlockUpdates[k].position, world.builds[i].scheduledBlockUpdates[k].blockID)
+                        utils.tick_actions.set_block.AddBlockUpdate({})(world, 
+                            socketIndex, 
+                            world.builds[i].scheduledBlockUpdates[k].position,
+                            world.builds[i].scheduledBlockUpdates[k].blockID,
+                            world.builds[i].scheduledBlockUpdates[k].doubleSet,
+                            world.builds[i].scheduledBlockUpdates[k].prevBlockID,
+                        )
+                    }
+                }
+            }
+        }
+        world.builds[i].scheduledBlockUpdates = world.builds[i].scheduledBlockUpdates.filter((value) => {
+            return value.delay > 0
+        })
+    }
+
     for (var i = 0; i < world.loadedPlayers.length; i++) {
         if (world.loadedPlayers[i].floorChangeCooldown > 0) world.loadedPlayers[i].floorChangeCooldown--
 

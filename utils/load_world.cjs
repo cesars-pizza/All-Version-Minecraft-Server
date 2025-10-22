@@ -1,4 +1,4 @@
-const {World, Config} = require('../data_structures.cjs')
+const {World, Config, Build} = require('../data_structures.cjs')
 const fs = require('fs')
 
 /**
