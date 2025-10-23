@@ -11,7 +11,7 @@ function WritePacket(socket, chunkX, chunkZ, initilize) {
     socket.writePacket(packetID, packetIdentifier, dataWriter.writeInt(socket, chunkX).concat(
         dataWriter.writeInt(socket, chunkZ),
         dataWriter.writeBool(socket, initilize)
-    ))
+    ), false, false)
 }
 
 module.exports = {WritePacket}

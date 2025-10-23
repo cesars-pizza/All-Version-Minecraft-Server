@@ -11,7 +11,6 @@ var packetIdentifier = "Player Position And Look"
  * @param {Rotation} rotation 
  */
 function WritePacket(world, socket, position, stance, rotation, onGround) {
-    socket.log(`Set Position: (${position.x}, ${position.y}, ${position.z})`)
     socket.writePacket(packetID, packetIdentifier, dataWriter.writeDouble(socket, position.x).concat(
         dataWriter.writeDouble(socket, stance),
         dataWriter.writeDouble(socket, position.y),
@@ -19,7 +18,7 @@ function WritePacket(world, socket, position, stance, rotation, onGround) {
         dataWriter.writeFloat(socket, rotation.yaw),
         dataWriter.writeFloat(socket, rotation.pitch),
         dataWriter.writeBool(socket, onGround)
-    ))
+    ), false, false)
 }
 
 module.exports = {WritePacket}

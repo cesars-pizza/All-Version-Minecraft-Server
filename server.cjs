@@ -140,6 +140,7 @@ function ServerTick() {
                             world.builds[i].scheduledBlockUpdates[k].blockID,
                             world.builds[i].scheduledBlockUpdates[k].doubleSet,
                             world.builds[i].scheduledBlockUpdates[k].prevBlockID,
+                            true
                         )
                     }
                 }

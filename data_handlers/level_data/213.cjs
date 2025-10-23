@@ -6,8 +6,6 @@ const fs = require('fs')
 function Write(socket, data) {
     var dataStream = []
 
-    socket.log(`Chunk Size: (${data.length}, ${data[0].length})`)
-
     for (var x = 0; x < data.length; x++) {
         for (var z = 0; z < data[0].length; z++) {
             for (var innerX = 0; innerX < 16; innerX++) {

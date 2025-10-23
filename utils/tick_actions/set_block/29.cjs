@@ -18,7 +18,7 @@ function SetBlock(world, socket, position, blockID) {
  * @param {number | string} blockID 
  * @param {boolean} doubleSet 
  */
-function AddBlockUpdate(world, socket, position, blockID, doubleSet, prevBlockID) {
+function AddBlockUpdate(world, socket, position, blockID, doubleSet, prevBlockID, scheduled) {
     console.log(`Block update at (${position.x}, ${position.y}, ${position.z})`)
 
     var blockIdentifier = blockID
@@ -51,6 +51,26 @@ function AddBlockUpdate(world, socket, position, blockID, doubleSet, prevBlockID
             {x: position.x, y: position.y - 1, z: position.z},
             {x: position.x, y: position.y + 1, z: position.z},
         ]
+
+        if (scheduled) {
+            if (blockName.includes('water') || prevBlockName.includes('water') || blockName.includes('lava') || prevBlockName.includes('lava')) {            
+                var neighborBlocks = [
+                    utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x, y: position.y - 1, z: position.z}),
+                    utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x, y: position.y + 1, z: position.z}),
+                    utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x, y: position.y, z: position.z - 1}),
+                    utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x, y: position.y, z: position.z + 1}),
+                    utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x - 1, y: position.y, z: position.z}),
+                    utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x + 1, y: position.y, z: position.z})
+                ]
+                var verifyLiquid = LiquidVerifier(world, neighborBlocks.slice(1), prevBlockIdentifier, position, (blockName.includes('water') || prevBlockName.includes('water')) ? "water" : "lava")
+                if (!verifyLiquid.update) return
+                else {
+                    if (verifyLiquid.height == 0) blockID = "air"
+                    else if (verifyLiquid.height == 8) blockID = `flowing_${verifyLiquid.toBeFluid}[height=7,falling=true]`
+                    else blockID = `flowing_${verifyLiquid.toBeFluid}[height=${verifyLiquid.height},falling=false]`
+                }
+            }
+        }
 
         if (blockName == "redstone_wire" || prevBlockName == "redstone_wire") {
             neighbors.push({x: position.x - 1, y: position.y + 1, z: position.z})
@@ -95,181 +115,7 @@ function SendPostPlacementUpdate(world, socket, position, originPosition, blockN
     ]
 
     if (thisBlock == "air" || thisBlock.includes("water") || thisBlock.includes("lava")) {
-        neighbors.push(
-            utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x, y: position.y - 1, z: position.z - 1}),
-            utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x, y: position.y - 1, z: position.z + 1}),
-            utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x - 1, y: position.y - 1, z: position.z}),
-            utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x + 1, y: position.y - 1, z: position.z})
-        )
-
-        var currentHeight = 9
-        if (thisBlock == "air") currentHeight = 0
-        else if (thisBlock.includes("falling=true")) currentHeight = 8
-        else if (thisBlock.includes("level=7")) currentHeight = 7
-        else if (thisBlock.includes("level=6")) currentHeight = 6
-        else if (thisBlock.includes("level=5")) currentHeight = 5
-        else if (thisBlock.includes("level=4")) currentHeight = 4
-        else if (thisBlock.includes("level=3")) currentHeight = 3
-        else if (thisBlock.includes("level=2")) currentHeight = 2
-        else if (thisBlock.includes("level=1")) currentHeight = 1
-
-        var canFlow = false
-        var flowDelay = 5
-        var height = -1
-        var toBeLiquid = "none"
-        var horizontalFlowTest = false
-
-        var liquidNeighbors = 0
-
-        var thisFluid = thisBlock.includes('water') ? "water" : (thisBlock.includes('lava') ? "lava" : "none")
-
-        // Test flowing down
-        var testingFluid = neighbors[1].includes('water') ? "water" : (neighbors[1].includes('lava') ? "lava" : "none")
-        if (testingFluid != "none") liquidNeighbors++
-        if (testingFluid != "none" && (thisFluid == "none" || thisFluid == testingFluid)) {
-            if (currentHeight < 8) {
-                canFlow = true
-                toBeLiquid = testingFluid
-                height = 8
-            }
-        } else {
-            // Test flow from X- source
-            var testingFluid = neighbors[4].includes('water') ? "water" : (neighbors[4].includes('lava') ? "lava" : "none")
-            if (testingFluid != "none") liquidNeighbors++
-            if (testingFluid != "none" && (thisFluid == "none" || thisFluid == testingFluid) && !neighbors[4].includes("flowing")) {
-                toBeLiquid = testingFluid
-                height = 8
-                horizontalFlowTest = true
-                console.log(`A, ${toBeLiquid}, ${height}`)
-            }
-            // Test flow from X-
-            else if (testingFluid != "none" && (thisFluid == "none" || thisFluid == testingFluid) && neighbors[4].includes("flowing") && neighbors[8] != "air" && !neighbors[8].includes(testingFluid)) {
-                var testingFluidLevel = 7
-                    if (neighbors[4].includes("level=6")) testingFluidLevel = 6
-                else if (neighbors[4].includes("level=5")) testingFluidLevel = 5
-                else if (neighbors[4].includes("level=4")) testingFluidLevel = 4
-                else if (neighbors[4].includes("level=3")) testingFluidLevel = 3
-                else if (neighbors[4].includes("level=2")) testingFluidLevel = 2
-                else if (neighbors[4].includes("level=1")) testingFluidLevel = 1
-
-                if (height < testingFluidLevel && (toBeLiquid == "none" || toBeLiquid == testingFluid)) {
-                    toBeLiquid = testingFluid
-                    height = testingFluidLevel
-                    horizontalFlowTest = true
-                    console.log(`B, ${toBeLiquid}, ${height}`)
-                }
-            }
-
-            // Test flow from X+ source
-            var testingFluid = neighbors[5].includes('water') ? "water" : (neighbors[5].includes('lava') ? "lava" : "none")
-            if (testingFluid != "none") liquidNeighbors++
-            if (testingFluid != "none" && (thisFluid == "none" || thisFluid == testingFluid) && !neighbors[5].includes("flowing") && (toBeLiquid == "none" || toBeLiquid == testingFluid)) {
-                toBeLiquid = testingFluid
-                height = 8
-                horizontalFlowTest = true
-                console.log(`C, ${toBeLiquid}, ${height}`)
-            }
-            // Test flow from X+
-            else if (testingFluid != "none" && (thisFluid == "none" || thisFluid == testingFluid) && neighbors[5].includes("flowing") && neighbors[9] != "air" && !neighbors[9].includes(testingFluid)) {
-                var testingFluidLevel = 7
-                    if (neighbors[5].includes("level=6")) testingFluidLevel = 6
-                else if (neighbors[5].includes("level=5")) testingFluidLevel = 5
-                else if (neighbors[5].includes("level=4")) testingFluidLevel = 4
-                else if (neighbors[5].includes("level=3")) testingFluidLevel = 3
-                else if (neighbors[5].includes("level=2")) testingFluidLevel = 2
-                else if (neighbors[5].includes("level=1")) testingFluidLevel = 1
-
-                if (height < testingFluidLevel && (toBeLiquid == "none" || toBeLiquid == testingFluid)) {
-                    toBeLiquid = testingFluid
-                    height = testingFluidLevel
-                    horizontalFlowTest = true
-                    console.log(`D, ${toBeLiquid}, ${height}`)
-                }
-            }
-
-            // Test flow from Z- source
-            var testingFluid = neighbors[2].includes('water') ? "water" : (neighbors[2].includes('lava') ? "lava" : "none")
-            if (testingFluid != "none") liquidNeighbors++
-            if (testingFluid != "none" && (thisFluid == "none" || thisFluid == testingFluid) && !neighbors[2].includes("flowing") && (toBeLiquid == "none" || toBeLiquid == testingFluid)) {
-                toBeLiquid = testingFluid
-                height = 8
-                horizontalFlowTest = true
-                console.log(`E, ${toBeLiquid}, ${height}`)
-            }
-            // Test flow from Z-
-            else if (testingFluid != "none" && (thisFluid == "none" || thisFluid == testingFluid) && neighbors[2].includes("flowing") && neighbors[6] != "air" && !neighbors[6].includes(testingFluid)) {
-                var testingFluidLevel = 7
-                    if (neighbors[2].includes("level=6")) testingFluidLevel = 6
-                else if (neighbors[2].includes("level=5")) testingFluidLevel = 5
-                else if (neighbors[2].includes("level=4")) testingFluidLevel = 4
-                else if (neighbors[2].includes("level=3")) testingFluidLevel = 3
-                else if (neighbors[2].includes("level=2")) testingFluidLevel = 2
-                else if (neighbors[2].includes("level=1")) testingFluidLevel = 1
-
-                if (height < testingFluidLevel && (toBeLiquid == "none" || toBeLiquid == testingFluid)) {
-                    toBeLiquid = testingFluid
-                    height = testingFluidLevel
-                    horizontalFlowTest = true
-                    console.log(`F, ${toBeLiquid}, ${height}`)
-                }
-            }
-
-            // Test flow from Z+ source
-            var testingFluid = neighbors[3].includes('water') ? "water" : (neighbors[3].includes('lava') ? "lava" : "none")
-            if (testingFluid != "none") liquidNeighbors++
-            if (testingFluid != "none" && (thisFluid == "none" || thisFluid == testingFluid) && !neighbors[3].includes("flowing") && (toBeLiquid == "none" || toBeLiquid == testingFluid)) {
-                toBeLiquid = testingFluid
-                height = 8
-                horizontalFlowTest = true
-                console.log(`G, ${toBeLiquid}, ${height}`)
-            }
-            // Test flow from Z+
-            else if (testingFluid != "none" && (thisFluid == "none" || thisFluid == testingFluid) && neighbors[3].includes("flowing") && neighbors[7] != "air" && !neighbors[7].includes(testingFluid)) {
-                var testingFluidLevel = 7
-                    if (neighbors[3].includes("level=6")) testingFluidLevel = 6
-                else if (neighbors[3].includes("level=5")) testingFluidLevel = 5
-                else if (neighbors[3].includes("level=4")) testingFluidLevel = 4
-                else if (neighbors[3].includes("level=3")) testingFluidLevel = 3
-                else if (neighbors[3].includes("level=2")) testingFluidLevel = 2
-                else if (neighbors[3].includes("level=1")) testingFluidLevel = 1
-
-                if (height < testingFluidLevel && (toBeLiquid == "none" || toBeLiquid == testingFluid)) {
-                    toBeLiquid = testingFluid
-                    height = testingFluidLevel
-                    horizontalFlowTest = true
-                    console.log(`H, ${toBeLiquid}, ${height}`)
-                }
-            }
-        }
-
-        if (thisBlock.includes("flowing") && liquidNeighbors == 0) {
-            canFlow = true
-            height = 0
-            toBeLiquid = thisFluid
-        }
-
-        flowDelay = (toBeLiquid == "water") ? 5 : 30
-
-        if (thisBlock != "air" && !thisBlock.includes("flowing")) horizontalFlowTest = false
-
-        if (horizontalFlowTest) {
-            console.log(height)
-
-            height -= 1
-            if (toBeLiquid == "lava") height -= 1
-            if (height < 0) height = 0
-
-            console.log(height)
-            console.log(currentHeight)
-            if (height != currentHeight) canFlow = true
-        }
-
-        if (canFlow) {
-            if (height == 9) ScheduleBlockUpdate(world, {}, position, `${toBeLiquid}`, thisBlock, 4, false, flowDelay)
-            else if (height == 8) ScheduleBlockUpdate(world, {}, position, `flowing_${toBeLiquid}[falling=true,level=8]`, thisBlock, 4, false, flowDelay)
-            else if (height == 0) ScheduleBlockUpdate(world, {}, position, `air`, thisBlock, 4, false, flowDelay)
-            else ScheduleBlockUpdate(world, {}, position, `flowing_${toBeLiquid}[falling=false,level=${height}]`, thisBlock, 4, false, flowDelay)
-        }
+        LiquidTests(world, neighbors, thisBlock, position)
     }
 }
 
@@ -297,7 +143,11 @@ function ScheduleBlockUpdate(world, socket, position, blockID, prevBlockID, prio
 
     if (buildIndex != -1 && buildIndex != undefined) {
         for (var i = 0; i < world.builds[buildIndex].scheduledBlockUpdates.length; i++) {
-            if (position.x == world.builds[buildIndex].scheduledBlockUpdates[i].position.x && position.y == world.builds[buildIndex].scheduledBlockUpdates[i].position.y && position.z == world.builds[buildIndex].scheduledBlockUpdates[i].position.z) {console.log(`Scheduled block update cancelled at index ${i}, (in ${world.builds[buildIndex].scheduledBlockUpdates[i].delay} ticks)`); return}
+            if (position.x == world.builds[buildIndex].scheduledBlockUpdates[i].position.x && position.y == world.builds[buildIndex].scheduledBlockUpdates[i].position.y && position.z == world.builds[buildIndex].scheduledBlockUpdates[i].position.z) {
+                world.builds[buildIndex].scheduledBlockUpdates[i].doubleSet = doubleSet
+                world.builds[buildIndex].scheduledBlockUpdates[i].priority = priority
+                world.builds[buildIndex].scheduledBlockUpdates[i].blockID = blockID
+            }
         }
 
         world.builds[buildIndex].scheduledBlockUpdates.push({
@@ -320,6 +170,242 @@ function GetBlockUpdate(world, position) {
         if (world.blockUpdates[i].x == position.x && world.blockUpdates[i].y == position.y && world.blockUpdates[i].z == position.z) return i
     }
     return -1
+}
+
+function LiquidHorizontalFlowTest(neighbor, belowNeighbor, toBeFluid) {    
+    var height = 0
+    
+    var neighborFluid = neighbor.includes('water') ? "water" : (neighbor.includes('lava') ? "lava" : "none")
+    if (neighborFluid != "none" && (toBeFluid == "none" || toBeFluid == neighborFluid || neighborFluid == "water")) {
+        if (!neighbor.includes("flowing")) {
+            toBeFluid = neighborFluid
+            height = 8
+        } else if (belowNeighbor != "air" && !belowNeighbor.includes(neighborFluid)) {
+            var neighborHeight = 7
+                if (neighbor.includes("level=6")) neighborHeight = 6
+            else if (neighbor.includes("level=5")) neighborHeight = 5
+            else if (neighbor.includes("level=4")) neighborHeight = 4
+            else if (neighbor.includes("level=3")) neighborHeight = 3
+            else if (neighbor.includes("level=2")) neighborHeight = 2
+            else if (neighbor.includes("level=1")) neighborHeight = 1
+
+            toBeFluid = neighborFluid
+            height = neighborHeight
+        }
+    }
+
+    return {
+        toBeFluid: toBeFluid,
+        height: height
+    }
+}
+
+function LiquidHorizontalDrainTest(neighbor, toBeFluid) {    
+    var height = 0
+    
+    var neighborFluid = neighbor.includes('water') ? "water" : (neighbor.includes('lava') ? "lava" : "none")
+    if (neighborFluid != "none" && (toBeFluid == neighborFluid || neighborFluid == "water")) {
+        if (!neighbor.includes("flowing")) {
+            toBeFluid = neighborFluid
+            height = 8
+        } else {
+            var neighborHeight = 7
+                if (neighbor.includes("level=6")) neighborHeight = 6
+            else if (neighbor.includes("level=5")) neighborHeight = 5
+            else if (neighbor.includes("level=4")) neighborHeight = 4
+            else if (neighbor.includes("level=3")) neighborHeight = 3
+            else if (neighbor.includes("level=2")) neighborHeight = 2
+            else if (neighbor.includes("level=1")) neighborHeight = 1
+
+            toBeFluid = neighborFluid
+            height = neighborHeight
+        }
+    }
+
+    return {
+        toBeFluid: toBeFluid,
+        height: height
+    }
+}
+
+function LiquidTests(world, neighbors, thisBlock, position) {
+    neighbors.push(
+        utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x, y: position.y - 1, z: position.z - 1}),
+        utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x, y: position.y - 1, z: position.z + 1}),
+        utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x - 1, y: position.y - 1, z: position.z}),
+        utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x + 1, y: position.y - 1, z: position.z})
+    )
+
+    var currentHeight = 9
+    if (thisBlock == "air") currentHeight = 0
+    else if (thisBlock.includes("falling=true")) currentHeight = 8
+    else if (thisBlock.includes("level=7")) currentHeight = 7
+    else if (thisBlock.includes("level=6")) currentHeight = 6
+    else if (thisBlock.includes("level=5")) currentHeight = 5
+    else if (thisBlock.includes("level=4")) currentHeight = 4
+    else if (thisBlock.includes("level=3")) currentHeight = 3
+    else if (thisBlock.includes("level=2")) currentHeight = 2
+    else if (thisBlock.includes("level=1")) currentHeight = 1
+
+    var flowDelay = 5
+    var height = 0
+    var toBeFluid = "none"
+    var falling = false
+
+    var thisFluid = thisBlock.includes('water') ? "water" : (thisBlock.includes('lava') ? "lava" : "none")
+
+    // Test flowing down
+    var testingFluid = neighbors[1].includes('water') ? "water" : (neighbors[1].includes('lava') ? "lava" : "none")
+    if (testingFluid != "none" && (thisFluid == "none" || thisFluid == testingFluid)) {
+        toBeFluid = testingFluid
+        height = 8
+        falling = true
+    } else {
+        if (thisBlock == "air") {
+            var flowTest1 = LiquidHorizontalFlowTest(neighbors[4], neighbors[8], toBeFluid)
+            var flowTest2 = LiquidHorizontalFlowTest(neighbors[5], neighbors[9], flowTest1.toBeFluid)
+            var flowTest3 = LiquidHorizontalFlowTest(neighbors[2], neighbors[6], flowTest2.toBeFluid)
+            var flowTest4 = LiquidHorizontalFlowTest(neighbors[3], neighbors[7], flowTest3.toBeFluid)
+
+            toBeFluid = flowTest4.toBeFluid
+            height = Math.max(height, flowTest1.height, flowTest2.height, flowTest3.height, flowTest4.height)
+        } else if (thisBlock.includes('flowing')) {
+            var flowTest1 = LiquidHorizontalDrainTest(neighbors[4], thisFluid)
+            var flowTest2 = LiquidHorizontalDrainTest(neighbors[5], flowTest1.toBeFluid)
+            var flowTest3 = LiquidHorizontalDrainTest(neighbors[2], flowTest2.toBeFluid)
+            var flowTest4 = LiquidHorizontalDrainTest(neighbors[3], flowTest3.toBeFluid)
+
+            toBeFluid = toBeFluid
+            height = Math.max(height, flowTest1.height, flowTest2.height, flowTest3.height, flowTest4.height)
+        }
+    }
+
+    if (thisBlock == "air" || thisBlock.includes("flowing")) {
+        if (toBeFluid == "none") toBeFluid = thisFluid
+        flowDelay = (toBeFluid == "water") ? 5 : 30
+
+        if (falling) {
+            if (currentHeight != 8) ScheduleBlockUpdate(world, {}, position, `flowing_${toBeFluid}[falling=true,level=8]`, thisBlock, 4, false, flowDelay)
+        }
+        else {
+            height -= 1
+            if (toBeFluid == "lava") height -= 1
+            if (height < 0) height = 0
+
+            if (height != currentHeight) {
+                if (height == 0) ScheduleBlockUpdate(world, {}, position, `air`, thisBlock, 4, false, flowDelay)
+                else ScheduleBlockUpdate(world, {}, position, `flowing_${toBeFluid}[falling=false,level=${height}]`, thisBlock, 4, false, flowDelay)
+            }
+        }
+    }
+}
+
+function LiquidVerifier(world, neighbors, thisBlock, position, predictedFluid) {
+    console.log(thisBlock)
+    console.log(position)
+    console.log(predictedFluid)
+    
+    if (thisBlock != "air" && !thisBlock.includes("water") && !thisBlock.includes("lava")) return {
+        update: false
+    }
+
+    neighbors.push(
+        utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x, y: position.y - 1, z: position.z - 1}),
+        utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x, y: position.y - 1, z: position.z + 1}),
+        utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x - 1, y: position.y - 1, z: position.z}),
+        utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x + 1, y: position.y - 1, z: position.z})
+    )
+
+    var currentHeight = 9
+    if (thisBlock == "air") currentHeight = 0
+    else if (thisBlock.includes("falling=true")) currentHeight = 8
+    else if (thisBlock.includes("level=7")) currentHeight = 7
+    else if (thisBlock.includes("level=6")) currentHeight = 6
+    else if (thisBlock.includes("level=5")) currentHeight = 5
+    else if (thisBlock.includes("level=4")) currentHeight = 4
+    else if (thisBlock.includes("level=3")) currentHeight = 3
+    else if (thisBlock.includes("level=2")) currentHeight = 2
+    else if (thisBlock.includes("level=1")) currentHeight = 1
+
+    var flowDelay = 5
+    var height = 0
+    var toBeFluid = "none"
+    var falling = false
+
+    var thisFluid = thisBlock.includes('water') ? "water" : (thisBlock.includes('lava') ? "lava" : "none")
+
+    // Test flowing down
+    var testingFluid = neighbors[1].includes('water') ? "water" : (neighbors[1].includes('lava') ? "lava" : "none")
+    if (testingFluid != "none" && (thisFluid == "none" || thisFluid == testingFluid)) {
+        toBeFluid = testingFluid
+        height = 8
+        falling = true
+    } else {
+        if (thisBlock == "air") {
+            var flowTest1 = LiquidHorizontalFlowTest(neighbors[4], neighbors[8], toBeFluid)
+            var flowTest2 = LiquidHorizontalFlowTest(neighbors[5], neighbors[9], flowTest1.toBeFluid)
+            var flowTest3 = LiquidHorizontalFlowTest(neighbors[2], neighbors[6], flowTest2.toBeFluid)
+            var flowTest4 = LiquidHorizontalFlowTest(neighbors[3], neighbors[7], flowTest3.toBeFluid)
+
+            toBeFluid = flowTest4.toBeFluid
+            height = Math.max(height, flowTest1.height, flowTest2.height, flowTest3.height, flowTest4.height)
+        } else if (thisBlock.includes('flowing')) {
+            var flowTest1 = LiquidHorizontalDrainTest(neighbors[4], thisFluid)
+            var flowTest2 = LiquidHorizontalDrainTest(neighbors[5], flowTest1.toBeFluid)
+            var flowTest3 = LiquidHorizontalDrainTest(neighbors[2], flowTest2.toBeFluid)
+            var flowTest4 = LiquidHorizontalDrainTest(neighbors[3], flowTest3.toBeFluid)
+
+            toBeFluid = toBeFluid
+            height = Math.max(height, flowTest1.height, flowTest2.height, flowTest3.height, flowTest4.height)
+        }
+    }
+
+    if (thisBlock == "air" || thisBlock.includes("flowing")) {
+        if (toBeFluid == "none") toBeFluid = thisFluid
+
+        if (predictedFluid == "water" && toBeFluid == "lava") {
+            if (falling) {
+                if (currentHeight != 8) ScheduleBlockUpdate(world, {}, position, `flowing_${toBeFluid}[falling=true,level=7]`, thisBlock, 4, false, 25)
+            }
+            else {
+                height -= 1
+                if (toBeFluid == "lava") height -= 1
+                if (height < 0) height = 0
+
+                if (height != currentHeight) {
+                    if (height == 0) ScheduleBlockUpdate(world, {}, position, `air`, thisBlock, 4, false, 25)
+                    else ScheduleBlockUpdate(world, {}, position, `flowing_${toBeFluid}[falling=false,level=${height}]`, thisBlock, 4, false, 25)
+                }
+            }
+            return {update: false}
+        } else {
+            if (falling) {
+                if (currentHeight != 8) return {
+                    height: 8,
+                    toBeFluid: toBeFluid,
+                    update: true
+                } 
+                else return {update: false}
+            }
+            else {
+                height -= 1
+                if (toBeFluid == "lava") height -= 1
+                if (height < 0) height = 0
+
+                if (height != currentHeight) {
+                    if (height == 0) return {
+                        height: 0,
+                        update: true
+                    }
+                    else return {
+                        height: height,
+                        toBeFluid: toBeFluid,
+                        update: true
+                    }
+                } else return {update: false}
+            }
+        }
+    } else return {update: false}
 }
 
 module.exports = {SetBlock, AddBlockUpdate, SendPostPlacementUpdate, SendNeighborChangedUpdate, ScheduleBlockUpdate, GetBlockUpdate}

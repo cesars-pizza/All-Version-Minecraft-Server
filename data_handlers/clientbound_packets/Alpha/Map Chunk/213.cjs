@@ -16,7 +16,7 @@ function WritePacket(socket, chunkX, chunkZ, sizeX, sizeZ, levelData) {
         dataWriter.writeByte(socket, sizeZ * 16 - 1),
         dataWriter.writeInt(socket, levelData.length),
         levelData
-    ))
+    ), false, false)
 }
 
 /** 
@@ -33,7 +33,7 @@ function WritePacket_Alt0(socket, blockPos, id, meta) {
         dataWriter.writeByte(socket, 1),
         dataWriter.writeInt(socket, levelData.length),
         levelData
-    ))
+    ), false, false)
 }
 
 module.exports = {WritePacket, WritePacket_Alt0}
