@@ -38,4 +38,8 @@ function GetBlockUpdate(socket) {
     return require('./29.cjs').GetBlockUpdate
 }
 
-module.exports = {SetBlock, AddBlockUpdate, SendPostPlacementUpdate, SendNeighborChangedUpdate, ScheduleBlockUpdate, GetBlockUpdate}
+function AddFloorUpdate(socket) {
+    return require('./29.cjs').AddFloorUpdate
+}
+
+module.exports = {SetBlock, AddBlockUpdate, SendPostPlacementUpdate, SendNeighborChangedUpdate, ScheduleBlockUpdate, GetBlockUpdate, AddFloorUpdate}

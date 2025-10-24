@@ -44,11 +44,11 @@ function ReadPacket(world, socket, data) {
                             if (prevBlock.startsWith("furnace")) {
                                 var lit = prevBlock.includes('lit=true')
 
-                                utils.builds.SetBlockInBuild(socket)(world, hitBuildIndex, blockPos, `furnace[lit=${!lit}]`)
                                 utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, `furnace[lit=${!lit}]`, false, prevBlock)
+                            } else if (prevBlock.startsWith("redstone_ore")) {
+                                var lit = prevBlock.includes('lit=true')
 
-                                world.builds[hitBuildIndex].lastModified = new Date().getTime()
-                                world.builds[hitBuildIndex].save = true
+                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, `redstone_ore[lit=${!lit}]`, false, prevBlock)
                             }
                         }
 
@@ -64,11 +64,7 @@ function ReadPacket(world, socket, data) {
 
                                 var newBlock = `oak_door[facing=${facing},hinge=${hinge},half=${half},open=${!open}]`
 
-                                utils.builds.SetBlockInBuild(socket)(world, hitBuildIndex, blockPos, newBlock)
                                 utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, newBlock, false, prevBlock)
-
-                                world.builds[hitBuildIndex].lastModified = new Date().getTime()
-                                world.builds[hitBuildIndex].save = true
                             } else if (prevBlock.startsWith("lever")) {
                                 var powered = prevBlock.includes('powered=true')
                                 var face = "wall"
@@ -81,11 +77,7 @@ function ReadPacket(world, socket, data) {
 
                                 var newBlock = `lever[facing=${facing},face=${face},powered=${!powered}]`
 
-                                utils.builds.SetBlockInBuild(socket)(world, hitBuildIndex, blockPos, newBlock)
                                 utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, newBlock, false, prevBlock)
-
-                                world.builds[hitBuildIndex].lastModified = new Date().getTime()
-                                world.builds[hitBuildIndex].save = true
                             } else if (prevBlock.startsWith("stone_button")) {
                                 var powered = prevBlock.includes('powered=true')
                                 var face = "wall"
@@ -99,11 +91,7 @@ function ReadPacket(world, socket, data) {
                                 if (powered == false) {
                                     var newBlock = `stone_button[facing=${facing},face=${face},powered=${!powered}]`
 
-                                    utils.builds.SetBlockInBuild(socket)(world, hitBuildIndex, blockPos, newBlock)
                                     utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, newBlock, false, prevBlock)
-
-                                    world.builds[hitBuildIndex].lastModified = new Date().getTime()
-                                    world.builds[hitBuildIndex].save = true
                                 }
                             }
                         } else {
@@ -143,22 +131,9 @@ function ReadPacket(world, socket, data) {
                             socket.thisPlayer.floorChangeCooldown = 5
                             
                             var floorID = world.universalRegistries.block.indexOf(world.builds[hitBuildIndex].floor)
-                            var prevFloorID = floorID
                             floorID++
                             if (floorID == 0 || floorID >= world.universalRegistries.block.length) floorID = 1
-                            var thisRegistryFloorID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, world.universalRegistries.block[floorID])
-                            world.builds[hitBuildIndex].floor = world.universalRegistries.block[floorID]
-                            world.builds[hitBuildIndex].lastModified = new Date().getTime()
-                            world.builds[hitBuildIndex].save = true
-                            for (var x = 0; x < 16; x++) {
-                                for (var z = 0; z < 16; z++) {
-                                    var setX = chunkX * 16 + x
-                                    var setZ = chunkZ * 16 + z
-
-                                    if (typeof(thisRegistryFloorID) == "number") utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, thisRegistryFloorID, false, prevFloorID)
-                                    else utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, `${thisRegistryFloorID.id}:${thisRegistryFloorID.metadata}`, false, prevFloorID)
-                                }
-                            }
+                            utils.tick_actions.set_block.AddFloorUpdate(socket)(world, socket, blockPos, world.universalRegistries.block[floorID], false)
                             if (blockPos.y == 1) updateSuccessful = true
 
                             for (var i = 0; i < world.loadedPlayers.length; i++) {
@@ -176,21 +151,16 @@ function ReadPacket(world, socket, data) {
                             }
                         }
                     } else if (blockPos.y < 64) {
-                        world.builds[hitBuildIndex].blocks[blockPos.y - 2][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = "air"
-                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0, false, prevBlock)
+                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, "air", false, prevBlock)
                         if (utils.tag(world, prevBlock, "doors")) {
                             if (!prevBlock.includes('half=upper') && blockPos.y < 63) {
-                                world.builds[hitBuildIndex].blocks[blockPos.y - 1][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = "air"
                                 if (!prevBlock.includes('[')) prevBlock = prevBlock + '[half=lower]'
                                 else if (!prevBlock.includes('half=lower')) prevBlock = prevBlock.replace(']', ',half=lower]')
-                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y + 1, z: blockPos.z}, 0, false, prevBlock.replace('half=lower', 'half=upper'))
+                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y + 1, z: blockPos.z}, "air", false, prevBlock.replace('half=lower', 'half=upper'))
                             } else if (prevBlock.includes('half=upper') && blockPos.y > 2) {
-                                world.builds[hitBuildIndex].blocks[blockPos.y - 3][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = "air"
-                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y - 1, z: blockPos.z}, 0, false, prevBlock.replace('half=upper', 'half=lower'))
+                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y - 1, z: blockPos.z}, "air", false, prevBlock.replace('half=upper', 'half=lower'))
                             }
                         }
-                        world.builds[hitBuildIndex].lastModified = new Date().getTime()
-                        world.builds[hitBuildIndex].save = true
                         updateSuccessful = true
                     }
                 }

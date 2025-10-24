@@ -133,7 +133,6 @@ function ServerTick() {
                 if (world.builds[i].scheduledBlockUpdates[k].priority == j) {
                     world.builds[i].scheduledBlockUpdates[k].delay--
                     if (world.builds[i].scheduledBlockUpdates[k].delay == 0) {
-                        utils.builds.SetBlockInBuild({})(world, i, world.builds[i].scheduledBlockUpdates[k].position, world.builds[i].scheduledBlockUpdates[k].blockID)
                         var updateSuccess = utils.tick_actions.set_block.AddBlockUpdate({})(world, 
                             socketIndex, 
                             world.builds[i].scheduledBlockUpdates[k].position,

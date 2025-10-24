@@ -46,13 +46,13 @@ Allows for the modification of player settings
 
 plotInfo: Whether or not to show info of other players plots when being entered. Can be set to enable or disable.
 
-plot.blockUpdate: Whether or not blocks will send updates to other blocks when changed. Can be set to enableDefault or disableDefault. Can be set to enable or disable when in a plot. (currently does nothing)
+plot.blockUpdate: Whether or not blocks will send updates to other blocks when changed. Can be set to enableDefault or disableDefault. Can be set to enable or disable when in a plot.
 
 plot.redstoneUpdate: Whether or not redstone components will function. Can be set to enableDefault or disableDefault. Can be set to enable or disable when in a plot. (currently does nothing)
 
-plot.liquidUpdate: Whether or not water and lava will flow. Can be set to enableDefault or disableDefault. Can be set to enable or disable when in a plot. (currently does nothing)
+plot.liquidUpdate: Whether or not water and lava will flow. Can be set to enableDefault or disableDefault. Can be set to enable or disable when in a plot.
 
-plot.publicinteractions: Whether or not other players are able to interact with blocks such as doors, levers, and buttons. Can be set to enable or disable when in a plot. (currently does nothing)
+plot.publicinteractions: Whether or not other players are able to interact with blocks such as doors, levers, and buttons. Can be set to enable or disable when in a plot.
 
 ## Copyright
 

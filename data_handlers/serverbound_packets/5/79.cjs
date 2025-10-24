@@ -46,31 +46,12 @@ function ReadPacket(world, socket, data) {
                                 var floorID = world.universalRegistries.block.indexOf(world.builds[hitBuildIndex].floor)
                                 floorID++
                                 if (floorID == 0 || floorID >= world.universalRegistries.block.length) floorID = 1
-                                var thisRegistryFloorID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, world.universalRegistries.block[floorID])
-                                world.builds[hitBuildIndex].floor = world.universalRegistries.block[floorID]
-                                world.builds[hitBuildIndex].lastModified = new Date().getTime()
-                                world.builds[hitBuildIndex].save = true
-                                for (var x = 0; x < 16; x++) {
-                                    for (var z = 0; z < 16; z++) {
-                                        var setX = chunkX * 16 + x
-                                        var setZ = chunkZ * 16 + z
-                                        utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, thisRegistryFloorID, false, 0)
-                                    }
-                                }
+                                utils.tick_actions.set_block.AddFloorUpdate(socket)(world, socket, blockPos, world.universalRegistries.block[floorID], false)
                                 if (blockPos.y == 1) updateSuccessful = true
                             } else {
                                 if (blockID.value == 44) blockID.value = 43
                                 if (validBlock) {
-                                    world.builds[hitBuildIndex].floor = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID.value)
-                                    world.builds[hitBuildIndex].lastModified = new Date().getTime()
-                                    world.builds[hitBuildIndex].save = true
-                                    for (var x = 0; x < 16; x++) {
-                                        for (var z = 0; z < 16; z++) {
-                                            var setX = chunkX * 16 + x
-                                            var setZ = chunkZ * 16 + z
-                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: setX, y: 1, z: setZ}, blockID.value, false, 0)
-                                        }
-                                    }
+                                    utils.tick_actions.set_block.AddFloorUpdate(socket)(world, socket, blockPos, blockID.value, false)
                                     if (blockPos.y == 1) updateSuccessful = true
                                 } else socket.thisPlayer.tick.systemMessages.push("This block isn't available in all versions.")
                             }
@@ -95,8 +76,7 @@ function ReadPacket(world, socket, data) {
                         if (mode.value == 1) {
                             if (validBlock) {
                                 if (blockPos.y > 2 && blockID.value == 44 && utils.worldgen.GetBlock(socket)(world, socket, {x: blockPos.x, y: blockPos.y - 1, z: blockPos.z}) == "smooth_stone_slab") {
-                                    utils.builds.SetBlockInBuild(socket)(world, hitBuildIndex, {x: blockPos.x, y: blockPos.y - 1, z: blockPos.z}, "smooth_stone_slab[type=double]")
-                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y - 1, z: blockPos.z}, 43, false, 44)
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y - 1, z: blockPos.z}, "smooth_stone_slab[type=double]", false, "smooth_stone_slab")
                                     for (var i = 0; i < world.loadedPlayers.length; i++) {
                                         if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
                                             world.loadedPlayers[i].position = {
@@ -111,7 +91,6 @@ function ReadPacket(world, socket, data) {
                                         }
                                     }
                                 } else {
-                                    world.builds[hitBuildIndex].blocks[blockPos.y - 2][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID.value)
                                     utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, blockID.value, false, 0)
                                     for (var i = 0; i < world.loadedPlayers.length; i++) {
                                         if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
@@ -128,15 +107,9 @@ function ReadPacket(world, socket, data) {
                                     }
                                     updateSuccessful = true
                                 }
-                                
-                                world.builds[hitBuildIndex].lastModified = new Date().getTime()
-                                world.builds[hitBuildIndex].save = true
                             } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
                         } else {
                             utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, 0, false, utils.worldgen.GetBlock(socket)(world, socket, blockPos))
-                            world.builds[hitBuildIndex].blocks[blockPos.y - 2][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = "air"
-                            world.builds[hitBuildIndex].lastModified = new Date().getTime()
-                            world.builds[hitBuildIndex].save = true
                             updateSuccessful = true
                         }
                     }

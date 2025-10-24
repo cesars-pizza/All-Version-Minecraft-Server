@@ -26,6 +26,11 @@ function AddBlockUpdate(world, socket, position, blockID, doubleSet, prevBlockID
     var prevBlockIdentifier = prevBlockID
     if (typeof(prevBlockID) == "number") prevBlockIdentifier = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, prevBlockID)
 
+    var updatedBuild = utils.builds.GetBuild({})(world, Math.floor(position.x / 32), Math.floor(position.z / 32))
+    utils.builds.SetBlockInBuild(socket)(world, updatedBuild, position, blockIdentifier)
+    world.builds[updatedBuild].lastModified = new Date().getTime()
+    world.builds[updatedBuild].save = true
+
     var blockName = blockIdentifier.split('[')[0]
     var prevBlockName = prevBlockIdentifier.split('[')[0]
 
@@ -408,4 +413,35 @@ function LiquidVerifier(world, neighbors, thisBlock, position, predictedFluid) {
     } else return {update: false}
 }
 
-module.exports = {SetBlock, AddBlockUpdate, SendPostPlacementUpdate, SendNeighborChangedUpdate, ScheduleBlockUpdate, GetBlockUpdate}
+/**
+ * @param {World} world 
+ * @param {Socket?} socket 
+ * @param {Position} position 
+ * @param {string | number} blockID 
+ * @param {boolean} doubleSet 
+ */
+function AddFloorUpdate(world, socket, position, blockID, doubleSet) {
+    var chunk = {x: Math.floor(position.x / 16), z: Math.floor(position.z / 16)}
+
+    var blockIdentifier = blockID
+    if (typeof(blockID) == "number") blockIdentifier = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID)
+        
+    var updatedBuild = utils.builds.GetBuild({})(world, Math.floor(position.x / 32), Math.floor(position.z / 32))
+    world.builds[updatedBuild].floor = blockIdentifier
+    world.builds[updatedBuild].lastModified = new Date().getTime()
+    world.builds[updatedBuild].save = true
+        
+    for (var x = 0; x < 16; x++) {
+        for (var z = 0; z < 16; z++) {
+            world.blockUpdates.push({
+                x: 16 * chunk.x + x,
+                y: 1,
+                z: 16 * chunk.z + z,
+                id: blockIdentifier,
+                doubleSet: doubleSet
+            })
+        }
+    }
+}
+
+module.exports = {SetBlock, AddBlockUpdate, SendPostPlacementUpdate, SendNeighborChangedUpdate, ScheduleBlockUpdate, GetBlockUpdate, AddFloorUpdate}
