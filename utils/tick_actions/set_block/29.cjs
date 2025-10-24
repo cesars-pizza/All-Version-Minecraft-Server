@@ -19,7 +19,7 @@ function SetBlock(world, socket, position, blockID) {
  * @param {boolean} doubleSet 
  */
 function AddBlockUpdate(world, socket, position, blockID, doubleSet, prevBlockID, scheduled) {
-    console.log(`Block update at (${position.x}, ${position.y}, ${position.z})`)
+    console.log(`Block update at (${position.x}, ${position.y}, ${position.z}) / ${prevBlockID} -> ${blockID}`)
 
     var blockIdentifier = blockID
     if (typeof(blockID) == "number") blockIdentifier = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID)
@@ -62,8 +62,11 @@ function AddBlockUpdate(world, socket, position, blockID, doubleSet, prevBlockID
                     utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x - 1, y: position.y, z: position.z}),
                     utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x + 1, y: position.y, z: position.z})
                 ]
-                var verifyLiquid = LiquidVerifier(world, neighborBlocks.slice(1), prevBlockIdentifier, position, (blockName.includes('water') || prevBlockName.includes('water')) ? "water" : "lava")
-                if (!verifyLiquid.update) return
+                var verifyLiquid = LiquidVerifier(world, neighborBlocks, prevBlockIdentifier, position, (blockName.includes('water') || prevBlockName.includes('water')) ? "water" : "lava")
+                if (!verifyLiquid.update) {
+                    world.blockUpdates.pop()
+                    return false
+                }
                 else {
                     if (verifyLiquid.height == 0) blockID = "air"
                     else if (verifyLiquid.height == 8) blockID = `flowing_${verifyLiquid.toBeFluid}[height=7,falling=true]`
@@ -88,6 +91,8 @@ function AddBlockUpdate(world, socket, position, blockID, doubleSet, prevBlockID
                 utils.tick_actions.set_block.SendPostPlacementUpdate(socket)(world, socket, neighbors[i], position, blockName)
         }
     }
+
+    return true
 }
 
 /**
@@ -134,6 +139,8 @@ function SendNeighborChangedUpdate(world, socket, position, originPosition, bloc
  * @param {number} delay 
  */
 function ScheduleBlockUpdate(world, socket, position, blockID, prevBlockID, priority, doubleSet, delay) {
+    if (blockID == prevBlockID) return
+
     console.log(`Scheduled block update from ${prevBlockID} to ${blockID} at (${position.x}, ${position.y}, ${position.z}) in ${delay} ticks`)
 
     var buildIndex = utils.builds.GetBuild(socket)(world, Math.floor(position.x / 32), Math.floor(position.z / 32))
@@ -143,11 +150,7 @@ function ScheduleBlockUpdate(world, socket, position, blockID, prevBlockID, prio
 
     if (buildIndex != -1 && buildIndex != undefined) {
         for (var i = 0; i < world.builds[buildIndex].scheduledBlockUpdates.length; i++) {
-            if (position.x == world.builds[buildIndex].scheduledBlockUpdates[i].position.x && position.y == world.builds[buildIndex].scheduledBlockUpdates[i].position.y && position.z == world.builds[buildIndex].scheduledBlockUpdates[i].position.z) {
-                world.builds[buildIndex].scheduledBlockUpdates[i].doubleSet = doubleSet
-                world.builds[buildIndex].scheduledBlockUpdates[i].priority = priority
-                world.builds[buildIndex].scheduledBlockUpdates[i].blockID = blockID
-            }
+            if (position.x == world.builds[buildIndex].scheduledBlockUpdates[i].position.x && position.y == world.builds[buildIndex].scheduledBlockUpdates[i].position.y && position.z == world.builds[buildIndex].scheduledBlockUpdates[i].position.z && world.builds[buildIndex].scheduledBlockUpdates[i].delay != 0) {console.log("Cancelled"); return}
         }
 
         world.builds[buildIndex].scheduledBlockUpdates.push({
@@ -156,7 +159,7 @@ function ScheduleBlockUpdate(world, socket, position, blockID, prevBlockID, prio
             prevBlockID: prevBlockID,
             priority: priority,
             doubleSet: doubleSet,
-            delay: delay
+            delay: delay,
         })
     }
 }
@@ -181,8 +184,9 @@ function LiquidHorizontalFlowTest(neighbor, belowNeighbor, toBeFluid) {
             toBeFluid = neighborFluid
             height = 8
         } else if (belowNeighbor != "air" && !belowNeighbor.includes(neighborFluid)) {
-            var neighborHeight = 7
-                if (neighbor.includes("level=6")) neighborHeight = 6
+            var neighborHeight = 8
+                if (neighbor.includes("level=7")) neighborHeight = 7
+            else if (neighbor.includes("level=6")) neighborHeight = 6
             else if (neighbor.includes("level=5")) neighborHeight = 5
             else if (neighbor.includes("level=4")) neighborHeight = 4
             else if (neighbor.includes("level=3")) neighborHeight = 3
@@ -204,13 +208,14 @@ function LiquidHorizontalDrainTest(neighbor, toBeFluid) {
     var height = 0
     
     var neighborFluid = neighbor.includes('water') ? "water" : (neighbor.includes('lava') ? "lava" : "none")
-    if (neighborFluid != "none" && (toBeFluid == neighborFluid || neighborFluid == "water")) {
+    if (toBeFluid == neighborFluid) {
         if (!neighbor.includes("flowing")) {
             toBeFluid = neighborFluid
             height = 8
         } else {
-            var neighborHeight = 7
-                if (neighbor.includes("level=6")) neighborHeight = 6
+            var neighborHeight = 8
+                if (neighbor.includes("level=7")) neighborHeight = 7
+            else if (neighbor.includes("level=6")) neighborHeight = 6
             else if (neighbor.includes("level=5")) neighborHeight = 5
             else if (neighbor.includes("level=4")) neighborHeight = 4
             else if (neighbor.includes("level=3")) neighborHeight = 3
@@ -285,26 +290,22 @@ function LiquidTests(world, neighbors, thisBlock, position) {
         flowDelay = (toBeFluid == "water") ? 5 : 30
 
         if (falling) {
-            if (currentHeight != 8) ScheduleBlockUpdate(world, {}, position, `flowing_${toBeFluid}[falling=true,level=8]`, thisBlock, 4, false, flowDelay)
+            if (currentHeight != 8 || toBeFluid != thisFluid) ScheduleBlockUpdate(world, {}, position, `flowing_${toBeFluid}[falling=true,level=8]`, thisBlock, 4, true, flowDelay)
         }
         else {
             height -= 1
             if (toBeFluid == "lava") height -= 1
             if (height < 0) height = 0
 
-            if (height != currentHeight) {
+            if (height != currentHeight || toBeFluid != thisFluid) {
                 if (height == 0) ScheduleBlockUpdate(world, {}, position, `air`, thisBlock, 4, false, flowDelay)
-                else ScheduleBlockUpdate(world, {}, position, `flowing_${toBeFluid}[falling=false,level=${height}]`, thisBlock, 4, false, flowDelay)
+                else ScheduleBlockUpdate(world, {}, position, `flowing_${toBeFluid}[falling=false,level=${height}]`, thisBlock, 4, true, flowDelay)
             }
         }
     }
 }
 
 function LiquidVerifier(world, neighbors, thisBlock, position, predictedFluid) {
-    console.log(thisBlock)
-    console.log(position)
-    console.log(predictedFluid)
-    
     if (thisBlock != "air" && !thisBlock.includes("water") && !thisBlock.includes("lava")) return {
         update: false
     }
@@ -327,7 +328,6 @@ function LiquidVerifier(world, neighbors, thisBlock, position, predictedFluid) {
     else if (thisBlock.includes("level=2")) currentHeight = 2
     else if (thisBlock.includes("level=1")) currentHeight = 1
 
-    var flowDelay = 5
     var height = 0
     var toBeFluid = "none"
     var falling = false
@@ -365,7 +365,7 @@ function LiquidVerifier(world, neighbors, thisBlock, position, predictedFluid) {
 
         if (predictedFluid == "water" && toBeFluid == "lava") {
             if (falling) {
-                if (currentHeight != 8) ScheduleBlockUpdate(world, {}, position, `flowing_${toBeFluid}[falling=true,level=7]`, thisBlock, 4, false, 25)
+                if (currentHeight != 8) ScheduleBlockUpdate(world, {}, position, `flowing_${toBeFluid}[falling=true,level=8]`, thisBlock, 4, true, 25)
             }
             else {
                 height -= 1
@@ -374,13 +374,13 @@ function LiquidVerifier(world, neighbors, thisBlock, position, predictedFluid) {
 
                 if (height != currentHeight) {
                     if (height == 0) ScheduleBlockUpdate(world, {}, position, `air`, thisBlock, 4, false, 25)
-                    else ScheduleBlockUpdate(world, {}, position, `flowing_${toBeFluid}[falling=false,level=${height}]`, thisBlock, 4, false, 25)
+                    else ScheduleBlockUpdate(world, {}, position, `flowing_${toBeFluid}[falling=false,level=${height}]`, thisBlock, 4, true, 25)
                 }
             }
             return {update: false}
         } else {
             if (falling) {
-                if (currentHeight != 8) return {
+                if (currentHeight != 8 || toBeFluid != thisFluid) return {
                     height: 8,
                     toBeFluid: toBeFluid,
                     update: true
@@ -392,7 +392,7 @@ function LiquidVerifier(world, neighbors, thisBlock, position, predictedFluid) {
                 if (toBeFluid == "lava") height -= 1
                 if (height < 0) height = 0
 
-                if (height != currentHeight) {
+                if (height != currentHeight || toBeFluid != thisFluid) {
                     if (height == 0) return {
                         height: 0,
                         update: true

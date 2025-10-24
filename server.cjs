@@ -134,7 +134,7 @@ function ServerTick() {
                     world.builds[i].scheduledBlockUpdates[k].delay--
                     if (world.builds[i].scheduledBlockUpdates[k].delay == 0) {
                         utils.builds.SetBlockInBuild({})(world, i, world.builds[i].scheduledBlockUpdates[k].position, world.builds[i].scheduledBlockUpdates[k].blockID)
-                        utils.tick_actions.set_block.AddBlockUpdate({})(world, 
+                        var updateSuccess = utils.tick_actions.set_block.AddBlockUpdate({})(world, 
                             socketIndex, 
                             world.builds[i].scheduledBlockUpdates[k].position,
                             world.builds[i].scheduledBlockUpdates[k].blockID,
@@ -142,6 +142,7 @@ function ServerTick() {
                             world.builds[i].scheduledBlockUpdates[k].prevBlockID,
                             true
                         )
+                        if (!updateSuccess) utils.builds.SetBlockInBuild({})(world, i, world.builds[i].scheduledBlockUpdates[k].position, world.builds[i].scheduledBlockUpdates[k].prevBlockID)
                     }
                 }
             }
@@ -266,12 +267,18 @@ function ServerSave() {
     if (savedBuildCount > 0) console.log(`WORLD Saved ${savedBuildCount} Builds`)
 }
 
+setTimeout(KeepAlive, 20000)
+function KeepAlive() {
+    for (var i = 0; i < world.loadedPlayers.length; i++) {
+        utils.tick_actions.keep_alive(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket)
+    }
+}
+
 /** 
  * @param {Socket} socket 
  * @param {Buffer} data
  */
 function ReadPacket(socket, data) {
-
     if (socket.dataBuffer.length > 0) data = Buffer.from(Array.from(socket.dataBuffer).concat(Array.from(data)))
     socket.dataBuffer = []
 

@@ -404,7 +404,7 @@ function ReadPacket(world, socket, data) {
                         replaceBlock = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, utils.worldgen.GetBlock(socket)(world, socket, facingBlock))
                         if (typeof(replaceBlock) == "number") packetWriter.Alpha.Block_Change(socket)(world, socket, facingBlock, replaceBlock, 0, false)
                         else packetWriter.Alpha.Block_Change(socket)(world, socket, facingBlock, replaceBlock.id, replaceBlock.metadata, false)
-                    }
+                    } else packetWriter.Alpha.Block_Change(socket)(world, socket, facingBlock, 0, 0, false)
                 }
             } else {
                 if (facingBlock.y > 1) {
