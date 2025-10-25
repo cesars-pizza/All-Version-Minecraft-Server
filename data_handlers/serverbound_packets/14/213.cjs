@@ -152,15 +152,6 @@ function ReadPacket(world, socket, data) {
                         }
                     } else if (blockPos.y < 64) {
                         utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, "air", false, prevBlock)
-                        if (utils.tag(world, prevBlock, "doors")) {
-                            if (!prevBlock.includes('half=upper') && blockPos.y < 63) {
-                                if (!prevBlock.includes('[')) prevBlock = prevBlock + '[half=lower]'
-                                else if (!prevBlock.includes('half=lower')) prevBlock = prevBlock.replace(']', ',half=lower]')
-                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y + 1, z: blockPos.z}, "air", false, prevBlock.replace('half=lower', 'half=upper'))
-                            } else if (prevBlock.includes('half=upper') && blockPos.y > 2) {
-                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y - 1, z: blockPos.z}, "air", false, prevBlock.replace('half=upper', 'half=lower'))
-                            }
-                        }
                         updateSuccessful = true
                     }
                 }

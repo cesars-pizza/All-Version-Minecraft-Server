@@ -116,4 +116,40 @@ function GetBlockID(world, registry, block) {
     }
 }
 
-module.exports = {GetBlockRegistry, GetBlockName, GetBlockID}
+/**
+ * @param {World} world 
+ * @param {number} registry 
+ * @param {string} block 
+ */
+function GetBlockState(world, registry, block) {    
+    var blockName = block.split('[')[0]
+    var blockStates = {
+
+    }
+
+    if (block.includes('[')) {
+        var blockStateTexts = block.slice(block.indexOf('[') + 1, -1).split(',')
+        for (var i = 0; i < blockStateTexts.length; i++) {
+            var splitBlockStateText = blockStateTexts[i].split('=')
+            var thisState = splitBlockStateText[0]
+            var thisStateValue = splitBlockStateText[1]
+
+            blockStates[thisState] = thisStateValue
+        }
+    }
+
+    var blockRegEntry = world.registries.block[registry].entries[blockName]
+    if (typeof(blockRegEntry) == "object") {
+        var allStateNames = Object.keys(blockRegEntry.states)
+        for (var i = 0; i < allStateNames.length; i++) {
+            if (blockStates[allStateNames[i]] == undefined) blockStates[allStateNames[i]] = blockRegEntry.states[allStateNames[i]][0]
+        }
+    }
+
+    return {
+        block: blockName,
+        states: blockStates
+    }
+}
+
+module.exports = {GetBlockRegistry, GetBlockName, GetBlockID, GetBlockState}

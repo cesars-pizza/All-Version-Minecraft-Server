@@ -309,8 +309,6 @@ function ReadPacket(world, socket, data) {
 
                                             utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, `${placedName}[facing=${playerFacing},hinge=${reverseHinge ? "right" : "left"},half=lower]`, true, facingBlock.block)
 
-                                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: facingBlock.x, y: facingBlock.y + 1, z: facingBlock.z}, `${placedName}[facing=${playerFacing},hinge=${reverseHinge ? "right" : "left"},half=upper]`, true, aboveFacingBlock)
-
                                             updateSuccessful = true
                                         }
                                     }

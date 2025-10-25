@@ -80,20 +80,14 @@ function AddBlockUpdate(world, socket, position, blockID, doubleSet, prevBlockID
             }
         }
 
-        if (blockName == "redstone_wire" || prevBlockName == "redstone_wire") {
-            neighbors.push({x: position.x - 1, y: position.y + 1, z: position.z})
-            neighbors.push({x: position.x - 1, y: position.y - 1, z: position.z})
-            neighbors.push({x: position.x + 1, y: position.y + 1, z: position.z})
-            neighbors.push({x: position.x + 1, y: position.y - 1, z: position.z})
-            neighbors.push({x: position.x, y: position.y + 1, z: position.z - 1})
-            neighbors.push({x: position.x, y: position.y - 1, z: position.z - 1})
-            neighbors.push({x: position.x, y: position.y + 1, z: position.z + 1})
-            neighbors.push({x: position.x, y: position.y - 1, z: position.z + 1})
+        for (var i = 0; i < neighbors.length; i++) {
+            if (utils.math.NegMod(neighbors[i].x, 32) >= 16 && utils.math.NegMod(neighbors[i].z, 32) >= 16 && neighbors[i].y > 1 && neighbors[i].y < 64)
+                utils.tick_actions.set_block.SendPostPlacementUpdate(socket)(world, socket, neighbors[i], position)
         }
 
         for (var i = 0; i < neighbors.length; i++) {
             if (utils.math.NegMod(neighbors[i].x, 32) >= 16 && utils.math.NegMod(neighbors[i].z, 32) >= 16 && neighbors[i].y > 1 && neighbors[i].y < 64)
-                utils.tick_actions.set_block.SendPostPlacementUpdate(socket)(world, socket, neighbors[i], position, blockName)
+                utils.tick_actions.set_block.SendNeighborChangedUpdate(socket)(world, socket, neighbors[i], position)
         }
     }
 
@@ -105,13 +99,10 @@ function AddBlockUpdate(world, socket, position, blockID, doubleSet, prevBlockID
  * @param {Socket} socket 
  * @param {Position} position 
  * @param {Position} originPosition 
- * @param {string} blockName 
  */
-function SendPostPlacementUpdate(world, socket, position, originPosition, blockName) {
+function SendPostPlacementUpdate(world, socket, position, originPosition) {
     var updatedBuildIndex = utils.builds.GetBuild({})(world, Math.floor(position.x / 32), Math.floor(position.z / 32))
     if (!world.builds[updatedBuildIndex].settings.blockUpdates) return
-
-    if (!world.builds[updatedBuildIndex].settings.liquidUpdates) return
 
     var thisBlock = utils.worldgen.GetBlock({thisPlayer: {upvn: -1}})(world, {}, position)
 
@@ -125,19 +116,58 @@ function SendPostPlacementUpdate(world, socket, position, originPosition, blockN
     ]
 
     if (thisBlock == "air" || thisBlock.includes("water") || thisBlock.includes("lava")) {
+        if (!world.builds[updatedBuildIndex].settings.liquidUpdates) return
         LiquidTests(world, neighbors, thisBlock, position)
     }
-}
-
-function SendNeighborChangedUpdate(world, socket, position, originPosition, blockName) {
-
 }
 
 /**
  * @param {World} world 
  * @param {Socket} socket 
  * @param {Position} position 
- * @param {string | number} blockID 
+ * @param {Position} originPosition 
+ */
+function SendNeighborChangedUpdate(world, socket, position, originPosition) {
+    var updatedBuildIndex = utils.builds.GetBuild({})(world, Math.floor(position.x / 32), Math.floor(position.z / 32))
+    if (!world.builds[updatedBuildIndex].settings.blockUpdates) return
+
+    var thisBlock = utils.worldgen.GetBlock({thisPlayer: {upvn: -1}})(world, {}, position)
+
+    var neighbors = [
+        utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x, y: position.y - 1, z: position.z}),
+        utils.worldgen.GetBlock({thisPlayer:{upvn:-1}})(world, {}, {x: position.x, y: position.y + 1, z: position.z})
+    ]
+
+    var blockData = utils.registry.block.GetBlockState(world, 4, thisBlock)
+
+    if (position.x != originPosition.x || position.y != originPosition.y || position.z != originPosition.z) {
+        if (utils.tag(world, neighbors[0], "doors")) {
+            var neighorData = utils.registry.block.GetBlockState(world, 4, neighbors[0])
+
+            if (neighorData.states.half == "lower") {
+                if (blockData.block != neighorData.block || blockData.states.half != "upper" || blockData.states.facing != neighorData.states.facing || blockData.states.hinge != neighorData.states.hinge || blockData.states.open != neighorData.states.open) {
+                    AddBlockUpdate(world, socket, position, `${neighorData.block}[facing=${neighorData.states.facing},half=upper,hinge=${neighorData.states.hinge},open=${neighorData.states.open}]`, true, thisBlock, false)
+                }
+                return
+            }
+        } else if (utils.tag(world, neighbors[1], "doors")) {
+            var neighorData = utils.registry.block.GetBlockState(world, 4, neighbors[1])
+
+            if (neighorData.states.half == "upper") {
+                if (blockData.block != neighorData.block || blockData.states.half != "lower" || blockData.states.facing != neighorData.states.facing || blockData.states.hinge != neighorData.states.hinge || blockData.states.open != neighorData.states.open) {
+                    AddBlockUpdate(world, socket, position, `${neighorData.block}[facing=${neighorData.states.facing},half=lower,hinge=${neighorData.states.hinge},open=${neighorData.states.open}]`, true, thisBlock, false)
+                }
+                return
+            }
+        } else if (utils.tag(world, thisBlock, "doors")) AddBlockUpdate(world, socket, position, "air", false, thisBlock, false)
+    }
+}
+
+/**
+ * @param {World} world 
+ * @param {Socket} socket 
+ * @param {Position} position 
+ * @param {string | number} blockID
  * @param {string | number} prevBlockID 
  * @param {number} priority 
  * @param {boolean} doubleSet 
