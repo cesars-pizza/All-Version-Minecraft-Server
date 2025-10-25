@@ -1,0 +1,205 @@
+{
+    "entries": {
+        "air": { "states": {} },
+        "stone": { "states": {} },
+        "grass_block": { "states": {} },
+        "dirt": { "states": {} },
+        "cobblestone": { "states": {} },
+        "oak_planks": { "states": {} },
+        "oak_sapling": { "states": {} },
+        "bedrock": { "states": {} },
+        "flowing_water": {
+            "states": {
+                "falling": ["false", "true"],
+                "level": ["1", "2", "3", "4", "5", "6", "7", "8"]
+            }
+        },
+        "water": { "states": {} },
+        "flowing_lava": {
+            "states": {
+                "falling": ["false", "true"],
+                "level": ["1", "2", "3", "4", "5", "6", "7", "8"]
+            }
+        },
+        "lava": { "states": {} },
+        "sand": { "states": {} },
+        "gravel": { "states": {} },
+        "gold_ore": { "states": {} },
+        "iron_ore": { "states": {} },
+        "coal_ore": { "states": {} },
+        "oak_log": { "states": {} },
+        "oak_leaves": { "states": {} },
+        "sponge": { "states": {} },
+        "glass": { "states": {} },
+        "red_wool": { "states": {} },
+        "orange_wool": { "states": {} },
+        "yellow_wool": { "states": {} },
+        "lime_wool": { "states": {} },
+        "green_wool": { "states": {} },
+        "spring_green_wool": { "states": {} },
+        "cyan_wool": { "states": {} },
+        "light_blue_wool": { "states": {} },
+        "blue_wool": { "states": {} },
+        "violet_wool": { "states": {} },
+        "purple_wool": { "states": {} },
+        "magenta_wool": { "states": {} },
+        "pink_wool": { "states": {} },
+        "dark_gray_wool": { "states": {} },
+        "gray_wool": { "states": {} },
+        "white_wool": { "states": {} },
+        "dandelion": { "states": {} },
+        "poppy": { "states": {} },
+        "brown_mushroom": { "states": {} },
+        "red_mushroom": { "states": {} },
+        "gold_block": { "states": {} },
+        "iron_block": { "states": {} },
+        "smooth_stone_slab": {
+            "states": {
+                "type": ["bottom", "double"]
+            }
+        },
+        "bricks": { "states": {} },
+        "tnt": { "states": {} },
+        "bookshelf": { "states": {} },
+        "mossy_cobblestone": { "states": {} },
+        "obsidian": { "states": {} },
+        "torch": { "states": {} },
+        "wall_torch": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            }
+        },
+        "fire": { "states": {} },
+        "spawner": { "states": {} },
+        "oak_stairs": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            }
+        },
+        "chest": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            }
+        },
+        "redstone_wire": {
+            "states": {
+                "power": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]
+            }
+        },
+        "diamond_ore": { "states": {} },
+        "diamond_block": { "states": {} },
+        "crafting_table": { "states": {} },
+        "wheat": {
+            "states": {
+                "age": ["0", "1", "2", "3", "4", "5", "6", "7"]
+            }
+        },
+        "farmland": {
+            "states": {
+                "moisture": ["0", "1", "2", "3", "4", "5", "6", "7"]
+            }
+        },
+        "furnace": {
+            "states": {
+                "facing": ["north", "east", "west", "south"],
+                "lit": ["false", "true"]
+            }
+        },
+        "oak_sign": {
+            "states": {
+                "rotation": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]
+            }
+        },
+        "oak_door": {
+            "states": {
+                "facing": ["north", "east", "south", "west"],
+                "half": ["lower", "upper"],
+                "hinge": ["left", "right"],
+                "open": ["false", "true"]
+            }
+        },
+        "ladder": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            }
+        },
+        "rail": {
+            "states": {
+                "shape": ["north_south", "east_west", "north_east", "north_west", "south_east", "south_west", "ascending_east", "ascending_north", "ascending_south", "ascending_west"]
+            }
+        },
+        "cobblestone_stairs": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            }
+        },
+        "oak_wall_sign": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            }
+        },
+        "lever": {
+            "states": {
+                "face": ["wall", "floor", "ceiling"],
+                "facing": ["north", "east", "south", "west"],
+                "powered": ["false", "true"]
+            }
+        },
+        "stone_pressure_plate": {
+            "states": {
+                "powered": ["false", "true"]
+            }
+        },
+        "iron_door": {
+            "states": {
+                "facing": ["north", "east", "south", "west"],
+                "half": ["lower", "upper"],
+                "hinge": ["left", "right"],
+                "open": ["false", "true"]
+            }
+        },
+        "oak_pressure_plate": {
+            "states": {
+                "powered": ["false", "true"]
+            }
+        },
+        "redstone_ore": {
+            "states": {
+                "lit": ["false", "true"]
+            }
+        },
+        "redstone_torch": {
+            "states": {
+                "lit": ["true", "false"]
+            }
+        },
+        "redstone_wall_torch": {
+            "states": {
+                "facing": ["north", "east", "south", "west"],
+                "lit": ["true", "false"]
+            }
+        },
+        "stone_button": {
+            "states": {
+                "face": ["wall", "floor", "ceiling"],
+                "facing": ["north", "east", "south", "west"],
+                "powered": ["false", "true"]
+            }
+        },
+        "snow": {
+            "states": {
+                "layers": ["1", "2", "3", "4", "5", "6", "7", "8"]
+            }
+        },
+        "ice": { "states": {} },
+        "snow_block": { "states": {} },
+        "cactus": { "states": {} },
+        "clay": { "states": {} },
+        "sugar_cane": { "states": {} },
+        "jukebox": {
+            "states": {
+                "has_record": ["false", "true"]
+            }
+        }
+    }
+}

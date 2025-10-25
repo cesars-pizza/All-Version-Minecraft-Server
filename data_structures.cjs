@@ -60,6 +60,7 @@ class World {
      * @param {string[]} loadingPlayerNames 
      * @param {Player[]} loadedPlayers
      * @param {{block: BlockRegistry[], item: Registry[]}} registries 
+     * @param {Registry} blockStateData
      * @param {Build[]} builds
      * @param {TickBlock[]} blockUpdates
      * @param {{tag: string, values: string[]}[]} tags 
@@ -69,13 +70,14 @@ class World {
      * @param {{save: () => {}}} serverFunctions 
      * @param {boolean} closeServer
      */
-    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, builds, blockUpdates, tags, disconnectedPlayers, versions, universalRegistries, serverFunctions, closeServer) {
+    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, blockStateData, builds, blockUpdates, tags, disconnectedPlayers, versions, universalRegistries, serverFunctions, closeServer) {
         this.config = config
         this.players = players
         this.maxPlayerCount = maxPlayerCount
         this.loadingPlayerNames = loadingPlayerNames
         this.loadedPlayers = loadedPlayers
         this.registries = registries
+        this.blockStateData = blockStateData
         this.builds = builds
         this.blockUpdates = blockUpdates
         this.disconnectedPlayers = disconnectedPlayers

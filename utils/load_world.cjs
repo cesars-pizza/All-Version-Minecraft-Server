@@ -126,7 +126,11 @@ async function loadRegistry(registry, folder, registryLog, universalLog) {
     }
     registryFolder.closeSync()
 
-    console.log(`WORLD Loaded ${world.registries[registry].length} ${registryLog}`)
+    if (registry == "block") {
+        world.blockStateData = JSON.parse(fs.readFileSync(`./world/registries/blockStates.json`))
+        console.log(`WORLD Loaded ${world.registries[registry].length + 1} ${registryLog}`)
+    } else console.log(`WORLD Loaded ${world.registries[registry].length} ${registryLog}`)
+
     console.log(`WORLD Loaded ${world.universalRegistries[registry].length} ${universalLog}`)
 }
 

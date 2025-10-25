@@ -138,7 +138,7 @@ function GetBlockState(world, registry, block) {
         }
     }
 
-    var blockRegEntry = world.registries.block[registry].entries[blockName]
+    var blockRegEntry = world.blockStateData.entries[blockName]
     if (typeof(blockRegEntry) == "object") {
         var allStateNames = Object.keys(blockRegEntry.states)
         for (var i = 0; i < allStateNames.length; i++) {
