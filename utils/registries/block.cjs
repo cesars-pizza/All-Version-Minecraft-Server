@@ -122,6 +122,11 @@ function GetBlockID(world, registry, block) {
  * @param {string} block 
  */
 function GetBlockState(world, registry, block) {    
+    if (block == undefined || block == "") return {
+        block: "stone",
+        states: {}
+    }
+
     var blockName = block.split('[')[0]
     var blockStates = {
 

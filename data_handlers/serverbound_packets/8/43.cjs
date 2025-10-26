@@ -58,6 +58,8 @@ function ReadPacket(world, socket, data) {
                 }
             }
 
+            utils.player.PlayerCollisionFunctions(socket)(world, socket, newPositionShifted)
+
             socket.thisPlayer.position = newPositionShifted
             socket.thisPlayer.rotation = {pitch: pitch.value, yaw: yaw.value}
         }

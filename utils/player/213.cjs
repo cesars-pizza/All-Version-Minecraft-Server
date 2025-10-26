@@ -1,43 +1,22 @@
 const { World, Socket, Position, Player } = require("../../data_structures.cjs");
+const utils = require('../utils.cjs')
 
 /**
  * @param {Socket} socket 
  * @param {Position} playerPos 
  * @param {Position} blockPos 
  */
-function CollidingWithBlock(socket, playerPos, blockPos) {
+function CollidingWithBlock(world, socket, playerPos, blockPos, block) {
     var playerWidth = 0.59999998
-    var playerHeight = 1.7
+    var playerHeight = 1.69999998
 
-    var blockCenter = {x: blockPos.x + 0.5, y: blockPos.y + 0.5, z: blockPos.z + 0.5}
-    var playerCenter = {x: playerPos.x, y: playerPos.y + (playerHeight / 2), z: playerPos.z}
-
-    var absDifference = {
-        x: Math.abs(blockCenter.x - playerCenter.x),
-        y: Math.abs(blockCenter.y - playerCenter.y),
-        z: Math.abs(blockCenter.z - playerCenter.z)
-    }
-
-    var minimumDistance = {
-        x: ((playerWidth / 2) + 0.5), 
-        y: ((playerHeight / 2) + 0.5),
-        z: ((playerWidth / 2) + 0.5) 
-    }
-    
-    // Debug Hitboxes
-    // console.log(`blockCenter:      ${JSON.stringify(blockCenter)}`)
-    // console.log(`playerCenter:     ${JSON.stringify(playerCenter)}`)
-    // console.log(`absDifference:    ${JSON.stringify(absDifference)}`)
-    // console.log(`minAbsDifference: ${JSON.stringify(minimumDistance)}`)
-
-    if (absDifference.x < minimumDistance.x && absDifference.y < minimumDistance.y && absDifference.z < minimumDistance.z) return "inside"
-    if (absDifference.x <= minimumDistance.x && absDifference.y <= minimumDistance.y && absDifference.z <= minimumDistance.z) return "against"
-    return "none"
+    if (utils.tag(world, block, "pressure_plates")) return utils.player.CollidingWithPressurePlate({})(playerPos, playerHeight, playerWidth, blockPos)
+    else return utils.player.CollidingWithFullBlock({})(playerPos, playerHeight, playerWidth, blockPos)
 }
 
 function CollidingWithChunkLayer(socket, playerPos, layerPos) {
-    var playerWidth = 0.4
-    var playerHeight = 1.7
+    var playerWidth = 0.59999998
+    var playerHeight = 1.69999998
 
     var blockCenter = {x: layerPos.x * 16 + 8, y: layerPos.y + 0.5, z: layerPos.z * 16 + 8}
     var playerCenter = {x: playerPos.x, y: playerPos.y + (playerHeight / 2), z: playerPos.z}

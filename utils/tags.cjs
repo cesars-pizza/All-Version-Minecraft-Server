@@ -7,6 +7,8 @@ const {World} = require("../data_structures.cjs")
  * @returns 
  */
 function GetBlockHasTag(world, block, tag) {
+    if (block == "" || block == undefined) return false
+
     return GetTagValues(world, tag).includes(block.split('[')[0])
 }
 

@@ -71,11 +71,11 @@ function ReadPacket(world, socket, data) {
                     } else if (blockPos.y < 64) {
                         if (mode.value == 1) {
                             if (validBlock) {
-                                var blockCollision = utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, blockPos)
+                                var blockCollision = utils.player.CollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, blockPos)
                                 if (blockCollision != "inside") {
                                     utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, blockID.value, false, "air")
                                     for (var i = 0; i < world.loadedPlayers.length; i++) {
-                                        if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
+                                        if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(world, socket, world.loadedPlayers[i].position, blockPos) != "none") {
                                             world.loadedPlayers[i].position = {
                                                 x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
                                                 y: 2,

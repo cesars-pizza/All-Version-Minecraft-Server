@@ -76,7 +76,7 @@ function ReadPacket(world, socket, data) {
                             if (validBlock) {
                                 utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, blockID.value, false, 0)
                                 for (var i = 0; i < world.loadedPlayers.length; i++) {
-                                    if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
+                                    if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(world, socket, world.loadedPlayers[i].position, blockPos) != "none") {
                                         world.loadedPlayers[i].position = {
                                             x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
                                             y: 2,

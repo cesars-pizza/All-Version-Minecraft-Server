@@ -93,21 +93,21 @@ function ReadPacket(world, socket, data) {
                             if (validBlock) {
                                 if (face.value == 1) {
                                     if (originalBlock.block == placedName) {
-                                        if (utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, originalBlock) != "inside") {
+                                        if (utils.player.CollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, originalBlock) != "inside") {
                                             utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, originalBlock, placedName + "[type=double]", false, originalBlock.block)
                                             if (facingBlockReplacable) packetWriter.Alpha.Block_Change(socket)(world, socket, facingBlock, 0, 0, false)
                                             updateSuccessful = true
                                             giveItem = true
                                         }
                                     } else {
-                                        if (facingBlockReplacable && utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
+                                        if (facingBlockReplacable && utils.player.CollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                             utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                             updateSuccessful = true
                                             giveItem = true
                                         }
                                     }
                                 } else {
-                                    if (utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
+                                    if (utils.player.CollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                         if (facingBlock.block == placedName) {
                                             utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + "[type=double]", false, facingBlock.block)
                                             updateSuccessful = true
@@ -332,7 +332,7 @@ function ReadPacket(world, socket, data) {
                                 }
                                 else {
                                     giveItem = true
-                                    if (facingBlockReplacable && utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
+                                    if (facingBlockReplacable && utils.player.CollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                         utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                         updateSuccessful = true
                                     }
@@ -347,7 +347,7 @@ function ReadPacket(world, socket, data) {
                         } else if (placedName == "furnace_minecart") {
 
                         } else {
-                            if (facingBlockReplacable && utils.player.CollidingWithBlock(socket)(socket, socket.thisPlayer.position, facingBlock) != "inside") {
+                            if (facingBlockReplacable && utils.player.CollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                 if (validBlock) {
                                     utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                     updateSuccessful = true
@@ -373,7 +373,7 @@ function ReadPacket(world, socket, data) {
             } else {
                 if (facingBlock.y > 1) {
                     for (var i = 0; i < world.loadedPlayers.length; i++) {
-                        if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, facingBlock) != "none") {
+                        if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(world, socket, world.loadedPlayers[i].position, facingBlock) != "none") {
                             world.loadedPlayers[i].position = {
                                 x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
                                 y: 2,

@@ -59,6 +59,14 @@ function CollidingWithBlock(socket) {
     }
 }
 
+function CollidingWithFullBlock(socket) {
+    return require('./29.cjs').CollidingWithFullBlock
+}
+
+function CollidingWithPressurePlate(socket) {
+    return require('./29.cjs').CollidingWithPressurePlate
+}
+
 function CollidingWithChunkLayer(socket) {
     if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').CollidingWithChunkLayer
     if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').CollidingWithChunkLayer
@@ -84,4 +92,8 @@ function InBuildChunk(socket) {
     return require('./29.cjs').InBuildChunk
 }
 
-module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer, GetDirectionNESW, GetDirection16, GetDirection16Num, InBuildChunk}
+function PlayerCollisionFunctions(socket) {
+    return require('./29.cjs').PlayerCollisionFunctions
+}
+
+module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithFullBlock, CollidingWithPressurePlate, CollidingWithChunkLayer, GetDirectionNESW, GetDirection16, GetDirection16Num, InBuildChunk, PlayerCollisionFunctions}

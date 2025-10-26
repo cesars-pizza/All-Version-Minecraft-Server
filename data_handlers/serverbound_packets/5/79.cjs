@@ -78,7 +78,7 @@ function ReadPacket(world, socket, data) {
                                 if (blockPos.y > 2 && blockID.value == 44 && utils.worldgen.GetBlock(socket)(world, socket, {x: blockPos.x, y: blockPos.y - 1, z: blockPos.z}) == "smooth_stone_slab") {
                                     utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y - 1, z: blockPos.z}, "smooth_stone_slab[type=double]", false, "smooth_stone_slab")
                                     for (var i = 0; i < world.loadedPlayers.length; i++) {
-                                        if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
+                                        if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(world, socket, world.loadedPlayers[i].position, blockPos) != "none") {
                                             world.loadedPlayers[i].position = {
                                                 x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
                                                 y: 2,
@@ -93,7 +93,7 @@ function ReadPacket(world, socket, data) {
                                 } else {
                                     utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, blockID.value, false, 0)
                                     for (var i = 0; i < world.loadedPlayers.length; i++) {
-                                        if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(socket, world.loadedPlayers[i].position, blockPos) != "none") {
+                                        if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(world, socket, world.loadedPlayers[i].position, blockPos) != "none") {
                                             world.loadedPlayers[i].position = {
                                                 x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
                                                 y: 2,
