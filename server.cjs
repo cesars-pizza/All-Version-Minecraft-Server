@@ -328,6 +328,7 @@ function IdentifyVersion(socket, data) {
                 socket.thisPlayer.uvni = 29
 
                 if (world.config.minUPVN > -1) socket.setDisconnect("invalidVersion")
+                if (world.config.maxUPVN < -1) socket.setDisconnect("invalidVersion")
 
                 return
             } else if (data.length == 130) {
@@ -339,6 +340,7 @@ function IdentifyVersion(socket, data) {
                     socket.thisPlayer.uvni = 42
 
                     if (world.config.minUPVN > 0) socket.setDisconnect("invalidVersion")
+                    if (world.config.maxUPVN < 0) socket.setDisconnect("invalidVersion")
 
                     return
                 } else if (data[1] == 4) {
@@ -350,6 +352,7 @@ function IdentifyVersion(socket, data) {
                     socket.thisPlayer.uvni = 43
 
                     if (world.config.minUPVN > 1) socket.setDisconnect("invalidVersion")
+                    if (world.config.maxUPVN < 1) socket.setDisconnect("invalidVersion")
 
                     return
                 } else if (data[1] == 5) {
@@ -361,6 +364,7 @@ function IdentifyVersion(socket, data) {
                     socket.thisPlayer.uvni = 51
 
                     if (world.config.minUPVN > 2) socket.setDisconnect("invalidVersion")
+                    if (world.config.maxUPVN < 2) socket.setDisconnect("invalidVersion")
 
                     return
                 }
@@ -377,6 +381,7 @@ function IdentifyVersion(socket, data) {
                     socket.thisPlayer.uvni = 55
 
                     if (world.config.minUPVN > 3) socket.setDisconnect("invalidVersion")
+                    if (world.config.maxUPVN < 3) socket.setDisconnect("invalidVersion")
 
                     return
                 } else if (data[1] == 7) {
@@ -391,6 +396,7 @@ function IdentifyVersion(socket, data) {
                     socket.thisPlayer.uvni = 79
 
                     if (world.config.minUPVN > 4) socket.setDisconnect("invalidVersion")
+                    if (world.config.maxUPVN < 4) socket.setDisconnect("invalidVersion")
 
                     return
                 }
@@ -403,6 +409,7 @@ function IdentifyVersion(socket, data) {
             socket.thisPlayer.uvni = 213
 
             if (world.config.minUPVN > 8) socket.setDisconnect("invalidVersion")
+            if (world.config.maxUPVN < 8) socket.setDisconnect("invalidVersion")
 
             return
         } else if (data[0] == 2) {
@@ -413,6 +420,7 @@ function IdentifyVersion(socket, data) {
             socket.thisPlayer.uvni = 214
 
             if (world.config.minUPVN > 9) socket.setDisconnect("invalidVersion")
+            if (world.config.maxUPVN < 9) socket.setDisconnect("invalidVersion")
 
             return
         }

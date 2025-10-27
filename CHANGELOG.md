@@ -4,6 +4,36 @@ This is a general overview of how the server protocol changes from version to ve
 
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
+## Java Edition Alpha v1.0.15
+
+Protocol Version set to 13.
+
+This is the first version of Minecraft Alpha with public multiplayer support.
+
+### Added Features
+
+Added 32 new blocks.
+
+Added items.
+
+Allows blocks like water and lava to be placed, despite being previously in the game.
+
+Some blocks can be interacted with to change their state such as doors and levers.
+
+### Removed Features
+
+Removed all wool colors except for white.
+
+Creative mode has been replaced exclusively with survival mode.
+
+### Packets
+
+All the packets have been replaced in this version with a new protocol
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
 ## Java Edition Classic 0.30
 
 This version can't be distinguished from 0.28_01.

@@ -49,6 +49,10 @@ function ReadPacket(world, socket, data) {
                                 var lit = prevBlock.includes('lit=true')
 
                                 utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, `redstone_ore[lit=${!lit}]`, false, prevBlock)
+                            } else if (prevBlock.startsWith("farmland")) {
+                                var moist = prevBlock.includes('moisture=7')
+
+                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, `farmland[moisture=${moist ? '0' : '7'}]`, true, prevBlock)
                             }
                         }
 

@@ -6,11 +6,11 @@ The goal of this project is to implement the server protocol of every archived v
 
 ## Progress
 
-The latest version supported in this project is Java Edition Classic 0.30, released on November 10th, 2009.
+The latest version supported in this project is Java Edition Alpha v1.0.15, released on August 3rd, 2010.
 
-This is 16 / 961 Versions to be supported as of snapshot 25w36b being the latest.
+This is 17 / 961 Versions to be supported as of snapshot 25w36b being the latest.
 
-[/---------------------------------------------------------------------------------------------------] (1.7%)
+[/---------------------------------------------------------------------------------------------------] (1.8%)
 
 View the [changelog](https://github.com/cesars-pizza/All-Version-Minecraft-Server/blob/main/CHANGELOG.md) for details on changes in this version.
 
@@ -52,7 +52,7 @@ plot.redstoneUpdate: Whether or not redstone components will function. Can be se
 
 plot.liquidUpdate: Whether or not water and lava will flow. Can be set to enableDefault or disableDefault. Can be set to enable or disable when in a plot.
 
-plot.publicinteractions: Whether or not other players are able to interact with blocks such as doors, levers, and buttons. Can be set to enable or disable when in a plot.
+plot.publicInteractions: Whether or not other players are able to interact with blocks such as doors, levers, and buttons. Can be set to enable or disable when in a plot.
 
 ## Copyright
 

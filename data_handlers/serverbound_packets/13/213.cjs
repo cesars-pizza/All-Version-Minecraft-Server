@@ -78,11 +78,11 @@ function ReadPacket(world, socket, data) {
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("clay")) { packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "clay"), 64); secondInvHasValidBlock = true }
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("sugar_cane")) { packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "sugar_cane"), 64); secondInvHasValidBlock = true }
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("jukebox")) { packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "jukebox"), 64); secondInvHasValidBlock = true }
-                    packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "painting"), 64)
-                    packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "minecart"), 1)
-                    packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "saddle"), 1)
-                    packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "chest_minecart"), 1)
-                    packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "furnace_minecart"), 1)
+                    //packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "painting"), 64)
+                    //packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "minecart"), 1)
+                    //packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "saddle"), 1)
+                    //packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "chest_minecart"), 1)
+                    //packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "furnace_minecart"), 1)
                 }
                 
                 if (socket.thisPlayer.joinCount % 2 == 1 || !secondInvHasValidBlock) {

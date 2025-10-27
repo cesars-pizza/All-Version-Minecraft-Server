@@ -105,7 +105,7 @@ function ReadPacket(world, socket, data) {
                     if (commandParts.length == 1) socket.thisPlayer.tick.errorMessages.push("Missing argument: setting")
                     else if (commandParts.length == 2) {
                         if (commandParts[1] == "plotInfo") socket.thisPlayer.tick.systemMessages.push(`Plot Info is currently set to ${socket.thisPlayer.settings.showPlotInfo ? "enabled" : "disabled"}`)
-                        else if (commandParts[1] == "plot.blockUpdate" || commandParts[1] == "plot.redstoneUpdate" || commandParts[1] == "plot.liquidUpdate") {
+                        else if (commandParts[1] == "plot.blockUpdate" || commandParts[1] == "plot.redstoneUpdate" || commandParts[1] == "plot.liquidUpdate" || commandParts[1] == "plot.publicInteractions") {
                             if (utils.math.NegMod(socket.thisPlayer.position.x, 32) >= 16 && utils.math.NegMod(socket.thisPlayer.position.z, 32) >= 16) {
                                 var plot = {x: Math.floor(socket.thisPlayer.position.x / 32), z: Math.floor(socket.thisPlayer.position.z / 32)}
                                 var plotID = utils.builds.GetBuild(socket)(world, plot.x, plot.z)
@@ -114,6 +114,7 @@ function ReadPacket(world, socket, data) {
                                     if (commandParts[1] == "plot.blockUpdate") socket.thisPlayer.tick.systemMessages.push(`Block Update for Plot (${plot.x}, ${plot.z}) is currently set to ${world.builds[plotID].settings.blockUpdates ? "enabled" : "disabled"}`)
                                     else if (commandParts[1] == "plot.redstoneUpdate") socket.thisPlayer.tick.systemMessages.push(`Redstone Update for Plot (${plot.x}, ${plot.z}) is currently set to ${world.builds[plotID].settings.redstoneUpdates ? "enabled" : "disabled"}`)
                                     else if (commandParts[1] == "plot.liquidUpdate") socket.thisPlayer.tick.systemMessages.push(`Liquid Update for Plot (${plot.x}, ${plot.z}) is currently set to ${world.builds[plotID].settings.liquidUpdates ? "enabled" : "disabled"}`)
+                                    else if (commandParts[1] == "plot.publicInteractions") socket.thisPlayer.tick.systemMessages.push(`Public Interactions for Plot (${plot.x}, ${plot.z}) is currently set to ${world.builds[plotID].settings.publicInteractions ? "enabled" : "disabled"}`)
                                 }
                             } else socket.thisPlayer.tick.errorMessages.push(`You are not currently in a plot`)
                         }
@@ -187,7 +188,7 @@ function ReadPacket(world, socket, data) {
                             } else if (commandParts[2] == "default") {
                                 socket.thisPlayer.tick.systemMessages.push(`Liquid Update is currently defaulted to ${socket.thisPlayer.settings.defaultBuildSettings.liquidUpdates ? "enabled" : "disabled"}`)
                             } else socket.thisPlayer.tick.systemMessages.push('Liquid Update must be set to one of "enable", "disable", "enableDefault", or "disableDefault"')
-                        } else if (commandParts[1] == "plot.publicInterations") {
+                        } else if (commandParts[1] == "plot.publicInteractions") {
                             if (commandParts[2] == "enable" || commandParts[2] == "disable") {
                                 if (utils.math.NegMod(socket.thisPlayer.position.x, 32) >= 16 && utils.math.NegMod(socket.thisPlayer.position.z, 32) >= 16) {
                                     var plot = {x: Math.floor(socket.thisPlayer.position.x / 32), z: Math.floor(socket.thisPlayer.position.z / 32)}
