@@ -47,6 +47,8 @@ function ReadPacket(world, socket, data) {
             
                 var secondInvHasValidBlock = false
                 if (socket.thisPlayer.joinCount % 2 == 0) {
+                    socket.thisPlayer.inventory.held_item = "chest"
+                    socket.thisPlayer.tick.heldItem = true
                     socket.thisPlayer.inventory.bucket_tracker = {empty: 0, water: 0, lava: 0}
 
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("chest")) { packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "chest"), 64); secondInvHasValidBlock = true }
@@ -84,6 +86,8 @@ function ReadPacket(world, socket, data) {
                 }
                 
                 if (socket.thisPlayer.joinCount % 2 == 1 || !secondInvHasValidBlock) {
+                    socket.thisPlayer.inventory.held_item = "stone"
+                    socket.thisPlayer.tick.heldItem = true
                     socket.thisPlayer.inventory.bucket_tracker = {empty: 1, water: 1, lava: 1}
 
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("stone")) packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "stone"), 64)
@@ -127,7 +131,12 @@ function ReadPacket(world, socket, data) {
             }
 
             if (difX || difY || difZ) {
-                socket.thisPlayer.tick.position = true
+                socket.thisPlayer.tick.position = socket.thisPlayer.tick.position = {
+                    tick: true,
+                    x: newPositionShifted.x - socket.thisPlayer.position.x,
+                    y: newPositionShifted.y - socket.thisPlayer.position.y,
+                    z: newPositionShifted.z - socket.thisPlayer.position.z
+                }
                 utils.player.GetPlayer(socket)(world, socket, socket.thisPlayer.username).save = true
             }
             if (difPitch || difYaw) {

@@ -19,7 +19,8 @@ module.exports = {
         despawn_player: require('./tick_actions/despawn_player/distributer.cjs').DespawnPlayer,
         message: require('./tick_actions/message/distributer.cjs'),
         teleport: require('./tick_actions/teleport/distributer.cjs').TeleportSelf,
-        keep_alive: require('./tick_actions/keep_alive/distributer.cjs').KeepAlive
+        keep_alive: require('./tick_actions/keep_alive/distributer.cjs').KeepAlive,
+        set_held_item: require('./tick_actions/set_held_item/distributer.cjs').SetHeldItem
     },
     load_world: require('./load_world.cjs').loadWorld,
     tag: require('./tags.cjs').GetBlockHasTag

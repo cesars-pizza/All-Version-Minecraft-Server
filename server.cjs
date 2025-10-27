@@ -45,7 +45,7 @@ function StartServer() {
         socket.writePacket = (id, identifier, data, logBytes, consoleLog) => {
             var packet = dataWriter.writePacket(socket, id, data)
             if (consoleLog != false) socket.log(`CLIENTBOUND <-- ${id} "${identifier}" / ${packet.length} bytes`)
-            if (logBytes) HexViewBytes(data, `${socket.index}.${socket.packetCount}`)
+            if (logBytes) HexViewBytes(packet, `${socket.index}.${socket.packetCount}`)
             socket.write(packet, consoleLog)
         }
         socket.setDisconnect = (disconnectReason, consoleLog) => {
@@ -96,7 +96,7 @@ function StartServer() {
                 socket.log("", false)
                 socket.log("Closed Socket")
                 fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
-                world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
+                world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, alphaID: socket.thisPlayer.alphaID, username: socket.thisPlayer.username})
                 world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
                 socket.isClosed = true
             }
@@ -108,7 +108,7 @@ function StartServer() {
                 socket.log("", false)
                 socket.log(`Socket Error: ${err.message}`);
                 fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
-                world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
+                world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, alphaID: socket.thisPlayer.alphaID, username: socket.thisPlayer.username})
                 world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
                 socket.isClosed = true
             }
@@ -156,31 +156,31 @@ function ServerTick() {
 
         if (world.loadedPlayers[i].tick.spawn) {
             for (var j = 0; j < world.loadedPlayers.length; j++) {
-                if (i != j) utils.tick_actions.spawn_player(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                if (i != j) utils.tick_actions.spawn_player(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].alphaID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation, utils.registry.item.GetItemID(world, world.loadedPlayers[j].selectedRegistries.item, world.loadedPlayers[i].inventory.held_item))
                 if (i != j) utils.tick_actions.message.JoinMessage(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].username)
             }
             world.loadedPlayers[i].tick.spawn = false
         }
 
-        if (world.loadedPlayers[i].tick.position && world.loadedPlayers[i].tick.rotation) {
+        if (world.loadedPlayers[i].tick.position.tick && world.loadedPlayers[i].tick.rotation) {
             for (var j = 0; j < world.loadedPlayers.length; j++) {
                 if (i != j) {
-                    utils.tick_actions.move_player_pos_rot(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                    utils.tick_actions.move_player_pos_rot(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].alphaID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation, world.loadedPlayers[j].otherPlayers[world.loadedPlayers[i].alphaID].estimatedPosition)
                 }
             }
-            world.loadedPlayers[i].tick.position = false
+            world.loadedPlayers[i].tick.position = {tick: false, x: 0, y: 0, z: 0}
             world.loadedPlayers[i].tick.rotation = false
-        } else if (world.loadedPlayers[i].tick.position) {
+        } else if (world.loadedPlayers[i].tick.position.tick) {
             for (var j = 0; j < world.loadedPlayers.length; j++) {
                 if (i != j) {
-                    utils.tick_actions.move_player_pos(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                    utils.tick_actions.move_player_pos(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].alphaID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation, world.loadedPlayers[j].otherPlayers[world.loadedPlayers[i].alphaID].estimatedPosition)
                 }
             }
-            world.loadedPlayers[i].tick.position = false
+            world.loadedPlayers[i].tick.position = {tick: false, x: 0, y: 0, z: 0}
         } else if (world.loadedPlayers[i].tick.rotation) {
             for (var j = 0; j < world.loadedPlayers.length; j++) {
                 if (i != j) {
-                    utils.tick_actions.move_player_rot(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                    utils.tick_actions.move_player_rot(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].alphaID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
                 }
             }
             world.loadedPlayers[i].tick.rotation = false
@@ -191,7 +191,7 @@ function ServerTick() {
         }
 
         for (var j = 0; j < world.disconnectedPlayers.length; j++) {
-            utils.tick_actions.despawn_player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.disconnectedPlayers[j].classicID)
+            utils.tick_actions.despawn_player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.disconnectedPlayers[j].classicID, world.disconnectedPlayers[j].alphaID)
             utils.tick_actions.message.QuitMessage(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.disconnectedPlayers[j].username)
         }
 
@@ -219,8 +219,16 @@ function ServerTick() {
 
         if (world.loadedPlayers[i].tick.teleportOthers) {
             for (var j = 0; j < world.loadedPlayers.length; j++) {
-                utils.tick_actions.move_player_pos_rot(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.loadedPlayers[j].classicID, world.loadedPlayers[j].position, world.loadedPlayers[j].rotation)
+                if (i != j) utils.tick_actions.move_player_pos_rot(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.loadedPlayers[j].classicID, world.loadedPlayers[j].position, world.loadedPlayers[j].rotation)
             }
+            world.loadedPlayers[i].tick.teleportOthers = false
+        }
+
+        if (world.loadedPlayers[i].tick.heldItem) {
+            for (var j = 0; j < world.loadedPlayers.length; j++) {
+                utils.tick_actions.set_held_item(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].alphaID, utils.registry.item.GetItemID(world, world.loadedPlayers[j].selectedRegistries.item, world.loadedPlayers[i].inventory.held_item))
+            }
+            world.loadedPlayers[i].tick.heldItem = false
         }
 
         if (world.closeServer) {

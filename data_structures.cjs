@@ -64,7 +64,7 @@ class World {
      * @param {Build[]} builds
      * @param {TickBlock[]} blockUpdates
      * @param {{tag: string, values: string[]}[]} tags 
-     * @param {{classicID: number, username: string}[]} disconnectedPlayers 
+     * @param {{classicID: number, alphaID: number, username: string}[]} disconnectedPlayers 
      * @param {{supported: boolean, name: string, pvn: number}[]} versions 
      * @param {{block: string[], item: string[]}} universalRegistries 
      * @param {{save: () => {}}} serverFunctions 
@@ -96,7 +96,7 @@ class Player {
      * @param {Position} position 
      * @param {Rotation} rotation 
      * @param {{x: number, z: number}} classicWorldOffset
-     * @param {{selected_slot: number, slots: Slot[], bucket_tracker: {empty: number, water: number, lava: number}}} inventory 
+     * @param {{selected_slot: number, held_item: string, slots: Slot[], bucket_tracker: {empty: number, water: number, lava: number}}} inventory 
      * @param {{showPlotInfo: boolean, defaultBuildSettings: {blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean, publicInteractions}}} settings
      * @param {boolean} verified 
      * @param {boolean} keepUnverified 
@@ -105,17 +105,18 @@ class Player {
      * @param {number} alphaID 
      * @param {boolean} inWorld 
      * @param {boolean} allowMovement
-     * @param {{spawn: boolean, position: boolean, rotation: boolean, messages: string[], systemMessages: string[], errorMessages: string[], teleportSelf: boolean, teleportOthers: boolean}} tick 
+     * @param {{spawn: boolean, position: {tick: boolean, x: number, y: number, z: number}, rotation: boolean, messages: string[], systemMessages: string[], errorMessages: string[], teleportSelf: boolean, teleportOthers: boolean, heldItem: boolean}} tick 
      * @param {boolean} save 
      * @param {number} upvn 
      * @param {number} uvni
      * @param {{block: number, item: number}} selectedRegistries  
      * @param {number} floorChangeCooldown
      * @param {{blockPos: Position, ticks: number}} digging 
+     * @param {{}} otherPlayers 
      * @param {number} joinCount
      * @param {Socket} socket
      */
-    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, allowMovement, tick, save, upvn, uvni, selectedRegistries, floorChangeCooldown, digging, joinCount, socket) {
+    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, allowMovement, tick, save, upvn, uvni, selectedRegistries, floorChangeCooldown, digging, otherPlayers, joinCount, socket) {
         this.uuid = uuid
         this.username = username
         this.position = position
@@ -137,6 +138,7 @@ class Player {
         this.selectedRegistries = selectedRegistries
         this.floorChangeCooldown = floorChangeCooldown
         this.digging = digging
+        this.otherPlayers = otherPlayers
         this.joinCount = joinCount
         this.socket = socket
     }

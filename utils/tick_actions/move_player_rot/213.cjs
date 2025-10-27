@@ -8,8 +8,8 @@ const packetWriter = require('../../../data_handlers/clientbound_packets/packet_
  * @param {Position} position 
  * @param {Rotation} rotation 
  */
-function MovePlayer(socket, classicID, alphaID, position, rotation, positionDif) {
-    packetWriter.Classic.Set_Position_and_Orientation(socket)(socket, classicID, position, rotation)
+function MovePlayer(socket, classicID, alphaID, position, rotation) {
+    packetWriter.Alpha.Entity_Look(socket)(socket, alphaID, rotation)
 }
 
 module.exports = {MovePlayer}

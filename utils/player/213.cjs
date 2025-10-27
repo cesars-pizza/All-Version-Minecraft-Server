@@ -48,6 +48,7 @@ function GeneratePlayer(world, socket, username) {
     player.classicWorldOffset = {x: 0, z: 0},
     player.inventory = {
         selected_slot: 0,
+        held_item: "stone",
         slots: [],
         bucket_tracker: {empty: 1, water: 1, lava: 1}
     },
@@ -63,55 +64,55 @@ function GeneratePlayer(world, socket, username) {
 
     player.inventory.slots = [{
         slot: 0,
-        id: "minecraft:stone",
+        id: "stone",
         count: 1,
         added_components: [],
         removed_components: []
     },{
         slot: 1,
-        id: "minecraft:cobblestone",
+        id: "cobblestone",
         count: 1,
         added_components: [],
         removed_components: []
     },{
         slot: 2,
-        id: "minecraft:dirt",
+        id: "dirt",
         count: 1,
         added_components: [],
         removed_components: []
     },{
         slot: 3,
-        id: "minecraft:oak_planks",
+        id: "oak_planks",
         count: 1,
         added_components: [],
         removed_components: []
     },{
         slot: 4,
-        id: "minecraft:oak_log",
+        id: "oak_log",
         count: 1,
         added_components: [],
         removed_components: []
     },{
         slot: 5,
-        id: "minecraft:oak_leaves",
+        id: "oak_leaves",
         count: 1,
         added_components: [],
         removed_components: []
     },{
         slot: 6,
-        id: "minecraft:oak_sapling",
+        id: "oak_sapling",
         count: 1,
         added_components: [],
         removed_components: []
     },{
         slot: 7,
-        id: "minecraft:dandelion",
+        id: "dandelion",
         count: 1,
         added_components: [],
         removed_components: []
     },{
         slot: 8,
-        id: "minecraft:poppy",
+        id: "poppy",
         count: 1,
         added_components: [],
         removed_components: []

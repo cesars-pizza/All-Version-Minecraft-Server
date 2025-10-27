@@ -42,6 +42,7 @@ function ReadPacket(world, socket, data) {
                     blockPos: {x: 0, y: 0, z: 0},
                     ticks: 0
                 }
+                socket.thisPlayer.otherPlayers = {}
                 socket.thisPlayer.floorChangeCooldown = 0
                 socket.thisPlayer.joinCount++
 
@@ -55,7 +56,19 @@ function ReadPacket(world, socket, data) {
                     
                     packetWriter.Alpha.Login_Response(socket)(world, socket, socket.thisPlayer.alphaID, world.config.serverName, world.config.serverStatus, 0, 0)
                     utils.world_packets.GenerateRenderDistance(socket)(world, socket, 10, Math.floor(socket.thisPlayer.position.x / 16), Math.floor(socket.thisPlayer.position.z / 16), undefined, undefined)
-                    socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
+                    for (var i = 0; i < world.loadedPlayers.length; i++) {
+                        socket.thisPlayer.otherPlayers[world.loadedPlayers[i].alphaID] = {
+                            rendered: true,
+                            estimatedPosition: {
+                                x: Math.floor(world.loadedPlayers[i].position.x * 32) / 32,
+                                y: Math.floor(world.loadedPlayers[i].position.x * 32) / 32,
+                                z: Math.floor(world.loadedPlayers[i].position.x * 32) / 32
+                            }
+                        }
+                        packetWriter.Alpha.Named_Entity_Spawn(socket)(socket, world.loadedPlayers[i].alphaID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, world.loadedPlayers[i].inventory.held_item))
+                    }
+
+                    socket.thisPlayer.tick = {spawn: true, position: {tick: false, x: 0, y: 0, z: 0}, rotation: false, heldItem: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
                     world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(socket.thisPlayer.username))
                     world.loadedPlayers.push(socket.thisPlayer)
 

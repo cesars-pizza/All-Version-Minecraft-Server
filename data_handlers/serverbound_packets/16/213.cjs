@@ -22,7 +22,8 @@ function ReadPacket(world, socket, data) {
         var item = dataReader.readShort(socket, data, unknownValue.nextPos)
 
         if (socket.disconnect == "") {
-            
+            socket.thisPlayer.inventory.held_item = utils.registry.item.GetItemName(world, socket.thisPlayer.selectedRegistries.item, item.value)
+            socket.thisPlayer.tick.heldItem = true
         }
 
     }

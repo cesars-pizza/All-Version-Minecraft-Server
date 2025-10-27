@@ -61,7 +61,7 @@ function ReadPacket(world, socket, data) {
                     socket.thisPlayer.classicID = utils.player.GetClassicID(socket)(world, socket)
                     socket.thisPlayer.alphaID = utils.player.GetAlphaID(socket)(world, socket)
                     socket.thisPlayer.inWorld = true
-                    socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
+                    socket.thisPlayer.tick = {spawn: true, position: {tick: false, x: 0, y: 0, z: 0}, rotation: false, heldItem: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
                 } else {
                     socket.setDisconnect("unverified")
                     utils.disconnect(socket)(world, socket)

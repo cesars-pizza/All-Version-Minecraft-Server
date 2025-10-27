@@ -5,8 +5,8 @@ const packetWriter = require('../../../data_handlers/clientbound_packets/packet_
 /** 
  * @param {Socket} socket 
  */
-function SpawnPlayer(socket, classicID, alphaID, playerName, position, rotation, heldItem) {
-    packetWriter.Classic.Spawn_Player(socket)(socket, classicID, playerName, position, rotation)
+function DespawnPlayer(socket, classicID, alphaID) {
+    packetWriter.Alpha.Destroy_Entity(socket)(socket, alphaID)
 }
 
-module.exports = {SpawnPlayer}
+module.exports = {DespawnPlayer}

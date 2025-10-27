@@ -27,7 +27,7 @@ function ReadPacket(world, socket, data) {
             socket.log("", false)
             socket.log(`Client Disconnect: ${reason.value}`);
             fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
-            world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, username: socket.thisPlayer.username})
+            world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, alphaID: socket.thisPlayer.alphaID, username: socket.thisPlayer.username})
             world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
             socket.isClosed = true
         }

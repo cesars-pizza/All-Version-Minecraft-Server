@@ -36,7 +36,12 @@ function ReadPacket(world, socket, data) {
             var difYaw = socket.thisPlayer.rotation.yaw != yaw.value
 
             if (difX || difY || difZ) {
-                socket.thisPlayer.tick.position = true
+                socket.thisPlayer.tick.position = {
+                    tick: true,
+                    x: newPositionShifted.x - socket.thisPlayer.position.x,
+                    y: newPositionShifted.y - socket.thisPlayer.position.y,
+                    z: newPositionShifted.z - socket.thisPlayer.position.z
+                }
                 utils.player.GetPlayer(socket)(world, socket, socket.thisPlayer.username).save = true
             }
             if (difPitch || difYaw) {
