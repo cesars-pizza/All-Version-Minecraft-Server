@@ -19,8 +19,6 @@ function SetBlock(world, socket, position, blockID) {
  * @param {boolean} doubleSet 
  */
 function AddBlockUpdate(world, socket, position, blockID, doubleSet, prevBlockID, scheduled) {
-    console.log(`Block update at (${position.x}, ${position.y}, ${position.z}) / ${prevBlockID} -> ${blockID}`)
-
     var blockIdentifier = blockID
     if (typeof(blockID) == "number") blockIdentifier = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID)
     var prevBlockIdentifier = prevBlockID
@@ -176,8 +174,6 @@ function SendNeighborChangedUpdate(world, socket, position, originPosition) {
 function ScheduleBlockUpdate(world, socket, position, blockID, prevBlockID, priority, doubleSet, delay) {
     if (blockID == prevBlockID) return
 
-    console.log(`Scheduled block update from ${prevBlockID} to ${blockID} at (${position.x}, ${position.y}, ${position.z}) in ${delay} ticks`)
-
     var buildIndex = utils.builds.GetBuild(socket)(world, Math.floor(position.x / 32), Math.floor(position.z / 32))
 
     if (typeof(blockID) == "number") blockID = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID)
@@ -185,7 +181,7 @@ function ScheduleBlockUpdate(world, socket, position, blockID, prevBlockID, prio
 
     if (buildIndex != -1 && buildIndex != undefined) {
         for (var i = 0; i < world.builds[buildIndex].scheduledBlockUpdates.length; i++) {
-            if (position.x == world.builds[buildIndex].scheduledBlockUpdates[i].position.x && position.y == world.builds[buildIndex].scheduledBlockUpdates[i].position.y && position.z == world.builds[buildIndex].scheduledBlockUpdates[i].position.z && world.builds[buildIndex].scheduledBlockUpdates[i].delay != 0) {console.log("Cancelled"); return}
+            if (position.x == world.builds[buildIndex].scheduledBlockUpdates[i].position.x && position.y == world.builds[buildIndex].scheduledBlockUpdates[i].position.y && position.z == world.builds[buildIndex].scheduledBlockUpdates[i].position.z && world.builds[buildIndex].scheduledBlockUpdates[i].delay != 0) {return}
         }
 
         world.builds[buildIndex].scheduledBlockUpdates.push({

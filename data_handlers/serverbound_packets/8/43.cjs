@@ -28,45 +28,9 @@ function ReadPacket(world, socket, data) {
         if (socket.disconnect == "" && !socket.thisPlayer.tick.teleportSelf) {
             var newPosition = {x: posX.value + 256 * socket.thisPlayer.classicWorldOffset.x, y: posY.value, z: posZ.value + 256 * socket.thisPlayer.classicWorldOffset.z}
             var newPositionShifted = {x: newPosition.x, y: newPosition.y - 1.59275, z: newPosition.z}
+            var newRotation = {pitch: (pitch.value / 255) * 360, yaw: ((yaw.value / 255) * 360) - 180}
 
-            var difX = socket.thisPlayer.position.x != newPositionShifted.x
-            var difY = socket.thisPlayer.position.y != newPositionShifted.y
-            var difZ = socket.thisPlayer.position.z != newPositionShifted.z
-            var difPitch = socket.thisPlayer.rotation.pitch != pitch.value
-            var difYaw = socket.thisPlayer.rotation.yaw != yaw.value
-
-            if (difX || difY || difZ) {
-                socket.thisPlayer.tick.position = {
-                    tick: true,
-                    x: newPositionShifted.x - socket.thisPlayer.position.x,
-                    y: newPositionShifted.y - socket.thisPlayer.position.y,
-                    z: newPositionShifted.z - socket.thisPlayer.position.z
-                }
-                utils.player.GetPlayer(socket)(world, socket, socket.thisPlayer.username).save = true
-            }
-            if (difPitch || difYaw) {
-                socket.thisPlayer.tick.rotation = true
-                utils.player.GetPlayer(socket)(world, socket, socket.thisPlayer.username).save = true
-            }
-
-            if (socket.thisPlayer.settings.showPlotInfo) {
-                var prevInBuild = utils.player.InBuildChunk(socket)(socket.thisPlayer.position)
-                var currInBuild = utils.player.InBuildChunk(socket)(newPositionShifted)
-                if (!prevInBuild && currInBuild) {
-                    var build = utils.builds.GetBuild(socket)(world, Math.floor(newPositionShifted.x / 32), Math.floor(newPositionShifted.z / 32))
-                    if (build != undefined && world.builds[build].creator != socket.thisPlayer.username) {
-                        var buildInfo = utils.builds.GetBuildInfo(socket)(world, socket, Math.floor(newPositionShifted.x / 32), Math.floor(newPositionShifted.z / 32))
-                        for (var i = 0; i < buildInfo.length; i++) {
-                            packetWriter.Classic.Message(socket)(socket, 0, buildInfo[i])
-                        }
-                    }
-                }
-            }
-
-            utils.player.PlayerCollisionFunctions(socket)(world, socket, newPositionShifted)
-
-            socket.thisPlayer.position = newPositionShifted
-            socket.thisPlayer.rotation = {pitch: pitch.value, yaw: yaw.value}
+            utils.player.SetPositionAndRotation(world, socket.thisPlayer, newPositionShifted, newRotation)
         }
     }
     

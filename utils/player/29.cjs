@@ -1,3 +1,4 @@
+const packet_writer = require("../../data_handlers/clientbound_packets/packet_writer.cjs");
 const { World, Socket, Position, Player } = require("../../data_structures.cjs");
 const utils = require("../utils.cjs");
 
@@ -352,4 +353,31 @@ function PlayerCollisionPressurePlateFunction(world, socket, block, blockPos, co
     }
 }
 
-module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithFullBlock, CollidingWithPressurePlate, CollidingWithChunkLayer, GetDirectionNESW, GetDirection16, GetDirection16Num, InBuildChunk, PlayerCollisionFunctions}
+/**
+ * @param {World} world 
+ * @param {Socket} socket 
+ * @param {Position} prevPosition 
+ * @param {Position} position 
+ * @param {Player} player 
+ */
+function DisplayBuildInfo(world, player, prevPosition, position) {
+    if (player.settings.showPlotInfo) {
+        var prevInBuild = utils.player.InBuildChunk(player.socket)(prevPosition)
+        var currInBuild = utils.player.InBuildChunk(player.socket)(position)
+        if (!prevInBuild && currInBuild) {
+            var build = utils.builds.GetBuild(player.socket)(world, Math.floor(position.x / 32), Math.floor(position.z / 32))
+            if (build != undefined && world.builds[build].creator != player.username) {
+                var buildInfo = utils.builds.GetBuildInfo(player.socket)(world, player.socket, Math.floor(position.x / 32), Math.floor(position.z / 32))
+                for (var i = 0; i < buildInfo.length; i++) {
+                    packet_writer.Classic.Message(player.socket)(player.socket, 0, buildInfo[i])
+                }
+            }
+        }
+    }
+}
+
+function SetPosition_Chunks() {
+
+}
+
+module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithFullBlock, CollidingWithPressurePlate, CollidingWithChunkLayer, GetDirectionNESW, GetDirection16, GetDirection16Num, InBuildChunk, PlayerCollisionFunctions, DisplayBuildInfo, SetPosition_Chunks}

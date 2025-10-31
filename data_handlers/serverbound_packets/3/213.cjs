@@ -37,10 +37,8 @@ function ReadPacket(world, socket, data) {
                                 z: Math.round(world.loadedPlayers[playerIndex].position.z - 0.5) + 0.5
                             }
 
-                            utils.world_packets.GenerateRenderDistance(socket)(world, socket, 10, Math.floor(newPosition.x / 16), Math.floor(newPosition.z / 16), Math.floor(socket.thisPlayer.position.x / 16), Math.floor(socket.thisPlayer.position.z / 16))
+                            utils.player.SetPosition(world, socket.thisPlayer, newPosition)
                             
-                            socket.thisPlayer.position = newPosition
-                            socket.thisPlayer.tick.position = true
                             socket.thisPlayer.tick.teleportSelf = true
                             socket.thisPlayer.tick.systemMessages.push(`Teleported to ${commandParts[1]}`)
                         } else socket.thisPlayer.tick.errorMessages.push(`${commandParts[1]} is not online.`)
@@ -64,10 +62,8 @@ function ReadPacket(world, socket, data) {
                                     z: plotPos.z * 32 + 15.5
                                 }
 
-                                utils.world_packets.GenerateRenderDistance(socket)(world, socket, 10, Math.floor(newPosition.x / 16), Math.floor(newPosition.z / 16), Math.floor(socket.thisPlayer.position.x / 16), Math.floor(socket.thisPlayer.position.z / 16))
-
-                                socket.thisPlayer.position = newPosition
-                                socket.thisPlayer.tick.position = true
+                                utils.player.SetPosition(world, socket.thisPlayer, newPosition)
+                                
                                 socket.thisPlayer.tick.teleportSelf = true
                                 socket.thisPlayer.tick.systemMessages.push(`Teleported to plot ${plotPos.x}, ${plotPos.z}`)
                             }

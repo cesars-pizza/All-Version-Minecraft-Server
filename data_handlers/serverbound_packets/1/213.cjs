@@ -25,37 +25,14 @@ function ReadPacket(world, socket, data) {
         if (socket.disconnect == "") {
             var hasOpenInstance = utils.player.HasOpenInstance(socket)(world, username.value)
             if (!hasOpenInstance) {
-                var thisUPVN = socket.thisPlayer.upvn
-                var thisUVNI = socket.thisPlayer.uvni
-                socket.thisPlayer = utils.player.GetPlayer(socket)(world, socket, username.value)
-                socket.thisPlayer.socket = socket
-                socket.thisPlayer.classicID = utils.player.GetClassicID(socket)(world, socket)
-                socket.thisPlayer.alphaID = utils.player.GetAlphaID(socket)(world, socket)
-                socket.thisPlayer.allowMovement = false
-                socket.thisPlayer.upvn = thisUPVN
-                socket.thisPlayer.uvni = thisUVNI
-                socket.thisPlayer.selectedRegistries = {
-                    block: utils.registry.block.GetBlockRegistry(world, socket.thisPlayer.uvni),
-                    item: utils.registry.item.GetItemRegistry(world, socket.thisPlayer.uvni)
-                }
-                socket.thisPlayer.digging = {
-                    blockPos: {x: 0, y: 0, z: 0},
-                    ticks: 0
-                }
-                socket.thisPlayer.otherPlayers = {}
-                socket.thisPlayer.floorChangeCooldown = 0
-                socket.thisPlayer.joinCount++
+                socket.thisPlayer = utils.player.InitializePlayer(world, socket.thisPlayer, socket, username.value)
 
-                if (utils.math.NegMod(socket.thisPlayer.position.x, 32) >= 16 && utils.math.NegMod(socket.thisPlayer.position.z, 32) >= 16) socket.thisPlayer.position = {
-                    x: Math.floor(socket.thisPlayer.position.x / 16) * 16 - 0.5,
-                    y: 2,
-                    z: Math.floor(socket.thisPlayer.position.z / 16) * 16 - 0.5,
-                }
                 if (!socket.thisPlayer.verified) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
                     
                     packetWriter.Alpha.Login_Response(socket)(world, socket, socket.thisPlayer.alphaID, world.config.serverName, world.config.serverStatus, 0, 0)
                     utils.world_packets.GenerateRenderDistance(socket)(world, socket, 10, Math.floor(socket.thisPlayer.position.x / 16), Math.floor(socket.thisPlayer.position.z / 16), undefined, undefined)
+                    
                     for (var i = 0; i < world.loadedPlayers.length; i++) {
                         socket.thisPlayer.otherPlayers[world.loadedPlayers[i].alphaID] = {
                             rendered: true,
@@ -68,7 +45,6 @@ function ReadPacket(world, socket, data) {
                         packetWriter.Alpha.Named_Entity_Spawn(socket)(socket, world.loadedPlayers[i].alphaID, world.loadedPlayers[i].username, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, world.loadedPlayers[i].inventory.held_item))
                     }
 
-                    socket.thisPlayer.tick = {spawn: true, position: {tick: false, x: 0, y: 0, z: 0}, rotation: false, heldItem: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
                     world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(socket.thisPlayer.username))
                     world.loadedPlayers.push(socket.thisPlayer)
 

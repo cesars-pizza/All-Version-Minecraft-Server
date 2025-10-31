@@ -10,6 +10,10 @@ var packetIdentifier = "Spawn Player"
  */
 function WritePacket(socket, playerID, playerName, position, rotation) {
     var adjustedPosition = position
+    var adjustedRotation = {
+        pitch: utils.math.NegMod((rotation.pitch / 360) * 255, 256),
+        yaw: utils.math.NegMod(((180 + rotation.yaw) / 360) * 255, 256)
+    }
     if (playerID == -1) {
         adjustedPosition = {
             x: utils.math.NegMod(position.x, 256),
@@ -31,8 +35,8 @@ function WritePacket(socket, playerID, playerName, position, rotation) {
         dataWriter.writeFixed5Short(socket, adjustedPosition.x),
         dataWriter.writeFixed5Short(socket, adjustedPosition.y + 1.59375),
         dataWriter.writeFixed5Short(socket, adjustedPosition.z),
-        dataWriter.writeUByte(socket, rotation.yaw),
-        dataWriter.writeUByte(socket, rotation.pitch)))
+        dataWriter.writeUByte(socket, adjustedRotation.yaw),
+        dataWriter.writeUByte(socket, adjustedRotation.pitch)))
 }
 
 module.exports = {WritePacket}

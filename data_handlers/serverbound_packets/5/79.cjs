@@ -59,13 +59,11 @@ function ReadPacket(world, socket, data) {
                             if (mode.value == 0 || validBlock) {
                                 for (var i = 0; i < world.loadedPlayers.length; i++) {
                                     if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithChunkLayer(socket)(socket, world.loadedPlayers[i].position, {x: chunkX, y: 1, z: chunkZ}) == "inside") {
-                                        world.loadedPlayers[i].position = {
+                                        utils.player.SetPosition(world, world.loadedPlayers[i], {
                                             x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
                                             y: 2,
                                             z: Math.floor(world.loadedPlayers[i].position.z / 16) * 16 - 0.5,
-                                        }
-                                        world.loadedPlayers[i].save = true
-                                        world.loadedPlayers[i].tick.position = true
+                                        })
                                         world.loadedPlayers[i].tick.systemMessages.push("You have been moved for intruding block placement")
                                         world.loadedPlayers[i].tick.teleportSelf = true
                                     }
@@ -79,13 +77,11 @@ function ReadPacket(world, socket, data) {
                                     utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, {x: blockPos.x, y: blockPos.y - 1, z: blockPos.z}, "smooth_stone_slab[type=double]", false, "smooth_stone_slab")
                                     for (var i = 0; i < world.loadedPlayers.length; i++) {
                                         if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(world, socket, world.loadedPlayers[i].position, blockPos) != "none") {
-                                            world.loadedPlayers[i].position = {
+                                            utils.player.SetPosition(world, world.loadedPlayers[i], {
                                                 x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
                                                 y: 2,
                                                 z: Math.floor(world.loadedPlayers[i].position.z / 16) * 16 - 0.5,
-                                            }
-                                            world.loadedPlayers[i].save = true
-                                            world.loadedPlayers[i].tick.position = true
+                                            })
                                             world.loadedPlayers[i].tick.systemMessages.push("You have been moved for intruding block placement")
                                             world.loadedPlayers[i].tick.teleportSelf = true
                                         }
@@ -94,13 +90,11 @@ function ReadPacket(world, socket, data) {
                                     utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, blockPos, blockID.value, false, 0)
                                     for (var i = 0; i < world.loadedPlayers.length; i++) {
                                         if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(world, socket, world.loadedPlayers[i].position, blockPos) != "none") {
-                                            world.loadedPlayers[i].position = {
+                                            utils.player.SetPosition(world, world.loadedPlayers[i], {
                                                 x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
                                                 y: 2,
                                                 z: Math.floor(world.loadedPlayers[i].position.z / 16) * 16 - 0.5,
-                                            }
-                                            world.loadedPlayers[i].save = true
-                                            world.loadedPlayers[i].tick.position = true
+                                            })
                                             world.loadedPlayers[i].tick.systemMessages.push("You have been moved for intruding block placement")
                                             world.loadedPlayers[i].tick.teleportSelf = true
                                         }

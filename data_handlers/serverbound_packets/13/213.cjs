@@ -30,16 +30,7 @@ function ReadPacket(world, socket, data) {
         var onGround = dataReader.readBool(socket, data, rotation.pitch.nextPos)
 
         var newPosition = {x: position.x.value, y: position.y.value, z: position.z.value}
-        var newPositionShifted = newPosition
-
-        var difX = socket.thisPlayer.position.x != newPositionShifted.x
-        var difY = socket.thisPlayer.position.y != newPositionShifted.y
-        var difZ = socket.thisPlayer.position.z != newPositionShifted.z
-        var difPitch = socket.thisPlayer.rotation.pitch != rotation.pitch.value
-        var difYaw = socket.thisPlayer.rotation.yaw != rotation.yaw.value
-
-        var prevChunk = {x: Math.floor(socket.thisPlayer.position.x / 16), z: Math.floor(socket.thisPlayer.position.z / 16)}
-        var newChunk = {x: Math.floor(newPositionShifted.x / 16), z: Math.floor(newPositionShifted.z / 16)}
+        var newRotation = {pitch: rotation.pitch.value, yaw: rotation.yaw.value}
 
         if (socket.disconnect == "" && !socket.thisPlayer.tick.teleportSelf && socket.thisPlayer.allowMovement) {
             if ((position.x.value == 8.5 && position.y.value == 65 && position.z.value == 8.5) || position.y.value < 1) {
@@ -127,43 +118,10 @@ function ReadPacket(world, socket, data) {
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("spawner")) packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "spawner"), 64)
                     if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.block.includes("oak_stairs")) packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, "oak_stairs"), 64)
                 }
-                return
+                return splitIndex
             }
 
-            if (difX || difY || difZ) {
-                socket.thisPlayer.tick.position = socket.thisPlayer.tick.position = {
-                    tick: true,
-                    x: newPositionShifted.x - socket.thisPlayer.position.x,
-                    y: newPositionShifted.y - socket.thisPlayer.position.y,
-                    z: newPositionShifted.z - socket.thisPlayer.position.z
-                }
-                utils.player.GetPlayer(socket)(world, socket, socket.thisPlayer.username).save = true
-            }
-            if (difPitch || difYaw) {
-                socket.thisPlayer.tick.rotation = true
-                utils.player.GetPlayer(socket)(world, socket, socket.thisPlayer.username).save = true
-            }
-
-            if (difX || difZ) {
-                if (socket.thisPlayer.settings.showPlotInfo) {
-                    var prevInBuild = utils.player.InBuildChunk(socket)(socket.thisPlayer.position)
-                    var currInBuild = utils.player.InBuildChunk(socket)(newPositionShifted)
-                    if (!prevInBuild && currInBuild) {
-                        var build = utils.builds.GetBuild(socket)(world, Math.floor(newPositionShifted.x / 32), Math.floor(newPositionShifted.z / 32))
-                        if (build != undefined && world.builds[build].creator != socket.thisPlayer.username) {
-                            var buildInfo = utils.builds.GetBuildInfo(socket)(world, socket, Math.floor(newPositionShifted.x / 32), Math.floor(newPositionShifted.z / 32))
-                            for (var i = 0; i < buildInfo.length; i++) {
-                                packetWriter.Alpha.Chat_Message(socket)(world, socket, buildInfo[i])
-                            }
-                        }
-                    }
-                }
-            }
-
-            utils.player.PlayerCollisionFunctions(socket)(world, socket, newPositionShifted)
-
-            socket.thisPlayer.position = newPositionShifted
-            socket.thisPlayer.rotation = {pitch: rotation.pitch.value, yaw: rotation.yaw.value}
+            utils.player.SetPositionAndRotation(world, socket.thisPlayer, newPosition, newRotation)
         }
     }
 

@@ -49,9 +49,8 @@ function ReadPacket(world, socket, data) {
                                 z: Math.floor(newPosition.z / 256)
                             }
 
-                            socket.thisPlayer.position = newPosition
-                            socket.thisPlayer.classicWorldOffset = newClassicWorldOffset
-                            socket.thisPlayer.tick.position = true
+                            utils.player.SetPosition(world, socket.thisPlayer, newPosition)
+
                             socket.thisPlayer.tick.teleportSelf = true
                             socket.thisPlayer.tick.systemMessages.push(`Teleported to ${commandParts[1]}`)
                             if (classicWorldOffset.x != newClassicWorldOffset.x || classicWorldOffset.z != newClassicWorldOffset.z) {
@@ -88,9 +87,8 @@ function ReadPacket(world, socket, data) {
                                     z: Math.floor(newPosition.z / 256)
                                 }
 
-                                socket.thisPlayer.position = newPosition
-                                socket.thisPlayer.classicWorldOffset = newClassicWorldOffset
-                                socket.thisPlayer.tick.position = true
+                                utils.player.SetPosition(world, socket.thisPlayer, newPosition)
+                                
                                 socket.thisPlayer.tick.teleportSelf = true
                                 socket.thisPlayer.tick.systemMessages.push(`Teleported to plot ${plotPos.x}, ${plotPos.z}`)
                                 if (classicWorldOffset.x != newClassicWorldOffset.x || classicWorldOffset.z != newClassicWorldOffset.z) {

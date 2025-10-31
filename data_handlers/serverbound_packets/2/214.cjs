@@ -13,58 +13,7 @@ var packetIdentifier = "Handshake"
  * @param {Buffer} data 
  */
 function ReadPacket(world, socket, data) {
-    var packet = dataReader.readUByte(socket, data, 0)
-    var username = dataReader.readString(socket, data, packet.nextPos)
-    
-    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
-    
-    if (username.value == undefined) return -999
-    else {
-        if (socket.disconnect == "") {
-            var hasOpenInstance = utils.player.HasOpenInstance(socket)(world, username.value)
-            if (!hasOpenInstance) {
-                var thisUPVN = socket.thisPlayer.upvn
-                var thisUVNI = socket.thisPlayer.uvni
-                socket.thisPlayer = utils.player.GetPlayer(socket)(world, socket, username.value)
-                socket.thisPlayer.socket = socket
-                socket.thisPlayer.classicID = utils.player.GetClassicID(socket)(world, socket)
-                socket.thisPlayer.alphaID = utils.player.GetAlphaID(socket)(world, socket)
-                socket.thisPlayer.allowMovement = false
-                socket.thisPlayer.upvn = thisUPVN
-                socket.thisPlayer.uvni = thisUVNI
-                socket.thisPlayer.selectedRegistries = {
-                    block: utils.registry.block.GetBlockRegistry(world, socket.thisPlayer.uvni),
-                    item: utils.registry.item.GetItemRegistry(world, socket.thisPlayer.uvni)
-                }
-                if (utils.player.InBuildChunk(socket)(socket.thisPlayer.position)) socket.thisPlayer.position = {
-                    x: Math.floor(socket.thisPlayer.position.x / 16) * 16 - 0.5,
-                    y: 2,
-                    z: Math.floor(socket.thisPlayer.position.z / 16) * 16 - 0.5,
-                }
-                if (!socket.thisPlayer.verified) {
-                    socket.thisPlayer.position.y += 0
-                    world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
-                    
-                    packetWriter.Alpha.Login_Response(socket)(world, socket, socket.thisPlayer.alphaID, world.config.serverName, world.config.serverStatus, 0, 0)
-                    utils.world_packets.GenerateRenderDistance(socket)(world, socket, 10, Math.floor(socket.thisPlayer.position.x / 16), Math.floor(socket.thisPlayer.position.z / 16), undefined, undefined)
-                    socket.thisPlayer.tick = {spawn: true, position: false, rotation: false, messages: [], systemMessages: [], errorMessages: [], teleportSelf: false, teleportOthers: false}
-                    world.loadingPlayerNames.splice(world.loadingPlayerNames.indexOf(socket.thisPlayer.username))
-                    world.loadedPlayers.push(socket.thisPlayer)
-
-                    socket.thisPlayer.inWorld = true
-                } else {
-                    socket.setDisconnect("unverified")
-                    utils.disconnect(socket)(world, socket)
-                }
-            } else {
-                socket.setDisconnect("multipleInstances")
-                socket.thisPlayer.username = username.value
-                utils.disconnect(socket)(world, socket)
-            }
-        } else utils.disconnect(socket)(world, socket)
-
-        return data.length - (packet.length + username.length)
-    }
+    // Recopy when starting Alpha 1.0.16s
 }
 
 module.exports = {ReadPacket}

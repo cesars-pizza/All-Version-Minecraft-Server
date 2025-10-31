@@ -1,4 +1,5 @@
-const { World, Socket, Position } = require("../../data_structures.cjs");
+const { World, Socket, Position, Player, Rotation } = require("../../data_structures.cjs");
+const utils = require('../utils.cjs')
 
 /**
  * @param {World} world 
@@ -96,4 +97,51 @@ function PlayerCollisionFunctions(socket) {
     return require('./29.cjs').PlayerCollisionFunctions
 }
 
-module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithFullBlock, CollidingWithPressurePlate, CollidingWithChunkLayer, GetDirectionNESW, GetDirection16, GetDirection16Num, InBuildChunk, PlayerCollisionFunctions}
+/**
+ * @param {Player} player 
+ * @param {Position} position 
+ */
+function SetPosition(world, player, position) {
+    return require('./universal.cjs').SetPosition(world, player, position)
+}
+
+/**
+ * @param {Player} player 
+ * @param {Rotation} rotation 
+ */
+function SetRotation(world, player, rotation) {
+    return require('./universal.cjs').SetRotation(world, player, rotation)
+}
+
+/**
+ * @param {Player} player 
+ * @param {Position} position 
+ * @param {Rotation} rotation 
+ */
+function SetPositionAndRotation(world, player, position, rotation) {
+    return require('./universal.cjs').SetPositionAndRotation(world, player, position, rotation)
+}
+
+function SetPosition_Chunks(socket) {
+    if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').SetPosition_Chunks
+    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').SetPosition_Chunks
+    else {
+        socket.log(`ERR: Cannot Run Set Position (Chunks) for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
+        return () => {}
+    }
+}
+
+function DisplayBuildInfo(socket) {
+    if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').DisplayBuildInfo
+    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').DisplayBuildInfo
+    else {
+        socket.log(`ERR: Cannot Run Display Build Info for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
+        return () => {}
+    }
+}
+
+function InitializePlayer(world, player, socket, username) {
+    return require('./universal.cjs').InitializePlayer(world, player, socket, username)
+}
+
+module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithFullBlock, CollidingWithPressurePlate, CollidingWithChunkLayer, GetDirectionNESW, GetDirection16, GetDirection16Num, InBuildChunk, PlayerCollisionFunctions, SetPosition, SetPosition_Chunks, SetPositionAndRotation, SetRotation, DisplayBuildInfo, InitializePlayer}
