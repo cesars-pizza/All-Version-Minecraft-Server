@@ -66,7 +66,7 @@ function ReadPacket(world, socket, data) {
                         var chunkX = Math.floor(facingBlock.x / 16)
                         var chunkZ = Math.floor(facingBlock.z / 16)
 
-                        if (utils.player.CollidingWithChunkLayer(socket)(socket, socket.thisPlayer.position, {x: chunkX, y: 1, z: chunkZ}) != "inside") {
+                        if (utils.collisions.PlayerCollidingWithBuildFloor(socket)(socket, socket.thisPlayer.position, {x: chunkX, y: 1, z: chunkZ}) != "inside") {
                             if (validBlock) {
                                 utils.tick_actions.set_block.AddFloorUpdate(socket)(world, socket, facingBlock, placedName, false)
                                 if (facingBlock.y == 1) updateSuccessful = true
@@ -74,8 +74,8 @@ function ReadPacket(world, socket, data) {
 
                             if (validBlock) {
                                 for (var i = 0; i < world.loadedPlayers.length; i++) {
-                                    if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithChunkLayer(socket)(socket, world.loadedPlayers[i].position, {x: chunkX, y: 1, z: chunkZ}) == "inside") {
-                                        utils.player.SetPosition(world, world.loadedPlayers[i], {
+                                    if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.collisions.PlayerCollidingWithBuildFloor(socket)(socket, world.loadedPlayers[i].position, {x: chunkX, y: 1, z: chunkZ}) == "inside") {
+                                        utils.player.set.Position(world, world.loadedPlayers[i], {
                                             x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
                                             y: 2,
                                             z: Math.floor(world.loadedPlayers[i].position.z / 16) * 16 - 0.5,
@@ -92,21 +92,21 @@ function ReadPacket(world, socket, data) {
                             if (validBlock) {
                                 if (face.value == 1) {
                                     if (originalBlock.block == placedName) {
-                                        if (utils.player.CollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, originalBlock) != "inside") {
+                                        if (utils.collisions.PlayerCollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, originalBlock) != "inside") {
                                             utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, originalBlock, placedName + "[type=double]", false, originalBlock.block)
                                             if (facingBlockReplacable) packetWriter.Alpha.Block_Change(socket)(world, socket, facingBlock, 0, 0, false)
                                             updateSuccessful = true
                                             giveItem = true
                                         }
                                     } else {
-                                        if (facingBlockReplacable && utils.player.CollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, facingBlock) != "inside") {
+                                        if (facingBlockReplacable && utils.collisions.PlayerCollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                             utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                             updateSuccessful = true
                                             giveItem = true
                                         }
                                     }
                                 } else {
-                                    if (utils.player.CollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, facingBlock) != "inside") {
+                                    if (utils.collisions.PlayerCollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                         if (facingBlock.block == placedName) {
                                             utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + "[type=double]", false, facingBlock.block)
                                             updateSuccessful = true
@@ -138,7 +138,7 @@ function ReadPacket(world, socket, data) {
                                 }
                             } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
                         } else if (utils.tag(world, placedName, "stairs") || placedName == "chest" || placedName == "furnace") {
-                            var playerDirection = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw)
+                            var playerDirection = utils.player.GetDirectionNESW(socket.thisPlayer.rotation.yaw)
 
                             if (facingBlockReplacable) {
                                 if (validBlock) {
@@ -150,7 +150,7 @@ function ReadPacket(world, socket, data) {
                         } else if (placedName == "ladder") {
                             var playerDirection = "???"
 
-                            if (face.value == 0 || face.value == 1) playerDirection = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw + 180)
+                            if (face.value == 0 || face.value == 1) playerDirection = utils.player.GetDirectionNESW(socket.thisPlayer.rotation.yaw + 180)
                             else {
                                 if (face.value == 2) playerDirection = "north"
                                 else if (face.value == 3) playerDirection = "south"
@@ -166,7 +166,7 @@ function ReadPacket(world, socket, data) {
                             } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
                             giveItem = true
                         } else if (placedName == "rail") {
-                            var playerDirection = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw)
+                            var playerDirection = utils.player.GetDirectionNESW(socket.thisPlayer.rotation.yaw)
 
                             if (playerDirection == "east" || playerDirection == "west") playerDirection = "east_west"
                             else playerDirection = "north_south"
@@ -180,7 +180,7 @@ function ReadPacket(world, socket, data) {
                             }
                         } else if (placedName == "lever") {
                             var playerDirectionFlipped = face.value != 1
-                            var playerDirection = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw + (playerDirectionFlipped ? 180 : 0))
+                            var playerDirection = utils.player.GetDirectionNESW(socket.thisPlayer.rotation.yaw + (playerDirectionFlipped ? 180 : 0))
                             
                             var playerWall = "north"
                             if (face.value == 3) playerWall = "south"
@@ -199,7 +199,7 @@ function ReadPacket(world, socket, data) {
                                 giveItem = true
                             }
                         } else if (placedName == "stone_button") {
-                            var playerDirection = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw + 180)
+                            var playerDirection = utils.player.GetDirectionNESW(socket.thisPlayer.rotation.yaw + 180)
                             
                             var playerWall = "north"
                             if (face.value == 3) playerWall = "south"
@@ -280,7 +280,7 @@ function ReadPacket(world, socket, data) {
                                         utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, `oak_wall_sign[facing=${playerDirection}]`, true, facingBlock.block)
                                         updateSuccessful = true
                                     } else {
-                                        var playerDirection = utils.player.GetDirection16Num(socket)(socket, socket.thisPlayer.rotation.yaw + 180)
+                                        var playerDirection = utils.player.GetDirection16Num(socket.thisPlayer.rotation.yaw + 180)
 
                                         utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, `oak_sign[rotation=${playerDirection}]`, true, facingBlock.block)
                                         updateSuccessful = true
@@ -295,7 +295,7 @@ function ReadPacket(world, socket, data) {
                                     if (utils.tag(world, aboveFacingBlock, "replaceable")) {
                                         giveItem = true
                                         if (facingBlock.y < 63) {
-                                            var playerFacing = utils.player.GetDirectionNESW(socket)(socket, socket.thisPlayer.rotation.yaw)
+                                            var playerFacing = utils.player.GetDirectionNESW(socket.thisPlayer.rotation.yaw)
 
                                             var connectingDoorBlock = "air"
                                             if (playerFacing == "north") connectingDoorBlock = utils.worldgen.GetBlock(socket)(world, socket, {x: facingBlock.x - 1, y: facingBlock.y, z: facingBlock.z})
@@ -331,7 +331,7 @@ function ReadPacket(world, socket, data) {
                                 }
                                 else {
                                     giveItem = true
-                                    if (facingBlockReplacable && utils.player.CollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, facingBlock) != "inside") {
+                                    if (facingBlockReplacable && utils.collisions.PlayerCollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                         utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                         updateSuccessful = true
                                     }
@@ -346,7 +346,7 @@ function ReadPacket(world, socket, data) {
                         } else if (placedName == "furnace_minecart") {
 
                         } else {
-                            if (facingBlockReplacable && utils.player.CollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, facingBlock) != "inside") {
+                            if (facingBlockReplacable && utils.collisions.PlayerCollidingWithBlock(socket)(world, socket, socket.thisPlayer.position, facingBlock) != "inside") {
                                 if (validBlock) {
                                     utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName, false, facingBlock.block)
                                     updateSuccessful = true
@@ -372,8 +372,8 @@ function ReadPacket(world, socket, data) {
             } else {
                 if (facingBlock.y > 1) {
                     for (var i = 0; i < world.loadedPlayers.length; i++) {
-                        if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithBlock(socket)(world, socket, world.loadedPlayers[i].position, facingBlock) != "none") {
-                            utils.player.SetPosition(world, world.loadedPlayers[i], {
+                        if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.collisions.PlayerCollidingWithBlock(socket)(world, socket, world.loadedPlayers[i].position, facingBlock) != "none") {
+                            utils.player.set.Position(world, world.loadedPlayers[i], {
                                 x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
                                 y: 2,
                                 z: Math.floor(world.loadedPlayers[i].position.z / 16) * 16 - 0.5

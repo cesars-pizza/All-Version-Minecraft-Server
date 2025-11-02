@@ -37,7 +37,7 @@ function ReadPacket(world, socket, data) {
                                 z: Math.round(world.loadedPlayers[playerIndex].position.z - 0.5) + 0.5
                             }
 
-                            utils.player.SetPosition(world, socket.thisPlayer, newPosition)
+                            utils.player.set.Position(world, socket.thisPlayer, newPosition)
                             
                             socket.thisPlayer.tick.teleportSelf = true
                             socket.thisPlayer.tick.systemMessages.push(`Teleported to ${commandParts[1]}`)
@@ -62,7 +62,7 @@ function ReadPacket(world, socket, data) {
                                     z: plotPos.z * 32 + 15.5
                                 }
 
-                                utils.player.SetPosition(world, socket.thisPlayer, newPosition)
+                                utils.player.set.Position(world, socket.thisPlayer, newPosition)
                                 
                                 socket.thisPlayer.tick.teleportSelf = true
                                 socket.thisPlayer.tick.systemMessages.push(`Teleported to plot ${plotPos.x}, ${plotPos.z}`)

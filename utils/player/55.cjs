@@ -88,4 +88,4 @@ function GeneratePlayer(world, socket, username) {
     return player
 }
 
-module.exports = {GetPlayer, GetClassicID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithChunkLayer}
+module.exports = {GeneratePlayer}

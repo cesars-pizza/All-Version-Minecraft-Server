@@ -30,7 +30,7 @@ function ReadPacket(world, socket, data) {
             var newPositionShifted = {x: newPosition.x + 0.015625, y: newPosition.y - 1.59275, z: newPosition.z + 0.015625}
             var newRotation = {pitch: (pitch.value / 255) * 360, yaw: ((yaw.value / 255) * 360) - 180}
 
-            utils.player.SetPositionAndRotation(world, socket.thisPlayer, newPositionShifted, newRotation)
+            utils.player.set.PositionAndRotation(world, socket.thisPlayer, newPositionShifted, newRotation)
         }
     }
     

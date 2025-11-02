@@ -86,8 +86,10 @@ function StartServer() {
         }
         world.loadingPlayerNames.push("")
 
-        socket.on('data', (data) => {
-            ReadPacket(socket, data)
+        socket.on('data', async (data) => {
+            socket.pause()
+            await ReadPacket(socket, data)
+            socket.resume()
         });
 
         socket.on('end', () => {
@@ -285,7 +287,7 @@ function KeepAlive() {
  * @param {Socket} socket 
  * @param {Buffer} data
  */
-function ReadPacket(socket, data) {
+async function ReadPacket(socket, data) {
     if (socket.dataBuffer.length > 0) data = Buffer.from(Array.from(socket.dataBuffer).concat(Array.from(data)))
     socket.dataBuffer = []
 
@@ -311,6 +313,8 @@ function ReadPacket(socket, data) {
     } else {
         socket.log("ERR: Socket Unreadable")
     }
+
+    return
 }
 
 /**

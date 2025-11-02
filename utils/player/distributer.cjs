@@ -1,33 +1,13 @@
 const { World, Socket, Position, Player, Rotation } = require("../../data_structures.cjs");
-const utils = require('../utils.cjs')
 
-/**
- * @param {World} world 
- * @param {string} username 
- */
-function GetPlayer(socket) {
-    return require('./29.cjs').GetPlayer
+function InitializePlayer(world, player, socket, username) {
+    return require('./universal.cjs').InitializePlayer(world, player, socket, username)
 }
 
-/**
- * @param {World} world 
- */
-function GetClassicID(socket) {
-    return require('./29.cjs').GetClassicID
+function GetSavedPlayerData(world, socket, username) {
+    return require('./universal.cjs').GetSavedPlayerData(world, socket, username)
 }
 
-/**
- * @param {World} world 
- */
-function GetAlphaID(socket) {
-    return require('./29.cjs').GetAlphaID
-}
-
-/**
- * @param {World} world 
- * @param {Socket} socket 
- * @param {string} username 
- */
 function GeneratePlayer(socket) {
     if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 1) return require('./29.cjs').GeneratePlayer
     if (socket.thisPlayer.upvn == 2) return require('./51.cjs').GeneratePlayer
@@ -38,12 +18,45 @@ function GeneratePlayer(socket) {
     }
 }
 
-/**
- * @param {World} world 
- * @param {string} username 
- */
-function HasOpenInstance(socket) {
+function HasOpenInstance() {
     return require('./29.cjs').HasOpenInstance
+}
+
+const getID = {
+    Classic: (world, socket) => {
+        return require('./universal.cjs').getID.Classic(world, socket)
+    },
+
+    Alpha: (world, socket) => {
+        return require('./universal.cjs').getID.Alpha(world, socket)
+    }
+}
+
+const set = {
+    Position: (world, player, position, ignoreWorldGen) => {
+        return require('./universal.cjs').set.Position(world, player, position, ignoreWorldGen)
+    },
+
+    Rotation: (world, player, rotation) => {
+        return require('./universal.cjs').set.Rotation(world, player, rotation)
+    },
+
+    PositionAndRotation: (world, player, position, rotation) => {
+        return require('./universal.cjs').set.PositionAndRotation(world, player, position, rotation)
+    },
+
+    Position_Chunks: (socket) => {
+        if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').set.Position_Chunks
+        if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').set.Position_Chunks
+        else {
+            socket.log(`ERR: Cannot Run Set Position (Chunks) for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
+            return () => {}
+        }
+    }
+}
+
+function DisplayBuildInfo(world, player, prevPosition, position) {
+    return require('./universal.cjs').DisplayBuildInfo(world, player, prevPosition, position)
 }
 
 /**
@@ -77,18 +90,6 @@ function CollidingWithChunkLayer(socket) {
     }
 }
 
-function GetDirectionNESW(socket) {
-    return require('./29.cjs').GetDirectionNESW
-}
-
-function GetDirection16(socket) {
-    return require('./29.cjs').GetDirection16
-}
-
-function GetDirection16Num(socket) {
-    return require('./29.cjs').GetDirection16Num
-}
-
 function InBuildChunk(socket) {
     return require('./29.cjs').InBuildChunk
 }
@@ -97,51 +98,7 @@ function PlayerCollisionFunctions(socket) {
     return require('./29.cjs').PlayerCollisionFunctions
 }
 
-/**
- * @param {Player} player 
- * @param {Position} position 
- */
-function SetPosition(world, player, position) {
-    return require('./universal.cjs').SetPosition(world, player, position)
+module.exports = {
+    InitializePlayer, GetSavedPlayerData, GeneratePlayer, HasOpenInstance, getID, set, DisplayBuildInfo,
+    CollidingWithBlock, CollidingWithChunkLayer, CollidingWithFullBlock, CollidingWithPressurePlate, InBuildChunk, PlayerCollisionFunctions
 }
-
-/**
- * @param {Player} player 
- * @param {Rotation} rotation 
- */
-function SetRotation(world, player, rotation) {
-    return require('./universal.cjs').SetRotation(world, player, rotation)
-}
-
-/**
- * @param {Player} player 
- * @param {Position} position 
- * @param {Rotation} rotation 
- */
-function SetPositionAndRotation(world, player, position, rotation) {
-    return require('./universal.cjs').SetPositionAndRotation(world, player, position, rotation)
-}
-
-function SetPosition_Chunks(socket) {
-    if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').SetPosition_Chunks
-    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').SetPosition_Chunks
-    else {
-        socket.log(`ERR: Cannot Run Set Position (Chunks) for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
-        return () => {}
-    }
-}
-
-function DisplayBuildInfo(socket) {
-    if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').DisplayBuildInfo
-    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').DisplayBuildInfo
-    else {
-        socket.log(`ERR: Cannot Run Display Build Info for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
-        return () => {}
-    }
-}
-
-function InitializePlayer(world, player, socket, username) {
-    return require('./universal.cjs').InitializePlayer(world, player, socket, username)
-}
-
-module.exports = {GetPlayer, GetClassicID, GetAlphaID, GeneratePlayer, HasOpenInstance, CollidingWithBlock, CollidingWithFullBlock, CollidingWithPressurePlate, CollidingWithChunkLayer, GetDirectionNESW, GetDirection16, GetDirection16Num, InBuildChunk, PlayerCollisionFunctions, SetPosition, SetPosition_Chunks, SetPositionAndRotation, SetRotation, DisplayBuildInfo, InitializePlayer}

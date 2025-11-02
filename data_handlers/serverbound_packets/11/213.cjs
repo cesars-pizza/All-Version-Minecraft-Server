@@ -33,7 +33,7 @@ function ReadPacket(world, socket, data) {
                 return
             }
 
-            utils.player.SetPosition(world, socket.thisPlayer, newPosition)
+            utils.player.set.Position(world, socket.thisPlayer, newPosition)
         }
     }
     

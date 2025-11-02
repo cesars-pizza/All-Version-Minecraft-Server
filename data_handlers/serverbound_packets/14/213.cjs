@@ -131,7 +131,7 @@ function ReadPacket(world, socket, data) {
                         var chunkX = Math.floor(blockPos.x / 16)
                         var chunkZ = Math.floor(blockPos.z / 16)
 
-                        if (socket.thisPlayer.floorChangeCooldown == 0 && utils.player.CollidingWithChunkLayer(socket)(socket, socket.thisPlayer.position, {x: chunkX, y: 1, z: chunkZ}) != "inside") {
+                        if (socket.thisPlayer.floorChangeCooldown == 0 && utils.collisions.PlayerCollidingWithBuildFloor(socket)(socket, socket.thisPlayer.position, {x: chunkX, y: 1, z: chunkZ}) != "inside") {
                             socket.thisPlayer.floorChangeCooldown = 5
                             
                             var floorID = world.universalRegistries.block.indexOf(world.builds[hitBuildIndex].floor)
@@ -141,8 +141,8 @@ function ReadPacket(world, socket, data) {
                             if (blockPos.y == 1) updateSuccessful = true
 
                             for (var i = 0; i < world.loadedPlayers.length; i++) {
-                                if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.player.CollidingWithChunkLayer(socket)(socket, world.loadedPlayers[i].position, {x: chunkX, y: 1, z: chunkZ}) == "inside") {
-                                    utils.player.SetPosition(world, world.loadedPlayers[i], {
+                                if (world.loadedPlayers[i].username != socket.thisPlayer.username && utils.collisions.PlayerCollidingWithBuildFloor(socket)(socket, world.loadedPlayers[i].position, {x: chunkX, y: 1, z: chunkZ}) == "inside") {
+                                    utils.player.set.Position(world, world.loadedPlayers[i], {
                                         x: Math.floor(world.loadedPlayers[i].position.x / 16) * 16 - 0.5,
                                         y: 2,
                                         z: Math.floor(world.loadedPlayers[i].position.z / 16) * 16 - 0.5,

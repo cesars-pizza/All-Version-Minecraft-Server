@@ -11,17 +11,17 @@ function GetBuildInfo(world, socket, x, z) {
     var build = utils.builds.GetBuild(socket)(world, x, z)
 
     if (build == undefined) return [
-        `§cPlot ${x}, ${z}: Owned by Unknown`,
-        `§cCreated: Unknown`,
-        `§cModified: Unknown`,
-        `§cVersion: Unknown`
+        `Plot ${x}, ${z}: Owned by Unknown`,
+        `Created: Unknown`,
+        `Modified: Unknown`,
+        `Version: Unknown`
     ]
     else {
         return [
-            `§bPlot ${x}, ${z}: Owned by ${world.builds[build].creator}`,
-            `§bCreated: ${new Date(world.builds[build].created).toLocaleString()}`,
-            `§bModified: ${new Date(world.builds[build].lastModified).toLocaleString()}`,
-            `§bVersion: ${utils.registry.version.GetVersion(world, world.builds[build].uvni).name}`
+            `Plot ${x}, ${z}: Owned by ${world.builds[build].creator}`,
+            `Created: ${new Date(world.builds[build].created).toLocaleString()}`,
+            `Modified: ${new Date(world.builds[build].lastModified).toLocaleString()}`,
+            `Version: ${utils.registry.version.GetVersion(world, world.builds[build].uvni).name}`
         ]
     }
 }

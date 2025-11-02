@@ -121,7 +121,7 @@ function ReadPacket(world, socket, data) {
                 return splitIndex
             }
 
-            utils.player.SetPositionAndRotation(world, socket.thisPlayer, newPosition, newRotation)
+            utils.player.set.PositionAndRotation(world, socket.thisPlayer, newPosition, newRotation)
         }
     }
 

@@ -23,7 +23,7 @@ function ReadPacket(world, socket, data) {
     if (isNaN(protocolVersion.value) || username.value == undefined || password.value == undefined) return -999
     else {
         if (socket.disconnect == "") {
-            var hasOpenInstance = utils.player.HasOpenInstance(socket)(world, username.value)
+            var hasOpenInstance = utils.player.HasOpenInstance(world, username.value)
             if (!hasOpenInstance) {
                 socket.thisPlayer = utils.player.InitializePlayer(world, socket.thisPlayer, socket, username.value)
 

@@ -11,8 +11,8 @@ function CollidingWithBlock(world, socket, playerPos, blockPos, block) {
     var playerWidth = 0.59999998
     var playerHeight = 1.69999998
 
-    if (utils.tag(world, block, "pressure_plates")) return utils.player.CollidingWithPressurePlate({})(playerPos, playerHeight, playerWidth, blockPos)
-    else return utils.player.CollidingWithFullBlock({})(playerPos, playerHeight, playerWidth, blockPos)
+    if (utils.tag(world, block, "pressure_plates")) return utils.collisions.CollidingWithPressurePlate(playerPos, playerHeight, playerWidth, blockPos)
+    else return utils.collisions.CollidingWithFullBlock(playerPos, playerHeight, playerWidth, blockPos)
 }
 
 function CollidingWithChunkLayer(socket, playerPos, layerPos) {
@@ -122,36 +122,15 @@ function GeneratePlayer(world, socket, username) {
     return player
 }
 
-/**
- * @param {World} world 
- * @param {Socket} socket 
- * @param {Position} prevPosition 
- * @param {Position} position 
- * @param {Player} player 
- */
-function DisplayBuildInfo(world, player, prevPosition, position) {
-    if (player.settings.showPlotInfo) {
-        var prevInBuild = utils.player.InBuildChunk(player.socket)(prevPosition)
-        var currInBuild = utils.player.InBuildChunk(player.socket)(position)
-        if (!prevInBuild && currInBuild) {
-            var build = utils.builds.GetBuild(player.socket)(world, Math.floor(position.x / 32), Math.floor(position.z / 32))
-            if (build != undefined && world.builds[build].creator != player.username) {
-                var buildInfo = utils.builds.GetBuildInfo(player.socket)(world, player.socket, Math.floor(position.x / 32), Math.floor(position.z / 32))
-                for (var i = 0; i < buildInfo.length; i++) {
-                    packet_writer.Alpha.Chat_Message(player.socket)(world, player.socket, buildInfo[i])
-                }
-            }
+const set = {
+    Position_Chunks: (world, player, prevPosition, position) => {
+        var prevChunk = {x: Math.floor(prevPosition.x / 16), z: Math.floor(prevPosition.z / 16)}
+        var newChunk = {x: Math.floor(position.x / 16), z: Math.floor(position.z / 16)}
+
+        if (prevChunk.x != newChunk.x || prevChunk.z != newChunk.z) {
+            utils.world_packets.GenerateRenderDistance(player.socket)(world, player.socket, 10, newChunk.x, newChunk.z, prevChunk.x, prevChunk.z)
         }
     }
 }
 
-function SetPosition_Chunks(world, player, prevPosition, position) {
-    var prevChunk = {x: Math.floor(prevPosition.x / 16), z: Math.floor(prevPosition.z / 16)}
-    var newChunk = {x: Math.floor(position.x / 16), z: Math.floor(position.z / 16)}
-
-    if (prevChunk.x != newChunk.x || prevChunk.z != newChunk.z) {
-        utils.world_packets.GenerateRenderDistance(player.socket)(world, player.socket, 10, newChunk.x, newChunk.z, prevChunk.x, prevChunk.z)
-    }
-}
-
-module.exports = {CollidingWithBlock, CollidingWithChunkLayer, GeneratePlayer, DisplayBuildInfo, SetPosition_Chunks}
+module.exports = {CollidingWithBlock, CollidingWithChunkLayer, GeneratePlayer, set}

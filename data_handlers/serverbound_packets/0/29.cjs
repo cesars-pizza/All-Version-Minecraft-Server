@@ -21,7 +21,7 @@ function ReadPacket(world, socket, data) {
         var Username = dataReader.readString(socket, data, ID.nextPos)
 
         if (socket.disconnect == "") {
-            var hasOpenInstance = utils.player.HasOpenInstance(socket)(world, Username.value)
+            var hasOpenInstance = utils.player.HasOpenInstance(world, Username.value)
             if (!hasOpenInstance) {
                 socket.thisPlayer = utils.player.InitializePlayer(world, socket.thisPlayer, socket, Username.value)
 

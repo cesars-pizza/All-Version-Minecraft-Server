@@ -23,5 +23,7 @@ module.exports = {
         set_held_item: require('./tick_actions/set_held_item/distributer.cjs').SetHeldItem
     },
     load_world: require('./load_world.cjs').loadWorld,
-    tag: require('./tags.cjs').GetBlockHasTag
+    tag: require('./tags.cjs').GetBlockHasTag,
+    angle: require('./angle/distributer.cjs'),
+    collisions: require('./collisions/distributer.cjs')
 }

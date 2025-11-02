@@ -24,15 +24,8 @@ function ReadPacket(world, socket, data) {
         var onGround = dataReader.readBool(socket, data, rotation.pitch.nextPos)
 
         if (socket.disconnect == "" && !socket.thisPlayer.tick.teleportSelf && socket.thisPlayer.allowMovement) {
-            var difPitch = socket.thisPlayer.rotation.pitch != rotation.pitch.value
-            var difYaw = socket.thisPlayer.rotation.yaw != rotation.yaw.value
-
-            if (difPitch || difYaw) {
-                socket.thisPlayer.tick.rotation = true
-                utils.player.GetPlayer(socket)(world, socket, socket.thisPlayer.username).save = true
-            }
-
-            socket.thisPlayer.rotation = {pitch: rotation.pitch.value, yaw: rotation.yaw.value}
+            var rawRotation = {pitch: rotation.pitch.value, yaw: rotation.yaw.value}
+            utils.player.set.Rotation(world, socket.thisPlayer, rawRotation)
         }
     }
     
