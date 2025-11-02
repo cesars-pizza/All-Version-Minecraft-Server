@@ -49,8 +49,40 @@ async function loadWorld() {
 async function loadConfig() {
     world.config = JSON.parse(fs.readFileSync('./config.json'))
     
+    var maxHandledPlayers = 32767
+    if (world.config.minUPVN <= 4) maxHandledPlayers = 127
+
     world.maxPlayerCount = world.config.maxPlayers
-    if (world.config.minUPVN <= 83) maxPlayerCount = Math.min(world.maxPlayerCount, 128) // Need to test when this becomes 255
+    
+    if (world.config.maxPlayers > maxHandledPlayers) {
+        console.log(`WARNING Max players reduced from ${world.config.maxPlayers} to ${maxHandledPlayers}`)
+        world.maxPlayerCount = maxHandledPlayers
+    }
+
+    if (world.config.renderDistance.min > 32) {
+        console.log(`WARNING Minimum render distance reduced from ${world.config.renderDistance.min} to 32`)
+        world.config.renderDistance.min = 32
+    }
+
+    if (world.config.renderDistance.default > 32) {
+        console.log(`WARNING Default render distance reduced from ${world.config.renderDistance.default} to 32`)
+        world.config.renderDistance.default = 32
+    }
+
+    if (world.config.renderDistance.max > 32) {
+        console.log(`WARNING Maximum render distance reduced from ${world.config.renderDistance.max} to 32`)
+        world.config.renderDistance.max = 32
+    }
+
+    if (world.config.renderDistance.default < world.config.renderDistance.min) {
+        console.log(`WARNING Default render distance increased from ${world.config.renderDistance.default} to ${world.config.renderDistance.min}`)
+        world.config.renderDistance.default = world.config.renderDistance.min
+    }
+
+    if (world.config.renderDistance.max < world.config.renderDistance.default) {
+        console.log(`WARNING Maximum render distance increased from ${world.config.renderDistance.max} to ${world.config.renderDistance.default}`)
+        world.config.renderDistance.max = world.config.renderDistance.default
+    }
 
     console.log("WORLD Loaded Config")
 }

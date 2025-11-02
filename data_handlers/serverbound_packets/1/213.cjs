@@ -31,7 +31,7 @@ function ReadPacket(world, socket, data) {
                     world.loadingPlayerNames[world.loadingPlayerNames.indexOf("")] = socket.thisPlayer.username
                     
                     packetWriter.Alpha.Login_Response(socket)(world, socket, socket.thisPlayer.alphaID, world.config.serverName, world.config.serverStatus, 0, 0)
-                    utils.world_packets.GenerateRenderDistance(socket)(world, socket, 10, Math.floor(socket.thisPlayer.position.x / 16), Math.floor(socket.thisPlayer.position.z / 16), undefined, undefined)
+                    utils.world_packets.GenerateRenderDistance(socket)(world, socket, world.config.renderDistance.default, Math.floor(socket.thisPlayer.position.x / 16), Math.floor(socket.thisPlayer.position.z / 16), undefined, undefined)
                     
                     for (var i = 0; i < world.loadedPlayers.length; i++) {
                         socket.thisPlayer.otherPlayers[world.loadedPlayers[i].alphaID] = {

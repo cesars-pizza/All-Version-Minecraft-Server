@@ -128,7 +128,7 @@ const set = {
         var newChunk = {x: Math.floor(position.x / 16), z: Math.floor(position.z / 16)}
 
         if (prevChunk.x != newChunk.x || prevChunk.z != newChunk.z) {
-            utils.world_packets.GenerateRenderDistance(player.socket)(world, player.socket, 10, newChunk.x, newChunk.z, prevChunk.x, prevChunk.z)
+            utils.world_packets.GenerateRenderDistance(player.socket)(world, player.socket, world.config.renderDistance.default, newChunk.x, newChunk.z, prevChunk.x, prevChunk.z)
         }
     }
 }

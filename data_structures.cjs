@@ -40,8 +40,9 @@ class Config {
      * @param {string} serverStatus 
      * @param {number} hostPort 
      * @param {boolean} suppressNonUniversalBlocks 
+     * @param {{min: number, default: number, max: number}} renderDistance 
      */
-    constructor(minUPVN, maxUPVN, maxPlayers, serverName, serverStatus, hostPort, suppressNonUniversalBlocks) {
+    constructor(minUPVN, maxUPVN, maxPlayers, serverName, serverStatus, hostPort, suppressNonUniversalBlocks, renderDistance) {
         this.minUPVN = minUPVN
         this.maxUPVN = maxUPVN
         this.maxPlayers = maxPlayers
@@ -49,6 +50,7 @@ class Config {
         this.serverStatus = serverStatus
         this.hostPort = hostPort
         this.suppressNonUniversalBlocks = suppressNonUniversalBlocks
+        this.renderDistance = renderDistance
     }
 }
 
