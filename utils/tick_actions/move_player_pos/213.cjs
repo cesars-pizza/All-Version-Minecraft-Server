@@ -10,34 +10,47 @@ const packetWriter = require('../../../data_handlers/clientbound_packets/packet_
  * @param {Rotation} rotation 
  * @param {Position} estimatedPrevPosition 
  */
-function MovePlayer(socket, classicID, alphaID, position, rotation, estimatedPrevPosition) {
+function MovePlayer(socket, classicID, alphaID, position, rotation, estimatedPrevPosition, playerName, heldItem) {
     var posChange = {
         x: position.x - estimatedPrevPosition.x,
         y: position.y - estimatedPrevPosition.y,
         z: position.z - estimatedPrevPosition.z
     }
     
-    socket.log(`Pos Change: (${posChange.x}, ${posChange.y}, ${posChange.z})`)
-    socket.log(`Old Pos. Est.: (${estimatedPrevPosition.x}, ${estimatedPrevPosition.y}, ${estimatedPrevPosition.z})`)
-
-    if (Math.abs(posChange.x) <= 3.96875 && Math.abs(posChange.y) <= 3.96875 && Math.abs(posChange.z) <= 3.96875) {
-        packetWriter.Alpha.Entity_Relative_Move(socket)(socket, alphaID, position, estimatedPrevPosition)
-        socket.thisPlayer.otherPlayers[alphaID].estimatedPosition = {
-            x: estimatedPrevPosition.x + (Math.round(posChange.x * 32) / 32),
-            y: estimatedPrevPosition.y + (Math.round(posChange.y * 32) / 32),
-            z: estimatedPrevPosition.z + (Math.round(posChange.z * 32) / 32)
-        }
+    var teleport = false
+    var newEstimatedPosition = socket.thisPlayer.otherPlayers[alphaID].estimatedPosition = {
+        x: estimatedPrevPosition.x + (Math.round(posChange.x * 32) / 32),
+        y: estimatedPrevPosition.y + (Math.round(posChange.y * 32) / 32),
+        z: estimatedPrevPosition.z + (Math.round(posChange.z * 32) / 32)
     }
-    else {
-        packetWriter.Alpha.Entity_Teleport(socket)(socket, alphaID, position, rotation)
-        socket.thisPlayer.otherPlayers[alphaID].estimatedPosition = {
+
+    if (Math.abs(posChange.x) > 3.96875 || Math.abs(posChange.y) > 3.96875 || Math.abs(posChange.z) > 3.96875) {
+        teleport = true
+        newEstimatedPosition = {
             x: Math.floor(position.x * 32) / 32,
             y: Math.floor(position.y * 32) / 32,
             z: Math.floor(position.z * 32) / 32
         }
     }
 
-    socket.log(`New Pos. Est.: (${socket.thisPlayer.otherPlayers[alphaID].estimatedPosition.x}, ${socket.thisPlayer.otherPlayers[alphaID].estimatedPosition.y}, ${socket.thisPlayer.otherPlayers[alphaID].estimatedPosition.z})`)
+    var prevRendered = socket.thisPlayer.otherPlayers[alphaID].rendered
+    var distance = Math.pow(socket.thisPlayer.position.x - newEstimatedPosition.x, 2) + Math.pow(socket.thisPlayer.position.z - newEstimatedPosition.z, 2)
+
+    if (distance >= 4096) {
+        socket.thisPlayer.otherPlayers[alphaID].rendered = false
+        if (prevRendered) packetWriter.Alpha.Destroy_Entity(socket)(socket, alphaID)
+    } else {
+        socket.thisPlayer.otherPlayers[alphaID].estimatedPosition = newEstimatedPosition
+        socket.thisPlayer.otherPlayers[alphaID].rendered = true
+        if (!prevRendered) {
+            packetWriter.Alpha.Entity(socket)(socket, alphaID)
+            packetWriter.Alpha.Named_Entity_Spawn(socket)(socket, alphaID, playerName, position, rotation, heldItem)
+        }
+        if (!prevRendered || teleport) 
+            packetWriter.Alpha.Entity_Teleport(socket)(socket, alphaID, position, rotation)
+        else
+            packetWriter.Alpha.Entity_Relative_Move(socket)(socket, alphaID, position, estimatedPrevPosition)
+    }
 }
 
 module.exports = {MovePlayer}

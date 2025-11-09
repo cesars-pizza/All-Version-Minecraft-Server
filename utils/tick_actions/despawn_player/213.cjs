@@ -6,7 +6,8 @@ const packetWriter = require('../../../data_handlers/clientbound_packets/packet_
  * @param {Socket} socket 
  */
 function DespawnPlayer(socket, classicID, alphaID) {
-    packetWriter.Alpha.Destroy_Entity(socket)(socket, alphaID)
+    if (socket.thisPlayer.otherPlayers[alphaID].rendered)
+        packetWriter.Alpha.Destroy_Entity(socket)(socket, alphaID)
 }
 
 module.exports = {DespawnPlayer}
