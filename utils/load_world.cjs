@@ -189,6 +189,7 @@ async function loadBuilds() {
                 /** @type {Build} */
                 var thisBuildData = JSON.parse(fs.readFileSync(`./world/builds/${thisBuild.name}`))
                 thisBuildData.save = false
+                thisBuildData.nearbyPlayers = []
                 world.builds.push(thisBuildData)
             }
         }

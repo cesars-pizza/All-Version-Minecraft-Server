@@ -52,6 +52,23 @@ function InitializePlayer(world, player, socket, username) {
         }, true)
     }
 
+    // Set Plot Ticks
+    var plotTick = {
+        min: {
+            x: Math.floor((newPlayer.position.x - 32) / 32),
+            z: Math.floor((newPlayer.position.z - 32) / 32)
+        }, max: {
+            x: Math.floor((newPlayer.position.x + 16) / 32),
+            z: Math.floor((newPlayer.position.z + 16) / 32)
+        }
+    }
+    for (var x = plotTick.min.x; x <= plotTick.max.x; x++) {
+        for (var z = plotTick.min.z; z <= plotTick.max.z; z++) {
+            var selectedBuild = utils.builds.GetBuild(socket)(world, x, z)
+            if (selectedBuild !== undefined) world.builds[selectedBuild].nearbyPlayers.push(username)
+        }
+    }
+
     return newPlayer
 }
 
@@ -133,7 +150,48 @@ const set = {
 
             utils.player.DisplayBuildInfo(world, player, player.position, position)
 
-            if (ignoreWorldGen !== true) utils.player.set.Position_Chunks(player.socket)(world, player, player.position, position)
+            if (ignoreWorldGen !== true) { 
+                var plotTick = {
+                    min: {
+                        x: Math.floor((position.x - 32) / 32),
+                        z: Math.floor((position.z - 32) / 32)
+                    }, max: {
+                        x: Math.floor((position.x + 16) / 32),
+                        z: Math.floor((position.z + 16) / 32)
+                    }
+                }
+                var prevPlotTick = {
+                    min: {
+                        x: Math.floor((player.position.x - 32) / 32),
+                        z: Math.floor((player.position.z - 32) / 32)
+                    }, max: {
+                        x: Math.floor((player.position.x + 16) / 32),
+                        z: Math.floor((player.position.z + 16) / 32)
+                    }
+                }
+
+                var plotTickBoxes = utils.math.CalculateCollidingBoxes(plotTick, prevPlotTick)
+                
+                for (var i = 0; i < plotTickBoxes.new.length; i++) {
+                    for (var x = plotTickBoxes.new[i].min.x; x <= plotTickBoxes.new[i].max.x; x++) {
+                        for (var z = plotTickBoxes.new[i].min.z; z <= plotTickBoxes.new[i].max.z; z++) {
+                            var selectedBuild = utils.builds.GetBuild({})(world, x, z)
+                            if (selectedBuild !== undefined) world.builds[selectedBuild].nearbyPlayers.push(player.username)
+                        }
+                    }
+                }
+
+                for (var i = 0; i < plotTickBoxes.obsolete.length; i++) {
+                    for (var x = plotTickBoxes.obsolete[i].min.x; x <= plotTickBoxes.obsolete[i].max.x; x++) {
+                        for (var z = plotTickBoxes.obsolete[i].min.z; z <= plotTickBoxes.obsolete[i].max.z; z++) {
+                            var selectedBuild = utils.builds.GetBuild({})(world, x, z)
+                            if (selectedBuild !== undefined) world.builds[selectedBuild].nearbyPlayers.splice(world.builds[selectedBuild].nearbyPlayers.indexOf(player.username), 1)
+                        }
+                    }
+                }
+
+                utils.player.set.Position_Chunks(player.socket)(world, player, player.position, position)
+            }
         }
 
         if (difX || difY || difZ) {

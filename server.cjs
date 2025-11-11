@@ -52,6 +52,33 @@ function StartServer() {
             socket.disconnect = disconnectReason
             if (consoleLog != false) socket.log("DISCONNECT " + disconnectReason)
         }
+        socket.endConnection = (log) => {
+            if (!socket.isClosed) {
+                // Set Plot Ticks
+                var plotTick = {
+                    min: {
+                        x: Math.floor((socket.thisPlayer.position.x - 32) / 32),
+                        z: Math.floor((socket.thisPlayer.position.z - 32) / 32)
+                    }, max: {
+                        x: Math.floor((socket.thisPlayer.position.x + 16) / 32),
+                        z: Math.floor((socket.thisPlayer.position.z + 16) / 32)
+                    }
+                }
+                for (var x = plotTick.min.x; x <= plotTick.max.x; x++) {
+                    for (var z = plotTick.min.z; z <= plotTick.max.z; z++) {
+                        var selectedBuild = utils.builds.GetBuild(socket)(world, x, z)
+                        if (selectedBuild !== undefined) world.builds[selectedBuild].nearbyPlayers.splice(world.builds[selectedBuild].nearbyPlayers.indexOf(socket.thisPlayer.username), 1)
+                    }
+                }
+
+                socket.log("", false)
+                socket.log(log)
+                fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
+                world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, alphaID: socket.thisPlayer.alphaID, username: socket.thisPlayer.username})
+                world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
+                socket.destroySoon()
+            }
+        }
 
         socket.packetCount = 0
         socket.identified = false
@@ -93,27 +120,11 @@ function StartServer() {
         });
 
         socket.on('end', () => {
-            if (!socket.isClosed) {
-                clearInterval(socket.keepAlive)
-                socket.log("", false)
-                socket.log("Closed Socket")
-                fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
-                world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, alphaID: socket.thisPlayer.alphaID, username: socket.thisPlayer.username})
-                world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
-                socket.isClosed = true
-            }
+            socket.endConnection("Closed Socket")
         })
         
         socket.on('error', (err) => {
-            if (!socket.isClosed) {
-                clearInterval(socket.keepAlive)
-                socket.log("", false)
-                socket.log(`Socket Error: ${err.message}`);
-                fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
-                world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, alphaID: socket.thisPlayer.alphaID, username: socket.thisPlayer.username})
-                world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
-                socket.isClosed = true
-            }
+            socket.endConnection(`An Error Occured, Closed Socket: ${err.message}`)
         })
     });
 
@@ -122,14 +133,16 @@ function StartServer() {
     });
 
     server.on('error', (err) => {
-    console.error(`Server Error: ${err.message}`);
-    throw err;
+        console.error(`Server Error: ${err.message}`);
+        throw err;
     });
 }
 
 setInterval(ServerTick, 50)
 function ServerTick() {
     for (var i = 0; i < world.builds.length; i++) {
+        if (world.builds[i].nearbyPlayers.length == 0) continue
+
         for (var j = -3; j <= 4; j++) {
             for (var k = 0; k < world.builds[i].scheduledBlockUpdates.length; k++) {
                 if (world.builds[i].scheduledBlockUpdates[k].priority == j) {

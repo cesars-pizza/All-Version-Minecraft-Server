@@ -8,19 +8,23 @@ class Socket extends net.Socket {
      * @param {(message: string, consoleLog: boolean | null) => void} log 
      * @param {(id: number, identifier: string, data: number[], logBytes: boolean | null, consoleLog: boolean | null) => void} writePacket 
      * @param {(disconnectReason: string, consoleLog: boolean | null) => void} setDisconnect 
+     * @param {(log: string) => void} endConnection 
      * @param {number} packetCount
      * @param {boolean} identified
+     * @param {number} upvn
+     * @param {number} uvni  
      * @param {Buffer} dataBuffer    
      * @param {Player} thisPlayer 
      * @param {"" | "maxPlayers" | "multipleInstances" | "invalidVersion" | "unverified" | "serverClosed"} disconnect 
      */
-    constructor(isClosed, logText, index, log, writePacket, setDisconnect, packetCount, identified, upvn, uvni, dataBuffer, thisPlayer, disconnect) {
+    constructor(isClosed, logText, index, log, writePacket, setDisconnect, endConnection, packetCount, identified, upvn, uvni, dataBuffer, thisPlayer, disconnect) {
         this.isClosed = isClosed
         this.logText = logText
         this.index = index
         this.log = log
         this.writePacket = writePacket
         this.setDisconnect = setDisconnect
+        this.endConnection = endConnection
         this.packetCount = packetCount
         this.identified = identified
         this.upvn = upvn
@@ -236,8 +240,9 @@ class Build {
      * @param {{blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean, publicInteractions}} settings
      * @param {{enabled: boolean, disc: string, blockPos: Position}} music 
      * @param {{position: Position, blockID: string, prevBlockID: string, priority: number, doubleSet: boolean, delay: number}[]} scheduledBlockUpdates 
+     * @param {string[]} nearbyPlayers 
      */
-    constructor(x, z, creator, size, blocks, floor, uvni, created, lastModified, save, settings, music, scheduledBlockUpdates) {
+    constructor(x, z, creator, size, blocks, floor, uvni, created, lastModified, save, settings, music, scheduledBlockUpdates, nearbyPlayers) {
         this.x = x
         this.z = z
         this.creator = creator
@@ -251,6 +256,7 @@ class Build {
         this.settings = settings
         this.music = music
         this.scheduledBlockUpdates = scheduledBlockUpdates
+        this.nearbyPlayers = nearbyPlayers
     }
 }
 

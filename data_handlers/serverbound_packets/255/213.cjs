@@ -21,19 +21,7 @@ function ReadPacket(world, socket, data) {
     
     if (reason.value == undefined) return -999
     else {
-        
-        if (!socket.isClosed) {
-            clearInterval(socket.keepAlive)
-            socket.log("", false)
-            socket.log(`Client Disconnect: ${reason.value}`);
-            fs.writeFileSync(`./logs/log${socket.index.toString().padStart(5,'0')}.txt`, socket.logText)
-            world.disconnectedPlayers.push({classicID: socket.thisPlayer.classicID, alphaID: socket.thisPlayer.alphaID, username: socket.thisPlayer.username})
-            world.loadedPlayers.splice(world.loadedPlayers.map(player => player.username).indexOf(socket.thisPlayer.username), 1)
-            socket.isClosed = true
-        }
-
-        socket.destroySoon()
-        
+        socket.endConnection("Client Packet Closed Socket")
 
         return data.length - (packet.length + reason.length)
     }
