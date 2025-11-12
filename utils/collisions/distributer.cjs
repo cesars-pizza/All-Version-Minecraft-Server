@@ -41,6 +41,10 @@ function PlayerCollisionPressurePlateFunction(world, socket, block, blockPos, co
     return require('./universal.cjs').PlayerCollisionPressurePlateFunction(world, socket, block, blockPos, collision)
 }
 
+function BlockCollidingWithBuildVolume(position) {
+    return require('./universal.cjs').BlockCollidingWithBuildVolume(position)
+}
+
 module.exports = {
-    PlayerCollidingWithBlock, PlayerCollidingWithBuildFloor, PlayerCollidingWithBuildVolume, CollidingWithFullBlock, CollidingWithPressurePlate, PlayerCollisionFunctions, PlayerCollisionPressurePlateFunction
+    PlayerCollidingWithBlock, PlayerCollidingWithBuildFloor, PlayerCollidingWithBuildVolume, CollidingWithFullBlock, CollidingWithPressurePlate, PlayerCollisionFunctions, PlayerCollisionPressurePlateFunction, BlockCollidingWithBuildVolume
 }

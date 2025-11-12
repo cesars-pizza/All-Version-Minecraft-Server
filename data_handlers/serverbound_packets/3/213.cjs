@@ -180,6 +180,8 @@ function ReadPacket(world, socket, data) {
                         }
                         else socket.thisPlayer.tick.errorMessages.push(`Unknown setting: "${commandParts[1]}"`)
                     }
+                } else if (commandParts[0] == "/give") {
+                    packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, 41, 1, 0)
                 } else socket.thisPlayer.tick.errorMessages.push(`Unknown command: "${message.value.split(' ')[0]}"`)
             } else socket.thisPlayer.tick.messages.push(message.value)
         }

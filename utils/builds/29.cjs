@@ -39,6 +39,7 @@ function GenerateBuild(tileX, tileZ, creator, uvni, settings) {
     returnValue.settings = settings
     returnValue.scheduledBlockUpdates = []
     returnValue.music = {enabled: false, disc: "", blockPos: {x: 0, y: 0, z: 0}}
+    returnValue.nearbyPlayers = []
     return returnValue
 }
 

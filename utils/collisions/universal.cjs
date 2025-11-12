@@ -114,4 +114,8 @@ function PlayerCollisionPressurePlateFunction(world, socket, block, blockPos, co
     }
 }
 
-module.exports = {CollidingWithFullBlock, CollidingWithPressurePlate, PlayerCollisionFunctions, PlayerCollisionPressurePlateFunction}
+function BlockCollidingWithBuildVolume(position) {
+    return (utils.math.NegMod(position.x, 32) >= 16 && utils.math.NegMod(position.z, 32) >= 16)
+}
+
+module.exports = {CollidingWithFullBlock, CollidingWithPressurePlate, PlayerCollisionFunctions, PlayerCollisionPressurePlateFunction, BlockCollidingWithBuildVolume}

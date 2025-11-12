@@ -201,6 +201,7 @@ const set = {
                 y: position.y - player.position.y,
                 z: position.z - player.position.z
             }
+            player.save = true
             
             player.position = position
 
@@ -220,6 +221,7 @@ const set = {
             player.rotation = rotation
 
             player.tick.rotation = true
+            player.save = true
         }
     },
 

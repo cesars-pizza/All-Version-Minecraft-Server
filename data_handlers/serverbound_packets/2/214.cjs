@@ -13,7 +13,16 @@ var packetIdentifier = "Handshake"
  * @param {Buffer} data 
  */
 function ReadPacket(world, socket, data) {
-    // Recopy when starting Alpha 1.0.16s
+    var username = dataReader.readString(socket, data, 1)
+        
+    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
+    
+    if (username.value == undefined) return -999
+    else {
+        packetWriter.Alpha.Handshake(socket)(world, socket, '-')
+    }
+    
+    return data.length - (1 + username.length)
 }
 
 module.exports = {ReadPacket}

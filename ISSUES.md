@@ -2,6 +2,22 @@
 
 This is an outline of issues with specific clients.
 
+## Java Edition Alpha v1.0.16_02
+
+Same as Java Edition Alpha v1.0.15
+
+This version can't be distinguished from Java Edition Alpha v1.0.16, resulting in plots made in this version showing incorrectly on plot info.
+
+## Java Edition Alpha v1.0.16_01
+
+Same as Java Edition Alpha v1.0.15
+
+This version can't be distinguished from Java Edition Alpha v1.0.16, resulting in plots made in this version showing incorrectly on plot info.
+
+## Java Edition Alpha v1.0.16
+
+Same as Java Edition Alpha v1.0.15
+
 ## Java Edition Alpha v1.0.15
 
 Creating a double slab above a single slab causes a temporary visual error.
@@ -15,6 +31,8 @@ Chests and Furnaces will change their direction client-side. If not surrounded b
 Players are in survival mode and can therefore die. Players die on every join.
 
 Client communicates block interaction (levers, doors, blocks w/ gui) on left click, but still interact client-side on right click. 
+
+Some forms of exiting of the game won't close the connection properly and won't allow rejoinging.
 
 ## Java Edition Classic 0.0.30
 

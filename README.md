@@ -6,11 +6,11 @@ The goal of this project is to implement the server protocol of every archived v
 
 ## Progress
 
-The latest version supported in this project is Java Edition Alpha v1.0.15, released on August 3rd, 2010.
+The latest version supported in this project is Java Edition Alpha v1.0.16_02, released on August 13th, 2010.
 
-This is 17 / 961 Versions to be supported as of snapshot 25w36b being the latest.
+This is 20 / 961 Versions to be supported as of snapshot 25w36b being the latest.
 
-[/---------------------------------------------------------------------------------------------------] (1.8%)
+[//--------------------------------------------------------------------------------------------------] (2.1%)
 
 View the [changelog](https://github.com/cesars-pizza/All-Version-Minecraft-Server/blob/main/CHANGELOG.md) for details on changes in this version.
 

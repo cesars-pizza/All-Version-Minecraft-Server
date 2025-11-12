@@ -18,8 +18,8 @@ function GeneratePlayer(socket) {
     }
 }
 
-function HasOpenInstance() {
-    return require('./29.cjs').HasOpenInstance
+function HasOpenInstance(world, username) {
+    return require('./universal.cjs').HasOpenInstance(world, username)
 }
 
 const getID = {

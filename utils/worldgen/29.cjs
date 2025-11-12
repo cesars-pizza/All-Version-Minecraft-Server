@@ -122,7 +122,7 @@ function GenerateClassicWorld(world, socket, offsetX, offsetZ) {
 function GetBlock(world, socket, blockPos) {
     if (blockPos.y == 0) return "cobblestone"
     else if (blockPos.y == 1) {
-        if (utils.collisions.PlayerCollidingWithBuildVolume(socket)(blockPos)) {
+        if (utils.collisions.BlockCollidingWithBuildVolume(blockPos)) {
             var build = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
 
             if (build == undefined) return "grass_block"
@@ -132,7 +132,7 @@ function GetBlock(world, socket, blockPos) {
             else return "oak_log"
         }
     } else {
-        if (utils.collisions.PlayerCollidingWithBuildVolume(socket)(blockPos)) {
+        if (utils.collisions.BlockCollidingWithBuildVolume(blockPos)) {
             var build = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
 
             if (build == undefined) return "air"
