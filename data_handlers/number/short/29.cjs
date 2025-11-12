@@ -1,8 +1,8 @@
-const {Socket} = require('../../data_structures.cjs')
+const {Socket} = require('../../../data_structures.cjs')
 
 function Read(data, position) {
     var value = data[position] * 256 + data[position + 1]
-    value /= 32
+    if (value > 32767) value -= 65536
 
     return {
         value: value,
@@ -12,7 +12,6 @@ function Read(data, position) {
 }
 
 function Write(value) {
-    value *= 32
     if (value < 0) value += 65536
     value = Math.min(Math.max(value, 0), 65535)
 

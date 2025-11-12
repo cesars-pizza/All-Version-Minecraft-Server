@@ -1,4 +1,4 @@
-const {Socket} = require('../../data_structures.cjs')
+const {Socket} = require('../../../data_structures.cjs')
 
 function Read(data, position) {
     var value = 0n

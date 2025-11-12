@@ -1,4 +1,4 @@
-const {Socket} = require('../../data_structures.cjs')
+const {Socket} = require('../../../data_structures.cjs')
 
 /**
  * @param {Buffer} data 

@@ -1,4 +1,4 @@
-const {Socket} = require('../../data_structures.cjs')
+const {Socket} = require('../../../data_structures.cjs')
 
 function Write(value) {
     value = Math.min(Math.max(value, 0), 4294967295)
