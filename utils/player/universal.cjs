@@ -55,11 +55,11 @@ function InitializePlayer(world, player, socket, username) {
     // Set Plot Ticks
     var plotTick = {
         min: {
-            x: Math.floor((newPlayer.position.x - 32) / 32),
-            z: Math.floor((newPlayer.position.z - 32) / 32)
+            x: Math.floor((newPlayer.position.x - (16 * world.config.simulationDistance)) / 32),
+            z: Math.floor((newPlayer.position.z - (16 * world.config.simulationDistance)) / 32)
         }, max: {
-            x: Math.floor((newPlayer.position.x + 16) / 32),
-            z: Math.floor((newPlayer.position.z + 16) / 32)
+            x: Math.floor((newPlayer.position.x + (16 * world.config.simulationDistance) - 16) / 32),
+            z: Math.floor((newPlayer.position.z + (16 * world.config.simulationDistance) - 16) / 32)
         }
     }
     for (var x = plotTick.min.x; x <= plotTick.max.x; x++) {
@@ -134,6 +134,7 @@ const getID = {
 
 const set = {
     /**
+     * @param {World} world
      * @param {Player} player 
      * @param {Position} position 
      */
@@ -153,20 +154,20 @@ const set = {
             if (ignoreWorldGen !== true) { 
                 var plotTick = {
                     min: {
-                        x: Math.floor((position.x - 32) / 32),
-                        z: Math.floor((position.z - 32) / 32)
+                        x: Math.floor((position.x - (16 * world.config.simulationDistance)) / 32),
+                        z: Math.floor((position.z - (16 * world.config.simulationDistance)) / 32)
                     }, max: {
-                        x: Math.floor((position.x + 16) / 32),
-                        z: Math.floor((position.z + 16) / 32)
+                        x: Math.floor((position.x + (16 * world.config.simulationDistance) - 16) / 32),
+                        z: Math.floor((position.z + (16 * world.config.simulationDistance) - 16) / 32)
                     }
                 }
                 var prevPlotTick = {
                     min: {
-                        x: Math.floor((player.position.x - 32) / 32),
-                        z: Math.floor((player.position.z - 32) / 32)
+                        x: Math.floor((player.position.x - (16 * world.config.simulationDistance)) / 32),
+                        z: Math.floor((player.position.z - (16 * world.config.simulationDistance)) / 32)
                     }, max: {
-                        x: Math.floor((player.position.x + 16) / 32),
-                        z: Math.floor((player.position.z + 16) / 32)
+                        x: Math.floor((player.position.x + (16 * world.config.simulationDistance) - 16) / 32),
+                        z: Math.floor((player.position.z + (16 * world.config.simulationDistance) - 16) / 32)
                     }
                 }
 
