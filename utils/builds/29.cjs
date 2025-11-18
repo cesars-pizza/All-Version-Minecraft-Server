@@ -13,7 +13,14 @@ function GetBuild(world, x, z) {
     return undefined
 }
 
-function GenerateBuild(tileX, tileZ, creator, uvni, settings) {
+/**
+ * @param {World} world 
+ * @param {number} tileX 
+ * @param {number} tileZ 
+ * @param {string} creator 
+ * @param {number} uvni 
+ */
+function GenerateBuild(world, tileX, tileZ, creator, uvni, settings) {
     var blocks = []
     for (var y = 0; y < 62; y++) {
         blocks[y] = []
@@ -39,7 +46,16 @@ function GenerateBuild(tileX, tileZ, creator, uvni, settings) {
     returnValue.settings = settings
     returnValue.scheduledBlockUpdates = []
     returnValue.music = {enabled: false, disc: "", blockPos: {x: 0, y: 0, z: 0}}
+
     returnValue.nearbyPlayers = []
+    for (var i = 0; i < world.loadedPlayers.length; i++) {
+        if ((16 + (32 * tileX) - (16 * world.config.simulationDistance) <= world.loadedPlayers[i].position.x) &&
+            ((32 * tileX) + (16 * world.config.simulationDistance) >= world.loadedPlayers[i].position.x) &&
+            (16 + (32 * tileZ) - (16 * world.config.simulationDistance) <= world.loadedPlayers[i].position.z) &&
+            ((32 * tileZ) + (16 * world.config.simulationDistance) >= world.loadedPlayers[i].position.z)
+        ) { returnValue.nearbyPlayers.push(world.loadedPlayers[i].username) }
+    }
+    
     return returnValue
 }
 
