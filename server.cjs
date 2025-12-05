@@ -324,7 +324,7 @@ async function ReadPacket(socket, data) {
         if (packetReaderFn != undefined) {
             var splitIndex = packetReaderFn(socket)(world, socket, data)
             if (splitIndex > 0) {
-                ReadPacket(socket, data.subarray(data.length - splitIndex))
+                await ReadPacket(socket, data.subarray(data.length - splitIndex))
             }
             else if (splitIndex < 0) socket.dataBuffer = data
         }
@@ -466,6 +466,17 @@ function IdentifyVersion(socket, data) {
 
                 if (world.config.minUPVN > 10) socket.setDisconnect("invalidVersion")
                 if (world.config.maxUPVN < 10) socket.setDisconnect("invalidVersion")
+
+                return
+            } else if (protocolVersion == 2) {
+                socket.log(`IDENTIFIED UPVN 11`)
+                socket.log(`IDENTIFIED UVNI 222 / Alpha v1.1.0`)
+                socket.identified = true
+                socket.thisPlayer.upvn = 11
+                socket.thisPlayer.uvni = 222
+
+                if (world.config.minUPVN > 11) socket.setDisconnect("invalidVersion")
+                if (world.config.maxUPVN < 11) socket.setDisconnect("invalidVersion")
 
                 return
             }

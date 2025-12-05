@@ -8,6 +8,8 @@ function Read(data, position) {
         length: 1,
         nextPos: position + 1
     }
+
+    // Returns undefined if out of bounds
 }
 
 function Write(value) {

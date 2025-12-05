@@ -16,14 +16,22 @@ function GetItemRegistry(world, uvni) {
 /**
  * @param {World} world 
  * @param {number} registry 
- * @param {number} id 
+ * @param {number | string} id 
  */
 function GetItemName(world, registry, id) {
     var thisRegistry = world.registries.item[registry].entries
     var registryEntries = Object.keys(thisRegistry)
 
-    for (var i = 0; i < registryEntries.length; i++) {
-        if (thisRegistry[registryEntries[i]] == id) return registryEntries[i]
+    if (typeof(id) == "number") {
+        for (var i = 0; i < registryEntries.length; i++) {
+            if (thisRegistry[registryEntries[i]] == id) return registryEntries[i]
+            if (thisRegistry[registryEntries[i]] == `${id}:0`) return registryEntries[i]
+        }
+    } else {
+        for (var i = 0; i < registryEntries.length; i++) {
+            if (thisRegistry[registryEntries[i]] == id) return registryEntries[i]
+            if (id.startsWith(thisRegistry[registryEntries[i]] + ':')) return registryEntries[i]
+        }
     }
 
     return "air"

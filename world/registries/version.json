@@ -220,5 +220,9 @@
     {"supported": false},
     {"supported": true, "name": "Java Edition Alpha v1.0.17_02", "pvn": 1},
     {"supported": true, "name": "Java Edition Alpha v1.0.17_03", "pvn": 1},
-    {"supported": true, "name": "Java Edition Alpha v1.0.17_04", "pvn": 1}
+    {"supported": true, "name": "Java Edition Alpha v1.0.17_04", "pvn": 1},
+    {"supported": true, "name": "Java Edition Alpha v1.1.0", "pvn": 2},
+    {"supported": true, "name": "Java Edition Alpha v1.1.1", "pvn": 2},
+    {"supported": true, "name": "Java Edition Alpha v1.1.2", "pvn": 2},
+    {"supported": true, "name": "Java Edition Alpha v1.1.2_01", "pvn": 2}
 ]

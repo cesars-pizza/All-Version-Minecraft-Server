@@ -9,6 +9,8 @@ function Read(data, position) {
         length: 2,
         nextPos: position + 2
     }
+
+    // Returns NaN if out of bounds
 }
 
 function Write(value) {

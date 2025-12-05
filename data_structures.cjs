@@ -156,14 +156,12 @@ class Player {
 
 class Slot {
     /**
-     * @param {number} slot 
      * @param {string} id 
      * @param {number} count
      * @param {[]} added_components 
      * @param {[]} removed_components 
      */
-    constructor(slot, id, count, added_components, removed_components) {
-        this.slot = slot
+    constructor(id, count, added_components, removed_components) {
         this.id = id
         this.count = count
         this.added_components = added_components
@@ -283,7 +281,7 @@ class TickBlock {
 
 class Inventory {
     /**
-     * @param {"playerMain" | "playerArmor" | "playerCraftingSlots" | "playerFull"} type 
+     * @param {"playerMain" | "playerArmor" | "playerCraftingSlots" | "player"} type 
      * @param {Slot[]} hotbar
      * @param {Slot[]} inventory
      * @param {{head: Slot, chest: Slot, legs: Slot, feet: Slot}} armor

@@ -16,7 +16,7 @@ function GeneratePlayer(world, socket, username) {
     player.inventory = {
         selected_slot: 0,
         held_item: "stone",
-        slots: {type: "playerFull"},
+        slots: {type: "player"},
         bucket_tracker: {empty: 0, water: 0, lava: 0}
     },
     player.settings = {

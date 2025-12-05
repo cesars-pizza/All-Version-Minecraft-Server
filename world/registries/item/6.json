@@ -1,8 +1,8 @@
 {
-    "minUVNI": 219,
-    "maxUVNI": 221,
-    "minUPVN": 10,
-    "maxUPVN": 10,
+    "minUVNI": 222,
+    "maxUVNI": 225,
+    "minUPVN": 11,
+    "maxUPVN": 11,
     "entries": {
         "air": 0,
         "stone": 1,
@@ -156,6 +156,7 @@
         "chest_minecart": 342,
         "furnace_minecart": 343,
         "egg": 344,
+        "compass": 345,
         "music_disc_13": 2256,
         "music_disc_cat": 2257
     }
