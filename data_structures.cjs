@@ -104,7 +104,7 @@ class Player {
      * @param {Position} position 
      * @param {Rotation} rotation 
      * @param {{x: number, z: number}} classicWorldOffset
-     * @param {{selected_slot: number, held_item: string, slots: Slot[], bucket_tracker: {empty: number, water: number, lava: number}}} inventory 
+     * @param {{selected_slot: number, held_item: string, slots: Inventory, bucket_tracker: {empty: number, water: number, lava: number}}} inventory 
      * @param {{showPlotInfo: boolean, defaultBuildSettings: {blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean, publicInteractions: boolean}}} settings
      * @param {boolean} verified 
      * @param {boolean} keepUnverified 
@@ -281,4 +281,21 @@ class TickBlock {
     }
 }
 
-module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, Registry, TickBlock, BlockRegistry, Build}
+class Inventory {
+    /**
+     * @param {"playerMain" | "playerArmor" | "playerCraftingSlots" | "playerFull"} type 
+     * @param {Slot[]} hotbar
+     * @param {Slot[]} inventory
+     * @param {{head: Slot, chest: Slot, legs: Slot, feet: Slot}} armor
+     * @param {{crafting: Slot[]}} player
+     */
+    constructor(type, hotbar, inventory, armor, player) {
+        this.type = type
+        this.hotbar = hotbar
+        this.inventory = inventory
+        this.armor = armor
+        this.player = player
+    }
+}
+
+module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, Registry, TickBlock, BlockRegistry, Build, Inventory}

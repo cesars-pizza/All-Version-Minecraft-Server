@@ -16,7 +16,7 @@ function GeneratePlayer(world, socket, username) {
     player.inventory = {
         selected_slot: 0,
         held_item: "stone",
-        slots: [],
+        slots: {type: "playerFull"},
         bucket_tracker: {empty: 0, water: 0, lava: 0}
     },
     player.settings = {
@@ -30,61 +30,23 @@ function GeneratePlayer(world, socket, username) {
     player.joinCount = 0,
     player.save = true
 
-    player.inventory.slots = [{
-        slot: 0,
-        id: "stone",
-        count: 1,
-        added_components: [],
-        removed_components: []
-    },{
-        slot: 1,
-        id: "cobblestone",
-        count: 1,
-        added_components: [],
-        removed_components: []
-    },{
-        slot: 2,
-        id: "dirt",
-        count: 1,
-        added_components: [],
-        removed_components: []
-    },{
-        slot: 3,
-        id: "oak_planks",
-        count: 1,
-        added_components: [],
-        removed_components: []
-    },{
-        slot: 4,
-        id: "oak_log",
-        count: 1,
-        added_components: [],
-        removed_components: []
-    },{
-        slot: 5,
-        id: "oak_leaves",
-        count: 1,
-        added_components: [],
-        removed_components: []
-    },{
-        slot: 6,
-        id: "oak_sapling",
-        count: 1,
-        added_components: [],
-        removed_components: []
-    },{
-        slot: 7,
-        id: "dandelion",
-        count: 1,
-        added_components: [],
-        removed_components: []
-    },{
-        slot: 8,
-        id: "poppy",
-        count: 1,
-        added_components: [],
-        removed_components: []
-    }]
+    var playerItems = ["stone", "cobblestone", "dirt", "oak_planks", "oak_log", "oak_leaves", "oak_sapling", "dandelion", "poppy"]
+    var playerItemCounts = [64, 64, 64, 64, 64, 64, 64, 64, 64]
+    var playerFullInventory = []
+
+    for (var i = 0; i < playerItems.length; i++) {
+        if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.item.includes(playerItems[i])) {
+            playerFullInventory.push({
+                id: playerItems[i],
+                count: playerItemCounts[i],
+                added_components: [],
+                removed_components: []
+            })
+        }
+    }
+
+    player.inventory.slots.hotbar = playerFullInventory.slice(0, 9)
+    player.inventory.slots.inventory = playerFullInventory.slice(9)
 
     return player
 }
