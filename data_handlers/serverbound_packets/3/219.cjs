@@ -74,7 +74,7 @@ function ReadPacket(world, socket, data) {
                     if (commandParts.length == 1) socket.thisPlayer.tick.errorMessages.push("Missing argument: setting")
                     else if (commandParts.length == 2) {
                         if (commandParts[1] == "plotInfo") socket.thisPlayer.tick.systemMessages.push(`Plot Info is currently set to ${socket.thisPlayer.settings.showPlotInfo ? "enabled" : "disabled"}`)
-                        else if (commandParts[1] == "plot.blockUpdate" || commandParts[1] == "plot.redstoneUpdate" || commandParts[1] == "plot.liquidUpdate" || commandParts[1] == "plot.publicInteractions") {
+                        else if (commandParts[1] == "plot.blockUpdate" || commandParts[1] == "plot.redstoneUpdate" || commandParts[1] == "plot.liquidUpdate" || commandParts[1] == "plot.publicInteractions" || commandParts[1] == "plot.time") {
                             if (utils.math.NegMod(socket.thisPlayer.position.x, 32) >= 16 && utils.math.NegMod(socket.thisPlayer.position.z, 32) >= 16) {
                                 var plot = {x: Math.floor(socket.thisPlayer.position.x / 32), z: Math.floor(socket.thisPlayer.position.z / 32)}
                                 var plotID = utils.builds.GetBuild(socket)(world, plot.x, plot.z)
@@ -84,6 +84,7 @@ function ReadPacket(world, socket, data) {
                                     else if (commandParts[1] == "plot.redstoneUpdate") socket.thisPlayer.tick.systemMessages.push(`Redstone Update for Plot (${plot.x}, ${plot.z}) is currently set to ${world.builds[plotID].settings.redstoneUpdates ? "enabled" : "disabled"}`)
                                     else if (commandParts[1] == "plot.liquidUpdate") socket.thisPlayer.tick.systemMessages.push(`Liquid Update for Plot (${plot.x}, ${plot.z}) is currently set to ${world.builds[plotID].settings.liquidUpdates ? "enabled" : "disabled"}`)
                                     else if (commandParts[1] == "plot.publicInteractions") socket.thisPlayer.tick.systemMessages.push(`Public Interactions for Plot (${plot.x}, ${plot.z}) is currently set to ${world.builds[plotID].settings.publicInteractions ? "enabled" : "disabled"}`)
+                                    else if (commandParts[1] == "plot.time") socket.thisPlayer.tick.systemMessages.push(`Time for Plot (${plot.x}, ${plot.z}) is currently set to ${world.builds[plotID].settings.time}`)
                                 }
                             } else socket.thisPlayer.tick.errorMessages.push(`You are not currently in a plot`)
                         }
@@ -191,6 +192,43 @@ function ReadPacket(world, socket, data) {
                             } else if (commandParts[2] == "default") {
                                 socket.thisPlayer.tick.systemMessages.push(`Public Interactions is currently defaulted to ${socket.thisPlayer.settings.defaultBuildSettings.publicInteractions ? "enabled" : "disabled"}`)
                             } else socket.thisPlayer.tick.systemMessages.push('Public Interactions must be set to one of "enable", "disable", "enableDefault", or "disableDefault"')
+                        }  else if (commandParts[1] == "plot.time") {
+                            var timeValue = 0.1
+                            if (utils.math.NegMod(socket.thisPlayer.position.x, 32) >= 16 && utils.math.NegMod(socket.thisPlayer.position.z, 32) >= 16) {
+                                var plot = {x: Math.floor(socket.thisPlayer.position.x / 32), z: Math.floor(socket.thisPlayer.position.z / 32)}
+                                var plotID = utils.builds.GetBuild(socket)(world, plot.x, plot.z)
+                                if (plotID == undefined || world.builds[plotID].creator != socket.thisPlayer.username) socket.thisPlayer.tick.errorMessages.push(`You do not own this plot`)
+                                else {
+                                    if (commandParts[2] == "day") timeValue = 1000
+                                    else if (commandParts[2] == "noon") timeValue = 6000
+                                    else if (commandParts[2] == "night") timeValue = 13000
+                                    else if (commandParts[2] == "midnight") timeValue = 18000
+                                    else {
+                                        var customTime = 0
+                                        var success = false
+                                        try {
+                                            customTime = BigInt(commandParts[2])
+                                            success = true
+                                        } catch { }
+                                        if (customTime < 9223372036854775808n && customTime >= -9223372036854775808n && success) timeValue = customTime
+                                        else if (success) socket.thisPlayer.tick.errorMessages.push('Value out of range, must be of type Long')
+                                        else socket.thisPlayer.tick.errorMessages.push('Invalid time value, must be of type Long')
+                                    }
+                                }
+                            } else socket.thisPlayer.tick.errorMessages.push(`You are not currently in a plot`)
+                            
+                            if (timeValue != 0.1) {
+                                world.builds[plotID].settings.time = timeValue
+                                for (var i = 0; i < world.loadedPlayers.length; i++) {
+                                    if (utils.math.NegMod(world.loadedPlayers[i].position.x, 32) >= 16 && utils.math.NegMod(world.loadedPlayers[i].position.z, 32) >= 16) {
+                                        var compPlot = {x: Math.floor(world.loadedPlayers[i].position.x / 32), z: Math.floor(world.loadedPlayers[i].position.z / 32)}
+                                        if (compPlot.x == plot.x && compPlot.z == plot.z) {
+                                            world.loadedPlayers[i].currentTime = timeValue
+                                        }
+                                    }
+                                }
+                                socket.thisPlayer.tick.systemMessages.push(`Set Time for Plot (${plot.x}, ${plot.z}) to ${timeValue}`)
+                            }
                         } else socket.thisPlayer.tick.errorMessages.push(`Unknown setting: "${commandParts[1]}"`)
                     }
                 } else socket.thisPlayer.tick.errorMessages.push(`Unknown command: "${message.value.split(' ')[0]}"`)

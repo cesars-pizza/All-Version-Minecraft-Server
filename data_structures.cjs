@@ -105,7 +105,7 @@ class Player {
      * @param {Rotation} rotation 
      * @param {{x: number, z: number}} classicWorldOffset
      * @param {{selected_slot: number, held_item: string, slots: Slot[], bucket_tracker: {empty: number, water: number, lava: number}}} inventory 
-     * @param {{showPlotInfo: boolean, defaultBuildSettings: {blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean, publicInteractions}}} settings
+     * @param {{showPlotInfo: boolean, defaultBuildSettings: {blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean, publicInteractions: boolean}}} settings
      * @param {boolean} verified 
      * @param {boolean} keepUnverified 
      * @param {number} lastUVNI 
@@ -120,11 +120,12 @@ class Player {
      * @param {{block: number, item: number}} selectedRegistries  
      * @param {number} floorChangeCooldown
      * @param {{blockPos: Position, ticks: number}} digging 
+     * @param {number} currentTime
      * @param {{}} otherPlayers 
      * @param {number} joinCount
      * @param {Socket} socket
      */
-    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, allowMovement, tick, save, upvn, uvni, selectedRegistries, floorChangeCooldown, digging, otherPlayers, joinCount, socket) {
+    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, allowMovement, tick, save, upvn, uvni, selectedRegistries, floorChangeCooldown, digging, currentTime, otherPlayers, joinCount, socket) {
         this.uuid = uuid
         this.username = username
         this.position = position
@@ -146,6 +147,7 @@ class Player {
         this.selectedRegistries = selectedRegistries
         this.floorChangeCooldown = floorChangeCooldown
         this.digging = digging
+        this.currentTime = currentTime
         this.otherPlayers = otherPlayers
         this.joinCount = joinCount
         this.socket = socket
@@ -239,7 +241,7 @@ class Build {
      * @param {number} created 
      * @param {number} lastModified 
      * @param {boolean} save 
-     * @param {{blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean, publicInteractions}} settings
+     * @param {{blockUpdates: boolean, redstoneUpdates: boolean, liquidUpdates: boolean, publicInteractions: boolean, time: number}} settings
      * @param {{enabled: boolean, disc: string, blockPos: Position}} music 
      * @param {{position: Position, blockID: string, prevBlockID: string, priority: number, doubleSet: boolean, delay: number}[]} scheduledBlockUpdates 
      * @param {string[]} nearbyPlayers 

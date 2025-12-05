@@ -44,6 +44,7 @@ function GenerateBuild(world, tileX, tileZ, creator, uvni, settings) {
     returnValue.lastModified = new Date().getTime()
     returnValue.save = true
     returnValue.settings = settings
+    returnValue.settings.time = 0
     returnValue.scheduledBlockUpdates = []
     returnValue.music = {enabled: false, disc: "", blockPos: {x: 0, y: 0, z: 0}}
 

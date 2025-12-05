@@ -4,6 +4,38 @@ This is a general overview of how the server protocol changes from version to ve
 
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
+## Java Edition Alpha v1.0.17_04
+
+This version can't be distinguished from v1.0.17_02.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
+## Java Edition Alpha v1.0.17_03
+
+This version can't be distinguished from v1.0.17_02.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
+## Java Edition Alpha v1.0.17_02
+
+Protocol Version set to 1.
+
+### Added Features
+
+Added Oak Fences.
+
+### Packets
+
+Added Time Update packet, enabling the use of the plot.time setting.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
 ## Java Edition Alpha v1.0.16_02
 
 This version can't be distinguished from v1.0.16.

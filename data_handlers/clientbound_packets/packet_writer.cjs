@@ -17,6 +17,7 @@ module.exports = {
         Login_Response: require('./Alpha/Login Response/distributer.cjs').WritePacket,
         Handshake: require('./Alpha/Handshake/distributer.cjs').WritePacket,
         Chat_Message: require('./Alpha/Chat Message/distributer.cjs').WritePacket,
+        Time_Update: require('./Alpha/Time Update/distributer.cjs').WritePacket,
         Player_Position_And_Look: require('./Alpha/Player Position And Look/distributer.cjs').WritePacket,
         Holding_Change: require('./Alpha/Holding Change/distributer.cjs').WritePacket,
         Add_To_Inventory: require('./Alpha/Add To Inventory/distributer.cjs').WritePacket,

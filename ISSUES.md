@@ -2,21 +2,45 @@
 
 This is an outline of issues with specific clients.
 
+## Java Edition Alpha v1.0.17_04
+
+Same as Java Edition Alpha v1.0.17_02.
+
+This version can't be distinguished from Java Edition Alpha v1.0.17_02, resulting in plots made in this version showing incorrectly on plot info.
+
+## Java Edition Alpha v1.0.17_03
+
+Same as Java Edition Alpha v1.0.17_02.
+
+This version can't be distinguished from Java Edition Alpha v1.0.17_02, resulting in plots made in this version showing incorrectly on plot info.
+
+## Java Edition Alpha v1.0.17_02
+
+Creating a double slab above a single slab causes a temporary visual error.
+
+Torches, Levers, & Buttons placed on non-supporting block change direction client-side or use illegal blockstates. This is fixed on rejoin.
+
+Stairs will change direction client-side if next to a block. This is fixed on rejoin.
+
+Chests and Furnaces will change their direction client-side. If not surrounded by blocks it always faces north. This is not fixed on rejoin.
+
+Client communicates block interaction (levers, doors, blocks w/ gui) on left click, but still interact client-side on right click.
+
 ## Java Edition Alpha v1.0.16_02
 
-Same as Java Edition Alpha v1.0.15
+Same as Java Edition Alpha v1.0.15.
 
 This version can't be distinguished from Java Edition Alpha v1.0.16, resulting in plots made in this version showing incorrectly on plot info.
 
 ## Java Edition Alpha v1.0.16_01
 
-Same as Java Edition Alpha v1.0.15
+Same as Java Edition Alpha v1.0.15.
 
 This version can't be distinguished from Java Edition Alpha v1.0.16, resulting in plots made in this version showing incorrectly on plot info.
 
 ## Java Edition Alpha v1.0.16
 
-Same as Java Edition Alpha v1.0.15
+Same as Java Edition Alpha v1.0.15.
 
 ## Java Edition Alpha v1.0.15
 

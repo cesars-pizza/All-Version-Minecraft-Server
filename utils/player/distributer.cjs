@@ -55,8 +55,8 @@ const set = {
     }
 }
 
-function DisplayBuildInfo(world, player, prevPosition, position) {
-    return require('./universal.cjs').DisplayBuildInfo(world, player, prevPosition, position)
+function EnterBuildPlot(world, player, prevPosition, position) {
+    return require('./universal.cjs').EnterBuildPlot(world, player, prevPosition, position)
 }
 
 /**
@@ -99,6 +99,6 @@ function PlayerCollisionFunctions(socket) {
 }
 
 module.exports = {
-    InitializePlayer, GetSavedPlayerData, GeneratePlayer, HasOpenInstance, getID, set, DisplayBuildInfo,
+    InitializePlayer, GetSavedPlayerData, GeneratePlayer, HasOpenInstance, getID, set, EnterBuildPlot,
     CollidingWithBlock, CollidingWithChunkLayer, CollidingWithFullBlock, CollidingWithPressurePlate, InBuildChunk, PlayerCollisionFunctions
 }

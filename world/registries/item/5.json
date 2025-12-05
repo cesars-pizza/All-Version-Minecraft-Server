@@ -1,8 +1,8 @@
 {
-    "minUVNI": 213,
-    "maxUVNI": 216,
-    "minUPVN": 8,
-    "maxUPVN": 9,
+    "minUVNI": 219,
+    "maxUVNI": 221,
+    "minUPVN": 10,
+    "maxUPVN": 10,
     "entries": {
         "air": 0,
         "stone": 1,
@@ -66,6 +66,7 @@
         "cactus": 81,
         "clay": 82,
         "jukebox": 84,
+        "oak_fence": 85,
         "iron_shovel": 256,
         "iron_pickaxe": 257,
         "iron_axe": 258,

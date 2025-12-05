@@ -60,6 +60,7 @@ function GeneratePlayer(world, socket, username) {
     player.verified = false,
     player.keepUnverified = false,
     player.lastUVNI = socket.thisPlayer.uvni,
+    player.currentTime = 0,
     player.joinCount = 0,
     player.save = true
 

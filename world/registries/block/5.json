@@ -1,8 +1,8 @@
 {
-    "minUVNI": 213,
-    "maxUVNI": 216,
-    "minUPVN": 8,
-    "maxUPVN": 9,
+    "minUVNI": 219,
+    "maxUVNI": 221,
+    "minUPVN": 10,
+    "maxUPVN": 10,
     "entries": {
         "air": 0,
         "stone": 1,
@@ -843,6 +843,7 @@
                 "has_record=true": "84:1"
             },
             "defaultID": "84:0"
-        }
+        },
+        "oak_fence": 85
     }
 }

@@ -39,6 +39,7 @@ function InitializePlayer(world, player, socket, username) {
     newPlayer.floorChangeCooldown = 0
     
     // Misc. Settings
+    newPlayer.currentTime = 0
     newPlayer.otherPlayers = {}
     newPlayer.allowMovement = false
     newPlayer.joinCount++
@@ -149,7 +150,7 @@ const set = {
                 z: Math.floor(position.z / 256)
             }
 
-            utils.player.DisplayBuildInfo(world, player, player.position, position)
+            utils.player.EnterBuildPlot(world, player, player.position, position)
 
             if (ignoreWorldGen !== true) { 
                 var plotTick = {
@@ -244,14 +245,18 @@ const set = {
  * @param {Position} position 
  * @param {Player} player 
  */
-function DisplayBuildInfo(world, player, prevPosition, position) {
-    if (player.settings.showPlotInfo) {
-        var prevInBuild = utils.collisions.PlayerCollidingWithBuildVolume(player.socket)(prevPosition)
-        var currInBuild = utils.collisions.PlayerCollidingWithBuildVolume(player.socket)(position)
-        if (!prevInBuild && currInBuild) {
-            var build = utils.builds.GetBuild(player.socket)(world, Math.floor(position.x / 32), Math.floor(position.z / 32))
+function EnterBuildPlot(world, player, prevPosition, position) {
+    var prevInBuild = utils.collisions.PlayerCollidingWithBuildVolume(player.socket)(prevPosition)
+    var currInBuild = utils.collisions.PlayerCollidingWithBuildVolume(player.socket)(position)
+
+    if (!prevInBuild && currInBuild) {
+        var build = utils.builds.GetBuild(player.socket)(world, Math.floor((position.x - 3) / 32), Math.floor((position.z - 3) / 32))
+        
+        if (build != undefined) player.currentTime = world.builds[build].settings.time
+
+        if (player.settings.showPlotInfo) {
             if (build != undefined && world.builds[build].creator != player.username) {
-                var buildInfo = utils.builds.GetBuildInfo(player.socket)(world, player.socket, Math.floor(position.x / 32), Math.floor(position.z / 32))
+                var buildInfo = utils.builds.GetBuildInfo(player.socket)(world, player.socket, Math.floor((position.x - 3) / 32), Math.floor((position.z - 3) / 32))
                 for (var i = 0; i < buildInfo.length; i++) {
                     player.tick.systemMessages.push(buildInfo[i])
                 }
@@ -260,4 +265,4 @@ function DisplayBuildInfo(world, player, prevPosition, position) {
     }
 }
 
-module.exports = {InitializePlayer, GetSavedPlayerData, HasOpenInstance, getID, set, DisplayBuildInfo}
+module.exports = {InitializePlayer, GetSavedPlayerData, HasOpenInstance, getID, set, EnterBuildPlot}

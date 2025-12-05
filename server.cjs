@@ -7,6 +7,7 @@ const dataWriter = require('./data_handlers/data_writer.cjs')
 const utils = require('./utils/utils.cjs')
 
 var socketIndex = 0
+var tick = 0n
 
 /**
  * @type {World}
@@ -140,6 +141,12 @@ function StartServer() {
 
 setInterval(ServerTick, 50)
 function ServerTick() {
+    if (tick % 5n == 0) {
+        for (var i = 0; i < world.loadedPlayers.length; i++) {
+            utils.tick_actions.environment.SetTime(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.loadedPlayers[i].currentTime)
+        }
+    }
+
     for (var i = 0; i < world.builds.length; i++) {
         if (world.builds[i].nearbyPlayers.length == 0) continue
 
@@ -259,6 +266,8 @@ function ServerTick() {
         }, 1000)
         world.closeServer = false
     }
+
+    tick++
 }
 
 setInterval(ServerSave, 120000)
@@ -311,7 +320,7 @@ async function ReadPacket(socket, data) {
 
     var packetReaderFn = packetReader[packetID]
 
-    if (packetID != null && socket.identified) {
+    if (packetID != null) {
         if (packetReaderFn != undefined) {
             var splitIndex = packetReaderFn(socket)(world, socket, data)
             if (splitIndex > 0) {
@@ -430,16 +439,36 @@ function IdentifyVersion(socket, data) {
 
             return
         } else if (data[0] == 2) {
-            socket.log(`IDENTIFIED UPVN 9`)
-            socket.log(`IDENTIFIED UVNI 214 / Alpha v1.0.16`)
-            socket.identified = true
             socket.thisPlayer.upvn = 9
             socket.thisPlayer.uvni = 214
+        }
+    } else if (socket.packetCount > 1) {
+        if (data[0] == 1) {
+            var protocolVersion = (data[1] << 24) | (data[2] << 16) | (data[3] << 8) | data[4]
 
-            if (world.config.minUPVN > 9) socket.setDisconnect("invalidVersion")
-            if (world.config.maxUPVN < 9) socket.setDisconnect("invalidVersion")
+            if (protocolVersion == 14) {
+                socket.log(`IDENTIFIED UPVN 9`)
+                socket.log(`IDENTIFIED UVNI 214 / Alpha v1.0.16`)
+                socket.identified = true
+                socket.thisPlayer.upvn = 9
+                socket.thisPlayer.uvni = 214
 
-            return
+                if (world.config.minUPVN > 9) socket.setDisconnect("invalidVersion")
+                if (world.config.maxUPVN < 9) socket.setDisconnect("invalidVersion")
+
+                return
+            } else if (protocolVersion == 1) {
+                socket.log(`IDENTIFIED UPVN 10`)
+                socket.log(`IDENTIFIED UVNI 219 / Alpha v1.0.17_02`)
+                socket.identified = true
+                socket.thisPlayer.upvn = 10
+                socket.thisPlayer.uvni = 219
+
+                if (world.config.minUPVN > 10) socket.setDisconnect("invalidVersion")
+                if (world.config.maxUPVN < 10) socket.setDisconnect("invalidVersion")
+
+                return
+            }
         }
     }
 
@@ -450,14 +479,11 @@ function IdentifyVersion(socket, data) {
  * @param {Socket} socket 
  */
 function GetPacketID(socket, data) {
-    if (socket.identified) {
-        if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 15) return data[0]
-        else {
-            socket.log(`ERR: Cannot Parse Packet ID for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
-            return null
-        }
+    if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 15) return data[0]
+    else {
+        socket.log(`ERR: Cannot Parse Packet ID for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
+        return null
     }
-    else return null
 }
 
 /** 

@@ -200,6 +200,7 @@
             "states": {
                 "has_record": ["false", "true"]
             }
-        }
+        },
+        "oak_fence": { "states": {} }
     }
 }
