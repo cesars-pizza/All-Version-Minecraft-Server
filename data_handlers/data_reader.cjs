@@ -9,4 +9,6 @@ module.exports = {
     readFloat: require('./number/float/float.cjs').Read,
     readDouble: require('./number/double/double.cjs').Read,
     readString: require('./string/string.cjs').Read,
+    readNBT: require('./nbt/nbtRead.cjs').Read,
+    readGZip: require('./gzip/gzip.cjs').Read
 }

@@ -58,7 +58,7 @@ module.exports = [
     undefined,
     undefined,
     undefined,
-    undefined,
+    require('./59/distributer.cjs').ReadPacket,
     undefined,
     undefined,
     undefined,

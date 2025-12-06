@@ -1,0 +1,34 @@
+{
+    "x": {
+        "id": 3,
+        "value": 600
+    },
+    "Text4": {
+        "id": 8,
+        "value": "d"
+    },
+    "y": {
+        "id": 3,
+        "value": 2
+    },
+    "Text3": {
+        "id": 8,
+        "value": "c"
+    },
+    "z": {
+        "id": 3,
+        "value": 21
+    },
+    "Text2": {
+        "id": 8,
+        "value": "b"
+    },
+    "id": {
+        "id": 8,
+        "value": "Sign"
+    },
+    "Text1": {
+        "id": 8,
+        "value": "a"
+    }
+}

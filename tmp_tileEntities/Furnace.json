@@ -1,0 +1,50 @@
+{
+    "CookTime": {
+        "id": 2,
+        "value": 0
+    },
+    "x": {
+        "id": 3,
+        "value": 600
+    },
+    "BurnTime": {
+        "id": 2,
+        "value": 0
+    },
+    "y": {
+        "id": 3,
+        "value": 2
+    },
+    "z": {
+        "id": 3,
+        "value": 27
+    },
+    "Items": {
+        "id": 9,
+        "type": 10,
+        "value": [
+            {
+                "Slot": {
+                    "id": 1,
+                    "value": 0
+                },
+                "id": {
+                    "id": 2,
+                    "value": 81
+                },
+                "Count": {
+                    "id": 1,
+                    "value": 64
+                },
+                "Damage": {
+                    "id": 2,
+                    "value": 0
+                }
+            }
+        ]
+    },
+    "id": {
+        "id": 8,
+        "value": "Furnace"
+    }
+}

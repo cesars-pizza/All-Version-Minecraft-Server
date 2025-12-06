@@ -11,6 +11,7 @@ module.exports = {
     writeDouble: require('./number/double/double.cjs').Write,
     writeString: require('./string/string.cjs').Write,
     writeLevelData: require('./level_data/level_data.cjs').Write,
+    writeNBT: require('./nbt/nbt.cjs'),
     writeGZip: require('./gzip/gzip.cjs').Write,
     writeZlib: require('./zlib/zlib.cjs').Write,
     writePacket: require('./packet/packet.cjs').Write

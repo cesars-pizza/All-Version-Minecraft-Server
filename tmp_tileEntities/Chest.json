@@ -1,0 +1,42 @@
+{
+    "x": {
+        "id": 3,
+        "value": 597
+    },
+    "y": {
+        "id": 3,
+        "value": 2
+    },
+    "z": {
+        "id": 3,
+        "value": 26
+    },
+    "Items": {
+        "id": 9,
+        "type": 10,
+        "value": [
+            {
+                "Slot": {
+                    "id": 1,
+                    "value": 1
+                },
+                "id": {
+                    "id": 2,
+                    "value": 331
+                },
+                "Count": {
+                    "id": 1,
+                    "value": 64
+                },
+                "Damage": {
+                    "id": 2,
+                    "value": 0
+                }
+            }
+        ]
+    },
+    "id": {
+        "id": 8,
+        "value": "Chest"
+    }
+}
