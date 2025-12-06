@@ -13,9 +13,9 @@ var packetIdentifier = "Player Inventory"
  * @param {Buffer} data 
  */
 function ReadPacket(world, socket, data) {
-    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`, false)
+    socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
 
-    if (data.length < 6) return -999
+    if (data.length < 7) return -999
 
     var inventoryType = dataReader.readInt(socket, data, 1)
     var inventoryLength = dataReader.readShort(socket, data, inventoryType.nextPos)
@@ -50,6 +50,80 @@ function ReadPacket(world, socket, data) {
                 removed_components: []
             })
         }
+    }
+
+    if (inventoryType.value == -1) {
+        var currentItemCounts = {}
+        var newItemCounts = {}
+
+        for (var i = 0; i < socket.thisPlayer.inventory.slots.hotbar.length; i++) {
+            if (socket.thisPlayer.inventory.slots.hotbar[i].id == "air") continue
+
+            if (currentItemCounts[socket.thisPlayer.inventory.slots.hotbar[i].id] == undefined) currentItemCounts[socket.thisPlayer.inventory.slots.hotbar[i].id] = 0
+            currentItemCounts[socket.thisPlayer.inventory.slots.hotbar[i].id] += socket.thisPlayer.inventory.slots.hotbar[i].count
+        }
+        for (var i = 0; i < socket.thisPlayer.inventory.slots.inventory.length; i++) {
+            if (socket.thisPlayer.inventory.slots.inventory[i].id == "air") continue
+
+            if (currentItemCounts[socket.thisPlayer.inventory.slots.inventory[i].id] == undefined) currentItemCounts[socket.thisPlayer.inventory.slots.inventory[i].id] = 0
+            currentItemCounts[socket.thisPlayer.inventory.slots.inventory[i].id] += socket.thisPlayer.inventory.slots.inventory[i].count
+        }
+        for (var i = 0; i < inventoryItems.length; i++) {
+            if (inventoryItems[i].id == "air") continue
+            
+            if (newItemCounts[inventoryItems[i].id] == undefined) newItemCounts[inventoryItems[i].id] = 0
+            newItemCounts[inventoryItems[i].id] += inventoryItems[i].count
+        }
+
+        var itemsInInventory = Object.keys(currentItemCounts)
+        for (var i = 0; i < itemsInInventory.length; i++) {
+            var itemDif = currentItemCounts[itemsInInventory[i]] - newItemCounts[itemsInInventory[i]]
+
+            if (itemDif < 0) {
+                for (var j = 0; j < inventoryItems.length; j++) {
+                    if (inventoryItems[j].id == itemsInInventory[i]) {
+                        if (inventoryItems[j].count == -itemDif) {
+                            inventoryItems[j].id = "air"
+                            inventoryItems[j].count = 0
+                            break
+                        } else if (inventoryItems[j].count < -itemDif) {
+                            inventoryItems[j].id = "air"
+                            inventoryItems[j].count = 0
+                            itemDif += inventoryItems[j].count
+                        } else {
+                            inventoryItems[j].count += itemDif
+                            break
+                        }
+                    }
+                }
+            } 
+        }
+
+        for (var i = 0; i < itemsInInventory.length; i++) {
+            var itemDif = currentItemCounts[itemsInInventory[i]] - newItemCounts[itemsInInventory[i]]
+
+            if (isNaN(itemDif)) {
+                for (var j = 0; j < inventoryItems.length; j++) {
+                    if (inventoryItems[j].id == "air") {
+                        inventoryItems[j].id = itemsInInventory[i]
+                        inventoryItems[j].count = currentItemCounts[itemsInInventory[i]]
+                        break
+                    }
+                }
+            } else if (itemDif > 0) {
+                for (var j = 0; j < inventoryItems.length; j++) {
+                    if (inventoryItems[j].id == itemsInInventory[i]) {
+                        inventoryItems[j].count += itemDif
+                        break
+                    }
+                }
+            }
+        }
+
+        socket.thisPlayer.inventory.slots.hotbar = inventoryItems.slice(0, 9)
+        socket.thisPlayer.inventory.slots.inventory = inventoryItems.slice(9)
+
+        packetWriter.Alpha.Player_Inventory(socket)(world, socket, -1, socket.thisPlayer.inventory.slots)
     }
     
     return data.length - pointer
