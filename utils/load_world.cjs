@@ -12,7 +12,8 @@ var world = {
     loadedPlayers: [],
     registries: {
         block: [],
-        item: []
+        item: [],
+        entity: []
     },
     builds: [],
     blockUpdates: [],
@@ -36,6 +37,7 @@ async function loadWorld() {
 
     loadRegistry('block', 'block', 'Block Registries', 'Universal Blocks')
     loadRegistry('item', 'item', 'Item Registries', 'Universal Items')
+    loadRegistry('entity', 'entity', 'Entity Registries', 'Universal Entities')
 
     loadVersions()
 

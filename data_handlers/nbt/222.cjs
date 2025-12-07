@@ -57,7 +57,7 @@ function Read(socket, data, position) {
         }
     } else if (typeID == 5) {
         var name = dataReader.readString(socket, data, position + 1)
-        var value = dataReader.readFloat(socket, data, name.nextPos)
+        var value = dataReader.readFloat(socket, Buffer.from(data), name.nextPos)
 
         return {
             id: typeID,
@@ -68,7 +68,7 @@ function Read(socket, data, position) {
         }
     } else if (typeID == 6) {
         var name = dataReader.readString(socket, data, position + 1)
-        var value = dataReader.readDouble(socket, data, name.nextPos)
+        var value = dataReader.readDouble(socket, Buffer.from(data), name.nextPos)
 
         return {
             id: typeID,
@@ -98,9 +98,6 @@ function Read(socket, data, position) {
     } else if (typeID == 8) {
         var name = dataReader.readString(socket, data, position + 1)
         var value = dataReader.readString(socket, data, name.nextPos)
-
-        console.log(name)
-        console.log(value)
 
         return {
             id: typeID,
@@ -136,7 +133,7 @@ function Read(socket, data, position) {
         var values = {}
         while (!reachedEnd) {
             var thisValue = Read(socket, data, pointer)
-            console.log(thisValue)
+
             if (thisValue.id == 0) reachedEnd = true
             else if (thisValue.id == 9) values[thisValue.name] = {
                 id: thisValue.id,
@@ -215,40 +212,40 @@ function ReadInList(socket, data, position, typeID) {
 
         return {
             value: value.value,
-            length: name.length + 2,
-            nextPos: position + name.length + 2
+            length: 2,
+            nextPos: position + 2
         }
     } else if (typeID == 3) {
         var value = dataReader.readInt(socket, data, position)
 
         return {
             value: value.value,
-            length: name.length + 4,
-            nextPos: position + name.length + 4
+            length: 4,
+            nextPos: position + 4
         }
     } else if (typeID == 4) {
         var value = dataReader.readLong(socket, data, position)
 
         return {
             value: value.value,
-            length: name.length + 8,
-            nextPos: position + name.length + 8
+            length: 8,
+            nextPos: position + 8
         }
     } else if (typeID == 5) {
-        var value = dataReader.readFloat(socket, data, position)
+        var value = dataReader.readFloat(socket, Buffer.from(data), position)
 
         return {
             value: value.value,
-            length: name.length + 4,
-            nextPos: position + name.length + 4
+            length: 4,
+            nextPos: position + 4
         }
     } else if (typeID == 6) {
-        var value = dataReader.readDouble(socket, data, position)
+        var value = dataReader.readDouble(socket, Buffer.from(data), position)
 
         return {
             value: value.value,
-            length: name.length + 8,
-            nextPos: position + name.length + 8
+            length: 8,
+            nextPos: position + 8
         }
     } else if (typeID == 7) {
         var length = dataReader.readInt(socket, data, position)

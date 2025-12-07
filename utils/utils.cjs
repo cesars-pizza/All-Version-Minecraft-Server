@@ -7,6 +7,7 @@ module.exports = {
     registry: {
         block: require('./registries/block.cjs'),
         item: require('./registries/item.cjs'),
+        entity: require('./registries/entity.cjs'),
         version: require('./registries/version.cjs')
     },
     builds: require('./builds/distributer.cjs'),

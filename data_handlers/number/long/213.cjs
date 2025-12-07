@@ -2,14 +2,14 @@ const {Socket} = require('../../../data_structures.cjs')
 
 function Read(data, position) {
     var value = 0n
-    value += data[position + 0] * 0x0100000000000000n
-    value += data[position + 1] * 0x0001000000000000n
-    value += data[position + 2] * 0x0000010000000000n
-    value += data[position + 3] * 0x0000000100000000n
-    value += data[position + 4] * 0x0000000001000000n
-    value += data[position + 5] * 0x0000000000010000n
-    value += data[position + 6] * 0x0000000000000100n
-    value += data[position + 7] * 0x0000000000000001n
+    value += BigInt(data[position + 0]) * 0x0100000000000000n
+    value += BigInt(data[position + 1]) * 0x0001000000000000n
+    value += BigInt(data[position + 2]) * 0x0000010000000000n
+    value += BigInt(data[position + 3]) * 0x0000000100000000n
+    value += BigInt(data[position + 4]) * 0x0000000001000000n
+    value += BigInt(data[position + 5]) * 0x0000000000010000n
+    value += BigInt(data[position + 6]) * 0x0000000000000100n
+    value += BigInt(data[position + 7]) * 0x0000000000000001n
     if (value > 9223372036854775807n) value -= 18446744073709551616n
 
     return {

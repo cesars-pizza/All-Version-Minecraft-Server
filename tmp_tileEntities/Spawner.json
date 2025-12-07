@@ -1,0 +1,26 @@
+{
+    "x": {
+        "id": 3,
+        "value": 31
+    },
+    "y": {
+        "id": 3,
+        "value": 39
+    },
+    "z": {
+        "id": 3,
+        "value": -86
+    },
+    "EntityId": {
+        "id": 8,
+        "value": "Skeleton"
+    },
+    "Delay": {
+        "id": 2,
+        "value": 20
+    },
+    "id": {
+        "id": 8,
+        "value": "MobSpawner"
+    }
+}

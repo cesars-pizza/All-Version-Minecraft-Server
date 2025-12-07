@@ -67,7 +67,7 @@ class World {
      * @param {number} maxPlayerCount 
      * @param {string[]} loadingPlayerNames 
      * @param {Player[]} loadedPlayers
-     * @param {{block: BlockRegistry[], item: Registry[]}} registries 
+     * @param {{block: BlockRegistry[], item: Registry[], entity: Registry[]}} registries 
      * @param {Registry} blockStateData
      * @param {Build[]} builds
      * @param {TickBlock[]} blockUpdates
@@ -117,7 +117,7 @@ class Player {
      * @param {boolean} save 
      * @param {number} upvn 
      * @param {number} uvni
-     * @param {{block: number, item: number}} selectedRegistries  
+     * @param {{block: number, item: number, entity: number}} selectedRegistries  
      * @param {number} floorChangeCooldown
      * @param {{blockPos: Position, ticks: number}} digging 
      * @param {number} currentTime
