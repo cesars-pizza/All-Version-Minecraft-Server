@@ -29,8 +29,6 @@ function ReadPacket(world, socket, data) {
     if (splitIndex >= 0) {
         var rawData = dataReader.readNBT(socket, dataReader.readGZip(socket, data.subarray(payloadLength.nextPos, payloadLength.nextPos + payloadLength.value), 0), 0).value
         
-        fs.writeFileSync('./debug/nbt-import.nbt', Buffer.from(dataReader.readGZip(socket, data.subarray(payloadLength.nextPos, payloadLength.nextPos + payloadLength.value), 0)))
-
         var blockPos = {
             x: rawData.x.value,
             y: rawData.y.value,
