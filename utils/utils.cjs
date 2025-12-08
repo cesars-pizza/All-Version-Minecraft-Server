@@ -27,5 +27,6 @@ module.exports = {
     load_world: require('./load_world.cjs').loadWorld,
     tag: require('./tags.cjs').GetBlockHasTag,
     angle: require('./angle/distributer.cjs'),
-    collisions: require('./collisions/distributer.cjs')
+    collisions: require('./collisions/distributer.cjs'),
+    blockEntity: require('./blockEntity/distributer.cjs')
 }

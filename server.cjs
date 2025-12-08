@@ -212,6 +212,11 @@ function ServerTick() {
             utils.tick_actions.set_block.SetBlock(world.loadedPlayers[i].socket)(world, world.loadedPlayers[i].socket, world.blockUpdates[j], world.blockUpdates[j].id, world.blockUpdates[j].doubleSet)
         }
 
+        for (var j = 0; j < world.blockEntityUpdates.length; j++) {
+            if (!world.blockEntityUpdates[j].remove)
+                utils.tick_actions.set_block.SetBlockEntity(world.loadedPlayers[i].socket)(world, world.loadedPlayers[i].socket, world.blockEntityUpdates[j], world.blockEntityUpdates[j].data)
+        }
+
         for (var j = 0; j < world.disconnectedPlayers.length; j++) {
             utils.tick_actions.despawn_player(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.disconnectedPlayers[j].classicID, world.disconnectedPlayers[j].alphaID)
             utils.tick_actions.message.QuitMessage(world.loadedPlayers[i].socket)(world.loadedPlayers[i].socket, world.disconnectedPlayers[j].username)
@@ -259,6 +264,7 @@ function ServerTick() {
         }
     }
     world.blockUpdates = []
+    world.blockEntityUpdates = []
     world.disconnectedPlayers = []
     if (world.closeServer) {
         setTimeout(() => {

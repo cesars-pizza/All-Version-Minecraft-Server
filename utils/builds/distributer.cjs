@@ -29,4 +29,24 @@ function SetBlockInBuild(socket) {
     return require('./29.cjs').SetBlockInBuild
 }
 
-module.exports = {GetBuild, GenerateBuild, GetBuildInfo, SetBlockInBuild}
+/**
+ * @param {World} world 
+ * @param {number} buildIndex 
+ * @param {Position} blockPos 
+ * @param {{}} data 
+ */
+function AddBlockEntityToBuild(socket) {
+    return require('./29.cjs').AddBlockEntityToBuild
+}
+
+/**
+ * @param {World} world 
+ * @param {number} buildIndex 
+ * @param {Position} blockPos 
+ * @param {{}} data 
+ */
+function RemoveBlockEntityFromBuild(socket) {
+    return require('./29.cjs').RemoveBlockEntityFromBuild
+}
+
+module.exports = {GetBuild, GenerateBuild, GetBuildInfo, SetBlockInBuild, AddBlockEntityToBuild, RemoveBlockEntityFromBuild}

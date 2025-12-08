@@ -196,6 +196,7 @@ function Read(socket, data, position) {
 function ReadInList(socket, data, position, typeID) {
     if (typeID == 0) {
         return {
+            id: typeID,
             length: 0,
             nextPos: position + 0
         }
@@ -203,6 +204,7 @@ function ReadInList(socket, data, position, typeID) {
         var value = dataReader.readByte(socket, data, position)
 
         return {
+            id: typeID,
             value: value.value,
             length: 1,
             nextPos: position + 1
@@ -211,6 +213,7 @@ function ReadInList(socket, data, position, typeID) {
         var value = dataReader.readShort(socket, data, position)
 
         return {
+            id: typeID,
             value: value.value,
             length: 2,
             nextPos: position + 2
@@ -219,6 +222,7 @@ function ReadInList(socket, data, position, typeID) {
         var value = dataReader.readInt(socket, data, position)
 
         return {
+            id: typeID,
             value: value.value,
             length: 4,
             nextPos: position + 4
@@ -227,6 +231,7 @@ function ReadInList(socket, data, position, typeID) {
         var value = dataReader.readLong(socket, data, position)
 
         return {
+            id: typeID,
             value: value.value,
             length: 8,
             nextPos: position + 8
@@ -235,6 +240,7 @@ function ReadInList(socket, data, position, typeID) {
         var value = dataReader.readFloat(socket, Buffer.from(data), position)
 
         return {
+            id: typeID,
             value: value.value,
             length: 4,
             nextPos: position + 4
@@ -243,6 +249,7 @@ function ReadInList(socket, data, position, typeID) {
         var value = dataReader.readDouble(socket, Buffer.from(data), position)
 
         return {
+            id: typeID,
             value: value.value,
             length: 8,
             nextPos: position + 8
@@ -258,6 +265,7 @@ function ReadInList(socket, data, position, typeID) {
         }
 
         return {
+            id: typeID,
             value: values,
             length: pointer - position,
             nextPos: pointer
@@ -266,6 +274,7 @@ function ReadInList(socket, data, position, typeID) {
         var value = dataReader.readString(socket, data, position)
 
         return {
+            id: typeID,
             value: value.value,
             length: value.length,
             nextPos: position + value.length
@@ -282,6 +291,7 @@ function ReadInList(socket, data, position, typeID) {
         }
 
         return {
+            id: typeID,
             type: itemType.value,
             value: values,
             length: pointer - position,
@@ -307,6 +317,7 @@ function ReadInList(socket, data, position, typeID) {
         }
 
         return {
+            id: typeID,
             value: values,
             length: pointer - position,
             nextPos: pointer
@@ -322,6 +333,7 @@ function ReadInList(socket, data, position, typeID) {
         }
 
         return {
+            id: typeID,
             value: values,
             length: pointer - position,
             nextPos: pointer
@@ -337,6 +349,7 @@ function ReadInList(socket, data, position, typeID) {
         }
 
         return {
+            id: typeID,
             value: values,
             length: pointer - position,
             nextPos: pointer
@@ -376,8 +389,8 @@ function WriteNBT(name, values, isList, isCompound) {
             var decodedValue = dataWriter.writeString({thisPlayer: {upvn: 8}}, values[valueKeys[i]].value)
             rootData = rootData.concat(decodedValue)
         }
-        else if (values[valueKeys[i]].id == 9) rootData = rootData.concat(WriteNBT(values[valueKeys[i]].type, values[valueKeys[i]].value, true, false))
-        else if (values[valueKeys[i]].id == 10) rootData = rootData.concat(WriteNBT(values[valueKeys[i]].type, values[valueKeys[i]].value, false, true))
+        else if (values[valueKeys[i]].id == 9) rootData = rootData.concat(dataWriter.writeByte(undefined, values[valueKeys[i]].type), dataWriter.writeInt(undefined, values[valueKeys[i]].value.length), WriteNBT("", values[valueKeys[i]].value, true, false))
+        else if (values[valueKeys[i]].id == 10) rootData = rootData.concat(WriteNBT("", values[valueKeys[i]].value, false, true))
         else if (values[valueKeys[i]].id == 11) rootData = rootData.concat(dataWriter.writeInt(undefined, values[valueKeys[i]].value.length), values[valueKeys[i]].value.map(item => dataWriter.writeInt(undefined, item)).flat())
         else if (values[valueKeys[i]].id == 12) rootData = rootData.concat(dataWriter.writeInt(undefined, values[valueKeys[i]].value.length), values[valueKeys[i]].value.map(item => dataWriter.writeLong(undefined, item)).flat())
     }
@@ -449,10 +462,18 @@ function WriteTag_String(value) {
 }
 
 function WriteTag_List(values) {
+    if (values.length == 0) {
+        return {
+            id: 9,
+            type: 1,
+            value: []
+        }
+    }
+
     return {
         id: 9,
         type: values[0].id,
-        value: values.map(value => value.value)
+        value: values
     }
 }
 

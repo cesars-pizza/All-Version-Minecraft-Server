@@ -41,6 +41,7 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
     }
 
     var blocks = [[], []]
+    var blockEntities = []
     
     var chunkTypeX = utils.math.NegMod(chunkX, 2)
     var chunkTypeZ = utils.math.NegMod(chunkZ, 2)
@@ -108,6 +109,7 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
                 }
             }
         }
+        blockEntities = world.builds[buildIndex].blockEntities
     } else {
         for (var y = 2; y < 128; y++) {
             blocks[y] = []
@@ -124,7 +126,8 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
         blocks: blocks,
         blockMeta: blockMetadata,
         blockLight: blockLight,
-        skyLight: skyLight
+        skyLight: skyLight,
+        blockEntities: blockEntities
     }
 }
 

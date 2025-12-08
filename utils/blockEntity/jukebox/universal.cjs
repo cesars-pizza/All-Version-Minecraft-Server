@@ -8,18 +8,13 @@ const {Socket, Position} = require('../../../data_structures.cjs')
  */
 function GenerateNew(world, socket, id, position) {
     return {
-        id: "furnace",
+        id: "jukebox",
         position: position,
-        customName: undefined,
-        items: [],
-        lock: undefined,
-        litTime: {
-            remaining: 0,
-            total: 0
-        },
-        cookingTime: {
-            remaining: 0,
-            total: 0
+        recordItem: {
+            id: "air",
+            count: 0,
+            added_components: [],
+            removed_components: []
         }
     }
 }

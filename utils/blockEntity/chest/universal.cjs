@@ -11,7 +11,7 @@ function GenerateNew(world, socket, id, position) {
         id: "chest",
         position: position,
         customName: undefined,
-        Items: [],
+        items: [],
         lock: undefined,
         gold: false
     }

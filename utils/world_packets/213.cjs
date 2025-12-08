@@ -41,11 +41,19 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
                     unformattedLevelDatas[innerX] = []
                     for (var innerZ = 0; innerZ < 16 && z + innerZ <= chunkZ + renderDistance; innerZ++) {
                         if (x + innerX == chunkX && z + innerZ == chunkZ) loadPlayer = true
-                        unformattedLevelDatas[innerX][innerZ] = utils.worldgen.GenerateBlocks(socket)(world, socket, x + innerX, z + innerZ)
+                        var thisLevelData = utils.worldgen.GenerateBlocks(socket)(world, socket, x + innerX, z + innerZ)
+                        unformattedLevelDatas[innerX][innerZ] = thisLevelData
                     }
                 }
                 var levelData = dataWriter.writeLevelData(socket, unformattedLevelDatas)
                 packetWriter.Alpha.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
+                for (var innerX = 0; innerX < unformattedLevelDatas.length; innerX++) {
+                    for (var innerZ = 0; innerZ < unformattedLevelDatas[innerX].length; innerZ++) {
+                        for (var i = 0; i < unformattedLevelDatas[innerX][innerZ].blockEntities.length; i++) {
+                            packetWriter.Alpha.Complex_Entities(socket)(world, socket, unformattedLevelDatas[innerX][innerZ].blockEntities[i].position, unformattedLevelDatas[innerX][innerZ].blockEntities[i])
+                        }
+                    }
+                }
             }
         }
 
@@ -101,6 +109,13 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
                 }
                 var levelData = dataWriter.writeLevelData(socket, unformattedLevelDatas)
                 packetWriter.Alpha.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
+                for (var innerX = 0; innerX < unformattedLevelDatas.length; innerX++) {
+                    for (var innerZ = 0; innerZ < unformattedLevelDatas[innerX].length; innerZ++) {
+                        for (var i = 0; i < unformattedLevelDatas[innerX][innerZ].blockEntities.length; i++) {
+                            packetWriter.Alpha.Complex_Entities(socket)(world, socket, unformattedLevelDatas[innerX][innerZ].blockEntities[i].position, unformattedLevelDatas[innerX][innerZ].blockEntities[i])
+                        }
+                    }
+                }
             }
         }
 
@@ -116,6 +131,13 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
                 }
                 var levelData = dataWriter.writeLevelData(socket, unformattedLevelDatas)
                 packetWriter.Alpha.Map_Chunk(socket)(socket, x, z, unformattedLevelDatas.length, unformattedLevelDatas[0].length, levelData)
+                for (var innerX = 0; innerX < unformattedLevelDatas.length; innerX++) {
+                    for (var innerZ = 0; innerZ < unformattedLevelDatas[innerX].length; innerZ++) {
+                        for (var i = 0; i < unformattedLevelDatas[innerX][innerZ].blockEntities.length; i++) {
+                            packetWriter.Alpha.Complex_Entities(socket)(world, socket, unformattedLevelDatas[innerX][innerZ].blockEntities[i].position, unformattedLevelDatas[innerX][innerZ].blockEntities[i])
+                        }
+                    }
+                }
             }
         }
     }

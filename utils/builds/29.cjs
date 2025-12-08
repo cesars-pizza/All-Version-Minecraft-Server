@@ -38,6 +38,7 @@ function GenerateBuild(world, tileX, tileZ, creator, uvni, settings) {
     returnValue.creator = creator
     returnValue.size = "small"
     returnValue.blocks = blocks
+    returnValue.blockEntities = []
     returnValue.floor = "grass_block"
     returnValue.uvni = uvni
     returnValue.created = new Date().getTime()
@@ -70,4 +71,44 @@ function SetBlockInBuild(world, buildIndex, blockPos, block) {
     world.builds[buildIndex].blocks[blockPos.y - 2][utils.math.NegMod(blockPos.z, 16)][utils.math.NegMod(blockPos.x, 16)] = block
 }
 
-module.exports = {GetBuild, GenerateBuild, SetBlockInBuild}
+/**
+ * @param {World} world 
+ * @param {number} buildIndex 
+ * @param {Position} blockPos 
+ * @param {{}} data 
+ */
+function AddBlockEntityToBuild(world, buildIndex, blockPos, data) {
+    for (var i = 0; i < world.builds[buildIndex].blockEntities.length; i++) {
+        if (
+            world.builds[buildIndex].blockEntities[i].position.x == blockPos.x &&
+            world.builds[buildIndex].blockEntities[i].position.y == blockPos.y &&
+            world.builds[buildIndex].blockEntities[i].position.z == blockPos.z
+        ) {
+            world.builds[buildIndex].blockEntities[i] = data
+            return
+        }
+    } 
+
+    world.builds[buildIndex].blockEntities.push(data)
+}
+
+/**
+ * @param {World} world 
+ * @param {number} buildIndex 
+ * @param {Position} blockPos 
+ * @param {{}} data 
+ */
+function RemoveBlockEntityFromBuild(world, buildIndex, blockPos) {
+    for (var i = 0; i < world.builds[buildIndex].blockEntities.length; i++) {
+        if (
+            world.builds[buildIndex].blockEntities[i].position.x == blockPos.x &&
+            world.builds[buildIndex].blockEntities[i].position.y == blockPos.y &&
+            world.builds[buildIndex].blockEntities[i].position.z == blockPos.z
+        ) {
+            world.builds[buildIndex].blockEntities.slice(i, i + 1)
+            return
+        }
+    }
+}
+
+module.exports = {GetBuild, GenerateBuild, SetBlockInBuild, AddBlockEntityToBuild, RemoveBlockEntityFromBuild}

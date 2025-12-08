@@ -17,9 +17,11 @@ var world = {
     },
     builds: [],
     blockUpdates: [],
+    blockEntityUpdates: [],
     tags: [],
     disconnectedPlayers: [],
     versions: [],
+    blockStateData: {},
     universalRegistries: {
         block: [],
         item: []

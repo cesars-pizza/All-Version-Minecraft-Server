@@ -18,6 +18,38 @@ function SetBlock(world, socket, position, blockID) {
  * @param {number | string} blockID 
  * @param {boolean} doubleSet 
  */
+function AddBlockEntityUpdate(world, socket, blockID, position, data, remove) {
+    var updatedBuild = utils.builds.GetBuild({})(world, Math.floor(position.x / 32), Math.floor(position.z / 32))
+    if (remove)
+        utils.builds.RemoveBlockEntityFromBuild(socket)(world, updatedBuild, position)
+    else
+        utils.builds.AddBlockEntityToBuild(socket)(world, updatedBuild, position, data)
+
+    var oldBlockUpdate = GetBlockEntityUpdate(world, position)
+
+    if (oldBlockUpdate == -1) {
+        world.blockEntityUpdates.push({
+            x: position.x,
+            y: position.y,
+            z: position.z,
+            data: data,
+            remove: remove
+        })
+    } else {
+        world.blockEntityUpdates[oldBlockUpdate].data = data
+        world.blockEntityUpdates[oldBlockUpdate].remove = remove
+    }
+
+    return true
+}
+
+/**
+ * @param {World} world 
+ * @param {Socket} socket 
+ * @param {Position} position 
+ * @param {number | string} blockID 
+ * @param {boolean} doubleSet 
+ */
 function AddBlockUpdate(world, socket, position, blockID, doubleSet, prevBlockID, scheduled) {
     var blockIdentifier = blockID
     if (typeof(blockID) == "number") blockIdentifier = utils.registry.block.GetBlockName(world, socket.thisPlayer.selectedRegistries.block, blockID)
@@ -31,6 +63,14 @@ function AddBlockUpdate(world, socket, position, blockID, doubleSet, prevBlockID
 
     var blockName = blockIdentifier.split('[')[0]
     var prevBlockName = prevBlockIdentifier.split('[')[0]
+
+    if (blockName != prevBlockName) {
+        if (utils.blockEntity.IsBlockEntity(prevBlockName))
+            AddBlockEntityUpdate(world, socket, undefined, position, undefined, true)
+
+        if (utils.blockEntity.IsBlockEntity(blockName))
+            AddBlockEntityUpdate(world, socket, blockName, position, utils.blockEntity.GenerateNew(world, socket, blockName, position), false)
+    }
 
     var oldBlockUpdate = GetBlockUpdate(world, position)
 
@@ -202,6 +242,17 @@ function ScheduleBlockUpdate(world, socket, position, blockID, prevBlockID, prio
 function GetBlockUpdate(world, position) {
     for (var i = 0; i < world.blockUpdates.length; i++) {
         if (world.blockUpdates[i].x == position.x && world.blockUpdates[i].y == position.y && world.blockUpdates[i].z == position.z) return i
+    }
+    return -1
+}
+
+/**
+ * @param {World} world 
+ * @param {Position} position 
+ */
+function GetBlockEntityUpdate(world, position) {
+    for (var i = 0; i < world.blockEntityUpdates.length; i++) {
+        if (world.blockEntityUpdates[i].x == position.x && world.blockEntityUpdates[i].y == position.y && world.blockEntityUpdates[i].z == position.z) return i
     }
     return -1
 }
@@ -470,4 +521,4 @@ function AddFloorUpdate(world, socket, position, blockID, doubleSet) {
     }
 }
 
-module.exports = {SetBlock, AddBlockUpdate, SendPostPlacementUpdate, SendNeighborChangedUpdate, ScheduleBlockUpdate, GetBlockUpdate, AddFloorUpdate}
+module.exports = {SetBlock, AddBlockUpdate, AddBlockEntityUpdate, SendPostPlacementUpdate, SendNeighborChangedUpdate, ScheduleBlockUpdate, GetBlockUpdate, AddFloorUpdate}

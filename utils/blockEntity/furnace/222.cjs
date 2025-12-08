@@ -6,12 +6,9 @@ const utils = require('../../utils.cjs')
 /** 
  * @param {Socket} socket 
  * @param {string} id 
- * @param {Position} position 
- * @param {Array} data 
+ * @param {Array} nbtData 
  */
-function ConvertToUniversalData(world, socket, id, position, data) {
-    var nbtData = dataReader.readNBT(socket, dataReader.readGZip(socket, data, 0), 0).value
-    
+function ConvertToUniversalData(world, socket, id, nbtData) {    
     var items = []
     for (var i = 0; i < nbtData.Items.value.length; i++) {
         items.push({
@@ -25,9 +22,13 @@ function ConvertToUniversalData(world, socket, id, position, data) {
 
     return {
         id: "furnace",
-        position: position,
+        position: {
+            x: nbtData.x.value,
+            y: nbtData.y.value,
+            z: nbtData.z.value
+        },
         customName: undefined,
-        Items: items,
+        items: items,
         lock: undefined,
         litTime: {
             remaining: 0,
@@ -45,7 +46,7 @@ function ConvertToUniversalData(world, socket, id, position, data) {
  * @param {Array} data 
  */
 function ConvertToVersionSpecificData(world, socket, data) {
-    return dataWriter.writeNBT.WriteNBT(socket, "", {
+    return {
         id: dataWriter.writeNBT.WriteTag_String(socket, "Furnace"),
         x: dataWriter.writeNBT.WriteTag_Int(socket, data.position.x),
         y: dataWriter.writeNBT.WriteTag_Int(socket, data.position.y),
@@ -69,7 +70,7 @@ function ConvertToVersionSpecificData(world, socket, data) {
                 })
             }
         }))
-    })
+    }
 }
 
 module.exports = {ConvertToUniversalData, ConvertToVersionSpecificData}

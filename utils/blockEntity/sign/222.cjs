@@ -6,15 +6,16 @@ const utils = require('../../utils.cjs')
 /** 
  * @param {Socket} socket 
  * @param {string} id 
- * @param {Position} position 
- * @param {Array} data 
+ * @param {Array} nbtData 
  */
-function ConvertToUniversalData(world, socket, id, position, data) {
-    var nbtData = dataReader.readNBT(socket, dataReader.readGZip(socket, data, 0), 0).value
-    
+function ConvertToUniversalData(world, socket, id, nbtData) {    
     return {
         id: "oak_sign",
-        position: position,
+        position: {
+            x: nbtData.x.value,
+            y: nbtData.y.value,
+            z: nbtData.z.value
+        },
         isWaxed: false,
         frontText: {
             isGlowing: false,
@@ -44,7 +45,7 @@ function ConvertToUniversalData(world, socket, id, position, data) {
  * @param {Array} data 
  */
 function ConvertToVersionSpecificData(world, socket, data) {
-    return dataWriter.writeNBT.WriteNBT(socket, "", {
+    return {
         id: dataWriter.writeNBT.WriteTag_String(socket, "Sign"),
         x: dataWriter.writeNBT.WriteTag_Int(socket, data.position.x),
         y: dataWriter.writeNBT.WriteTag_Int(socket, data.position.y),
@@ -53,7 +54,7 @@ function ConvertToVersionSpecificData(world, socket, data) {
         Text2: dataWriter.writeNBT.WriteTag_String(socket, data.frontText.messages[1]),
         Text3: dataWriter.writeNBT.WriteTag_String(socket, data.frontText.messages[2]),
         Text4: dataWriter.writeNBT.WriteTag_String(socket, data.frontText.messages[3])
-    })
+    }
 }
 
 module.exports = {ConvertToUniversalData, ConvertToVersionSpecificData}

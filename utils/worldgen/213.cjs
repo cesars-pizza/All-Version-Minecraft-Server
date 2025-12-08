@@ -41,6 +41,7 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
     }
 
     var blocks = [[], []]
+    var blockEntities = []
     
     var chunkTypeX = utils.math.NegMod(chunkX, 2)
     var chunkTypeZ = utils.math.NegMod(chunkZ, 2)
@@ -48,7 +49,7 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
         blocks[0][z] = []
         blocks[1][z] = []
         for (var x = 0; x < 16; x++) {
-            blocks[0][z][x] = cobblestoneID
+            blocks[0][z][x] = snowID
 
             if (chunkTypeX == 1 && chunkTypeZ == 1) {
                 var buildIndex = utils.builds.GetBuild(socket)(world, Math.floor(chunkX / 2), Math.floor(chunkZ / 2))
@@ -61,10 +62,10 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
         }
     }
     if (chunkTypeX == 0 || chunkTypeZ == 0) {
-        blocks[1][0][0] = logID
-        blocks[1][15][0] = logID
-        blocks[1][0][15] = logID
-        blocks[1][15][15] = logID
+        blocks[1][0][0] = iceID
+        blocks[1][15][0] = iceID
+        blocks[1][0][15] = iceID
+        blocks[1][15][15] = iceID
 
         if (chunkTypeX == 1) {
             for (var x = 0; x < 16; x++) {
@@ -108,6 +109,7 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
                 }
             }
         }
+        blockEntities = world.builds[buildIndex].blockEntities
     } else {
         for (var y = 2; y < 128; y++) {
             blocks[y] = []
@@ -124,7 +126,8 @@ function GenerateBlocks(world, socket, chunkX, chunkZ) {
         blocks: blocks,
         blockMeta: blockMetadata,
         blockLight: blockLight,
-        skyLight: skyLight
+        skyLight: skyLight,
+        blockEntities: blockEntities
     }
 }
 

@@ -3,13 +3,12 @@ const {Socket} = require('../../../data_structures.cjs')
 /** 
  * @param {Socket} socket 
  * @param {string} id 
- * @param {Position} position 
  * @param {Array} data 
  */
-function ConvertToUniversalData(world, socket, id, position, data) {
-    if (socket.upvn >= 11 && socket.upvn <= 15) return require('./222.cjs').ConvertToUniversalData(world, socket, id, position, data)
+function ConvertToUniversalData(world, socket, id, data) {
+    if (socket.thisPlayer.upvn >= 11 && socket.thisPlayer.upvn <= 15) return require('./222.cjs').ConvertToUniversalData(world, socket, id, data)
     else {
-        socket.log(`ERR: Cannot Convert Furnace To Universal Block Entity Data for Version ${socket.upvn}:${socket.uvni}`)
+        socket.log(`ERR: Cannot Convert Furnace To Universal Block Entity Data for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return {}
     }
 }
@@ -21,9 +20,9 @@ function ConvertToUniversalData(world, socket, id, position, data) {
  * @param {Array} data 
  */
 function ConvertToVersionSpecificData(world, socket, data) {
-    if (socket.upvn >= 11 && socket.upvn <= 15) return require('./222.cjs').ConvertToUniversalData(world, socket, data)
+    if (socket.thisPlayer.upvn >= 11 && socket.thisPlayer.upvn <= 15) return require('./222.cjs').ConvertToVersionSpecificData(world, socket, data)
     else {
-        socket.log(`ERR: Cannot Convert Furnace To Version Specific Block Entity Data for Version ${socket.upvn}:${socket.uvni}`)
+        socket.log(`ERR: Cannot Convert Furnace To Version Specific Block Entity Data for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return {}
     }
 }

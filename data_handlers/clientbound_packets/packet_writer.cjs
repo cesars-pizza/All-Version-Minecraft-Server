@@ -31,8 +31,9 @@ module.exports = {
         Entity_Teleport: require('./Alpha/Entity Teleport/distributer.cjs').WritePacket,
         Pre_Chunk: require('./Alpha/Pre Chunk/distributer.cjs').WritePacket,
         Map_Chunk: require('./Alpha/Map Chunk/distributer.cjs').WritePacket,
-        Block_Change: require('./Alpha/Block Change/distributer.cjs').WritePacket,
         Multi_Block_Change: require('./Alpha/Multi Block Change/distributer.cjs').WritePacket,
+        Block_Change: require('./Alpha/Block Change/distributer.cjs').WritePacket,
+        Complex_Entities: require('./Alpha/Complex Entities/distributer.cjs').WritePacket,
         Kick: require('./Alpha/Kick/distributer.cjs').WritePacket
     },
 

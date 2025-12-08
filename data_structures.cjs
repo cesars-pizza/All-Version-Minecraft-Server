@@ -71,6 +71,7 @@ class World {
      * @param {Registry} blockStateData
      * @param {Build[]} builds
      * @param {TickBlock[]} blockUpdates
+     * @param {TickBlockEntity[]} blockEntityUpdates
      * @param {{tag: string, values: string[]}[]} tags 
      * @param {{classicID: number, alphaID: number, username: string}[]} disconnectedPlayers 
      * @param {{supported: boolean, name: string, pvn: number}[]} versions 
@@ -78,7 +79,7 @@ class World {
      * @param {{save: () => {}}} serverFunctions 
      * @param {boolean} closeServer
      */
-    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, blockStateData, builds, blockUpdates, tags, disconnectedPlayers, versions, universalRegistries, serverFunctions, closeServer) {
+    constructor(config, players, maxPlayerCount, loadingPlayerNames, loadedPlayers, registries, blockStateData, builds, blockUpdates, blockEntityUpdates, tags, disconnectedPlayers, versions, universalRegistries, serverFunctions, closeServer) {
         this.config = config
         this.players = players
         this.maxPlayerCount = maxPlayerCount
@@ -88,6 +89,7 @@ class World {
         this.blockStateData = blockStateData
         this.builds = builds
         this.blockUpdates = blockUpdates
+        this.blockEntityUpdates = blockEntityUpdates
         this.disconnectedPlayers = disconnectedPlayers
         this.versions = versions
         this.universalRegistries = universalRegistries
@@ -234,6 +236,7 @@ class Build {
      * @param {string} creator 
      * @param {"small"} size 
      * @param {string[][][]} blocks 
+     * @param {{}[]} blockEntities
      * @param {string} floor 
      * @param {number} uvni 
      * @param {number} created 
@@ -244,12 +247,13 @@ class Build {
      * @param {{position: Position, blockID: string, prevBlockID: string, priority: number, doubleSet: boolean, delay: number}[]} scheduledBlockUpdates 
      * @param {string[]} nearbyPlayers 
      */
-    constructor(x, z, creator, size, blocks, floor, uvni, created, lastModified, save, settings, music, scheduledBlockUpdates, nearbyPlayers) {
+    constructor(x, z, creator, size, blocks, blockEntities, floor, uvni, created, lastModified, save, settings, music, scheduledBlockUpdates, nearbyPlayers) {
         this.x = x
         this.z = z
         this.creator = creator
         this.size = size
         this.blocks = blocks
+        this.blockEntities = blockEntities
         this.floor = floor
         this.uvni = uvni
         this.created = created
@@ -267,7 +271,7 @@ class TickBlock {
      * @param {number} x 
      * @param {number} y 
      * @param {number} z 
-     * @param {number} id 
+     * @param {string} id 
      * @param {boolean} doubleSet 
      */
     constructor(x, y, z, id, doubleSet) {
@@ -276,6 +280,21 @@ class TickBlock {
         this.z = z
         this.id = id
         this.doubleSet = doubleSet
+    }
+}
+
+class TickBlockEntity {
+    /**
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} z 
+     * @param {{}} data
+     */
+    constructor(x, y, z, data) {
+        this.x = x
+        this.y = y
+        this.z = z
+        this.data = data
     }
 }
 
@@ -296,4 +315,4 @@ class Inventory {
     }
 }
 
-module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, Registry, TickBlock, BlockRegistry, Build, Inventory}
+module.exports = {Socket, Config, World, Position, Rotation, Slot, Player, Registry, TickBlock, TickBlockEntity, BlockRegistry, Build, Inventory}
