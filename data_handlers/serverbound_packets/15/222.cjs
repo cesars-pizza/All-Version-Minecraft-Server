@@ -56,7 +56,7 @@ function ReadPacket(world, socket, data) {
                 var hitBuildIndex = utils.builds.GetBuild(socket)(world, Math.floor(facingBlock.x / 32), Math.floor(facingBlock.z / 32))
 
                 if (hitBuildIndex != undefined) {
-                    if (originalBlock.block.startsWith("chest") || originalBlock.block.startsWith("furnace")) return
+                    if (originalBlock.block.startsWith("chest") || originalBlock.block.startsWith("furnace") || originalBlock.block.startsWith("crafting_table")) return
 
                     if (world.builds[hitBuildIndex].creator == socket.thisPlayer.username || world.builds[hitBuildIndex].settings.publicInteractions) {
                         if (originalBlock.block.startsWith("oak_door")) {

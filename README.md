@@ -6,11 +6,11 @@ The goal of this project is to implement the server protocol of every archived v
 
 ## Progress
 
-The latest version supported in this project is Java Edition Alpha v1.0.17_04, released on August 23rd, 2010.
+The latest version supported in this project is Java Edition Alpha v1.1.2_01, released on September 23rd, 2010.
 
-This is 23 / 961 Versions to be supported as of snapshot 25w36b being the latest.
+This is 27 / 961 Versions to be supported as of snapshot 25w36b being the latest.
 
-[//--------------------------------------------------------------------------------------------------] (2.4%)
+[//--------------------------------------------------------------------------------------------------] (2.8%)
 
 View the [changelog](https://github.com/cesars-pizza/All-Version-Minecraft-Server/blob/main/CHANGELOG.md) for details on changes in this version.
 
@@ -55,6 +55,10 @@ plot.liquidUpdate: Whether or not water and lava will flow. Can be set to enable
 plot.publicInteractions: Whether or not other players are able to interact with blocks such as doors, levers, and buttons. Can be set to enable or disable when in a plot.
 
 plot.time: The time of day the plot is in. Can be set to "day", "noon", "night", "midnight", or any Long value when in a plot. Available starting in Alpha v1.0.17_04
+
+### /swapInv
+
+Swaps the items in the inventory to allow all available block and items to be accessed. Only available starting in Alpha v1.1.0.
 
 ## Copyright
 

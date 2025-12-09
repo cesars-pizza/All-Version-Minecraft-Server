@@ -265,14 +265,14 @@ function ReadPacket(world, socket, data) {
                     
                     if (!isFirstInventory) {
                         var playerItems = [
-                            "stone", "grass_block", "dirt", "cobblestone", "oak_planks", "oak_sapling", "bedrock", "water_bucket", "lava_bucket",
-                            "bucket", "sand", "gravel", "gold_ore", "iron_ore", "coal_ore", "oak_log", "oak_leaves", "sponge",
-                            "glass", "white_wool", "dandelion", "poppy", "brown_mushroom", "red_mushroom", "gold_block", "iron_block", "smooth_stone_slab",
-                            "bricks", "tnt", "bookshelf", "mossy_cobblestone", "obsidian", "torch", "flint_and_steel", "spawner", "oak_stairs"
+                            "stone", "cobblestone", "bricks", "dirt", "oak_planks", "oak_log", "oak_leaves", "torch", "smooth_stone_slab",
+                            "grass_block", "bucket", "water_bucket", "lava_bucket", "sand", "gravel", "gold_ore", "iron_ore", "coal_ore",
+                            "oak_sapling", "bedrock", "sponge", "glass", "white_wool", "dandelion", "poppy", "brown_mushroom", "red_mushroom",
+                            "gold_block", "iron_block", "tnt", "bookshelf", "mossy_cobblestone", "obsidian", "flint_and_steel", "spawner", "oak_stairs"
                         ]
                         var playerItemCounts = [
-                            64, 64, 64, 64, 64, 64, 64, 1, 1,
-                            1, 64, 64, 64, 64, 64, 64, 64, 64,
+                            64, 64, 64, 64, 64, 64, 64, 64, 64,
+                            64, 1, 1, 1, 64, 64, 64, 64, 64,
                             64, 64, 64, 64, 64, 64, 64, 64, 64,
                             64, 64, 64, 64, 64, 64, 1, 64, 64
                         ]

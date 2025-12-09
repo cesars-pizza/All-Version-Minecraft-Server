@@ -231,6 +231,8 @@ function ReadPacket(world, socket, data) {
                             }
                         } else socket.thisPlayer.tick.errorMessages.push(`Unknown setting: "${commandParts[1]}"`)
                     }
+                } else if (commandParts[0] == "/swapInv") {
+                    socket.thisPlayer.tick.errorMessages.push(`This command is not available in this version`)
                 } else socket.thisPlayer.tick.errorMessages.push(`Unknown command: "${message.value.split(' ')[0]}"`)
             } else socket.thisPlayer.tick.messages.push(message.value)
         }

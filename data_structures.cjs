@@ -75,7 +75,7 @@ class World {
      * @param {{tag: string, values: string[]}[]} tags 
      * @param {{classicID: number, alphaID: number, username: string}[]} disconnectedPlayers 
      * @param {{supported: boolean, name: string, pvn: number}[]} versions 
-     * @param {{block: string[], item: string[]}} universalRegistries 
+     * @param {{block: string[], item: string[], entity: string[]}} universalRegistries 
      * @param {{save: () => {}}} serverFunctions 
      * @param {boolean} closeServer
      */

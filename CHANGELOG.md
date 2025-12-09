@@ -4,9 +4,63 @@ This is a general overview of how the server protocol changes from version to ve
 
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
+## Java Edition Alpha v1.1.2_01
+
+This version can't be distinguished from Alpha v1.1.0.
+
+### Added Features
+
+Added Sneaking - can't be seen in server.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
+## Java Edition Alpha v1.1.2
+
+This version can't be distinguished from Alpha v1.1.0.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
+## Java Edition Alpha v1.1.1
+
+This version can't be distinguished from Alpha v1.1.0.
+
+### Added Features
+
+Added Sneaking - can't be seen in server.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
+## Java Edition Alpha v1.1.0
+
+Protocol Version set to 2.
+
+Player inventory is saved exactly as is between joins and can be swapped with /swapInv.
+
+### Added Features
+
+Added Compass.
+
+### Packets
+
+Added Player Inventory packet, making the player's inventory easier to manage and storable server-side.
+
+Added Spawn Position packet.
+
+Added Complex Entities packet, allowing for block entities (chests, furnaces, signs, spawners) to be modified and saved with special data.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
 ## Java Edition Alpha v1.0.17_04
 
-This version can't be distinguished from v1.0.17_02.
+This version can't be distinguished from Alpha v1.0.17_02.
 
 ### Documentation
 
@@ -14,7 +68,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Alpha v1.0.17_03
 
-This version can't be distinguished from v1.0.17_02.
+This version can't be distinguished from Alpha v1.0.17_02.
 
 ### Documentation
 
@@ -38,7 +92,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Alpha v1.0.16_02
 
-This version can't be distinguished from v1.0.16.
+This version can't be distinguished from Alpha v1.0.16.
 
 ### Documentation
 
@@ -46,7 +100,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Alpha v1.0.16_01
 
-This version can't be distinguished from v1.0.16.
+This version can't be distinguished from Alpha v1.0.16.
 
 ### Documentation
 
@@ -96,7 +150,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Classic 0.30
 
-This version can't be distinguished from 0.28_01.
+This version can't be distinguished from Classic 0.28_01.
 
 This is the final version of Minecraft Classic.
 
@@ -106,7 +160,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Classic 0.29_02
 
-This version can't be distinguished from 0.28_01.
+This version can't be distinguished from Classic 0.28_01.
 
 ### Documentation
 
@@ -114,7 +168,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Classic 0.29_01
 
-This version can't be distinguished from 0.28_01.
+This version can't be distinguished from Classic 0.28_01.
 
 ### Documentation
 
@@ -122,7 +176,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Classic 0.29
 
-This version can't be distinguished from 0.28_01.
+This version can't be distinguished from Classic 0.28_01.
 
 ### Added Features
 
@@ -170,7 +224,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Classic 0.0.23a_01
 
-This version can't be distinguished from 0.0.20a_01.
+This version can't be distinguished from Classic 0.0.20a_01.
 
 ### Documentation
 
@@ -178,7 +232,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Classic 0.0.22a_05
 
-This version can't be distinguished from 0.0.20a_01.
+This version can't be distinguished from Classic 0.0.20a_01.
 
 ### Documentation
 
@@ -186,7 +240,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Classic 0.0.21a
 
-This version can't be distinguished from 0.0.20a_01.
+This version can't be distinguished from Classic 0.0.20a_01.
 
 ### Documentation
 
@@ -194,7 +248,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Classic 0.0.20a_02
 
-This version can't be distinguished from 0.0.20a_01.
+This version can't be distinguished from Classic 0.0.20a_01.
 
 ### Documentation
 
@@ -222,7 +276,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Classic 0.0.19a_06
 
-This version can't be distinguished by the server from 0.0.19a_04.
+This version can't be distinguished by the server from Classic 0.0.19a_04.
 
 ### Documentation
 
@@ -250,7 +304,7 @@ Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_W
 
 ## Java Edition Classic 0.0.18a_02
 
-This version can't be distinguished by the server from 0.0.17a.
+This version can't be distinguished by the server from Classic 0.0.17a.
 
 ### Added Features
 

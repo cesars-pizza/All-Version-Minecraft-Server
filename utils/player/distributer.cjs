@@ -12,7 +12,8 @@ function GeneratePlayer(socket) {
     if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 1) return require('./29.cjs').GeneratePlayer
     if (socket.thisPlayer.upvn == 2) return require('./51.cjs').GeneratePlayer
     if (socket.thisPlayer.upvn >= 3 && socket.thisPlayer.upvn <= 4) return require('./55.cjs').GeneratePlayer
-    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').GeneratePlayer
+    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 10) return require('./213.cjs').GeneratePlayer
+    if (socket.thisPlayer.upvn >= 11 && socket.thisPlayer.upvn <= 15) return require('./222.cjs').GeneratePlayer
     else {
         socket.log(`ERR: Cannot Run Generate Player for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return () => {}

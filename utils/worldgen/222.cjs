@@ -164,4 +164,26 @@ function GetBlock(world, socket, blockPos) {
     }
 }
 
-module.exports = {GenerateBlocks, GetBlock}
+function GetBlockEntity(world, socket, blockPos) {
+    if (blockPos.y == 0) return {}
+    else if (blockPos.y == 1) return {}
+    else if (blockPos.y >= 64) return {}
+    else {
+        if (utils.math.NegMod(blockPos.x, 32) > 15 && utils.math.NegMod(blockPos.z, 32) > 15) {
+            var build = utils.builds.GetBuild(socket)(world, Math.floor(blockPos.x / 32), Math.floor(blockPos.z / 32))
+
+            if (build == undefined) return {}
+            else {
+                for (var i = 0; i < world.builds[build].blockEntities.length; i++) {
+                    if (world.builds[build].blockEntities[i].position.x == blockPos.x &&
+                        world.builds[build].blockEntities[i].position.y == blockPos.y &&
+                        world.builds[build].blockEntities[i].position.z == blockPos.z
+                    ) return world.builds[build].blockEntities[i]
+                }
+                return {}
+            }
+        } else return "air"
+    }
+}
+
+module.exports = {GenerateBlocks, GetBlock, GetBlockEntity}

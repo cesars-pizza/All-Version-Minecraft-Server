@@ -76,6 +76,21 @@ function ReadPacket(world, socket, data) {
         }
 
         var itemsInInventory = Object.keys(currentItemCounts)
+        var itemsInNewInventory = Object.keys(newItemCounts)
+        for (var i = 0; i < itemsInNewInventory.length; i++) {
+            if (!itemsInInventory.includes(itemsInNewInventory[i])) {
+                for (var j = 0; j < inventoryItems.length; j++) {
+                    if (inventoryItems[j].id == itemsInNewInventory[i]) {
+                        inventoryItems[j] = {
+                            id: "air",
+                            count: 0,
+                            added_components: [],
+                            removed_components: []
+                        }
+                    }
+                }
+            }
+        }
         for (var i = 0; i < itemsInInventory.length; i++) {
             var itemDif = currentItemCounts[itemsInInventory[i]] - newItemCounts[itemsInInventory[i]]
 

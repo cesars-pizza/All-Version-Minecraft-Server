@@ -24,7 +24,8 @@ var world = {
     blockStateData: {},
     universalRegistries: {
         block: [],
-        item: []
+        item: [],
+        entity: []
     },
     serverFunctions: {
         save: () => {}

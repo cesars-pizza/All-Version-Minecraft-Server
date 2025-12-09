@@ -2,6 +2,38 @@
 
 This is an outline of issues with specific clients.
 
+## Java Edition Alpha v1.1.2_01
+
+Same as Java Edition Alpha v1.1.0.
+
+This version can't be distinguished from Java Edition Alpha v1.1.0, resulting in plots made in this version showing incorrectly on plot info.
+
+This version has sneaking but isn't shown to other players.
+
+## Java Edition Alpha v1.1.2
+
+Same as Java Edition Alpha v1.1.0.
+
+This version can't be distinguished from Java Edition Alpha v1.1.0, resulting in plots made in this version showing incorrectly on plot info.
+
+This version has sneaking but isn't shown to other players.
+
+## Java Edition Alpha v1.1.1
+
+Same as Java Edition Alpha v1.1.0.
+
+This version can't be distinguished from Java Edition Alpha v1.1.0, resulting in plots made in this version showing incorrectly on plot info.
+
+This version has sneaking but isn't shown to other players.
+
+## Java Edition Alpha v1.1.0
+
+Creating a double slab above a single slab causes a temporary visual error.
+
+Torches, Levers, & Buttons placed on non-supporting block change direction client-side or use illegal blockstates. This is fixed on rejoin.
+
+Chests and Furnaces will change their direction client-side. If not surrounded by blocks it always faces north. This is not fixed on rejoin.
+
 ## Java Edition Alpha v1.0.17_04
 
 Same as Java Edition Alpha v1.0.17_02.

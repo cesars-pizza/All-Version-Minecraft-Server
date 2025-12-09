@@ -193,6 +193,8 @@ function ReadPacket(world, socket, data) {
                             } else socket.thisPlayer.tick.systemMessages.push('Public Interactions must be set to one of "enable", "disable", "enableDefault", or "disableDefault"')
                         } else socket.thisPlayer.tick.errorMessages.push(`Unknown setting: "${commandParts[1]}"`)
                     }
+                } else if (commandParts[0] == "/swapInv") {
+                    socket.thisPlayer.tick.errorMessages.push(`This command is not available in this version`)
                 } else socket.thisPlayer.tick.errorMessages.push(`Unknown command: "${message.value.split(' ')[0]}"`)
             } else socket.thisPlayer.tick.messages.push(message.value)
         }

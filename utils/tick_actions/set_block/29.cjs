@@ -40,6 +40,8 @@ function AddBlockEntityUpdate(world, socket, blockID, position, data, remove) {
         world.blockEntityUpdates[oldBlockUpdate].remove = remove
     }
 
+    world.builds[updatedBuild].save = true
+
     return true
 }
 

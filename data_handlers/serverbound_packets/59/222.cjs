@@ -48,6 +48,11 @@ function ReadPacket(world, socket, data) {
         
             if (hitBuildIndex != undefined && world.builds[hitBuildIndex].creator == socket.thisPlayer.username) {
                 utils.tick_actions.set_block.AddBlockEntityUpdate(socket)(world, socket, blockID, blockPos, universalData, false)
+            } else {
+                var actualBlockEntity = utils.worldgen.GetBlockEntity(socket)(world, socket, blockPos)
+                if (actualBlockEntity != undefined && actualBlockEntity.id != undefined) {
+                    packetWriter.Alpha.Complex_Entities(socket)(world, socket, blockPos, actualBlockEntity)
+                }
             }
         }
     }
