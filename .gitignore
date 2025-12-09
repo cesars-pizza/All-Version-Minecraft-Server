@@ -11,3 +11,4 @@ decode_packets.js
 file_comparison.cjs
 world/players/**
 world/builds/**
+be_searcher.cjs

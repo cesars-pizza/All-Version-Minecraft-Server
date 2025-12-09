@@ -58,6 +58,8 @@ Chests and Furnaces will change their direction client-side. If not surrounded b
 
 Client communicates block interaction (levers, doors, blocks w/ gui) on left click, but still interact client-side on right click.
 
+Chests, Furnaces, Signs, and Spawners cannot store any block entity data.
+
 ## Java Edition Alpha v1.0.16_02
 
 Same as Java Edition Alpha v1.0.15.
@@ -90,11 +92,15 @@ Client communicates block interaction (levers, doors, blocks w/ gui) on left cli
 
 Some forms of exiting of the game won't close the connection properly and won't allow rejoinging.
 
+Chests, Furnaces, Signs, and Spawners cannot store any block entity data.
+
 ## Java Edition Classic 0.0.30
 
 This version can't be distinguished from 0.0.28_01, resulting in plots made in this version showing incorrectly on plot info.
 
 Slabs connect to double slabs any time a slab is placed above a slab.
+
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
 
 ## Java Edition Classic 0.0.29_02
 
@@ -102,17 +108,23 @@ This version can't be distinguished from 0.0.28_01, resulting in plots made in t
 
 Slabs connect to double slabs any time a slab is placed above a slab.
 
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
+
 ## Java Edition Classic 0.0.29_01
 
 This version can't be distinguished from 0.0.28_01, resulting in plots made in this version showing incorrectly on plot info.
 
 Slabs connect to double slabs any time a slab is placed above a slab.
 
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
+
 ## Java Edition Classic 0.0.29
 
 This version can't be distinguished from 0.0.28_01, resulting in plots made in this version showing incorrectly on plot info.
 
 Slabs connect to double slabs any time a slab is placed above a slab.
+
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
 
 ## Java Edition Classic 0.0.28_01
 
@@ -122,25 +134,37 @@ Other players are rotated incorrectly.
 
 Slabs connect to double slabs any time a slab is placed above a slab.
 
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
+
 ## Java Edition Classic 0.0.23a_01
 
 This version can't be distinguished from 0.0.20a_01, resulting in plots made in this version showing incorrectly on plot info.
+
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
 
 ## Java Edition Classic 0.0.22a_05
 
 This version can't be distinguished from 0.0.20a_01, resulting in plots made in this version showing incorrectly on plot info.
 
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
+
 ## Java Edition Classic 0.0.21a
 
 This version can't be distinguished from 0.0.20a_01, resulting in plots made in this version showing incorrectly on plot info.
+
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
 
 ## Java Edition Classic 0.0.20a_02
 
 This version can't be distinguished from 0.0.20a_01, resulting in plots made in this version showing incorrectly on plot info.
 
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
+
 ## Java Edition Classic 0.0.19a_06
 
 This version can't be distinguished from 0.0.19a_04, resulting in plots made in this version showing incorrectly on plot info.
+
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
 
 ## Java Edition Classic 0.0.18a_02
 
@@ -148,13 +172,19 @@ This version can't be distinguished from 0.0.17a, resulting in plots made in thi
 
 Sand and Gravel will fall client-side but float server-side.
 
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
+
 ## Java Edition Classic 0.0.17a
 
 Sand and Gravel will fall client-side but float server-side.
 
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
+
 ## Java Edition Classic 0.0.16a_02
 
 Sand and Gravel will fall client-side but float server-side.
+
+Using /tp or /plotTp to teleport to an area outside of the visible 256x256 area often causes the game to crash, but will still teleport the player on rejoin.
 
 ## Java Edition Classic 0.0.15a (Multiplayer Test 1)
 
