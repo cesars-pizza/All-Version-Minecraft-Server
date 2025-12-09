@@ -8,7 +8,8 @@ const packetWriter = require('../../../data_handlers/clientbound_packets/packet_
  * @param {Position} position 
  * @param {Rotation} rotation 
  */
-function MovePlayer(socket, classicID, alphaID, position, rotation, positionDif) {
+function MovePlayer(socket, classicID, alphaID, position, rotation, estimatedPrevPosition, playerName, heldItem, sneaking) {
+    if (sneaking) position -= 0.375
     packetWriter.Classic.Set_Position_and_Orientation(socket)(socket, classicID, position, rotation)
 }
 

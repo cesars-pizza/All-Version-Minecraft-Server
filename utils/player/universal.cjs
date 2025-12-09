@@ -42,6 +42,7 @@ function InitializePlayer(world, player, socket, username) {
     newPlayer.currentTime = 0
     newPlayer.otherPlayers = {}
     newPlayer.allowMovement = false
+    newPlayer.sneaking = false
     newPlayer.joinCount++
 
     // Move player to edge of plot if inside
@@ -235,6 +236,19 @@ const set = {
     PositionAndRotation: (world, player, position, rotation) => {
         utils.player.set.Position(world, player, position)
         utils.player.set.Rotation(world, player, rotation)
+    },
+
+    /**
+     * @param {Player} player 
+     * @param {Position} position 
+     * @param {Rotation} rotation 
+     */
+    Sneaking: (world, player, isSneaking) => {
+        if (player.sneaking != isSneaking) {
+            player.sneaking = isSneaking
+            player.tick.position = true
+            player.save = true
+        }
     }
 }
 

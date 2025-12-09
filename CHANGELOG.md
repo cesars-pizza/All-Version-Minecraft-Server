@@ -2,15 +2,13 @@
 
 This is a general overview of how the server protocol changes from version to version.
 
+All changes in versions outside of the included versions (such as early unarchived versions) are bundled into the additions of the next included version.
+
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
 ## Java Edition Alpha v1.1.2_01
 
 This version can't be distinguished from Alpha v1.1.0.
-
-### Added Features
-
-Added Sneaking - can't be seen in server.
 
 ### Documentation
 
@@ -30,7 +28,7 @@ This version can't be distinguished from Alpha v1.1.0.
 
 ### Added Features
 
-Added Sneaking - can't be seen in server.
+Added Sneaking without a built in way of being displayed to other players. It is instead shown as lowering the player's Y position by 0.375 in all versions (including earlier versions without sneaking).
 
 ### Documentation
 
@@ -139,6 +137,8 @@ Some blocks can be interacted with to change their state such as doors and lever
 Removed all wool colors except for white.
 
 Creative mode has been replaced exclusively with survival mode.
+
+The player list has been removed
 
 ### Packets
 

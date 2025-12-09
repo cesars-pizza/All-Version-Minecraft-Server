@@ -124,10 +124,11 @@ class Player {
      * @param {{blockPos: Position, ticks: number}} digging 
      * @param {number} currentTime
      * @param {{}} otherPlayers 
+     * @param {boolean} sneaking
      * @param {number} joinCount
      * @param {Socket} socket
      */
-    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, allowMovement, tick, save, upvn, uvni, selectedRegistries, floorChangeCooldown, digging, currentTime, otherPlayers, joinCount, socket) {
+    constructor(uuid, username, position, rotation, classicWorldOffset, inventory, settings, verified, keepUnverified, lastUVNI, classicID, alphaID, inWorld, allowMovement, tick, save, upvn, uvni, selectedRegistries, floorChangeCooldown, digging, currentTime, otherPlayers, sneaking, joinCount, socket) {
         this.uuid = uuid
         this.username = username
         this.position = position
@@ -151,6 +152,7 @@ class Player {
         this.digging = digging
         this.currentTime = currentTime
         this.otherPlayers = otherPlayers
+        this.sneaking = sneaking
         this.joinCount = joinCount
         this.socket = socket
     }

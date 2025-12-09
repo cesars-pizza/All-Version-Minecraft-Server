@@ -23,7 +23,11 @@ function ReadPacket(world, socket, data) {
         position.stance = dataReader.readDouble(socket, data, position.y.nextPos)
         position.z = dataReader.readDouble(socket, data, position.stance.nextPos)
         
+        var sneaking = position.stance.value - position.y.value < 1.6
+
         var onGround = dataReader.readBool(socket, data, position.z.nextPos)
+
+        utils.player.set.Sneaking(world, socket.thisPlayer, sneaking)
 
         if (socket.disconnect == "" && !socket.thisPlayer.tick.teleportSelf && socket.thisPlayer.allowMovement) {
             var newPosition = {x: position.x.value, y: position.y.value, z: position.z.value}

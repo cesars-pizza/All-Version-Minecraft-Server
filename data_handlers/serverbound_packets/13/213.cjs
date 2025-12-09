@@ -32,6 +32,9 @@ function ReadPacket(world, socket, data) {
         var newPosition = {x: position.x.value, y: position.y.value, z: position.z.value}
         var newRotation = {pitch: rotation.pitch.value, yaw: rotation.yaw.value}
 
+        var sneaking = position.stance.value - position.y.value < 1.6        
+        utils.player.set.Sneaking(world, socket.thisPlayer, sneaking)
+
         if (socket.disconnect == "" && !socket.thisPlayer.tick.teleportSelf && socket.thisPlayer.allowMovement) {
             if ((position.x.value == 8.5 && position.y.value == 65 && position.z.value == 8.5) || position.y.value < 1) {
                 socket.thisPlayer.tick.teleportSelf = true

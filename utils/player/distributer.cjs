@@ -47,6 +47,10 @@ const set = {
         return require('./universal.cjs').set.PositionAndRotation(world, player, position, rotation)
     },
 
+    Sneaking: (world, player, isSneaking) => {
+        return require('./universal.cjs').set.Sneaking(world, player, isSneaking)
+    },
+
     Position_Chunks: (socket) => {
         if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').set.Position_Chunks
         if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').set.Position_Chunks

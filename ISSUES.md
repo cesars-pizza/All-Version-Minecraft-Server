@@ -8,23 +8,17 @@ Same as Java Edition Alpha v1.1.0.
 
 This version can't be distinguished from Java Edition Alpha v1.1.0, resulting in plots made in this version showing incorrectly on plot info.
 
-This version has sneaking but isn't shown to other players.
-
 ## Java Edition Alpha v1.1.2
 
 Same as Java Edition Alpha v1.1.0.
 
 This version can't be distinguished from Java Edition Alpha v1.1.0, resulting in plots made in this version showing incorrectly on plot info.
 
-This version has sneaking but isn't shown to other players.
-
 ## Java Edition Alpha v1.1.1
 
 Same as Java Edition Alpha v1.1.0.
 
 This version can't be distinguished from Java Edition Alpha v1.1.0, resulting in plots made in this version showing incorrectly on plot info.
-
-This version has sneaking but isn't shown to other players.
 
 ## Java Edition Alpha v1.1.0
 

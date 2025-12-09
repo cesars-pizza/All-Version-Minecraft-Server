@@ -187,7 +187,7 @@ function ServerTick() {
         if (world.loadedPlayers[i].tick.position.tick && world.loadedPlayers[i].tick.rotation) {
             for (var j = 0; j < world.loadedPlayers.length; j++) {
                 if (i != j) {
-                    utils.tick_actions.move_player_pos_rot(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].alphaID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation, world.loadedPlayers[j].otherPlayers[world.loadedPlayers[i].alphaID].estimatedPosition, world.loadedPlayers[i].username, world.loadedPlayers[i].inventory.held_item)
+                    utils.tick_actions.move_player_pos_rot(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].alphaID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation, world.loadedPlayers[j].otherPlayers[world.loadedPlayers[i].alphaID].estimatedPosition, world.loadedPlayers[i].username, world.loadedPlayers[i].inventory.held_item, world.loadedPlayers[i].sneaking)
                 }
             }
             world.loadedPlayers[i].tick.position = {tick: false, x: 0, y: 0, z: 0}
@@ -195,14 +195,14 @@ function ServerTick() {
         } else if (world.loadedPlayers[i].tick.position.tick) {
             for (var j = 0; j < world.loadedPlayers.length; j++) {
                 if (i != j) {
-                    utils.tick_actions.move_player_pos(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].alphaID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation, world.loadedPlayers[j].otherPlayers[world.loadedPlayers[i].alphaID].estimatedPosition, world.loadedPlayers[i].username, world.loadedPlayers[i].inventory.held_item)
+                    utils.tick_actions.move_player_pos(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].alphaID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation, world.loadedPlayers[j].otherPlayers[world.loadedPlayers[i].alphaID].estimatedPosition, world.loadedPlayers[i].username, world.loadedPlayers[i].inventory.held_item, world.loadedPlayers[i].sneaking)
                 }
             }
             world.loadedPlayers[i].tick.position = {tick: false, x: 0, y: 0, z: 0}
         } else if (world.loadedPlayers[i].tick.rotation) {
             for (var j = 0; j < world.loadedPlayers.length; j++) {
                 if (i != j) {
-                    utils.tick_actions.move_player_rot(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].alphaID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation)
+                    utils.tick_actions.move_player_rot(world.loadedPlayers[j].socket)(world.loadedPlayers[j].socket, world.loadedPlayers[i].classicID, world.loadedPlayers[i].alphaID, world.loadedPlayers[i].position, world.loadedPlayers[i].rotation, world.loadedPlayers[j].otherPlayers[world.loadedPlayers[i].alphaID].estimatedPosition, world.loadedPlayers[i].username, world.loadedPlayers[i].inventory.held_item, world.loadedPlayers[i].sneaking)
                 }
             }
             world.loadedPlayers[i].tick.rotation = false

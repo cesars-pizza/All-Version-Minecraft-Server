@@ -10,7 +10,8 @@ const packetWriter = require('../../../data_handlers/clientbound_packets/packet_
  * @param {Rotation} rotation 
  * @param {Position} estimatedPrevPosition 
  */
-function MovePlayer(socket, classicID, alphaID, position, rotation, estimatedPrevPosition, playerName, heldItem) {
+function MovePlayer(socket, classicID, alphaID, position, rotation, estimatedPrevPosition, playerName, heldItem, sneaking) {
+    if (sneaking) position.y -= 0.375
     var posChange = {
         x: position.x - estimatedPrevPosition.x,
         y: position.y - estimatedPrevPosition.y,
@@ -31,6 +32,7 @@ function MovePlayer(socket, classicID, alphaID, position, rotation, estimatedPre
             y: Math.floor(position.y * 32) / 32,
             z: Math.floor(position.z * 32) / 32
         }
+        if (sneaking) newEstimatedPosition.y -= 0.375
     }
 
     var prevRendered = socket.thisPlayer.otherPlayers[alphaID].rendered
