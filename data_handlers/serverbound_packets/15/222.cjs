@@ -55,6 +55,63 @@ function ReadPacket(world, socket, data) {
             if (utils.math.NegMod(facingBlock.x, 32) >= 16 && utils.math.NegMod(facingBlock.z, 32) >= 16) {
                 var hitBuildIndex = utils.builds.GetBuild(socket)(world, Math.floor(facingBlock.x / 32), Math.floor(facingBlock.z / 32))
 
+                if (hitBuildIndex != undefined) {
+                    if (originalBlock.block.startsWith("chest") || originalBlock.block.startsWith("furnace")) return
+
+                    if (world.builds[hitBuildIndex].creator == socket.thisPlayer.username || world.builds[hitBuildIndex].settings.publicInteractions) {
+                        if (originalBlock.block.startsWith("oak_door")) {
+                            var open = originalBlock.block.includes('open=true')
+                            var half = originalBlock.block.includes('half=upper') ? "upper" : "lower"
+                            var hinge = originalBlock.block.includes('hinge=right') ? "right" : "left"
+                            var facing = "north"
+                            if (originalBlock.block.includes('facing=east')) facing = "east"
+                            else if (originalBlock.block.includes('facing=south')) facing = "south"
+                            else if (originalBlock.block.includes('facing=west')) facing = "west"
+
+                            var newBlock = `oak_door[facing=${facing},hinge=${hinge},half=${half},open=${!open}]`
+
+                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, originalBlock, newBlock, false, originalBlock.block)
+                            return
+                        } else if (originalBlock.block.startsWith("lever")) {
+                            var powered = originalBlock.block.includes('powered=true')
+                            var face = "wall"
+                            if (originalBlock.block.includes('facing=ceiling')) facing = "ceiling"
+                            else if (originalBlock.block.includes('facing=floor')) facing = "floor"
+                            var facing = "north"
+                            if (originalBlock.block.includes('facing=east')) facing = "east"
+                            else if (originalBlock.block.includes('facing=south')) facing = "south"
+                            else if (originalBlock.block.includes('facing=west')) facing = "west"
+
+                            var newBlock = `lever[facing=${facing},face=${face},powered=${!powered}]`
+
+                            utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, originalBlock, newBlock, false, originalBlock.block)
+                            return
+                        } else if (originalBlock.block.startsWith("stone_button")) {
+                            var powered = originalBlock.block.includes('powered=true')
+                            var face = "wall"
+                            if (originalBlock.block.includes('facing=ceiling')) facing = "ceiling"
+                            else if (originalBlock.block.includes('facing=floor')) facing = "floor"
+                            var facing = "north"
+                            if (originalBlock.block.includes('facing=east')) facing = "east"
+                            else if (originalBlock.block.includes('facing=south')) facing = "south"
+                            else if (originalBlock.block.includes('facing=west')) facing = "west"
+
+                            if (powered == false) {
+                                var newBlock = `stone_button[facing=${facing},face=${face},powered=${!powered}]`
+
+                                utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, originalBlock, newBlock, false, originalBlock.block)
+                            }
+                            return
+                        }
+                    } else {
+                        if (originalBlock.block.startsWith('oak_door') || originalBlock.block.startsWith('lever') || originalBlock.block.startsWith('stone_button')) {
+                            var blockID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, originalBlock.block)
+                            if (typeof(blockID) == "number") packetWriter.Alpha.Block_Change(socket)(world, socket, originalBlock, blockID, 0, false)
+                            else packetWriter.Alpha.Block_Change(socket)(world, socket, originalBlock, blockID.id, blockID.metadata, false)
+                        }
+                    }
+                }
+
                 if (hitBuildIndex == undefined || world.builds[hitBuildIndex].creator == socket.thisPlayer.username) {
                     if (hitBuildIndex == undefined) {
                         hitBuildIndex = world.builds.length
