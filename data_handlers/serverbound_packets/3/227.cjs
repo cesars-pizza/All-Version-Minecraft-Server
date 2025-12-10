@@ -232,7 +232,73 @@ function ReadPacket(world, socket, data) {
                         } else socket.thisPlayer.tick.errorMessages.push(`Unknown setting: "${commandParts[1]}"`)
                     }
                 } else if (commandParts[0] == "/swapInv") {
-                    socket.thisPlayer.tick.errorMessages.push(`This command is not available in this version`)
+                    var isFirstInventory = socket.thisPlayer.inventory.slots.hotbar.map(item => item.id).includes("stone") || socket.thisPlayer.inventory.slots.inventory.map(item => item.id).includes("stone")
+                    var playerFullInventory = []
+                    if (isFirstInventory) {
+                        var playerItems = [
+                            "chest", "redstone", "diamond_ore", "diamond_block", "crafting_table", "wheat_seeds", "farmland", "furnace", "oak_sign",
+                            "oak_door", "ladder", "rail", "cobblestone_stairs", "lever", "stone_pressure_plate", "iron_door", "oak_pressure_plate", "redstone_ore",
+                            "redstone_torch", "stone_button", "snow", "ice", "snow_block", "cactus", "clay", "sugar_cane", "jukebox",
+                            "oak_fence", "netherrack", "soul_sand", "glowstone", "pumpkin", "jack_o_lantern", "nether_portal"
+                        ]
+                        var playerItemCounts = [
+                            64, 64, 64, 64, 64, 64, 64, 64, 1,
+                            1, 64, 64, 64, 64, 64, 1, 64, 64,
+                            64, 64, 64, 64, 64, 64, 64, 64, 64,
+                            64, 64, 64, 64, 64, 64, 64
+                        ]
+
+                        for (var i = 0; i < playerItems.length; i++) {
+                            if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.item.includes(playerItems[i])) {
+                                playerFullInventory.push({
+                                    id: playerItems[i],
+                                    count: playerItemCounts[i],
+                                    added_components: [],
+                                    removed_components: []
+                                })
+                                var itemID = utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, playerItems[i])
+                                if (typeof(itemID) == "number") packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, itemID, playerItemCounts[i], 0)
+                                else packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, itemID.id, playerItemCounts[i], itemID.metadata)
+                            }
+                        }
+                    }
+                    
+                    if (!isFirstInventory) {
+                        var playerItems = [
+                            "stone", "cobblestone", "bricks", "dirt", "oak_planks", "oak_log", "oak_leaves", "torch", "smooth_stone_slab",
+                            "grass_block", "bucket", "water_bucket", "lava_bucket", "sand", "gravel", "gold_ore", "iron_ore", "coal_ore",
+                            "oak_sapling", "bedrock", "sponge", "glass", "white_wool", "dandelion", "poppy", "brown_mushroom", "red_mushroom",
+                            "gold_block", "iron_block", "tnt", "bookshelf", "mossy_cobblestone", "obsidian", "flint_and_steel", "spawner", "oak_stairs"
+                        ]
+                        var playerItemCounts = [
+                            64, 64, 64, 64, 64, 64, 64, 64, 64,
+                            64, 1, 1, 1, 64, 64, 64, 64, 64,
+                            64, 64, 64, 64, 64, 64, 64, 64, 64,
+                            64, 64, 64, 64, 64, 64, 1, 64, 64
+                        ]
+
+                        for (var i = 0; i < playerItems.length; i++) {
+                            if (!world.config.suppressNonUniversalBlocks || world.universalRegistries.item.includes(playerItems[i])) {
+                                playerFullInventory.push({
+                                    id: playerItems[i],
+                                    count: playerItemCounts[i],
+                                    added_components: [],
+                                    removed_components: []
+                                })
+                                var itemID = utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, playerItems[i])
+                                if (typeof(itemID) == "number") packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, itemID, playerItemCounts[i], 0)
+                                else packetWriter.Alpha.Add_To_Inventory(socket)(world, socket, itemID.id, playerItemCounts[i], itemID.metadata)
+                            }
+                        }
+                    }
+
+                    if (playerFullInventory.length > 0) {
+                        socket.thisPlayer.inventory.slots.hotbar = playerFullInventory.slice(0, 9)
+                        socket.thisPlayer.inventory.slots.inventory = playerFullInventory.slice(9)
+                        packetWriter.Alpha.Player_Inventory(socket)(world, socket, -1, socket.thisPlayer.inventory.slots)
+                    } else {
+                        socket.thisPlayer.tick.errorMessages.push(`No second inventory to swap to`)
+                    }
                 } else socket.thisPlayer.tick.errorMessages.push(`Unknown command: "${message.value.split(' ')[0]}"`)
             } else socket.thisPlayer.tick.messages.push(message.value)
         }

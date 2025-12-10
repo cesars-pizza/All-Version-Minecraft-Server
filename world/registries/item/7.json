@@ -1,6 +1,6 @@
 {
-    "minUVNI": 222,
-    "maxUVNI": 222,
+    "minUVNI": 223,
+    "maxUVNI": 225,
     "minUPVN": 11,
     "maxUPVN": 11,
     "entries": {
@@ -157,6 +157,7 @@
         "furnace_minecart": 343,
         "egg": 344,
         "compass": 345,
+        "fishing_rod": 346,
         "music_disc_13": 2256,
         "music_disc_cat": 2257
     }

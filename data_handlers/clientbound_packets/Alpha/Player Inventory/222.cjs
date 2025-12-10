@@ -23,18 +23,22 @@ function WritePacket(world, socket, inventoryType, inventory) {
                 packetData = packetData.concat(dataWriter.writeShort(socket, -1))
             } else {
                 var itemID = utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, inventory.hotbar[i].id)
-                if (typeof(itemID) == "number") {
+                if (itemID == 0) {
+                    packetData = packetData.concat(dataWriter.writeShort(socket, -1))
+                } else {
+                    if (typeof(itemID) == "number") {
                     packetData = packetData.concat(
                         dataWriter.writeShort(socket, itemID),
                         dataWriter.writeByte(socket, inventory.hotbar[i].count),
                         dataWriter.writeShort(socket, 0)
                     )
-                } else {
-                    packetData = packetData.concat(
-                        dataWriter.writeShort(socket, itemID.id),
-                        dataWriter.writeByte(socket, inventory.hotbar[i].count),
-                        dataWriter.writeShort(socket, itemID.metadata)
-                    )
+                    } else {
+                        packetData = packetData.concat(
+                            dataWriter.writeShort(socket, itemID.id),
+                            dataWriter.writeByte(socket, inventory.hotbar[i].count),
+                            dataWriter.writeShort(socket, itemID.metadata)
+                        )
+                    }
                 }
             }
         }
@@ -46,18 +50,22 @@ function WritePacket(world, socket, inventoryType, inventory) {
                 packetData = packetData.concat(dataWriter.writeShort(socket, -1))
             } else {
                 var itemID = utils.registry.item.GetItemID(world, socket.thisPlayer.selectedRegistries.item, inventory.inventory[i].id)
-                if (typeof(itemID) == "number") {
+                if (itemID == 0) {
+                    packetData = packetData.concat(dataWriter.writeShort(socket, -1))
+                } else {
+                    if (typeof(itemID) == "number") {
                     packetData = packetData.concat(
                         dataWriter.writeShort(socket, itemID),
                         dataWriter.writeByte(socket, inventory.inventory[i].count),
                         dataWriter.writeShort(socket, 0)
                     )
-                } else {
-                    packetData = packetData.concat(
-                        dataWriter.writeShort(socket, itemID.id),
-                        dataWriter.writeByte(socket, inventory.inventory[i].count),
-                        dataWriter.writeShort(socket, itemID.metadata)
-                    )
+                    } else {
+                        packetData = packetData.concat(
+                            dataWriter.writeShort(socket, itemID.id),
+                            dataWriter.writeByte(socket, inventory.inventory[i].count),
+                            dataWriter.writeShort(socket, itemID.metadata)
+                        )
+                    }
                 }
             }
         }

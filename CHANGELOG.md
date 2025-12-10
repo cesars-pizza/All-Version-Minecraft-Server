@@ -6,6 +6,50 @@ All changes in versions outside of the included versions (such as early unarchiv
 
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
+## Java Edition Alpha v1.2.1_01
+
+This version can't be distinguished from Alpha v1.2.0.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
+## Java Edition Alpha v1.2.0_02
+
+This version can't be distinguished from Alpha v1.2.0.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
+## Java Edition Alpha v1.2.0_01
+
+This version can't be distinguished from Alpha v1.2.0.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
+## Java Edition Alpha v1.2.0
+
+Protocol version set to 3.
+
+### Added Features
+
+Added Netherrack, Soul Sand, Glowstone, Pumpkins, Jack O' Lanterns, and Nether Portals.
+
+Added various items and entities.
+
+Added the Nether dimension (inaccessible in the server).
+
+### Packets
+
+Changed the Login Request and Login Response packets to include a Map Seed and Dimension parameter.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
 ## Java Edition Alpha v1.1.2_01
 
 This version can't be distinguished from Alpha v1.1.0.

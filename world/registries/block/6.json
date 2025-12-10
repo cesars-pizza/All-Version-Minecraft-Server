@@ -1,0 +1,902 @@
+{
+    "minUVNI": 227,
+    "maxUVNI": 231,
+    "minUPVN": 12,
+    "maxUPVN": 12,
+    "entries": {
+        "air": 0,
+        "stone": 1,
+        "grass_block": 2,
+        "dirt": 3,
+        "cobblestone": 4,
+        "oak_planks": 5,
+        "oak_sapling": 6,
+        "bedrock": 7,
+        "flowing_water": {
+            "states": {
+                "falling": ["false", "true"],
+                "level": ["1", "2", "3", "4", "5", "6", "7", "8"]
+            },
+            "blockstates": {
+                "falling=false,level=1": "8:7",
+                "falling=false,level=2": "8:6",
+                "falling=false,level=3": "8:5",
+                "falling=false,level=4": "8:4",
+                "falling=false,level=5": "8:3",
+                "falling=false,level=6": "8:2",
+                "falling=false,level=7": "8:1",
+                "falling=false,level=8": "8:0",
+                "falling=true,level=1": "8:15",
+                "falling=true,level=2": "8:14",
+                "falling=true,level=3": "8:13",
+                "falling=true,level=4": "8:12",
+                "falling=true,level=5": "8:11",
+                "falling=true,level=6": "8:10",
+                "falling=true,level=7": "8:9",
+                "falling=true,level=8": "8:8"  
+            },
+            "blockstatesShort": {
+                "*": "8:7",
+                "level=2": "8:6",
+                "level=3": "8:5",
+                "level=4": "8:4",
+                "level=5": "8:3",
+                "level=6": "8:2",
+                "level=7": "8:1",
+                "level=8": "8:0",
+                "falling=true": "8:15",
+                "falling=true,level=2": "8:14",
+                "falling=true,level=3": "8:13",
+                "falling=true,level=4": "8:12",
+                "falling=true,level=5": "8:11",
+                "falling=true,level=6": "8:10",
+                "falling=true,level=7": "8:9",
+                "falling=true,level=8": "8:8"  
+            },
+            "defaultID": "8:7"
+        },
+        "water": 9,
+        "flowing_lava": {
+            "states": {
+                "falling": ["false", "true"],
+                "level": ["1", "2", "3", "4", "5", "6", "7", "8"]
+            },
+            "blockstates": {
+                "falling=false,level=1": "10:7",
+                "falling=false,level=2": "10:6",
+                "falling=false,level=3": "10:5",
+                "falling=false,level=4": "10:4",
+                "falling=false,level=5": "10:3",
+                "falling=false,level=6": "10:2",
+                "falling=false,level=7": "10:1",
+                "falling=false,level=8": "10:0",
+                "falling=true,level=1": "10:15",
+                "falling=true,level=2": "10:14",
+                "falling=true,level=3": "10:13",
+                "falling=true,level=4": "10:12",
+                "falling=true,level=5": "10:11",
+                "falling=true,level=6": "10:10",
+                "falling=true,level=7": "10:9",
+                "falling=true,level=8": "10:8"
+            },
+            "blockstatesShort": {
+                "*": "10:7",
+                "level=2": "10:6",
+                "level=3": "10:5",
+                "level=4": "10:4",
+                "level=5": "10:3",
+                "level=6": "10:2",
+                "level=7": "10:1",
+                "level=8": "10:0",
+                "falling=true": "10:15",
+                "falling=true,level=2": "10:14",
+                "falling=true,level=3": "10:13",
+                "falling=true,level=4": "10:12",
+                "falling=true,level=5": "10:11",
+                "falling=true,level=6": "10:10",
+                "falling=true,level=7": "10:9",
+                "falling=true,level=8": "10:8"
+            },
+            "defaultID": "10:7"
+        },
+        "lava": 11,
+        "sand": 12,
+        "gravel": 13,
+        "gold_ore": 14,
+        "iron_ore": 15,
+        "coal_ore": 16,
+        "oak_log": 17,
+        "oak_leaves": 18,
+        "sponge": 19,
+        "glass": 20,
+        "white_wool": 35,
+        "dandelion": 37,
+        "poppy": 38,
+        "brown_mushroom": 39,
+        "red_mushroom": 40,
+        "gold_block": 41,
+        "iron_block": 42,
+        "smooth_stone_slab": {
+            "states": {
+                "type": ["bottom", "double"]
+            },
+            "blockstates": {
+                "type=double": 43,
+                "type=bottom": 44
+            },
+            "blockstatesShort": {
+                "type=double": 43,
+                "*": 44
+            },
+            "defaultID": 44
+        },
+        "bricks": 45,
+        "tnt": 46,
+        "bookshelf": 47,
+        "mossy_cobblestone": 48,
+        "obsidian": 49,
+        "torch": "50:5",
+        "wall_torch": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            },
+            "blockstates": {
+                "facing=east": "50:1",
+                "facing=west": "50:2",
+                "facing=north": "50:4",
+                "facing=south": "50:3"
+            },
+            "blockstatesShort": {
+                "facing=east": "50:1",
+                "facing=west": "50:2",
+                "*": "50:4",
+                "facing=south": "50:3"
+            },
+            "defaultID": "50:2"
+        },
+        "fire": 51,
+        "spawner": 52,
+        "oak_stairs": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            },
+            "blockstates": {
+                "facing=east": "53:0",
+                "facing=west": "53:1",
+                "facing=north": "53:3",
+                "facing=south": "53:2"
+            },
+            "blockstatesShort": {
+                "facing=east": "53:0",
+                "facing=west": "53:1",
+                "*": "53:3",
+                "facing=south": "53:2"
+            },
+            "defaultID": "53:3"
+        },
+        "chest": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            },
+            "blockstates": {
+                "facing=east": "54:5",
+                "facing=west": "54:4",
+                "facing=north": "54:2",
+                "facing=south": "54:3"
+            },
+            "blockstatesShort": {
+                "facing=east": "54:5",
+                "facing=west": "54:4",
+                "*": "54:2",
+                "facing=south": "54:3"
+            },
+            "defaultID": "54:2"
+        },
+        "redstone_wire": {
+            "states": {
+                "power": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]
+            },
+            "blockstates": {
+                "power=0": "55:0",
+                "power=1": "55:1",
+                "power=2": "55:2",
+                "power=3": "55:3",
+                "power=4": "55:4",
+                "power=5": "55:5",
+                "power=6": "55:6",
+                "power=7": "55:7",
+                "power=8": "55:8",
+                "power=9": "55:9",
+                "power=10": "55:10",
+                "power=11": "55:11",
+                "power=12": "55:12",
+                "power=13": "55:13",
+                "power=14": "55:14",
+                "power=15": "55:15"
+            },
+            "blockstatesShort": {
+                "*": "55:0",
+                "power=1": "55:1",
+                "power=2": "55:2",
+                "power=3": "55:3",
+                "power=4": "55:4",
+                "power=5": "55:5",
+                "power=6": "55:6",
+                "power=7": "55:7",
+                "power=8": "55:8",
+                "power=9": "55:9",
+                "power=10": "55:10",
+                "power=11": "55:11",
+                "power=12": "55:12",
+                "power=13": "55:13",
+                "power=14": "55:14",
+                "power=15": "55:15"
+            },
+            "defaultID": "55:0"
+        },
+        "diamond_ore": 56,
+        "diamond_block": 57,
+        "crafting_table": 58,
+        "wheat": {
+            "states": {
+                "age": ["0", "1", "2", "3", "4", "5", "6", "7"]
+            },
+            "blockstates": {
+                "age=0": "59:0",
+                "age=1": "59:1",
+                "age=2": "59:2",
+                "age=3": "59:3",
+                "age=4": "59:4",
+                "age=5": "59:5",
+                "age=6": "59:6",
+                "age=7": "59:7"
+            },
+            "blockstatesShort": {
+                "*": "59:0",
+                "age=1": "59:1",
+                "age=2": "59:2",
+                "age=3": "59:3",
+                "age=4": "59:4",
+                "age=5": "59:5",
+                "age=6": "59:6",
+                "age=7": "59:7"
+            },
+            "defaultID": "59:0"
+        },
+        "farmland": {
+            "states": {
+                "moisture": ["0", "1", "2", "3", "4", "5", "6", "7"]
+            },
+            "blockstates": {
+                "moisture=0": "60:0",
+                "moisture=1": "60:1",
+                "moisture=2": "60:2",
+                "moisture=3": "60:3",
+                "moisture=4": "60:4",
+                "moisture=5": "60:5",
+                "moisture=6": "60:6",
+                "moisture=7": "60:7"
+            },
+            "blockstatesShort": {
+                "*": "60:0",
+                "moisture=1": "60:1",
+                "moisture=2": "60:2",
+                "moisture=3": "60:3",
+                "moisture=4": "60:4",
+                "moisture=5": "60:5",
+                "moisture=6": "60:6",
+                "moisture=7": "60:7"
+            },
+            "defaultID": "60:0"
+        },
+        "furnace": {
+            "states": {
+                "facing": ["north", "east", "west", "south"],
+                "lit": ["false", "true"]
+            },
+            "blockstates": {
+                "facing=east,lit=false": "61:5",
+                "facing=west,lit=false": "61:4",
+                "facing=north,lit=false": "61:2",
+                "facing=south,lit=false": "61:3",
+                "facing=east,lit=true": "62:5",
+                "facing=west,lit=true": "62:4",
+                "facing=north,lit=true": "62:2",
+                "facing=south,lit=true": "62:3"
+            },
+            "blockstatesShort": {
+                "facing=east": "61:5",
+                "facing=west": "61:4",
+                "*": "61:2",
+                "facing=south": "61:3",
+                "facing=east,lit=true": "62:5",
+                "facing=west,lit=true": "62:4",
+                "lit=true": "62:2",
+                "facing=south,lit=true": "62:3"
+            },
+            "defaultID": "61:2"
+        },
+        "oak_sign": {
+            "states": {
+                "rotation": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]
+            },
+            "blockstates": {
+                "rotation=0": "63:0",
+                "rotation=1": "63:1",
+                "rotation=2": "63:2",
+                "rotation=3": "63:3",
+                "rotation=4": "63:4",
+                "rotation=5": "63:5",
+                "rotation=6": "63:6",
+                "rotation=7": "63:7",
+                "rotation=8": "63:8",
+                "rotation=9": "63:9",
+                "rotation=10": "63:10",
+                "rotation=11": "63:11",
+                "rotation=12": "63:12",
+                "rotation=13": "63:13",
+                "rotation=14": "63:14",
+                "rotation=15": "63:15"
+            },
+            "blockstatesShort": {
+                "*": "63:0",
+                "rotation=1": "63:1",
+                "rotation=2": "63:2",
+                "rotation=3": "63:3",
+                "rotation=4": "63:4",
+                "rotation=5": "63:5",
+                "rotation=6": "63:6",
+                "rotation=7": "63:7",
+                "rotation=8": "63:8",
+                "rotation=9": "63:9",
+                "rotation=10": "63:10",
+                "rotation=11": "63:11",
+                "rotation=12": "63:12",
+                "rotation=13": "63:13",
+                "rotation=14": "63:14",
+                "rotation=15": "63:15"
+            },
+            "defaultID": "63:0"
+        },
+        "oak_door": {
+            "states": {
+                "facing": ["north", "east", "south", "west"],
+                "half": ["lower", "upper"],
+                "hinge": ["left", "right"],
+                "open": ["false", "true"]
+            },
+            "blockstates": {
+                "facing=north,half=lower,hinge=left,open=false": "64:3",
+                "facing=north,half=lower,hinge=left,open=true": "64:7",
+                "facing=north,half=lower,hinge=right,open=false": "64:6",
+                "facing=north,half=lower,hinge=right,open=true": "64:2",
+                "facing=north,half=upper,hinge=left,open=false": "64:11",
+                "facing=north,half=upper,hinge=left,open=true": "64:15",
+                "facing=north,half=upper,hinge=right,open=false": "64:14",
+                "facing=north,half=upper,hinge=right,open=true": "64:10",
+                "facing=east,half=lower,hinge=left,open=false": "64:0",
+                "facing=east,half=lower,hinge=left,open=true": "64:4",
+                "facing=east,half=lower,hinge=right,open=false": "64:7",
+                "facing=east,half=lower,hinge=right,open=true": "64:3",
+                "facing=east,half=upper,hinge=left,open=false": "64:8",
+                "facing=east,half=upper,hinge=left,open=true": "64:12",
+                "facing=east,half=upper,hinge=right,open=false": "64:15",
+                "facing=east,half=upper,hinge=right,open=true": "64:11",
+                "facing=south,half=lower,hinge=left,open=false": "64:1",
+                "facing=south,half=lower,hinge=left,open=true": "64:5",
+                "facing=south,half=lower,hinge=right,open=false": "64:4",
+                "facing=south,half=lower,hinge=right,open=true": "64:0",
+                "facing=south,half=upper,hinge=left,open=false": "64:9",
+                "facing=south,half=upper,hinge=left,open=true": "64:13",
+                "facing=south,half=upper,hinge=right,open=false": "64:12",
+                "facing=south,half=upper,hinge=right,open=true": "64:8",
+                "facing=west,half=lower,hinge=left,open=false": "64:2",
+                "facing=west,half=lower,hinge=left,open=true": "64:6",
+                "facing=west,half=lower,hinge=right,open=false": "64:5",
+                "facing=west,half=lower,hinge=right,open=true": "64:1",
+                "facing=west,half=upper,hinge=left,open=false": "64:10",
+                "facing=west,half=upper,hinge=left,open=true": "64:14",
+                "facing=west,half=upper,hinge=right,open=false":"64:13",
+                "facing=west,half=upper,hinge=right,open=true": "64:9"
+            },
+            "blockstatesShort": {
+                "*": "64:3",
+                "open=true": "64:7",
+                "hinge=right": "64:6",
+                "hinge=right,open=true": "64:2",
+                "half=upper": "64:11",
+                "half=upper,open=true": "64:15",
+                "half=upper,hinge=right": "64:14",
+                "half=upper,hinge=right,open=true": "64:10",
+                "facing=east": "64:0",
+                "facing=east,open=true": "64:4",
+                "facing=east,hinge=right": "64:7",
+                "facing=east,hinge=right,open=true": "64:3",
+                "facing=east,half=upper": "64:8",
+                "facing=east,half=upper,open=true": "64:12",
+                "facing=east,half=upper,hinge=right": "64:15",
+                "facing=east,half=upper,hinge=right,open=true": "64:11",
+                "facing=south": "64:1",
+                "facing=south,open=true": "64:5",
+                "facing=south,hinge=right": "64:4",
+                "facing=south,hinge=right,open=true": "64:0",
+                "facing=south,half=upper": "64:9",
+                "facing=south,half=upper,open=true": "64:13",
+                "facing=south,half=upper,hinge=right": "64:12",
+                "facing=south,half=upper,hinge=right,open=true": "64:8",
+                "facing=west": "64:2",
+                "facing=west,open=true": "64:6",
+                "facing=west,hinge=right": "64:5",
+                "facing=west,hinge=right,open=true": "64:1",
+                "facing=west,half=upper": "64:10",
+                "facing=west,half=upper,open=true": "64:14",
+                "facing=west,half=upper,hinge=right":"64:13",
+                "facing=west,half=upper,hinge=right,open=true": "64:9"
+            },
+            "defaultID": "64:3"
+        },
+        "ladder": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            },
+            "blockstates": {
+                "facing=east": "65:5",
+                "facing=west": "65:4",
+                "facing=north": "65:2",
+                "facing=south": "65:3"
+            },
+            "blockstatesShort": {
+                "facing=east": "65:5",
+                "facing=west": "65:4",
+                "*": "65:2",
+                "facing=south": "65:3"
+            },
+            "defaultID": "65:2"
+        },
+        "rail": {
+            "states": {
+                "shape": ["north_south", "east_west", "north_east", "north_west", "south_east", "south_west", "ascending_east", "ascending_north", "ascending_south", "ascending_west"]
+            },
+            "blockstates": {
+                "shape=north_south": "66:0",
+                "shape=east_west": "66:1",
+                "shape=north_east": "66:9",
+                "shape=north_west": "66:8",
+                "shape=south_east": "66:6",
+                "shape=south_west": "66:7",
+                "shape=ascending_east": "66:2",
+                "shape=ascending_north": "66:4",
+                "shape=ascending_south": "66:5",
+                "shape=ascending_west": "66:3"
+            },
+            "blockstatesShort": {
+                "*": "66:0",
+                "shape=east_west": "66:1",
+                "shape=north_east": "66:9",
+                "shape=north_west": "66:8",
+                "shape=south_east": "66:6",
+                "shape=south_west": "66:7",
+                "shape=ascending_east": "66:2",
+                "shape=ascending_north": "66:4",
+                "shape=ascending_south": "66:5",
+                "shape=ascending_west": "66:3"
+            },
+            "defaultID": "66:0"
+        },
+        "cobblestone_stairs": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            },
+            "blockstates": {
+                "facing=east": "67:0",
+                "facing=west": "67:1",
+                "facing=north": "67:3",
+                "facing=south": "67:2"
+            },
+            "blockstatesShort": {
+                "facing=east": "67:0",
+                "facing=west": "67:1",
+                "*": "67:3",
+                "facing=south": "67:2"
+            },
+            "defaultID": "67:3"
+        },
+        "oak_wall_sign": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            },
+            "blockstates": {
+                "facing=east": "68:5",
+                "facing=west": "68:4",
+                "facing=north": "68:2",
+                "facing=south": "68:3"
+            },
+            "blockstatesShort": {
+                "facing=east": "68:5",
+                "facing=west": "68:4",
+                "*": "68:2",
+                "facing=south": "68:3"
+            },
+            "defaultID": "68:2"
+        },
+        "lever": {
+            "states": {
+                "face": ["wall", "floor", "ceiling"],
+                "facing": ["north", "east", "south", "west"],
+                "powered": ["false", "true"]
+            },
+            "blockstates": {
+                "face=wall,facing=north,powered=false": "69:4",
+                "face=wall,facing=north,powered=true": "69:12",
+                "face=wall,facing=east,powered=false": "69:1",
+                "face=wall,facing=east,powered=true": "69:9",
+                "face=wall,facing=south,powered=false": "69:3",
+                "face=wall,facing=south,powered=true": "69:11",
+                "face=wall,facing=west,powered=false": "69:2",
+                "face=wall,facing=west,powered=true": "69:10",
+                "face=floor,facing=north,powered=false": "69:5",
+                "face=floor,facing=north,powered=true": "69:13",
+                "face=floor,facing=east,powered=false": "69:6",
+                "face=floor,facing=east,powered=true": "69:14",
+                "face=floor,facing=south,powered=false": "69:5",
+                "face=floor,facing=south,powered=true": "69:13",
+                "face=floor,facing=west,powered=false": "69:6",
+                "face=floor,facing=west,powered=true": "69:14",
+                "face=ceiling,facing=north,powered=false": "69:4",
+                "face=ceiling,facing=north,powered=true": "69:12",
+                "face=ceiling,facing=east,powered=false": "69:1",
+                "face=ceiling,facing=east,powered=true": "69:9",
+                "face=ceiling,facing=south,powered=false": "69:3",
+                "face=ceiling,facing=south,powered=true": "69:11",
+                "face=ceiling,facing=west,powered=false": "69:2",
+                "face=ceiling,facing=west,powered=true": "69:10"
+            },
+            "blockstatesShort": {
+                "*": "69:4",
+                "powered=true": "69:12",
+                "facing=east": "69:1",
+                "facing=east,powered=true": "69:9",
+                "facing=south": "69:3",
+                "facing=south,powered=true": "69:11",
+                "facing=west": "69:2",
+                "facing=west,powered=true": "69:10",
+                "face=floor": "69:5",
+                "face=floor,powered=true": "69:13",
+                "face=floor,facing=east": "69:6",
+                "face=floor,facing=east,powered=true": "69:14",
+                "face=floor,facing=south": "69:5",
+                "face=floor,facing=south,powered=true": "69:13",
+                "face=floor,facing=west": "69:6",
+                "face=floor,facing=west,powered=true": "69:14",
+                "face=ceiling": "69:4",
+                "face=ceiling,powered=true": "69:12",
+                "face=ceiling,facing=east": "69:1",
+                "face=ceiling,facing=east,powered=true": "69:9",
+                "face=ceiling,facing=south": "69:3",
+                "face=ceiling,facing=south,powered=true": "69:11",
+                "face=ceiling,facing=west": "69:2",
+                "face=ceiling,facing=west,powered=true": "69:10"
+            },
+            "defaultID": "69:4"
+        },
+        "stone_pressure_plate": {
+            "states": {
+                "powered": ["false", "true"]
+            },
+            "blockstates": {
+                "powered=false": "70:0",
+                "powered=true": "70:1"
+            },
+            "blockstatesShort": {
+                "*": "70:0",
+                "powered=true": "70:1"
+            },
+            "defaultID": "70:0"
+        },
+        "iron_door": {
+            "states": {
+                "facing": ["north", "east", "south", "west"],
+                "half": ["lower", "upper"],
+                "hinge": ["left", "right"],
+                "open": ["false", "true"]
+            },
+            "blockstates": {
+                "facing=north,half=lower,hinge=left,open=false": "71:3",
+                "facing=north,half=lower,hinge=left,open=true": "71:7",
+                "facing=north,half=lower,hinge=right,open=false": "71:6",
+                "facing=north,half=lower,hinge=right,open=true": "71:2",
+                "facing=north,half=upper,hinge=left,open=false": "71:11",
+                "facing=north,half=upper,hinge=left,open=true": "71:15",
+                "facing=north,half=upper,hinge=right,open=false": "71:14",
+                "facing=north,half=upper,hinge=right,open=true": "71:10",
+                "facing=east,half=lower,hinge=left,open=false": "71:0",
+                "facing=east,half=lower,hinge=left,open=true": "71:4",
+                "facing=east,half=lower,hinge=right,open=false": "71:7",
+                "facing=east,half=lower,hinge=right,open=true": "71:3",
+                "facing=east,half=upper,hinge=left,open=false": "71:8",
+                "facing=east,half=upper,hinge=left,open=true": "71:12",
+                "facing=east,half=upper,hinge=right,open=false": "71:15",
+                "facing=east,half=upper,hinge=right,open=true": "71:11",
+                "facing=south,half=lower,hinge=left,open=false": "71:1",
+                "facing=south,half=lower,hinge=left,open=true": "71:5",
+                "facing=south,half=lower,hinge=right,open=false": "71:4",
+                "facing=south,half=lower,hinge=right,open=true": "71:0",
+                "facing=south,half=upper,hinge=left,open=false": "71:9",
+                "facing=south,half=upper,hinge=left,open=true": "71:13",
+                "facing=south,half=upper,hinge=right,open=false": "71:12",
+                "facing=south,half=upper,hinge=right,open=true": "71:8",
+                "facing=west,half=lower,hinge=left,open=false": "71:2",
+                "facing=west,half=lower,hinge=left,open=true": "71:6",
+                "facing=west,half=lower,hinge=right,open=false": "71:5",
+                "facing=west,half=lower,hinge=right,open=true": "71:1",
+                "facing=west,half=upper,hinge=left,open=false": "71:10",
+                "facing=west,half=upper,hinge=left,open=true": "71:14",
+                "facing=west,half=upper,hinge=right,open=false":"71:13",
+                "facing=west,half=upper,hinge=right,open=true": "71:9"
+            },
+            "blockstatesShort": {
+                "*": "71:3",
+                "open=true": "71:7",
+                "hinge=right": "71:6",
+                "hinge=right,open=true": "71:2",
+                "half=upper": "71:11",
+                "half=upper,open=true": "71:15",
+                "half=upper,hinge=right": "71:14",
+                "half=upper,hinge=right,open=true": "71:10",
+                "facing=east": "71:0",
+                "facing=east,open=true": "71:4",
+                "facing=east,hinge=right": "71:7",
+                "facing=east,hinge=right,open=true": "71:3",
+                "facing=east,half=upper": "71:8",
+                "facing=east,half=upper,open=true": "71:12",
+                "facing=east,half=upper,hinge=right": "71:15",
+                "facing=east,half=upper,hinge=right,open=true": "71:11",
+                "facing=south": "71:1",
+                "facing=south,open=true": "71:5",
+                "facing=south,hinge=right": "71:4",
+                "facing=south,hinge=right,open=true": "71:0",
+                "facing=south,half=upper": "71:9",
+                "facing=south,half=upper,open=true": "71:13",
+                "facing=south,half=upper,hinge=right": "71:12",
+                "facing=south,half=upper,hinge=right,open=true": "71:8",
+                "facing=west": "71:2",
+                "facing=west,open=true": "71:6",
+                "facing=west,hinge=right": "71:5",
+                "facing=west,hinge=right,open=true": "71:1",
+                "facing=west,half=upper": "71:10",
+                "facing=west,half=upper,open=true": "71:14",
+                "facing=west,half=upper,hinge=right":"71:13",
+                "facing=west,half=upper,hinge=right,open=true": "71:9"
+            },
+            "defaultID": "71:3"
+        },
+        "oak_pressure_plate": {
+            "states": {
+                "powered": ["false", "true"]
+            },
+            "blockstates": {
+                "powered=false": "72:0",
+                "powered=true": "72:1"
+            },
+            "blockstatesShort": {
+                "*": "72:0",
+                "powered=true": "72:1"
+            },
+            "defaultID": "72:0"
+        },
+        "redstone_ore": {
+            "states": {
+                "lit": ["false", "true"]
+            },
+            "blockstates": {
+                "lit=false": 73,
+                "lit=true": 74
+            },
+            "blockstatesShort": {
+                "*": 73,
+                "powered=true": 74
+            },
+            "defaultID": 73
+        },
+        "redstone_torch": {
+            "states": {
+                "lit": ["true", "false"]
+            },
+            "blockstates": {
+                "lit=true": "76:5",
+                "lit=false": "75:5"
+            },
+            "blockstatesShort": {
+                "*": "76:5",
+                "powered=false": "75:5"
+            },
+            "defaultID": "76:5"
+        },
+        "redstone_wall_torch": {
+            "states": {
+                "facing": ["north", "east", "south", "west"],
+                "lit": ["true", "false"]
+            },
+            "blockstates": {
+                "facing=north,lit=true": "76:4",
+                "facing=north,lit=false": "75:4",
+                "facing=east,lit=true": "76:1",
+                "facing=east,lit=false": "75:1",
+                "facing=south,lit=true": "76:3",
+                "facing=south,lit=false": "75:3",
+                "facing=west,lit=true": "76:2",
+                "facing=west,lit=false": "75:2"
+            },
+            "blockstatesShort": {
+                "*": "76:4",
+                "lit=false": "75:4",
+                "facing=east": "76:1",
+                "facing=east,lit=false": "75:1",
+                "facing=south": "76:3",
+                "facing=south,lit=false": "75:3",
+                "facing=west": "76:2",
+                "facing=west,lit=false": "75:2"
+            },
+            "defaultID": "76:4"
+        },
+        "stone_button": {
+            "states": {
+                "face": ["wall", "floor", "ceiling"],
+                "facing": ["north", "east", "south", "west"],
+                "powered": ["false", "true"]
+            },
+            "blockstates": {
+                "face=wall,facing=north,powered=false": "77:4",
+                "face=wall,facing=north,powered=true": "77:12",
+                "face=wall,facing=east,powered=false": "77:1",
+                "face=wall,facing=east,powered=true": "77:9",
+                "face=wall,facing=south,powered=false": "77:3",
+                "face=wall,facing=south,powered=true": "77:11",
+                "face=wall,facing=west,powered=false": "77:2",
+                "face=wall,facing=west,powered=true": "77:10",
+                "face=floor,facing=north,powered=false": "77:4",
+                "face=floor,facing=north,powered=true": "77:12",
+                "face=floor,facing=east,powered=false": "77:1",
+                "face=floor,facing=east,powered=true": "77:9",
+                "face=floor,facing=south,powered=false": "77:3",
+                "face=floor,facing=south,powered=true": "77:11",
+                "face=floor,facing=west,powered=false": "77:2",
+                "face=floor,facing=west,powered=true": "77:10",
+                "face=ceiling,facing=north,powered=false": "77:4",
+                "face=ceiling,facing=north,powered=true": "77:12",
+                "face=ceiling,facing=east,powered=false": "77:1",
+                "face=ceiling,facing=east,powered=true": "77:9",
+                "face=ceiling,facing=south,powered=false": "77:3",
+                "face=ceiling,facing=south,powered=true": "77:11",
+                "face=ceiling,facing=west,powered=false": "77:2",
+                "face=ceiling,facing=west,powered=true": "77:10"
+            },
+            "blockstatesShort": {
+                "*": "77:4",
+                "powered=true": "77:12",
+                "facing=east": "77:1",
+                "facing=east,powered=true": "77:9",
+                "facing=south": "77:3",
+                "facing=south,powered=true": "77:11",
+                "facing=west": "77:2",
+                "facing=west,powered=true": "77:10",
+                "face=floor": "77:4",
+                "face=floor,powered=true": "77:12",
+                "face=floor,facing=east": "77:1",
+                "face=floor,facing=east,powered=true": "77:9",
+                "face=floor,facing=south": "77:3",
+                "face=floor,facing=south,powered=true": "77:11",
+                "face=floor,facing=west": "77:2",
+                "face=floor,facing=west,powered=true": "77:10",
+                "face=ceiling": "77:4",
+                "face=ceiling,powered=true": "77:12",
+                "face=ceiling,facing=east": "77:1",
+                "face=ceiling,facing=east,powered=true": "77:9",
+                "face=ceiling,facing=south": "77:3",
+                "face=ceiling,facing=south,powered=true": "77:11",
+                "face=ceiling,facing=west": "77:2",
+                "face=ceiling,facing=west,powered=true": "77:10"
+            },
+            "defaultID": "77:4"
+        },
+        "snow": {
+            "states": {
+                "layers": ["1", "2", "3", "4", "5", "6", "7", "8"]
+            },
+            "blockstates": {
+                "layers=1": "78:0",
+                "layers=2": "78:0",
+                "layers=3": "78:0",
+                "layers=4": "78:0",
+                "layers=5": "78:0",
+                "layers=6": "78:0",
+                "layers=7": "78:0",
+                "layers=8": "78:0"
+            },
+            "blockstatesShort": {
+                "*": "78:0",
+                "layers=2": "78:0",
+                "layers=3": "78:0",
+                "layers=4": "78:0",
+                "layers=5": "78:0",
+                "layers=6": "78:0",
+                "layers=7": "78:0",
+                "layers=8": "78:0"
+            },
+            "defaultID": "78:0"
+        },
+        "ice": 79,
+        "snow_block": 80,
+        "cactus": 81,
+        "clay": 82,
+        "sugar_cane": 83,
+        "jukebox": {
+            "states": {
+                "has_record": ["false", "true"]
+            },
+            "blockstates": {
+                "has_record=false": "84:0",
+                "has_record=true": "84:1"
+            },
+            "blockstatesShort": {
+                "*": "84:0",
+                "has_record=true": "84:1"
+            },
+            "defaultID": "84:0"
+        },
+        "oak_fence": 85,
+        "pumpkin": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            },
+            "blockstates": {
+                "facing=east": "86:3",
+                "facing=west": "86:1",
+                "facing=north": "86:2",
+                "facing=south": "86:0"
+            },
+            "blockstatesShort": {
+                "facing=east": "86:3",
+                "facing=west": "86:1",
+                "*": "86:2",
+                "facing=south": "86:0"
+            },
+            "defaultID": "86:2"
+        },
+        "netherrack": 87,
+        "soul_sand": 88,
+        "glowstone": 89,
+        "nether_portal": {
+            "states": {
+                "axis": ["x", "z"]
+            },
+            "blockstates": {
+                "axis=x": "90:0",
+                "axis=z": "90:1"
+            },
+            "blockstatesShort": {
+                "*": "90:0",
+                "axis=z": "90:1"
+            },
+            "defaultID": "90:0"
+        },
+        "jack_o_lantern": {
+            "states": {
+                "facing": ["north", "east", "west", "south"]
+            },
+            "blockstates": {
+                "facing=east": "91:3",
+                "facing=west": "91:1",
+                "facing=north": "91:2",
+                "facing=south": "91:0"
+            },
+            "blockstatesShort": {
+                "facing=east": "91:3",
+                "facing=west": "91:1",
+                "*": "91:2",
+                "facing=south": "91:0"
+            },
+            "defaultID": "91:2"
+        }
+    }
+}

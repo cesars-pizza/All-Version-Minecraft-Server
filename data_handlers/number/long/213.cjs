@@ -1,6 +1,14 @@
 const {Socket} = require('../../../data_structures.cjs')
 
 function Read(data, position) {
+    for (var i = position; i < position + 8; i++) {
+        if (data[i] == undefined) return {
+            value: undefined,
+            length: 8,
+            nextPos: position + 8
+        }
+    }
+
     var value = 0n
     value += BigInt(data[position + 0]) * 0x0100000000000000n
     value += BigInt(data[position + 1]) * 0x0001000000000000n
@@ -17,6 +25,8 @@ function Read(data, position) {
         length: 8,
         nextPos: position + 8
     }
+
+    // Returns undefined at EOF
 }
 
 function Write(value) {

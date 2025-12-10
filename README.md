@@ -2,15 +2,15 @@
 
 By Cesar Vigil from the amazing work of the [Minecraft Wiki](minecraft.wiki)
 
-The goal of this project is to implement the server protocol of every archived version of Minecraft with released multiplater (including snapshots and April Fools updates). Instead of being an implementation of the full game and all of it's features like crafting and world generation. It is a bare bones world with claimable plots to create small builds in.
+The goal of this project is to implement the server protocol of every archived version of Minecraft with released multiplater (including snapshots and April Fools updates). Instead of being an implementation of the full game and all of it's features like crafting and world generation, it is a bare bones world with claimable plots to create small builds in.
 
 ## Progress
 
-The latest version supported in this project is Java Edition Alpha v1.1.2_01, released on September 23rd, 2010.
+The latest version supported in this project is Java Edition Alpha v1.2.1_01, released on Novemver 5th, 2010.
 
-This is 27 / 961 Versions to be supported as of snapshot 25w36b being the latest.
+This is 31 / 961 Versions to be supported as of snapshot 25w36b being the latest.
 
-[//--------------------------------------------------------------------------------------------------] (2.8%)
+[///-------------------------------------------------------------------------------------------------] (3.2%)
 
 View the [changelog](https://github.com/cesars-pizza/All-Version-Minecraft-Server/blob/main/CHANGELOG.md) for details on changes in this version.
 

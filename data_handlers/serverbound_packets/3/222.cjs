@@ -210,7 +210,7 @@ function ReadPacket(world, socket, data) {
                                             customTime = BigInt(commandParts[2])
                                             success = true
                                         } catch { }
-                                        if (customTime < 9223372036854775808n && customTime >= -9223372036854775808n && success) timeValue = customTime
+                                        if (customTime < 9223372036854775808n && customTime >= -9223372036854775808n && success) timeValue = Number(customTime)
                                         else if (success) socket.thisPlayer.tick.errorMessages.push('Value out of range, must be of type Long')
                                         else socket.thisPlayer.tick.errorMessages.push('Invalid time value, must be of type Long')
                                     }

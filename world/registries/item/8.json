@@ -1,8 +1,8 @@
 {
-    "minUVNI": 222,
-    "maxUVNI": 222,
-    "minUPVN": 11,
-    "maxUPVN": 11,
+    "minUVNI": 227,
+    "maxUVNI": 231,
+    "minUPVN": 12,
+    "maxUPVN": 12,
     "entries": {
         "air": 0,
         "stone": 1,
@@ -67,6 +67,12 @@
         "clay": 82,
         "jukebox": 84,
         "oak_fence": 85,
+        "pumpkin": 86,
+        "netherrack": 87,
+        "soul_sand": 88,
+        "glowstone": 89,
+        "nether_portal": 90,
+        "jack_o_lantern": 91,
         "iron_shovel": 256,
         "iron_pickaxe": 257,
         "iron_axe": 258,
@@ -157,6 +163,11 @@
         "furnace_minecart": 343,
         "egg": 344,
         "compass": 345,
+        "fishing_rod": 346,
+        "clock": 347,
+        "glowstone_dust": 348,
+        "cod": 349,
+        "cooked_cod": 350,
         "music_disc_13": 2256,
         "music_disc_cat": 2257
     }

@@ -6,7 +6,8 @@ const {Socket} = require('../../../data_structures.cjs')
 function ReadPacket(socket) {
     if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 9) return require('./213.cjs').ReadPacket
     if (socket.thisPlayer.upvn == 10) return require('./219.cjs').ReadPacket
-    if (socket.thisPlayer.upvn >= 11 && socket.thisPlayer.upvn <= 15) return require('./222.cjs').ReadPacket
+    if (socket.thisPlayer.upvn == 11) return require('./222.cjs').ReadPacket
+    if (socket.thisPlayer.upvn >= 12 && socket.thisPlayer.upvn <= 15) return require('./227.cjs').ReadPacket
     else {
         socket.log(`ERR: Cannot Parse Packet 3 for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return () => {}
