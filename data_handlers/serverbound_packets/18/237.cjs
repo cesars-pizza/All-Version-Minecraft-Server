@@ -20,6 +20,8 @@ function ReadPacket(world, socket, data) {
     socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
     
     if (splitIndex >= 0) {
+        if (Animation.value == 104) utils.player.set.Sneaking(world, socket.thisPlayer, true)
+        else if (Animation.value == 105) utils.player.set.Sneaking(world, socket.thisPlayer, false)
     }
     
     return splitIndex

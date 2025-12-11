@@ -22,6 +22,7 @@ module.exports = {
         Player_Position_And_Look: require('./Alpha/Player Position And Look/distributer.cjs').WritePacket,
         Holding_Change: require('./Alpha/Holding Change/distributer.cjs').WritePacket,
         Add_To_Inventory: require('./Alpha/Add To Inventory/distributer.cjs').WritePacket,
+        Animation: require('./Alpha/Animation/distributer.cjs').WritePacket,
         Named_Entity_Spawn: require('./Alpha/Named Entity Spawn/distributer.cjs').WritePacket,
         Destroy_Entity: require('./Alpha/Destroy Entity/distributer.cjs').WritePacket,
         Entity: require('./Alpha/Entity/distributer.cjs').WritePacket,

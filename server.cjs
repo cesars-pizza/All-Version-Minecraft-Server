@@ -522,6 +522,17 @@ function IdentifyVersion(socket, data) {
                 if (world.config.maxUPVN < 14) socket.setDisconnect("invalidVersion")
 
                 return
+            } else if (protocolVersion == 6) {
+                socket.log(`IDENTIFIED UPVN 15`)
+                socket.log(`IDENTIFIED UVNI 237 / Alpha v1.2.3_05`)
+                socket.identified = true
+                socket.thisPlayer.upvn = 15
+                socket.thisPlayer.uvni = 237
+
+                if (world.config.minUPVN > 15) socket.setDisconnect("invalidVersion")
+                if (world.config.maxUPVN < 15) socket.setDisconnect("invalidVersion")
+
+                return
             }
         }
     }

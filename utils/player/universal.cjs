@@ -246,7 +246,7 @@ const set = {
     Sneaking: (world, player, isSneaking) => {
         if (player.sneaking != isSneaking) {
             player.sneaking = isSneaking
-            player.tick.position = true
+            player.tick.position.tick = true
             player.save = true
         }
     }

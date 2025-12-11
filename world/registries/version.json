@@ -232,5 +232,12 @@
     {"supported": false},
     {"supported": true, "name": "Java Edition Alpha v1.2.1", "pvn": 3},
     {"supported": true, "name": "Java Edition Alpha v1.2.2", "pvn": 4},
-    {"supported": true, "name": "Java Edition Alpha v1.2.3", "pvn": 5}
+    {"supported": true, "name": "Java Edition Alpha v1.2.3", "pvn": 5},
+    {"supported": true, "name": "Java Edition Alpha v1.2.3_01", "pvn": 5},
+    {"supported": true, "name": "Java Edition Alpha v1.2.3_02", "pvn": 5},
+    {"supported": true, "name": "Java Edition Alpha v1.2.3_04", "pvn": 5},
+    {"supported": true, "name": "Java Edition Alpha v1.2.3_05", "pvn": 6},
+    {"supported": true, "name": "Java Edition Alpha v1.2.4_01", "pvn": 6},
+    {"supported": true, "name": "Java Edition Alpha v1.2.5", "pvn": 6},
+    {"supported": true, "name": "Java Edition Alpha v1.2.6", "pvn": 6}
 ]
