@@ -24,6 +24,8 @@ function ReadPacket(world, socket, data) {
         var posZ = dataReader.readInt(socket, data, posY.nextPos)
         var face = dataReader.readByte(socket, data, posZ.nextPos)
 
+        if (posX.value == -1 && posY.value == -1 && posZ.value == -1 && face.value == -1) return splitIndex
+
         if (socket.disconnect == "") {
             var placedName = utils.registry.item.GetItemName(world, socket.thisPlayer.selectedRegistries.item, item.value)
             if (placedName == "water_bucket") placedName = "water"

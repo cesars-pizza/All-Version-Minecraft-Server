@@ -2,6 +2,32 @@
 
 This is an outline of issues with specific clients.
 
+## Java Edition Alpha v1.2.3_04
+
+Same as Java Edition Alpha v1.2.0.
+
+This version can't be distinguished from Java Edition Alpha v1.2.3, resulting in plots made in this version showing incorrectly on plot info.
+
+## Java Edition Alpha v1.2.3_02
+
+Same as Java Edition Alpha v1.2.0.
+
+This version can't be distinguished from Java Edition Alpha v1.2.3, resulting in plots made in this version showing incorrectly on plot info.
+
+## Java Edition Alpha v1.2.3_01
+
+Same as Java Edition Alpha v1.2.0.
+
+This version can't be distinguished from Java Edition Alpha v1.2.3, resulting in plots made in this version showing incorrectly on plot info.
+
+## Java Edition Alpha v1.2.3
+
+Same as Java Edition Alpha v1.2.0.
+
+## Java Edition Alpha v1.2.2
+
+Same as Java Edition Alpha v1.2.0.
+
 ## Java Edition Alpha v1.2.1_01
 
 Same as Java Edition Alpha v1.2.0.

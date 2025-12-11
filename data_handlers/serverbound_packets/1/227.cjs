@@ -20,6 +20,8 @@ function ReadPacket(world, socket, data) {
     var mapSeed = dataReader.readLong(socket, data, password.nextPos)
     var dimension = dataReader.readByte(socket, data, mapSeed.nextPos)
     
+    if (socket.thisPlayer.inWorld) return 0
+    
     socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
     
     if (isNaN(protocolVersion.value) || username.value == undefined || password.value == undefined || mapSeed.value == undefined || isNaN(dimension.value)) return -999

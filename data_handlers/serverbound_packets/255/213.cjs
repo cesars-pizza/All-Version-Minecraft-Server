@@ -22,6 +22,7 @@ function ReadPacket(world, socket, data) {
     if (reason.value == undefined) return -999
     else {
         socket.endConnection("Client Packet Closed Socket")
+        console.log(reason)
 
         return data.length - (packet.length + reason.length)
     }

@@ -201,6 +201,24 @@
                 "has_record": ["false", "true"]
             }
         },
-        "oak_fence": { "states": {} }
+        "oak_fence": { "states": {} },
+        "pumpkin": {
+            "states": {
+                "facing": ["north", "east", "south", "west"]
+            }
+        },
+        "netherrack": { "states": {} },
+        "soul_sand": { "states": {} },
+        "glowstone": { "states": {} },
+        "nether_portal": {
+            "states": {
+                "axis": ["x", "z"]
+            }
+        },
+        "jack_o_lantern": {
+            "states": {
+                "facing": ["north", "east", "south", "west"]
+            }
+        }
     }
 }

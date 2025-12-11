@@ -316,7 +316,10 @@ function KeepAlive() {
  * @param {Buffer} data
  */
 async function ReadPacket(socket, data) {
-    if (socket.dataBuffer.length > 0) data = Buffer.from(Array.from(socket.dataBuffer).concat(Array.from(data)))
+    if (socket.dataBuffer.length > 0) {
+        socket.log(`Merged ${socket.dataBuffer.length} & ${data.length} => ${socket.dataBuffer.length + data.length}`, false)
+        data = Buffer.from(Array.from(socket.dataBuffer).concat(Array.from(data)))
+    }
     socket.dataBuffer = []
 
     socket.packetCount++
@@ -330,6 +333,7 @@ async function ReadPacket(socket, data) {
         if (packetReaderFn != undefined) {
             var splitIndex = packetReaderFn(socket)(world, socket, data)
             if (splitIndex > 0) {
+                socket.log(`Split ${data.length} => ${data.length - splitIndex} & ${splitIndex}`, false)
                 await ReadPacket(socket, data.subarray(data.length - splitIndex))
             }
             else if (splitIndex < 0) socket.dataBuffer = data
@@ -494,6 +498,28 @@ function IdentifyVersion(socket, data) {
 
                 if (world.config.minUPVN > 12) socket.setDisconnect("invalidVersion")
                 if (world.config.maxUPVN < 12) socket.setDisconnect("invalidVersion")
+
+                return
+            } else if (protocolVersion == 4) {
+                socket.log(`IDENTIFIED UPVN 13`)
+                socket.log(`IDENTIFIED UVNI 232 / Alpha v1.2.2`)
+                socket.identified = true
+                socket.thisPlayer.upvn = 13
+                socket.thisPlayer.uvni = 232
+
+                if (world.config.minUPVN > 13) socket.setDisconnect("invalidVersion")
+                if (world.config.maxUPVN < 13) socket.setDisconnect("invalidVersion")
+
+                return
+            } else if (protocolVersion == 5) {
+                socket.log(`IDENTIFIED UPVN 14`)
+                socket.log(`IDENTIFIED UVNI 233 / Alpha v1.2.3`)
+                socket.identified = true
+                socket.thisPlayer.upvn = 14
+                socket.thisPlayer.uvni = 233
+
+                if (world.config.minUPVN > 14) socket.setDisconnect("invalidVersion")
+                if (world.config.maxUPVN < 14) socket.setDisconnect("invalidVersion")
 
                 return
             }

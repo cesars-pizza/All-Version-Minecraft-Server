@@ -8,7 +8,7 @@ const data_writer = require('../data_writer.cjs')
  */
 function Read(data, position) {
     var length = data_reader.readShort({uvni: -1}, data, position)
-    if (isNaN(length.value) || data.length < (length.nextPos + length.value)) return {
+    if (isNaN(length.value) || data.length < (length.nextPos + length.value) || length.value < 0) return {
         value: undefined,
         length: 0,
         nextPos: position

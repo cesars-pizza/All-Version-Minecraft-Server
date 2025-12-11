@@ -18,6 +18,8 @@ function ReadPacket(world, socket, data) {
     var username = dataReader.readString(socket, data, protocolVersion.nextPos)
     var password = dataReader.readString(socket, data, username.nextPos)
     
+    if (socket.thisPlayer.inWorld) return 0
+    
     socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
     
     if (isNaN(protocolVersion.value) || username.value == undefined || password.value == undefined) return -999

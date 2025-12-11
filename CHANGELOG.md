@@ -6,6 +6,46 @@ All changes in versions outside of the included versions (such as early unarchiv
 
 For more information, view the [development spreadsheet](https://docs.google.com/spreadsheets/d/1rxPJ9sm80nxbCEAkAXiAbzHODu7CdnCulBLebjD1Lhk/edit?usp=sharing).
 
+## Java Edition Alpha v1.2.3_04
+
+This version can't be distinguished from Alpha v1.2.3.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
+## Java Edition Alpha v1.2.3_02
+
+This version can't be distinguished from Alpha v1.2.3.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
+## Java Edition Alpha v1.2.3_01
+
+This version can't be distinguished from Alpha v1.2.3.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
+## Java Edition Alpha v1.2.3
+
+Protocol version set to 5.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
+## Java Edition Alpha v1.2.2
+
+Protocol version set to 4.
+
+### Documentation
+
+Protocol documented on the [Minecraft Wiki](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Protocol?oldid=2769659)
+
 ## Java Edition Alpha v1.2.1_01
 
 This version can't be distinguished from Alpha v1.2.0.
