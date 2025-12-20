@@ -306,7 +306,7 @@ class Inventory {
      * @param {Slot[]} hotbar
      * @param {Slot[]} inventory
      * @param {{head: Slot, chest: Slot, legs: Slot, feet: Slot}} armor
-     * @param {{crafting: Slot[]}} player
+     * @param {{crafting: Slot[], cursor: Slot}} player
      */
     constructor(type, hotbar, inventory, armor, player) {
         this.type = type

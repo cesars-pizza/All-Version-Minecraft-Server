@@ -38,6 +38,30 @@ module.exports = {
         Kick: require('./Alpha/Kick/distributer.cjs').WritePacket
     },
 
+    Beta: {
+        Keep_Alive: require('./Beta/Keep Alive/distributer.cjs').WritePacket,
+        Login_Response: require('./Beta/Login Response/distributer.cjs').WritePacket,
+        Handshake: require('./Beta/Handshake/distributer.cjs').WritePacket,
+        Chat_Message: require('./Beta/Chat Message/distributer.cjs').WritePacket,
+        Time_Update: require('./Beta/Time Update/distributer.cjs').WritePacket,
+        Player_Position_And_Look: require('./Beta/Player Position And Look/distributer.cjs').WritePacket,
+        Holding_Change: require('./Beta/Holding Change/distributer.cjs').WritePacket,
+        Animation: require('./Beta/Animation/distributer.cjs').WritePacket,
+        Named_Entity_Spawn: require('./Beta/Named Entity Spawn/distributer.cjs').WritePacket,
+        Destroy_Entity: require('./Beta/Destroy Entity/distributer.cjs').WritePacket,
+        Entity: require('./Beta/Entity/distributer.cjs').WritePacket,
+        Entity_Relative_Move: require('./Beta/Entity Relative Move/distributer.cjs').WritePacket,
+        Entity_Look: require('./Beta/Entity Look/distributer.cjs').WritePacket,
+        Entity_Look_and_Relative_Move: require('./Beta/Entity Look and Relative Move/distributer.cjs').WritePacket,
+        Entity_Teleport: require('./Beta/Entity Teleport/distributer.cjs').WritePacket,
+        Pre_Chunk: require('./Beta/Pre Chunk/distributer.cjs').WritePacket,
+        Map_Chunk: require('./Beta/Map Chunk/distributer.cjs').WritePacket,
+        Multi_Block_Change: require('./Beta/Multi Block Change/distributer.cjs').WritePacket,
+        Block_Change: require('./Beta/Block Change/distributer.cjs').WritePacket,
+        Window_Items: require('./Beta/Window Items/distributer.cjs').WritePacket,
+        Kick: require('./Beta/Kick/distributer.cjs').WritePacket
+    },
+
     _alt: {
         Classic: { Level_Data_Chunk_alt0: require('./Classic/Level Data Chunk/distributer.cjs').WritePacket_Alt0 },
 

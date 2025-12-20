@@ -8,6 +8,7 @@ function ReadPacket(socket) {
     if (socket.thisPlayer.upvn == 10) return require('./219.cjs').ReadPacket
     if (socket.thisPlayer.upvn == 11) return require('./222.cjs').ReadPacket
     if (socket.thisPlayer.upvn >= 12 && socket.thisPlayer.upvn <= 15) return require('./227.cjs').ReadPacket
+    if (socket.thisPlayer.upvn >= 16 && socket.thisPlayer.upvn <= 26) return require('./241.cjs').ReadPacket
     else {
         socket.log(`ERR: Cannot Parse Packet 3 for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return () => {}

@@ -1,0 +1,26 @@
+const {Socket, World, Position} = require('../../../data_structures.cjs')
+const dataWriter = require('../../../data_handlers/data_writer.cjs')
+const packetWriter = require('../../../data_handlers/clientbound_packets/packet_writer.cjs')
+const utils = require('../../utils.cjs')
+
+/** 
+ * @param {Socket} socket 
+ */
+function SetBlock(world, socket, position, blockID, doubleSet) {
+    var blockID = utils.registry.block.GetBlockID(world, socket.thisPlayer.selectedRegistries.block, blockID)
+    if (typeof(blockID) == "number") {
+        packetWriter.Beta.Block_Change(socket)(world, socket, position, blockID, 0, doubleSet)
+    }
+    else {
+        packetWriter.Beta.Block_Change(socket)(world, socket, position, blockID.id, blockID.metadata, doubleSet)
+    }
+}
+
+/** 
+ * @param {Socket} socket 
+ */
+function SetBlockEntity(world, socket, position, data) {
+    console.log("reimplement block entities")
+}
+
+module.exports = {SetBlock, SetBlockEntity}

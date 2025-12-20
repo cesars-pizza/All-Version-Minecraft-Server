@@ -17,12 +17,7 @@ function GenerateBuild(socket) {
  * @param {Socket} socket 
  */
 function GetBuildInfo(socket) {
-    if (socket.thisPlayer.upvn >= 0 && socket.thisPlayer.upvn <= 4) return require('./42.cjs').GetBuildInfo
-    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').GetBuildInfo
-    else {
-        socket.log(`ERR: Cannot Get Build Info for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
-        return () => {return [""]}
-    }
+    return require('./universal.cjs').GetBuildInfo
 }
 
 function SetBlockInBuild(socket) {

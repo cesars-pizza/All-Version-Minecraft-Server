@@ -533,6 +533,17 @@ function IdentifyVersion(socket, data) {
                 if (world.config.maxUPVN < 15) socket.setDisconnect("invalidVersion")
 
                 return
+            } else if (protocolVersion == 7) {
+                socket.log(`IDENTIFIED UPVN 16`)
+                socket.log(`IDENTIFIED UVNI 241 / Beta 1.0`)
+                socket.identified = true
+                socket.thisPlayer.upvn = 16
+                socket.thisPlayer.uvni = 241
+
+                if (world.config.minUPVN > 16) socket.setDisconnect("invalidVersion")
+                if (world.config.maxUPVN < 16) socket.setDisconnect("invalidVersion")
+
+                return
             }
         }
     }
@@ -544,7 +555,7 @@ function IdentifyVersion(socket, data) {
  * @param {Socket} socket 
  */
 function GetPacketID(socket, data) {
-    if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 15) return data[0]
+    if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 26) return data[0]
     else {
         socket.log(`ERR: Cannot Parse Packet ID for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return null

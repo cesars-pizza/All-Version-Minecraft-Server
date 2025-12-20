@@ -1,8 +1,8 @@
 {
     "minUVNI": 227,
-    "maxUVNI": 240,
+    "maxUVNI": 245,
     "minUPVN": 12,
-    "maxUPVN": 15,
+    "maxUPVN": 16,
     "entries": {
         "item": {
             "name": "Item",

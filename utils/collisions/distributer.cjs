@@ -1,6 +1,6 @@
 function PlayerCollidingWithBlock(socket) {
     if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').PlayerCollidingWithBlock
-    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').PlayerCollidingWithBlock
+    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 26) return require('./213.cjs').PlayerCollidingWithBlock
     else {
         socket.log(`ERR: Cannot Run Player Colliding With Block for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return () => {}
@@ -9,7 +9,7 @@ function PlayerCollidingWithBlock(socket) {
 
 function PlayerCollidingWithBuildFloor(socket) {
     if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').PlayerCollidingWithBuildFloor
-    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').PlayerCollidingWithBuildFloor
+    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 26) return require('./213.cjs').PlayerCollidingWithBuildFloor
     else {
         socket.log(`ERR: Cannot Run Player Colliding With Build Floor for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return () => {}
@@ -18,7 +18,7 @@ function PlayerCollidingWithBuildFloor(socket) {
 
 function PlayerCollidingWithBuildVolume(socket) {
     if (socket.thisPlayer.upvn >= -1 && socket.thisPlayer.upvn <= 4) return require('./29.cjs').PlayerCollidingWithBuildVolume
-    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 15) return require('./213.cjs').PlayerCollidingWithBuildVolume
+    if (socket.thisPlayer.upvn >= 8 && socket.thisPlayer.upvn <= 26) return require('./213.cjs').PlayerCollidingWithBuildVolume
     else {
         socket.log(`ERR: Cannot Run Player Colliding With Build Volume for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return () => {}
