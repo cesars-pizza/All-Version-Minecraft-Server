@@ -191,8 +191,17 @@ function ReadPacket(world, socket, data) {
                                     updateSuccessful = true
                                 }
                             } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
-                        } else if (utils.tag(world, placedName, "stairs") || placedName == "chest" || placedName == "furnace" || placedName == "pumpkin" || placedName == "jack_o_lantern") {
+                        } else if (utils.tag(world, placedName, "stairs")) {
                             var playerDirection = utils.angle.GetDirectionNESW(socket.thisPlayer.rotation.yaw)
+
+                            if (facingBlockReplacable) {
+                                if (validBlock) {
+                                    utils.tick_actions.set_block.AddBlockUpdate(socket)(world, socket, facingBlock, placedName + `[facing=${playerDirection}]`, false, facingBlock.block)
+                                    updateSuccessful = true
+                                } else socket.thisPlayer.tick.errorMessages.push("This block isn't available in all versions.")
+                            }
+                        } else if (placedName == "chest" || placedName == "furnace" || placedName == "pumpkin" || placedName == "jack_o_lantern") {
+                            var playerDirection = utils.angle.GetDirectionNESW(socket.thisPlayer.rotation.yaw + 180)
 
                             if (facingBlockReplacable) {
                                 if (validBlock) {

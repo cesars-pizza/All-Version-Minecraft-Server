@@ -13,6 +13,8 @@ function Read(data, position) {
         length: 4,
         nextPos: position + 4
     }
+
+    // Returns NaN if out of bounds
 }
 
 function Write(value) {

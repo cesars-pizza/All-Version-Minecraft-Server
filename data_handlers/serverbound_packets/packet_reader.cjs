@@ -129,7 +129,7 @@ module.exports = [
     undefined,
     undefined,
     undefined,
-    undefined,
+    require('./130/distributer.cjs').ReadPacket,
     undefined,
     undefined,
     undefined,

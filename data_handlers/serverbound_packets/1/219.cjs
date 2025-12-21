@@ -105,6 +105,11 @@ function ReadPacket(world, socket, data) {
                             }
                         }
                     }
+
+                    while (playerFullInventory.length < 36) {
+                        playerFullInventory.push({id: "air", count: 0, added_components: [], removed_components: []})
+                    }
+
                     socket.thisPlayer.tick.heldItem = true
                     socket.thisPlayer.inventory.slots.hotbar = playerFullInventory.slice(0, 9)
                     socket.thisPlayer.inventory.slots.inventory = playerFullInventory.slice(9)

@@ -58,7 +58,9 @@ module.exports = {
         Map_Chunk: require('./Beta/Map Chunk/distributer.cjs').WritePacket,
         Multi_Block_Change: require('./Beta/Multi Block Change/distributer.cjs').WritePacket,
         Block_Change: require('./Beta/Block Change/distributer.cjs').WritePacket,
+        Open_Window: require('./Beta/Open Window/distributer.cjs').WritePacket,
         Window_Items: require('./Beta/Window Items/distributer.cjs').WritePacket,
+        Update_Sign: require('./Beta/Update Sign/distributer.cjs').WritePacket,
         Kick: require('./Beta/Kick/distributer.cjs').WritePacket
     },
 

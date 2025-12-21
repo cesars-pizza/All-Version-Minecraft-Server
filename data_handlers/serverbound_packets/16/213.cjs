@@ -18,11 +18,10 @@ function ReadPacket(world, socket, data) {
     socket.log(`SERVERBOUND --> ${packetID} "${packetIdentifier}" / ${data.length} bytes`)
 
     if (splitIndex >= 0) {
-        var unknownValue = dataReader.readInt(socket, data, 1)
-        var item = dataReader.readShort(socket, data, unknownValue.nextPos)
+        var slot = dataReader.readShort(socket, data, 1)
 
         if (socket.disconnect == "") {
-            socket.thisPlayer.inventory.held_item = utils.registry.item.GetItemName(world, socket.thisPlayer.selectedRegistries.item, item.value)
+            socket.thisPlayer.inventory.held_item = socket.thisPlayer.inventory.slots.hotbar[slot.value]
             socket.thisPlayer.tick.heldItem = true
         }
 

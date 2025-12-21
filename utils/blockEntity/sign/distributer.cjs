@@ -6,7 +6,8 @@ const {Socket} = require('../../../data_structures.cjs')
  * @param {Array} data 
  */
 function ConvertToUniversalData(world, socket, id, data) {
-    if (socket.thisPlayer.upvn >= 11 && socket.thisPlayer.upvn <= 26) return require('./222.cjs').ConvertToUniversalData(world, socket, id, data)
+    if (socket.thisPlayer.upvn >= 11 && socket.thisPlayer.upvn <= 15) return require('./222.cjs').ConvertToUniversalData(world, socket, id, data)
+    if (socket.thisPlayer.upvn >= 16 && socket.thisPlayer.upvn <= 26) return require('./241.cjs').ConvertToUniversalData(world, socket, id, data)
     else {
         socket.log(`ERR: Cannot Convert Sign To Universal Block Entity Data for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return {}
@@ -20,7 +21,8 @@ function ConvertToUniversalData(world, socket, id, data) {
  * @param {Array} data 
  */
 function ConvertToVersionSpecificData(world, socket, data) {
-    if (socket.thisPlayer.upvn >= 11 && socket.thisPlayer.upvn <= 26) return require('./222.cjs').ConvertToVersionSpecificData(world, socket, data)
+    if (socket.thisPlayer.upvn >= 11 && socket.thisPlayer.upvn <= 15) return require('./222.cjs').ConvertToVersionSpecificData(world, socket, data)
+    if (socket.thisPlayer.upvn >= 16 && socket.thisPlayer.upvn <= 26) return require('./241.cjs').ConvertToVersionSpecificData(world, socket, data)
     else {
         socket.log(`ERR: Cannot Convert Sign To Version Specific Block Entity Data for Version ${socket.thisPlayer.upvn}:${socket.thisPlayer.uvni}`)
         return {}

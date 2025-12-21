@@ -287,6 +287,9 @@ function ReadPacket(world, socket, data) {
                     }
 
                     if (playerFullInventory.length > 0) {
+                        while (playerFullInventory.length < 36) {
+                            playerFullInventory.push({id: "air", count: 0, added_components: [], removed_components: []})
+                        }
                         socket.thisPlayer.inventory.slots.hotbar = playerFullInventory.slice(0, 9)
                         socket.thisPlayer.inventory.slots.inventory = playerFullInventory.slice(9)
                         packetWriter.Beta.Window_Items(socket)(world, socket, 0, socket.thisPlayer.inventory.slots)

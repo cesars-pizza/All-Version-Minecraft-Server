@@ -20,7 +20,7 @@ function SetBlock(world, socket, position, blockID, doubleSet) {
  * @param {Socket} socket 
  */
 function SetBlockEntity(world, socket, position, data) {
-    console.log("reimplement block entities")
+    if (data.id == "oak_sign") packetWriter.Beta.Update_Sign(socket)(world, socket, position, data)
 }
 
 module.exports = {SetBlock, SetBlockEntity}

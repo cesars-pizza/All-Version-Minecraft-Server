@@ -44,6 +44,15 @@ function InitializePlayer(world, player, socket, username) {
     newPlayer.allowMovement = false
     newPlayer.sneaking = false
     newPlayer.joinCount++
+    newPlayer.inventory.slots.player = {
+        crafting: [
+            {id: "air", count: 0, added_components: [], removed_components: []},
+            {id: "air", count: 0, added_components: [], removed_components: []},
+            {id: "air", count: 0, added_components: [], removed_components: []},
+            {id: "air", count: 0, added_components: [], removed_components: []}
+        ],
+        cursor: {id: "air", count: 0, added_components: [], removed_components: []}
+    }
 
     // Move player to edge of plot if inside
     if (utils.collisions.PlayerCollidingWithBuildVolume(socket)(newPlayer.position)) {

@@ -50,7 +50,7 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
                 for (var innerX = 0; innerX < unformattedLevelDatas.length; innerX++) {
                     for (var innerZ = 0; innerZ < unformattedLevelDatas[innerX].length; innerZ++) {
                         for (var i = 0; i < unformattedLevelDatas[innerX][innerZ].blockEntities.length; i++) {
-                            console.log("reimplement block entities 2")
+                            if (unformattedLevelDatas[innerX][innerZ].blockEntities[i].id == "oak_sign") packetWriter.Beta.Update_Sign(socket)(world, socket, unformattedLevelDatas[innerX][innerZ].blockEntities[i].position, unformattedLevelDatas[innerX][innerZ].blockEntities[i])
                         }
                     }
                 }
@@ -112,7 +112,7 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
                 for (var innerX = 0; innerX < unformattedLevelDatas.length; innerX++) {
                     for (var innerZ = 0; innerZ < unformattedLevelDatas[innerX].length; innerZ++) {
                         for (var i = 0; i < unformattedLevelDatas[innerX][innerZ].blockEntities.length; i++) {
-                            console.log("Reimplement complex block entities 3")
+                            if (unformattedLevelDatas[innerX][innerZ].blockEntities[i].id == "oak_sign") packetWriter.Beta.Update_Sign(socket)(world, socket, unformattedLevelDatas[innerX][innerZ].blockEntities[i].position, unformattedLevelDatas[innerX][innerZ].blockEntities[i])
                         }
                     }
                 }
@@ -134,7 +134,7 @@ function GenerateRenderDistance(world, socket, renderDistance, chunkX, chunkZ, p
                 for (var innerX = 0; innerX < unformattedLevelDatas.length; innerX++) {
                     for (var innerZ = 0; innerZ < unformattedLevelDatas[innerX].length; innerZ++) {
                         for (var i = 0; i < unformattedLevelDatas[innerX][innerZ].blockEntities.length; i++) {
-                            console.log("reimplement complex block entities 4")
+                            if (unformattedLevelDatas[innerX][innerZ].blockEntities[i].id == "oak_sign") packetWriter.Beta.Update_Sign(socket)(world, socket, unformattedLevelDatas[innerX][innerZ].blockEntities[i].position, unformattedLevelDatas[innerX][innerZ].blockEntities[i])
                         }
                     }
                 }

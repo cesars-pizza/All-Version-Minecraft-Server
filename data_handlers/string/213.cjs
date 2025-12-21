@@ -20,6 +20,8 @@ function Read(data, position) {
             nextPos: length.nextPos + length.value
         }
     }
+
+    // Value is undefined at end of data
 }
 
 /**
